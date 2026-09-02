@@ -19741,6 +19741,7 @@ Agent A → Encrypted Communication → Agent B
 
 ## SECTION 6: AGENTIC SECURITY IMPLEMENTATION
 
+```
 \# agentic\_security.py  
 """  
 Agentic Security & Identity (AEGIS) — Complete Implementation  
@@ -20092,7 +20093,7 @@ class AgenticSecurity:
             "active\_agents": len(\[i for i in self.identities.values()   
                                  if i.status in \[IdentityStatus.ACTIVE, IdentityStatus.REACTIVATED\]\])  
         }
-
+```
 ---
 
 ## SECTION 7: RELATIONSHIP TO OTHER INSTRUMENTS
@@ -20259,6 +20260,7 @@ Flagged → Review → HAN Decision
 
 ## SECTION 4: ZERO TRUST IMPLEMENTATION
 
+```
 \# zero\_trust\_runtime.py  
 """  
 Zero Trust & AI Runtime Security — Complete Implementation  
@@ -20658,6 +20660,7 @@ class ZeroTrustRuntime:
                 for agent\_id in set(r.agent\_id for r in self.receipts)  
             }  
         }
+```
 
 ---
 
@@ -20891,6 +20894,7 @@ When an agent interacts with an MCP server, it is logged as inter-agent communic
 
 ## SECTION 6: MCP REGISTRY IMPLEMENTATION
 
+```
 \# mcp\_registry.py  
 """  
 MCP Server Governance — Complete Implementation  
@@ -21150,6 +21154,8 @@ class MCPRegistry:
             "pending\_scans": len(self.get\_pending\_security\_scans()),  
             "failed\_scans": len(self.get\_failed\_security\_scans())  
         }  
+```
+
 ---
 
 ## SECTION 7: RELATIONSHIP TO OTHER INSTRUMENTS
@@ -21468,6 +21474,7 @@ HAN Authorization: \[HAN Name and Signature\]
 
 ## SECTION 7: SUPPLY CHAIN GOVERNANCE IMPLEMENTATION
 
+```
 \# supply\_chain\_governance.py  
 """  
 Supply Chain Governance — Complete Implementation  
@@ -21831,6 +21838,7 @@ class SupplyChainGovernance:
             },  
             "pending\_assessments": len(\[m for m in self.models.values() if m.assessment\_status \== AssessmentStatus.PENDING\])  
         }
+```
 
 ---
 
@@ -22037,6 +22045,7 @@ The Skills & Plugins Governance Framework ensures that:
 
 ## SECTION 5: SKILLS & PLUGINS IMPLEMENTATION
 
+```
 \# skills\_plugins\_governance.py  
 """  
 Skills & Plugins Governance — Complete Implementation  
@@ -22344,6 +22353,7 @@ class SkillsGovernance:
             "failed\_scans": len(\[s for s in self.skills.values() if s.security\_status \== SecurityStatus.FAILED\]),  
             "active\_skills": len(\[s for s in self.skills.values() if s.registration\_status \== RegistrationStatus.ACTIVE\])  
         }
+```
 
 ---
 
@@ -22670,6 +22680,7 @@ Board Review Date: \[Date\]
 
 ## SECTION 6: BOARD AI GOVERNANCE IMPLEMENTATION
 
+```
 \# board\_ai\_governance.py  
 """  
 Board-Level AI Governance Framework — Complete Implementation  
@@ -22871,6 +22882,7 @@ class BoardAIGovernance:
             "latest\_report": sorted(self.reports.keys(), reverse=True)\[0\] if self.reports else None,  
             "current\_charter": sorted(self.charters.keys(), reverse=True)\[0\] if self.charters else None  
         }
+```
 
 ---
 
@@ -23104,6 +23116,7 @@ I9 — Catastrophic Risk Invariant (Revised)
 
 ## SECTION 6: SYSTEMIC RISK IMPLEMENTATION
 
+```
 \# systemic\_risk\_framework.py  
 """  
 Systemic Risk Framework — Complete Implementation  
@@ -23308,6 +23321,7 @@ class SystemicRiskFramework:
         }  
           
         return decisions.get((tier, risk\_level), {"status": "DENIED", "conditions": \["Requires further assessment"\]})
+```
 
 ---
 
@@ -23567,6 +23581,7 @@ Assigned To: \[To be assigned\]
 
 ## SECTION 6: AUTOMATED COMPLIANCE REMEDIATION IMPLEMENTATION
 
+```
 \# automated\_compliance\_remediation.py  
 """  
 Automated Compliance Remediation — Complete Implementation  
@@ -23966,6 +23981,7 @@ class AutomatedComplianceRemediation:
                 for r in self.get\_pending\_approval()  
             \]  
         }
+```
 
 ---
 
@@ -24171,6 +24187,7 @@ The AI OSI Integration ensures that:
 
 ## SECTION 4: AI OSI INTEGRATION IMPLEMENTATION
 
+```
 \# ai\_osi\_integration.py  
 """  
 AI OSI Integration — Complete Implementation  
@@ -24514,6 +24531,7 @@ class AIOSIIntegration:
                 layer.value: layer.name for layer in AIOSILayer  
             }  
         }
+```
 
 ---
 
@@ -24614,7 +24632,7 @@ Real-time Evidence Streaming ensures that:
 ## SECTION 2: STREAMING ARCHITECTURE
 
 ### 2.1 Architecture Overview
-
+```
 ┌─────────────────────────────────────────────────────────────────────────────┐  
 │                    REAL-TIME EVIDENCE STREAMING                             │  
 ├─────────────────────────────────────────────────────────────────────────────┤  
@@ -24646,6 +24664,7 @@ Real-time Evidence Streaming ensures that:
 │  │  • Continuous evidence store                                            ││  
 │  └─────────────────────────────────────────────────────────────────────────┘│  
 └─────────────────────────────────────────────────────────────────────────────┘
+```
 
 ### 2.2 Streaming Pipeline
 
@@ -24696,6 +24715,7 @@ Real-time Evidence Streaming ensures that:
 
 ### 4.1 Verification Flow
 
+```
 Evidence Captured  
   │  
   ▼  
@@ -24716,6 +24736,7 @@ Alert Generation (if gap)
   ▼  
 Stream Output  
   │  Stream to consumers
+```
 
 ### 4.2 Gap Detection
 
@@ -24740,6 +24761,7 @@ Stream Output
 
 ## SECTION 5: STREAMING IMPLEMENTATION
 
+```
 \# realtime\_evidence\_streaming.py  
 """  
 Real-time Evidence Streaming — Complete Implementation  
@@ -25111,6 +25133,7 @@ class RealtimeEvidenceStreaming:
                 "compliance\_status": "Compliant"  
             }  
         }
+```
 
 ---
 
@@ -25128,6 +25151,7 @@ class RealtimeEvidenceStreaming:
 
 ### 6.2 Streaming Format
 
+```
 event: evidence  
 data: {  
   "stream\_id": "STREAM-20260901120000-000001",  
@@ -25149,7 +25173,7 @@ data: {
   "description": "Evidence expected but not found for control AICA-5-CN-011",  
   "control\_id": "AICA-5-CN-011"  
 }
-
+```
 ---
 
 ## SECTION 7: RELATIONSHIP TO OTHER INSTRUMENTS
@@ -25566,6 +25590,7 @@ Each framework overlay defines the mapping from MCR controls to framework requir
 
 ## SECTION 6: MCR API
 
+```
 \# master\_control\_registry.py  
 """  
 Master Control Registry — Complete Implementation  
@@ -25910,6 +25935,7 @@ class MasterControlRegistry:
             "frameworks": list(self.frameworks.keys()),  
             "last\_updated": datetime.now().isoformat()  
         }
+```
 
 ---
 
@@ -25917,33 +25943,36 @@ class MasterControlRegistry:
 
 ### Example Usage
 
-\# Initialize the registry  
-mcr \= MasterControlRegistry()
+```
+# Initialize the registry
+mcr = MasterControlRegistry()
 
-\# Get a control  
-control \= mcr.get\_control("AICA-5-CN-011")  \# Trigger Rights  
-print(control.name)  \# "Trigger Rights"  
-print(control.mappings)  \# {"eu\_ai\_act": \["Art. 14"\], "nist\_ai\_rmf": \["Govern"\]}
+# Get a control
+control = mcr.get_control("AICA-5-CN-011")  # Trigger Rights
+print(control.name)  # "Trigger Rights"
+print(control.mappings)  # {"eu_ai_act": ["Art. 14"], "nist_ai_rmf": ["Govern"]}
 
-\# Get all AICA-5 controls  
-aica\_controls \= mcr.get\_controls\_by\_source(ControlSource.AICA\_5)  
-print(f"Total AICA-5 controls: {len(aica\_controls)}")  \# 25
+# Get all AICA-5 controls
+aica_controls = mcr.get_controls_by_source(ControlSource.AICA_5)
+print(f"Total AICA-5 controls: {len(aica_controls)}")  # 25
 
-\# Get all constitutional controls  
-constitutional \= mcr.get\_controls\_by\_category(ControlCategory.CONSTITUTIONAL)  
-print(f"Total constitutional controls: {len(constitutional)}")  \# 9
+# Get all constitutional controls
+constitutional = mcr.get_controls_by_category(ControlCategory.CONSTITUTIONAL)
+print(f"Total constitutional controls: {len(constitutional)}")  # 9
 
-\# Get controls for EU AI Act  
-eu\_controls \= mcr.get\_controls\_for\_framework("eu\_ai\_act")  
-print(f"Controls mapped to EU AI Act: {len(eu\_controls)}")
+# Get controls for EU AI Act
+eu_controls = mcr.get_controls_for_framework("eu_ai_act")
+print(f"Controls mapped to EU AI Act: {len(eu_controls)}")
 
-\# Get gap analysis  
-gap \= mcr.get\_gap\_analysis("eu\_ai\_act")  
-print(f"Coverage: {gap\['coverage\_pct'\]}%")  \# 100%  
-print(f"Uncovered controls: {gap\['uncovered\_controls'\]}")  \# \[\]
+# Get gap analysis
+gap = mcr.get_gap_analysis("eu_ai_act")
+print(f"Coverage: {gap['coverage_pct']}%")  # 100%
+print(f"Uncovered controls: {gap['uncovered_controls']}")  # []
 
-\# Export registry  
-print(mcr.export\_registry())  
+# Export registry
+print(mcr.export_registry())
+```
+ 
 ---
 
 ## VERSION HISTORY
@@ -26061,6 +26090,7 @@ The Audit Evidence Engine ensures that:
 
 ### 3.1 Generation Flow
 
+```
 User Request (framework, controls, date range)  
   │  
   ▼  
@@ -26092,6 +26122,7 @@ Final Packet
   ▼  
 Export  
   │  1\. Export in requested format (JSON, PDF, HTML)
+```
 
 ### 3.2 Evidence Types
 
@@ -26108,6 +26139,7 @@ Export
 
 ## SECTION 4: AUDIT EVIDENCE ENGINE IMPLEMENTATION
 
+```
 \# audit\_evidence\_engine.py  
 """  
 Audit Evidence Engine — Complete Implementation  
@@ -26648,6 +26680,7 @@ class AuditEvidenceEngine:
             }  
           
         return summary
+```
 
 ---
 
@@ -26655,6 +26688,7 @@ class AuditEvidenceEngine:
 
 ### 5.1 Basic Usage
 
+```
 \# Initialize the Audit Evidence Engine  
 from master\_control\_registry import MasterControlRegistry  
 from compliance\_crosswalk\_engine import ComplianceCrosswalkEngine
@@ -26684,6 +26718,7 @@ attested \= aee.attest\_packet(
 \# Export as JSON  
 json\_output \= aee.export\_packet(packet.packet\_id, format="json")  
 print(json\_output)
+```
 
 ### 5.2 Framework Evidence Summary
 
