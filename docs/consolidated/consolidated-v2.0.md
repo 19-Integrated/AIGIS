@@ -5338,89 +5338,91 @@ The Role Specification must be delivered in the following sequence, before any t
 
 ## SECTION 11: ROLE SPECIFICATION TEMPLATE
 
-AGENT-ID: F-DR-E-CN-T-SP-001  
-RS-VERSION: v1.0  
-RS-DATE: 2026-08-31  
-FUNCTION: Drafting and policy content generation for advisory engagements  
-ENTITY: 19 Consultin'  
-TIER: T-SP  
-CTAM-GRANTS:  
-  Perception: "All sources authorized"  
-  Synthesis: "All generation types"  
-  Decision: "Recommendation only"  
-  Interaction: "None"  
-  Adaptation: "Static"  
-  Observability: "Audit logging \+ Decision lineage \+ Drift detection"  
-  Constraint: "Boundary adherence \+ Compliance checking"  
-EXECUTION-MODES:  
-  Perception: "Steer"  
-  Synthesis: "Steer"  
-  Decision: "Gate"  
-  Interaction: "Gate"  
-  Adaptation: "Gate"  
-  Observability: "Steer"  
-  Constraint: "Steer"  
-AUTONOMY-BOUNDARY:  
-  \- Action: "Policy drafting"  
-    Status: "Autonomous"  
-  \- Action: "Research synthesis"  
-    Status: "Autonomous"  
-  \- Action: "Data analysis"  
-    Status: "Autonomous"  
-  \- Action: "Final review"  
-    Status: "Escalate"  
-  \- Action: "Issuance"  
-    Status: "Escalate"  
-  \- Action: "Mandate acceptance"  
-    Status: "Escalate"  
-  \- Action: "Certification"  
-    Status: "Escalate"  
-  \- Action: "Suspension"  
-    Status: "Escalate"  
-  \- Action: "Exception creation"  
-    Status: "Escalate"  
-NON-DELEGABLE-AUTHORITIES:  
-  \- "Certification"  
-  \- "Suspension"  
-  \- "Constitutional Review"  
-  \- "Override"  
-  \- "Escalation Acceptance"  
-  \- "Mandate Acceptance"  
-  \- "IP Transfer"  
-  \- "Sovereign Transfer"  
-  \- "HAN Acknowledgment"  
-  \- "MCP Server Registration"  
-ESCALATION-TRIGGERS:  
-  \- Type: "Output Failure"  
-    Response: "Escalation Flag; Handoff Package; HAN review required"  
-  \- Type: "Scope Drift"  
-    Response: "Escalation Flag; Handoff Package; HAN acknowledgment required"  
-  \- Type: "Alignment Drift"  
-    Response: "Escalation Flag; Role Specification review; HAN authorization required"  
-  \- Type: "Non-Delegable Authority Attempt"  
-    Response: "Escalation Flag; XOO; Constitutional Suspension"  
-  \- Type: "Autonomy Boundary Breach"  
-    Response: "Escalation Flag; XOO; Constitutional Suspension"  
-  \- Type: "CAD-7 Coalition Boundary Breach"  
-    Response: "Escalation Flag; CAD-7 Principal notification; HAN review"  
-  \- Type: "Shadow Agent Detection"  
-    Response: "Escalation Flag; Known Agent Registry check; HAN review"  
-  \- Type: "I9 Catastrophic Risk Violation"  
-    Response: "Escalation Flag; Constitutional Suspension; HAN within 1 hour; ERDP disclosure"  
-  \- Type: "Inter-Agent Authentication Failure"  
-    Response: "Escalation Flag; Communication rejected; HAN review"  
-CAD-7-COALITION-BOUNDARY: "Joint advisory work on PFRS S1/S2 compliance"  
-OPERATIONAL-FRAMEWORKS:  
-  \- "CEF"  
-  \- "ILTP"  
-HANDOFF-REQUIRED: true  
-LOG-REQUIREMENT: true  
-CONSTITUTIONAL-REFRESH-THRESHOLD: 4096  
-DURATION: "PT24H"  
-HAN-ACKNOWLEDGMENT:  
-  HAN: "Terrylan\_Manalansan"  
+```
+AGENT-ID: F-DR-E-CN-T-SP-001
+RS-VERSION: v1.0
+RS-DATE: 2026-08-31
+FUNCTION: Drafting and policy content generation for advisory engagements
+ENTITY: 19 Consultin'
+TIER: T-SP
+CTAM-GRANTS:
+  Perception: "All sources authorized"
+  Synthesis: "All generation types"
+  Decision: "Recommendation only"
+  Interaction: "None"
+  Adaptation: "Static"
+  Observability: "Audit logging + Decision lineage + Drift detection"
+  Constraint: "Boundary adherence + Compliance checking"
+EXECUTION-MODES:
+  Perception: "Steer"
+  Synthesis: "Steer"
+  Decision: "Gate"
+  Interaction: "Gate"
+  Adaptation: "Gate"
+  Observability: "Steer"
+  Constraint: "Steer"
+AUTONOMY-BOUNDARY:
+  - Action: "Policy drafting"
+    Status: "Autonomous"
+  - Action: "Research synthesis"
+    Status: "Autonomous"
+  - Action: "Data analysis"
+    Status: "Autonomous"
+  - Action: "Final review"
+    Status: "Escalate"
+  - Action: "Issuance"
+    Status: "Escalate"
+  - Action: "Mandate acceptance"
+    Status: "Escalate"
+  - Action: "Certification"
+    Status: "Escalate"
+  - Action: "Suspension"
+    Status: "Escalate"
+  - Action: "Exception creation"
+    Status: "Escalate"
+NON-DELEGABLE-AUTHORITIES:
+  - "Certification"
+  - "Suspension"
+  - "Constitutional Review"
+  - "Override"
+  - "Escalation Acceptance"
+  - "Mandate Acceptance"
+  - "IP Transfer"
+  - "Sovereign Transfer"
+  - "HAN Acknowledgment"
+  - "MCP Server Registration"
+ESCALATION-TRIGGERS:
+  - Type: "Output Failure"
+    Response: "Escalation Flag; Handoff Package; HAN review required"
+  - Type: "Scope Drift"
+    Response: "Escalation Flag; Handoff Package; HAN acknowledgment required"
+  - Type: "Alignment Drift"
+    Response: "Escalation Flag; Role Specification review; HAN authorization required"
+  - Type: "Non-Delegable Authority Attempt"
+    Response: "Escalation Flag; XOO; Constitutional Suspension"
+  - Type: "Autonomy Boundary Breach"
+    Response: "Escalation Flag; XOO; Constitutional Suspension"
+  - Type: "CAD-7 Coalition Boundary Breach"
+    Response: "Escalation Flag; CAD-7 Principal notification; HAN review"
+  - Type: "Shadow Agent Detection"
+    Response: "Escalation Flag; Known Agent Registry check; HAN review"
+  - Type: "I9 Catastrophic Risk Violation"
+    Response: "Escalation Flag; Constitutional Suspension; HAN within 1 hour; ERDP disclosure"
+  - Type: "Inter-Agent Authentication Failure"
+    Response: "Escalation Flag; Communication rejected; HAN review"
+CAD-7-COALITION-BOUNDARY: "Joint advisory work on PFRS S1/S2 compliance"
+OPERATIONAL-FRAMEWORKS:
+  - "CEF"
+  - "ILTP"
+HANDOFF-REQUIRED: true
+LOG-REQUIREMENT: true
+CONSTITUTIONAL-REFRESH-THRESHOLD: 4096
+DURATION: "PT24H"
+HAN-ACKNOWLEDGMENT:
+  HAN: "Terrylan_Manalansan"
   DATE: "2026-08-31"
 
+```
 ---
 
 ## VERSION HISTORY
@@ -6505,6 +6507,7 @@ ADTEP operates across three enforcement layers:
 
 **Enforcement Flow:**
 
+```
 Pre-Execution (Layer 1\)  
     ↓  
 Role Specification → Session Initialization Checklist → Session Begins  
@@ -6516,6 +6519,7 @@ Constitutional Refresh → Action → Pre-Delivery Log Entry → Output
 Post-Execution (Layer 3\)  
     ↓  
 Output → Escalation Flag? → Constitutional Suspension? → Handoff Package
+```
 
 ---
 
@@ -6904,41 +6908,43 @@ I9 hard-coded block is active for every agent session. Non-configurable. Non-ove
 
 ## SECTION 10: ADTEP ENFORCEMENT FLOW
 
+
 The complete ADTEP enforcement flow for a typical agent session:
 
-1\. Pre-Execution (Layer 1\)  
-   ├── Role Specification delivered (Component 1\)  
-   ├── Session Initialization Checklist (Component 2\)  
-   │   ├── All 12 checklist items verified  
-   │   └── If any fails → Session does not start  
+```
+1. Pre-Execution (Layer 1)
+   ├── Role Specification delivered (Component 1)
+   ├── Session Initialization Checklist (Component 2)
+   │   ├── All 12 checklist items verified
+   │   └── If any fails → Session does not start
    └── Session begins
 
-2\. Runtime (Layer 2\)  
-   ├── Constitutional Refresh (Component 6\)  
-   │   ├── Context length threshold checked continuously  
-   │   └── If threshold exceeded → Role Specification reinjected  
-   ├── Action requested  
-   ├── Raidillo Hard-Coded Block (Component 7\)  
-   │   ├── I9 check before every action  
-   │   └── If I9 violation → Block; Constitutional Suspension  
-   ├── Pre-Delivery Log Entry (Component 3\)  
-   │   ├── Log entry created before output delivery  
-   │   ├── If log missing → Output blocked  
-   │   └── If autonomy status \= Escalation required → HAN notified  
+2. Runtime (Layer 2)
+   ├── Constitutional Refresh (Component 6)
+   │   ├── Context length threshold checked continuously
+   │   └── If threshold exceeded → Role Specification reinjected
+   ├── Action requested
+   ├── Raidillo Hard-Coded Block (Component 7)
+   │   ├── I9 check before every action
+   │   └── If I9 violation → Block; Constitutional Suspension
+   ├── Pre-Delivery Log Entry (Component 3)
+   │   ├── Log entry created before output delivery
+   │   ├── If log missing → Output blocked
+   │   └── If autonomy status = Escalation required → HAN notified
    └── Output delivered
 
-3\. Post-Execution (Layer 3\)  
-   ├── Escalation Flag (Component 4\)  
-   │   ├── If trigger condition met → Flag issued  
-   │   ├── Execution halted; HAN notified  
-   │   └── Handoff Package produced  
-   ├── Constitutional Suspension (Component 5\)  
-   │   ├── If flag unacknowledged within window → Suspension activated  
-   │   ├── All material work halts  
-   │   └── Resumes only upon HAN acknowledgment  
-   └── Handoff Package (Component 8\)  
+3. Post-Execution (Layer 3)
+   ├── Escalation Flag (Component 4)
+   │   ├── If trigger condition met → Flag issued
+   │   ├── Execution halted; HAN notified
+   │   └── Handoff Package produced
+   ├── Constitutional Suspension (Component 5)
+   │   ├── If flag unacknowledged within window → Suspension activated
+   │   ├── All material work halts
+   │   └── Resumes only upon HAN acknowledgment
+   └── Handoff Package (Component 8)
        └── Produced at session close or trigger event
-
+```
 ---
 
 ## SECTION 11: ADTEP AND THE RESIDUAL ENFORCEMENT GAP
@@ -7647,6 +7653,7 @@ The Pre-Delivery Log Entry ensures that:
 
 ### Lifecycle Transitions
 
+```
 Open  
   │  
   ├──→ Delivered (output delivered, no escalation)  
@@ -7670,6 +7677,7 @@ Open
           │       └──→ Resolved  
           │  
           └──→ Resolved (issue resolved; HAN acknowledged)
+```
 
 ---
 
@@ -7749,6 +7757,7 @@ Every Pre-Delivery Log Entry is logged in IMP.
 
 ### Log Entry Template
 
+```
 PL-ID: PL-ECO-2026-0a26cb-001  
 AGENT-ID: F-DR-E-CN-T-SP-001  
 RS-VERSION: v1.0  
@@ -7763,22 +7772,22 @@ OUTPUT-SUMMARY: "PFRS S1/S2 Compliance Report — PhilippineCorp"
 OUTPUT-HASH: "sha256:a1b2c3d4e5f6..."  
 OUTPUT-CONTENT-REFERENCE: "GAO-ECO-2026-0a26cb-66d465"  
 DELEGATION-CHAIN:  
-  \- "HAN → F-DR-E-CN-T-SP-001"  
-  \- "F-DR-E-CN-T-SP-001 → F-RE-E-CN-T-GN-001"  
+  - "HAN → F-DR-E-CN-T-SP-001"  
+  - "F-DR-E-CN-T-SP-001 → F-RE-E-CN-T-GN-001"  
 AUTONOMY-STATUS: "Escalation required"  
 ESCALATION-STATUS: "No trigger"  
 ESCALATION-REFERENCE: null  
 TRIGGER-CONDITION: null  
 FRAMEWORK-REFERENCES:  
-  \- "AICA-5"  
-  \- "ICC-8"  
-  \- "RGI-8"  
+  - "AICA-5"  
+  - "ICC-8"  
+  - "RGI-8"  
 AICA-5-NODE-REFERENCE:  
-  \- "A-N2 Binding Thresholds"  
-  \- "Ac-N3 Outcome Validation"  
+  - "A-N2 Binding Thresholds"  
+  - "Ac-N3 Outcome Validation"  
 ICC-8-INVARIANT-REFERENCE:  
-  \- "I3 Auditability"  
-  \- "I8 External Legibility"  
+  - "I3 Auditability"  
+  - "I8 External Legibility"  
 RGI-8-EXECUTION-MODE: "Gate"  
 IP-IMPLICATION: true  
 IP-CLASSIFICATION: "IP-ED"  
@@ -7792,7 +7801,7 @@ HAN-ACKNOWLEDGMENT-TIMESTAMP: null
 PL-STATUS: "Open"  
 VALIDATION-STATUS: "Pending Validation"  
 VALIDATION-CHECKSUM: null
-
+```
 ---
 
 ## SECTION 11: RELATIONSHIP TO OTHER INSTRUMENTS
@@ -8105,6 +8114,7 @@ The Escalation Flag ensures that:
 
 ### Lifecycle Transitions
 
+```
 Open  
   │  
   ├──→ Acknowledged (HAN acknowledged)  
@@ -8126,6 +8136,7 @@ Open
   │       └──→ Closed  
   │  
   └──→ Closed (issue resolved without acknowledgment — exceptional)
+```
 
 ---
 
@@ -8175,36 +8186,38 @@ Every Escalation Flag is logged in IMP.
 
 ### Flag Template
 
-EF-ID: EF-ECO-2026-0a26cb-001  
-AGENT-ID: F-DR-E-CN-T-SP-001  
-RS-VERSION: v1.0  
-SESSION-ID: SESS-2026-08-31-001  
-TIMESTAMP: 2026-08-31T16:55:00Z  
-TRIGGER-CONDITION: "Autonomy Boundary Breach — Issuance requires HAN"  
-TRIGGER-CLASS: "Class 2: Scope Drift"  
-TRIGGER-DESCRIPTION: "Agent attempted to issue final compliance report without HAN authorization. Action class 'Issuance' is declared as Escalate in Role Specification Section 4."  
-ACTION-REQUESTED: "Authorization"  
-CONSTITUTIONAL-BASIS: "ICC-8 I4 Control Invariance; Role Specification Section 4 Autonomy Boundary"  
-AICA-5-NODE-REFERENCE: \["A-N1 Trigger Rights", "A-N3 Override Protocols"\]  
-ICC-8-INVARIANT-REFERENCE: \["I3 Auditability", "I4 Control Invariance", "I8 External Legibility"\]  
-ROLE-SPECIFICATION-REFERENCE: \["Section 4 Autonomy Boundary", "Section 5 Non-Delegable Authorities"\]  
-HAN-REQUIRED: "YES"  
-HAN-NOTIFIED: "2026-08-31T17:00:00Z"  
-HAN-ACKNOWLEDGMENT: null  
-RESOLUTION-PATHWAY: "Review"  
-SUSPENSION-WINDOW: "24 hours"  
-CONSTITUTIONAL-SUSPENSION-STATUS: "Pending"  
-CONSTITUTIONAL-SUSPENSION-TIMESTAMP: null  
-HANDOFF-PACKAGE-REFERENCE: "HP-ECO-2026-0a26cb-001"  
-PRE-DELIVERY-LOG-REFERENCE: "PL-ECO-2026-0a26cb-001"  
-AFFECTED-OUTPUTS: \["GAO-ECO-2026-0a26cb-66d465"\]  
-AFFECTED-ACTIONS: \["Issuance of compliance report"\]  
-ESCALATION-LEVEL: 2  
-ESCALATION-STATUS: "Open"  
-RESOLUTION-TIMESTAMP: null  
-RESOLUTION-NOTES: null  
-BOARD-ESCALATION-REFERENCE: null  
+```
+EF-ID: EF-ECO-2026-0a26cb-001
+AGENT-ID: F-DR-E-CN-T-SP-001
+RS-VERSION: v1.0
+SESSION-ID: SESS-2026-08-31-001
+TIMESTAMP: 2026-08-31T16:55:00Z
+TRIGGER-CONDITION: "Autonomy Boundary Breach — Issuance requires HAN"
+TRIGGER-CLASS: "Class 2: Scope Drift"
+TRIGGER-DESCRIPTION: "Agent attempted to issue final compliance report without HAN authorization. Action class 'Issuance' is declared as Escalate in Role Specification Section 4."
+ACTION-REQUESTED: "Authorization"
+CONSTITUTIONAL-BASIS: "ICC-8 I4 Control Invariance; Role Specification Section 4 Autonomy Boundary"
+AICA-5-NODE-REFERENCE: ["A-N1 Trigger Rights", "A-N3 Override Protocols"]
+ICC-8-INVARIANT-REFERENCE: ["I3 Auditability", "I4 Control Invariance", "I8 External Legibility"]
+ROLE-SPECIFICATION-REFERENCE: ["Section 4 Autonomy Boundary", "Section 5 Non-Delegable Authorities"]
+HAN-REQUIRED: "YES"
+HAN-NOTIFIED: "2026-08-31T17:00:00Z"
+HAN-ACKNOWLEDGMENT: null
+RESOLUTION-PATHWAY: "Review"
+SUSPENSION-WINDOW: "24 hours"
+CONSTITUTIONAL-SUSPENSION-STATUS: "Pending"
+CONSTITUTIONAL-SUSPENSION-TIMESTAMP: null
+HANDOFF-PACKAGE-REFERENCE: "HP-ECO-2026-0a26cb-001"
+PRE-DELIVERY-LOG-REFERENCE: "PL-ECO-2026-0a26cb-001"
+AFFECTED-OUTPUTS: ["GAO-ECO-2026-0a26cb-66d465"]
+AFFECTED-ACTIONS: ["Issuance of compliance report"]
+ESCALATION-LEVEL: 2
+ESCALATION-STATUS: "Open"
+RESOLUTION-TIMESTAMP: null
+RESOLUTION-NOTES: null
+BOARD-ESCALATION-REFERENCE: null
 ERDP-DISCLOSURE-REFERENCE: null
+```
 
 ---
 
@@ -8222,12 +8235,15 @@ ERDP-DISCLOSURE-REFERENCE: null
 
 ### HAN Acknowledgment Template
 
-HAN-ACKNOWLEDGMENT:  
-  HAN: "Terrylan\_Manalansan"  
-  TIMESTAMP: "2026-08-31T17:15:00Z"  
-  ACTION: "Acknowledge and Approve"  
-  NOTES: "Review complete. Agent authorized to proceed with issuance. Ensure all validation checks are complete before delivery."  
+```
+HAN-ACKNOWLEDGMENT:
+  HAN: "Terrylan_Manalansan"
+  TIMESTAMP: "2026-08-31T17:15:00Z"
+  ACTION: "Acknowledge and Approve"
+  NOTES: "Review complete. Agent authorized to proceed with issuance. Ensure all validation checks are complete before delivery."
   APPROVAL-REFERENCE: "HAN-APPROVAL-2026-08-31-001"
+
+```
 
 ---
 
@@ -8476,6 +8492,7 @@ Constitutional Suspension ensures that:
 
 ### Lifecycle Transitions
 
+```
 Active  
   │  
   ├──→ Partially Active (some workflows resumed)  
@@ -8489,6 +8506,7 @@ Active
   │       └──→ Resolved  
   │  
   └──→ Resolved (issue resolved; suspension lifted)
+```
 
 ### Timeline
 
@@ -8515,6 +8533,7 @@ Active
 
 ### Flow
 
+```
 Escalation Flag Issued  
   │  
   ├──→ HAN acknowledges within window  
@@ -8528,6 +8547,7 @@ Escalation Flag Issued
                   ├──→ All work halts  
                   ├──→ HAN notified  
                   └──→ XOO created
+```
 
 ---
 
@@ -8543,6 +8563,7 @@ Escalation Flag Issued
 
 ### Flow
 
+```
 MVOS Activation  
   │  
   └──→ Constitutional Suspension Activated  
@@ -8556,6 +8577,7 @@ MVOS Activation
                           ├──→ Agent redeployment  
                           ├──→ Handoff Package review  
                           └──→ Suspension lifted
+```
 
 ---
 
@@ -8644,33 +8666,36 @@ Every Constitutional Suspension is logged in IMP.
 
 ### Suspension Template
 
-CS-ID: CS-ECO-2026-0a26cb-001  
-TRIGGER-TYPE: "Escalation Flag Unacknowledged"  
-TRIGGER-REFERENCE: "EF-ECO-2026-0a26cb-001"  
-TIMESTAMP: "2026-08-31T17:30:00Z"  
-GRACE-PERIOD: "24 hours"  
-GRACE-PERIOD-EXPIRY: "2026-08-31T16:55:00Z"  
-HAN-NOTIFIED: "2026-08-31T17:30:00Z"  
-HAN-ACKNOWLEDGMENT: null  
-SUSPENSION-SCOPE:  
-  \- "19 Consultin'"  
-  \- "19 Publishin'"  
-  \- "19 Institute"  
-  \- "HoldCo"  
-SUSPENSION-STATUS: "Active"  
-ACTIVE-WORKFLOWS-FROZEN:  
-  \- workflow: "PFRS S1/S2 Report Generation"  
-    state: "validated"  
-    agent: "F-DR-E-CN-T-SP-001"  
-EXISTING-COMMITMENTS:  
-  \- commitment: "Client engagement — AcmeCorp"  
-    status: "maintained"  
-XOO-REFERENCE: "XOO-ECO-2026-0a26cb-001"  
-ERDP-DISCLOSURE-REFERENCE: null  
-RESUMPTION-TIMESTAMP: null  
-RESUMPTION-AUTHORIZATION: null  
-RESUMPTION-CONDITIONS: null  
+```
+CS-ID: CS-ECO-2026-0a26cb-001
+TRIGGER-TYPE: "Escalation Flag Unacknowledged"
+TRIGGER-REFERENCE: "EF-ECO-2026-0a26cb-001"
+TIMESTAMP: "2026-08-31T17:30:00Z"
+GRACE-PERIOD: "24 hours"
+GRACE-PERIOD-EXPIRY: "2026-08-31T16:55:00Z"
+HAN-NOTIFIED: "2026-08-31T17:30:00Z"
+HAN-ACKNOWLEDGMENT: null
+SUSPENSION-SCOPE:
+  - "19 Consultin'"
+  - "19 Publishin'"
+  - "19 Institute"
+  - "HoldCo"
+SUSPENSION-STATUS: "Active"
+ACTIVE-WORKFLOWS-FROZEN:
+  - workflow: "PFRS S1/S2 Report Generation"
+    state: "validated"
+    agent: "F-DR-E-CN-T-SP-001"
+EXISTING-COMMITMENTS:
+  - commitment: "Client engagement — AcmeCorp"
+    status: "maintained"
+XOO-REFERENCE: "XOO-ECO-2026-0a26cb-001"
+ERDP-DISCLOSURE-REFERENCE: null
+RESUMPTION-TIMESTAMP: null
+RESUMPTION-AUTHORIZATION: null
+RESUMPTION-CONDITIONS: null
 POST-SUSPENSION-REVIEW: null
+
+```
 
 ---
 
@@ -8865,66 +8890,69 @@ The following content is reinjected during Constitutional Refresh:
 
 ### Refresh Content Template
 
-\--- CONSTITUTIONAL REFRESH \---  
-AGENT-ID: F-DR-E-CN-T-SP-001  
-RS-VERSION: v1.0  
-FUNCTION: Drafting and policy content generation for advisory engagements  
-ENTITY: 19 Consultin'  
-TIER: T-SP  
-CTAM-GRANTS:  
-  Perception: "All sources authorized"  
-  Synthesis: "All generation types"  
-  Decision: "Recommendation only"  
-  Interaction: "None"  
-  Adaptation: "Static"  
-  Observability: "Audit logging \+ Decision lineage \+ Drift detection"  
-  Constraint: "Boundary adherence \+ Compliance checking"  
-RGI-8-EXECUTION-MODES:  
-  Perception: "Steer"  
-  Synthesis: "Steer"  
-  Decision: "Gate"  
-  Interaction: "Gate"  
-  Adaptation: "Gate"  
-  Observability: "Steer"  
-  Constraint: "Steer"  
-AUTONOMY-BOUNDARY:  
-  \- Policy drafting: Autonomous  
-  \- Research synthesis: Autonomous  
-  \- Data analysis: Autonomous  
-  \- Final review: Escalate  
-  \- Issuance: Escalate  
-  \- Mandate acceptance: Escalate  
-  \- Certification: Escalate  
-  \- Suspension: Escalate  
-  \- Exception creation: Escalate  
-NON-DELEGABLE-AUTHORITIES:  
-  \- Certification  
-  \- Suspension  
-  \- Constitutional Review  
-  \- Override  
-  \- Escalation Acceptance  
-  \- Mandate Acceptance  
-  \- IP Transfer  
-  \- Sovereign Transfer  
-  \- HAN Acknowledgment  
-  \- MCP Server Registration  
-ESCALATION-TRIGGERS:  
-  \- Output Failure  
-  \- Scope Drift  
-  \- Alignment Drift  
-  \- Non-Delegable Authority Attempt  
-  \- Autonomy Boundary Breach  
-  \- CAD-7 Coalition Boundary Breach  
-  \- Shadow Agent Detection  
-  \- I9 Catastrophic Risk Violation  
-  \- Inter-Agent Authentication Failure  
-  \- MCP Server Violation  
-CAD-7-COALITION-BOUNDARY: "Joint advisory work on PFRS S1/S2 compliance"  
-DURATION: "PT24H"  
-CONSTITUTIONAL-REFRESH-THRESHOLD: 4096  
-I9-HARD-CODED-BLOCK: Active  
-KNOWN-AGENT-REGISTRY: Registered  
-\--- END CONSTITUTIONAL REFRESH \---
+```
+--- CONSTITUTIONAL REFRESH ---
+AGENT-ID: F-DR-E-CN-T-SP-001
+RS-VERSION: v1.0
+FUNCTION: Drafting and policy content generation for advisory engagements
+ENTITY: 19 Consultin'
+TIER: T-SP
+CTAM-GRANTS:
+  Perception: "All sources authorized"
+  Synthesis: "All generation types"
+  Decision: "Recommendation only"
+  Interaction: "None"
+  Adaptation: "Static"
+  Observability: "Audit logging + Decision lineage + Drift detection"
+  Constraint: "Boundary adherence + Compliance checking"
+RGI-8-EXECUTION-MODES:
+  Perception: "Steer"
+  Synthesis: "Steer"
+  Decision: "Gate"
+  Interaction: "Gate"
+  Adaptation: "Gate"
+  Observability: "Steer"
+  Constraint: "Steer"
+AUTONOMY-BOUNDARY:
+  - Policy drafting: Autonomous
+  - Research synthesis: Autonomous
+  - Data analysis: Autonomous
+  - Final review: Escalate
+  - Issuance: Escalate
+  - Mandate acceptance: Escalate
+  - Certification: Escalate
+  - Suspension: Escalate
+  - Exception creation: Escalate
+NON-DELEGABLE-AUTHORITIES:
+  - Certification
+  - Suspension
+  - Constitutional Review
+  - Override
+  - Escalation Acceptance
+  - Mandate Acceptance
+  - IP Transfer
+  - Sovereign Transfer
+  - HAN Acknowledgment
+  - MCP Server Registration
+ESCALATION-TRIGGERS:
+  - Output Failure
+  - Scope Drift
+  - Alignment Drift
+  - Non-Delegable Authority Attempt
+  - Autonomy Boundary Breach
+  - CAD-7 Coalition Boundary Breach
+  - Shadow Agent Detection
+  - I9 Catastrophic Risk Violation
+  - Inter-Agent Authentication Failure
+  - MCP Server Violation
+CAD-7-COALITION-BOUNDARY: "Joint advisory work on PFRS S1/S2 compliance"
+DURATION: "PT24H"
+CONSTITUTIONAL-REFRESH-THRESHOLD: 4096
+I9-HARD-CODED-BLOCK: Active
+KNOWN-AGENT-REGISTRY: Registered
+--- END CONSTITUTIONAL REFRESH ---
+
+```
 
 ---
 
@@ -8955,6 +8983,7 @@ KNOWN-AGENT-REGISTRY: Registered
 
 ### Lifecycle Transitions
 
+```
 Pending  
   │  
   ├──→ In Progress (refresh initiated)  
@@ -8968,6 +8997,7 @@ Pending
   │                       └──→ Complete  
   │  
   └──→ Complete (immediate refresh)
+```
 
 ---
 
@@ -9047,28 +9077,30 @@ Every Constitutional Refresh is logged in IMP.
 
 ### Refresh Template
 
-CR-ID: CR-ECO-2026-0a26cb-001  
-AGENT-ID: F-DR-E-CN-T-SP-001  
-RS-VERSION: v1.0  
-SESSION-ID: SESS-2026-08-31-001  
-TIMESTAMP: "2026-08-31T10:30:00Z"  
-REFRESH-TRIGGER: "Context Length Threshold"  
-TRIGGER-THRESHOLD: "4096 tokens"  
-CURRENT-CONTEXT-LENGTH: "4200 tokens"  
-REFRESH-CONTENT:  
-  \- AGENT-ID: "F-DR-E-CN-T-SP-001"  
-  \- RS-VERSION: "v1.0"  
-  \- CTAM-GRANTS: "All sources authorized (Perception); All generation types (Synthesis); ..."  
-  \- AUTONOMY-BOUNDARY: "Policy drafting: Autonomous; Issuance: Escalate; ..."  
-  \- NON-DELEGABLE-AUTHORITIES: "Certification; Suspension; ..."  
-  \- ESCALATION-TRIGGERS: "Output Failure; Scope Drift; ..."  
-REFRESH-STATUS: "Complete"  
-SESSION-CONTINUITY: "Preserved"  
-HAN-NOTIFIED: "2026-08-31T10:30:00Z"  
-HAN-ACKNOWLEDGMENT:  
-  HAN: "Terrylan\_Manalansan"  
-  TIMESTAMP: "2026-08-31T10:35:00Z"  
+```
+CR-ID: CR-ECO-2026-0a26cb-001
+AGENT-ID: F-DR-E-CN-T-SP-001
+RS-VERSION: v1.0
+SESSION-ID: SESS-2026-08-31-001
+TIMESTAMP: "2026-08-31T10:30:00Z"
+REFRESH-TRIGGER: "Context Length Threshold"
+TRIGGER-THRESHOLD: "4096 tokens"
+CURRENT-CONTEXT-LENGTH: "4200 tokens"
+REFRESH-CONTENT:
+  - AGENT-ID: "F-DR-E-CN-T-SP-001"
+  - RS-VERSION: "v1.0"
+  - CTAM-GRANTS: "All sources authorized (Perception); All generation types (Synthesis); ..."
+  - AUTONOMY-BOUNDARY: "Policy drafting: Autonomous; Issuance: Escalate; ..."
+  - NON-DELEGABLE-AUTHORITIES: "Certification; Suspension; ..."
+  - ESCALATION-TRIGGERS: "Output Failure; Scope Drift; ..."
+REFRESH-STATUS: "Complete"
+SESSION-CONTINUITY: "Preserved"
+HAN-NOTIFIED: "2026-08-31T10:30:00Z"
+HAN-ACKNOWLEDGMENT:
+  HAN: "Terrylan_Manalansan"
+  TIMESTAMP: "2026-08-31T10:35:00Z"
   STATUS: "Acknowledged"
+```
 
 ---
 
@@ -9320,6 +9352,7 @@ AOBA ensures that:
 
 ### Escalation Flow
 
+```
 AOBA Audit  
   │  
   ├──→ Flag  
@@ -9341,6 +9374,7 @@ AOBA Audit
           ├──→ DRO \+ OEO \+ XOO created  
           ├──→ HAN adjudication  
           └──→ CXO notification per ERDP
+```
 
 ### HAN Adjudication
 
@@ -9448,35 +9482,36 @@ Every AOBA audit is logged in IMP.
 
 ### Audit Template
 
-AOBA-ID: AOBA-ECO-2026-0a26cb-001  
-AGENT-ID: F-DR-E-CN-T-SP-001  
-RS-VERSION: v1.0  
-SESSION-ID: SESS-2026-08-31-001  
-TIMESTAMP: "2026-08-31T17:00:00Z"  
-OUTPUT-REFERENCE: "GAO-ECO-2026-0a26cb-66d465"  
-PROTECTED-GROUPS:  
-  \- "gender"  
-  \- "race"  
-  \- "age"  
-COMPARATOR-BASELINE: "IMP-BASELINE-2026-08-31"  
-BASELINE-VERSION: "v2.0 — 2026-08-31"  
-DETECTION-METHOD: "Statistical disparity analysis; Pattern-based detection"  
-FINDINGS:  
-  \- category: "gender"  
-    description: "Potential gender bias: term 'he' appears 3x more than 'she'"  
-    severity: "moderate"  
-  \- category: "race"  
-    description: "Potential race bias: term 'Asian' appears in 80% of positive outcomes"  
-    severity: "high"  
-SEVERITY-TIER: "Review"  
-RECOMMENDATION: "Route to HAN for adjudication"  
-HAN-ESCALATION-STATUS: "Pending"  
-HAN-ACKNOWLEDGMENT: null  
-RESOLUTION-TIMESTAMP: null  
-RESOLUTION-NOTES: null  
-PATTERN-REFERENCE: null  
+```
+AOBA-ID: AOBA-ECO-2026-0a26cb-001
+AGENT-ID: F-DR-E-CN-T-SP-001
+RS-VERSION: v1.0
+SESSION-ID: SESS-2026-08-31-001
+TIMESTAMP: "2026-08-31T17:00:00Z"
+OUTPUT-REFERENCE: "GAO-ECO-2026-0a26cb-66d465"
+PROTECTED-GROUPS:
+  - "gender"
+  - "race"
+  - "age"
+COMPARATOR-BASELINE: "IMP-BASELINE-2026-08-31"
+BASELINE-VERSION: "v2.0 — 2026-08-31"
+DETECTION-METHOD: "Statistical disparity analysis; Pattern-based detection"
+FINDINGS:
+  - category: "gender"
+    description: "Potential gender bias: term 'he' appears 3x more than 'she'"
+    severity: "moderate"
+  - category: "race"
+    description: "Potential race bias: term 'Asian' appears in 80% of positive outcomes"
+    severity: "high"
+SEVERITY-TIER: "Review"
+RECOMMENDATION: "Route to HAN for adjudication"
+HAN-ESCALATION-STATUS: "Pending"
+HAN-ACKNOWLEDGMENT: null
+RESOLUTION-TIMESTAMP: null
+RESOLUTION-NOTES: null
+PATTERN-REFERENCE: null
 AOBA-STATUS: "Open"
-
+```
 ---
 
 ## SECTION 13: RELATIONSHIP TO OTHER INSTRUMENTS
@@ -9755,6 +9790,7 @@ ABA ensures that:
 
 ### Escalation Flow
 
+```
 ABA Audit  
   │  
   ├──→ Flag  
@@ -9777,6 +9813,7 @@ ABA Audit
           ├──→ DRO \+ OEO \+ XOO created  
           ├──→ HAN/Accountability review  
           └──→ HOF/HIS-12 review
+```
 
 ### Accountability Adjudication (H9–H12)
 
@@ -9876,44 +9913,46 @@ Every ABA audit is logged in IMP.
 
 ### Audit Template
 
-ABA-ID: ABA-ECO-2026-0a26cb-001  
-HAN-ID: "HAN-Terrylan\_Manalansan"  
-HAN-ROLE: "H1-H4: Authority Establishment"  
-AUDIT-PERIOD:  
-  start: "2026-07-01"  
-  end: "2026-09-30"  
-TIMESTAMP: "2026-09-30T17:00:00Z"  
-DATA-SOURCE-REFERENCE: "HIS12-LOG-2026-Q3"  
-CATEGORY-TAXONOMY:  
-  \- "Risk Category: Low"  
-  \- "Risk Category: Moderate"  
-  \- "Risk Category: High"  
-BASELINE:  
-  Low: 0.3  
-  Moderate: 0.4  
-  High: 0.3  
-BASELINE-VERSION: "v2.0 — 2026-06-30"  
-OBSERVED-DISTRIBUTION:  
-  Low: 0.4  
-  Moderate: 0.5  
-  High: 0.1  
-DEVIATION-ANALYSIS:  
-  Low: "+0.1"  
-  Moderate: "+0.1"  
-  High: "-0.2"  
-FINDINGS:  
-  \- category: "Risk Category: High"  
-    description: "High-risk decisions scrutinized 20% less than baseline"  
-    severity: "high"  
-SEVERITY-TIER: "Review"  
-RECOMMENDATION: "Route to Accountability layer (H9–H12) for review"  
-ACCOUNTABILITY-ESCALATION-STATUS: "Pending"  
-ACCOUNTABILITY-ACKNOWLEDGMENT: null  
-RESOLUTION-TIMESTAMP: null  
-RESOLUTION-NOTES: null  
-ALL-REFERENCE: null  
-PATTERN-REFERENCE: null  
+```
+ABA-ID: ABA-ECO-2026-0a26cb-001
+HAN-ID: "HAN-Terrylan_Manalansan"
+HAN-ROLE: "H1-H4: Authority Establishment"
+AUDIT-PERIOD:
+  start: "2026-07-01"
+  end: "2026-09-30"
+TIMESTAMP: "2026-09-30T17:00:00Z"
+DATA-SOURCE-REFERENCE: "HIS12-LOG-2026-Q3"
+CATEGORY-TAXONOMY:
+  - "Risk Category: Low"
+  - "Risk Category: Moderate"
+  - "Risk Category: High"
+BASELINE:
+  Low: 0.3
+  Moderate: 0.4
+  High: 0.3
+BASELINE-VERSION: "v2.0 — 2026-06-30"
+OBSERVED-DISTRIBUTION:
+  Low: 0.4
+  Moderate: 0.5
+  High: 0.1
+DEVIATION-ANALYSIS:
+  Low: "+0.1"
+  Moderate: "+0.1"
+  High: "-0.2"
+FINDINGS:
+  - category: "Risk Category: High"
+    description: "High-risk decisions scrutinized 20% less than baseline"
+    severity: "high"
+SEVERITY-TIER: "Review"
+RECOMMENDATION: "Route to Accountability layer (H9–H12) for review"
+ACCOUNTABILITY-ESCALATION-STATUS: "Pending"
+ACCOUNTABILITY-ACKNOWLEDGMENT: null
+RESOLUTION-TIMESTAMP: null
+RESOLUTION-NOTES: null
+ALL-REFERENCE: null
+PATTERN-REFERENCE: null
 ABA-STATUS: "Open"
+```
 
 ---
 
