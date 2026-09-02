@@ -133,6 +133,7 @@ Flagged → Review → HAN Decision
 
 ## SECTION 4: ZERO TRUST IMPLEMENTATION
 
+```
 \# zero\_trust\_runtime.py  
 """  
 Zero Trust & AI Runtime Security — Complete Implementation  
@@ -532,7 +533,7 @@ class ZeroTrustRuntime:
                 for agent\_id in set(r.agent\_id for r in self.receipts)  
             }  
         }
-
+```
 ---
 
 ## SECTION 5: RELATIONSHIP TO OTHER INSTRUMENTS
