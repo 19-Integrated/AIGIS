@@ -966,35 +966,24 @@ The AI has "rights" (constraints that protect it):
 
 HAWI operates on a cascading logic, moving from risk to tier selection to governance architecture to competency requirements to workforce activity architecture:
 
+```
 Failure Mode Risk (What can go wrong?)
-
         ↓
-
 Tier Selection (How autonomous is your AI?)
-
         ↓
-
 Capability Domains Required (What must be governed?)
-
         ↓
-
 Three-Branch Governance Architecture (Legislative, Executive, Judicial \+ Constitutional)
-
         ↓
-
 AIGIS Instruments Activated (proportional to tier \+ behavior)
-
         ↓
-
 Competency Requirements (What must humans understand?)
-
         ↓
-
 Workforce Activity Architecture (How do people's jobs change?)
-
         ↓
-
 Dynamic Integration Pathway (responsive to system behavior)
+
+```
 
 ---
 
