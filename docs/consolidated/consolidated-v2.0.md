@@ -95,7 +95,6 @@
 
 > *"AIGIS has 66 components across 17 categories—62 built, 3 proposed (Shadow-Aware AWOF/CEF), and 1 pending (CDF)—forming a complete constitutional operating system for AI governance, from core frameworks (AICA-5, ADTEP, ICC-8) to human authority (HAN/HOF), IP (ILTP), certification (CGF), and extended security, compliance, and risk governance (AEGIS, Zero Trust, MCR, Compliance Dashboard, Systemic Risk Framework, Automated Remediation, and Real-time Evidence Streaming)."*
 
-# ICC-9
 
 # ICC-8 v2.0 — Intelligence Constitutional Charter
 
@@ -397,7 +396,6 @@ From institutions as human organizations using AI tools — to institutions as A
 
 > *"ICC-8 v2.0 establishes nine constitutional invariants (I1–I9)—adding I9 Catastrophic Risk Invariant and CEN-7 Public Contestation to the existing I1–I8—defining the non-negotiable rules that no AI action may violate, with Raidillo hard-coded block, ERDP disclosure, HAN escalation, and CFL-V verification ensuring enforcement. ICC-8 v2.0 is and can be named ICC-9"*
 
-# HOF v2
 
 # HOF v2.0 — Human Operating Framework
 
@@ -627,7 +625,6 @@ HAWI bridges HOF (human side) and AWOF (AI side). The integration points are:
 
 > *"HOF v2.0 defines the complete human authority architecture for AIGIS across three layers and 12 invariants (H1–H12)—Authority Establishment (H1–H4), Authority Execution (H5–H8), and Authority Accountability (H9–H12)—with the HAN Scorecard System, integration with HAWI, and explicit relationship mapping to ICC-8, HAN, HIS-12, and AWOF."*
 
-# HAN v2
 
 # HAN v2.0 — Human Authority Node
 
@@ -887,7 +884,6 @@ The following conditions trigger mandatory HAN review:
 
 > *"HAN v2.0 defines the apex constitutional authority for AI governance as a single, named human with 5 irreducible properties—Board Reporting, Authorization Authority, Cross-Functional Mandate, Budget Independence, and No Competing Operational Authority—with explicit authorities, limitations, accountability mechanisms, succession planning, and trigger register, all derived from HOF and governed by HIS-12."*
 
-# HAWI v2
 
 # HAWI v2.0 — Human-AI Workforce Integration Framework
 
@@ -1388,7 +1384,6 @@ HAWI defines the sequencing for workforce capability development aligned to gove
 
 > *"HAWI v2.0 bridges HOF (human side) and AWOF (AI side) by translating risk concerns into role requirements, capability domains, and governance readiness assessments—operationalizing the Three-Branch Separation of Powers (Legislative, Executive, Judicial, Constitutional) and ensuring workforce capability evolves in lockstep with AI autonomy across five dynamic activation scenarios and seven capability domains."*
 
-# HIS-12 v2
 
 # HIS-12 v2.0 — HAN Invariants System
 
@@ -1645,7 +1640,6 @@ For any human authority structure, CFL-V must verify:
 
 > *"HIS-12 v2.0 defines the 12 structural conditions that human authority must satisfy across three layers—Authority Establishment (H1–H4), Authority Execution (H5–H8), and Authority Accountability (H9–H12)—with explicit operationalization, test questions, and CFL-V validation rules, governing HAN as the operational instantiation of HIS-12."*
 
-# CDT-7 v2
 
 # CDT-7 v2.0 — Capability Domains Taxonomy
 
@@ -1870,7 +1864,6 @@ No other domain's tier should ever be granted at a level the Constraint column a
 
 > *"CDT-7 v2.0 classifies machine capability into seven distinct axes—Perception, Synthesis, Decision, Interaction, Adaptation, Observability, and Constraint—with three governing rules (asymmetric tiering, Observability never lags, Constraint sets the real ceiling), domain interdependencies, and explicit mapping to CTAM, CAM-5, RGI-8, AICA-5, AWOF, and CAD-7."*
 
-# CTAM v2
 
 # CTAM v2.0 — Capability-Tier Authorization Matrix
 
@@ -2122,7 +2115,6 @@ CTAM is an **inventory** — not a policy document and not an approval workflow.
 
 > *"CTAM v2.0 is a 7x5 authorization matrix mapping each of seven capability domains to five escalating tiers — with an eighth column for Execution Mode (Gate/Steer) — governed by three rules (no autonomous Decision/Interaction without matching Constraint, Observability never trails, Adaptation deliberately held back) and validated by CFL-V, serving as the precise inventory that CDT-7 narrates and CAM-5 bundles into board-governable postures."*
 
-# CAM-5 v2
 
 # CAM-5 v2.0 — 5-Tier Capability Authorization Model
 
@@ -2418,7 +2410,6 @@ Tier 5 CTAM row: Perception at Tier 5, Synthesis at Tier 5, Decision at Tier 5 (
 
 > *"CAM-5 v2.0 bundles CTAM's seven domains into five board-governable capability postures — Observation-Only (Tier 1), Recommendation-Only (Tier 2), Agentic Tool-Calling (Tier 3), Learning Agents (Tier 4), and Full Autonomy (Tier 5\) — with explicit CTAM mappings, failure modes prevented, tier migration rules, and CFL-V validation rules that ensure no tier is granted without the matching governance capability."*
 
-# AICA-5 v2
 
 # AICA-5 v2.0 — AI Control Architecture
 
@@ -2729,7 +2720,6 @@ AICA-5's external boundary governance model is output-class specific. Each outpu
 
 > *"AICA-5 v2.0 is a 5-layer, 25-node control architecture — Cognitive (C-N1–5), Execution (E-N1–5), Authority (A-N1–5), Continuity (Co-N1–5), and Accountability (Ac-N1–5) — with three keystone nodes (A-N1, Co-N1, Ac-N5), four internal boundary dual-custody pairs, explicit RGI-8 mapping, and CFL-V validation rules that ensure no layer is granted without the governance capability of the layer below it."*
 
-# AICA-5 Implementation Pathway v2
 
 # AICA-5 Implementation Pathway v2.0
 
@@ -2997,7 +2987,6 @@ The Implementation Pathway enforces the cascade dependency chain as a deployment
 
 > *"The AICA-5 Implementation Pathway v2.0 is a sequenced deployment guide that moves an organization from its current maturity state to full operational status through six phases — Diagnostic, Foundation, Authorization, Continuity, Accountability, and Integration — with entry determined by the lowest-scored upstream layer, gate checks at every phase, and a 26–50 week total implementation range."*
 
-# AICA-5 Maturity Grid v2
 
 # AICA-5 Maturity Grid v2.0
 
@@ -3428,7 +3417,6 @@ The Maturity Grid is built from the validity conditions of each AICA-5 node. Eac
 
 > *"The AICA-5 Maturity Grid v2.0 assesses each of the 25 control nodes across five levels — Absent, Initial, Defined, Operational, Measured, Adaptive — with no averaging across nodes, evidence-based scoring, and the principle that documentation of intent is not evidence of function, determining an organization's entry point into the AICA-5 Implementation Pathway."*
 
-# AICA-5 Measurement Framework v2
 
 # AICA-5 Measurement Framework v2.0
 
@@ -4272,7 +4260,6 @@ The false attestation clause is not a deterrent formality. It is the accountabil
 
 > *"The AICA-5 Measurement Framework v2.0 defines 39 Governance Health Indicators across 5 layers and 3 reporting tiers — Operational (raw GHI status), Governance (worst-node per layer \+ Red indicators), and Institutional (weighted average \+ Red disclosures) — with Keystone Node GHIs displayed separately, no averaging in Operational/Governance tiers, and the Institutional Declaration signed by the Escalation Principal under penalty of Ac-N2 violation."*
 
-# AICA-5 Operating Model v2
 
 # AICA-5 Operating Model v2.0
 
@@ -4889,7 +4876,6 @@ Every Governance Function is documented across eight fields:
 
 > *"The AICA-5 Operating Model v2.0 defines 24 Governance Functions across 5 layers — each with a declared owner, tooling, cadence, input condition, output declaration, node dependency, failure indicator, and failure response — forming the bridge between governance architecture and operational reality, making AICA-5 executable by certified practitioners without 19 Integrated on site."*
 
-# Agent Classification System v2
 
 # Agent Classification System v2.0
 
@@ -5100,7 +5086,6 @@ Creation of a new Agent ID and Role Specification requires:
 
 > *"The Agent Classification System v2.0 provides a unique, traceable identity for every AI agent through a three-dimensional classification — Function (F-RE/F-DR/F-EX/F-OV), Entity (E-HC/E-CN/E-PB/E-IN), and Tier (T-GN/T-SP/T-OR) — with the Agent ID format `[Function]-[Entity]-[Tier]-[Sequential Number]`, mandatory Role Specification, and cross-entity deployment requiring HAN-authorized Cross-Entity Assignment Records."*
 
-# Role Specification Schema v2
 
 # Role Specification Schema v2.0
 
@@ -5451,7 +5436,6 @@ HAN-ACKNOWLEDGMENT:
 
 > *"The Role Specification Schema v2.0 defines a positional, non-overridable constitutional frame delivered to every agent before any task instructions — specifying AGENT-ID, RS-VERSION, CTAM grants, RGI-8 execution modes, autonomy boundaries, non-delegable authorities, escalation triggers, CAD-7 coalition boundaries, and HAN authorization — making it the constitutional contract that converts a prompt-driven tool into a constitutionally governed agent."*
 
-# Trigger System v2
 
 # Trigger System v2.0
 
@@ -5844,7 +5828,6 @@ Every trigger event must be logged with:
 
 > *"The Trigger System v2.0 defines six trigger classes — Output Failure, Scope Drift, Alignment Drift, Coalition Breach, Security Breach, and Catastrophic Risk — with detection mechanisms, immediate actions, escalation paths, fallbacks, and IMP logging requirements, converting agent drift and failure from 'performance issues to be optimized' into 'constitutional events to be investigated' under AWOF governance."*
 
-# MVOS v2
 
 # MVOS v2.0 — Minimum Viable Operations State
 
@@ -6164,7 +6147,6 @@ MVOS triggers automatically across all trust tiers. However, the impact on clien
 
 > *"MVOS v2.0 defines the Minimum Viable Operations State as a constitutional condition triggered by full AI workforce unavailability, Constitutional Suspension, HAN initiation, I9 Catastrophic Risk, widespread agent drift, or orchestrator cascade failure — transitioning the institution to HAN-only operations with no new material actions, existing commitments maintained, all three SPV entities in Reduced Operations State, and a sequenced recovery protocol satisfying ICC-8 I7 Continuity Invariance."*
 
-# Handoff Package v2
 
 # Handoff Package v2.0
 
@@ -6475,7 +6457,6 @@ The Handoff Package is the primary continuity mechanism for AWOF governance.
 
 > *"The Handoff Package v2.0 is a mandatory structured context document produced at session close or upon any of 11 trigger events — containing identity, session context, task and output summaries, governance records, delegation and coalition chains, escalation status, and continuation requirements — logged as a GAO in IMP, serving as the institutional memory bridge between agent sessions and supporting AICA-5 Co-N4 Handoff Integrity and Co-N5 Context Restoration under AWOF governance."*
 
-# ADTEP v2
 
 # ADTEP v2.0 — Agent Deployment & Technical Enforcement Protocol
 
@@ -7032,7 +7013,6 @@ ADTEP's purpose is to narrow the gap between normative and technical enforcement
 
 > *"ADTEP v2.0 is the Layer 3 technical enforcement protocol with seven components — Role Specification Schema, Session Initialization Checklist, Pre-Delivery Log Entry, Escalation Flag, Constitutional Suspension, Constitutional Refresh, and Raidillo Hard-Coded Block (I9) — operating across three enforcement layers (Pre-Execution, Runtime, Post-Execution) to narrow the gap between normative governance and technical enforcement to its irreducible minimum under AWOF, AICA-5, ICC-8, and RGI-8."*
 
-# Session Initialization Checklist v2
 
 # Session Initialization Checklist v2.0
 
@@ -7433,7 +7413,6 @@ Every Session Initialization Checklist verification is logged in IMP.
 
 > *"The Session Initialization Checklist v2.0 is a completeness gate with 14 items across five categories (Constitutional, Authorization, Operational, Continuity, Security) — including Constitutional Frame, RS-VERSION, CTAM Grants, RGI-8 Modes, Entity Charter, Operational Frameworks, Engagement Scope, Prior Handoff Package, HAN Authorization, Duration/Refresh Thresholds, I9 Hard-Coded Block, Known Agent Registry, MCP Server Registry, and Inter-Agent Authentication — verified before any material work begins, with critical failures blocking the session unconditionally and all failures logged in IMP under ADTEP enforcement."*
 
-# Pre-Delivery Log Entry v2
 
 # Pre-Delivery Log Entry v2.0
 
@@ -7862,7 +7841,6 @@ VALIDATION-CHECKSUM: null
 
 > *"The Pre-Delivery Log Entry v2.0 is a mandatory audit artifact with 34 fields — including identity, output, materiality (M1/M2/M3), delegation chain, autonomy status, escalation status, AICA-5 nodes, ICC-8 invariants, RGI-8 execution modes, IP classification, binding status, expected consequence, audience, disclosure tier, and HAN acknowledgment — created before output delivery with the principle that the log precedes the action, making every material output auditable, attributable, and verifiable before it crosses any external boundary under ADTEP enforcement."*
 
-# Escalation Flag v2
 
 # Escalation Flag v2.0
 
@@ -8301,7 +8279,6 @@ HAN-ACKNOWLEDGMENT:
 
 > *"The Escalation Flag v2.0 is a mandatory output with 30 fields — including trigger conditions (Classes 1-6), constitutional basis (ICC-8, AICA-5, Role Specification), four escalation levels (Notification/Flag/Suspension/Shutdown), suspension windows, HAN acknowledgment status, resolution tracking, and IMP logging — that replaces execution with escalation when constitutional boundaries are crossed, forcing human review and ensuring that no unauthorized action proceeds without HAN acknowledgment under ADTEP enforcement."*
 
-# Constitutional Suspension v2
 
 # Constitutional Suspension v2.0
 
@@ -8746,7 +8723,6 @@ POST-SUSPENSION-REVIEW: null
 
 > *"Constitutional Suspension v2.0 is a state where all material work halts — with 18 fields, six trigger types (Escalation Flag Unacknowledged, I9 Catastrophic Risk, HAN Initiated, MVOS Activation, Widespread Agent Drift, Orchestrator Cascade Failure), immediate effect (no grace period for I9), all three SPV entities in Reduced Operations State, and resumption requiring HAN authorization — ensuring that no unauthorized execution proceeds without human review under ADTEP enforcement and ICC-8 I1-I9."*
 
-# Constitutional Refresh v2
 
 # Constitutional Refresh v2.0
 
@@ -9139,7 +9115,6 @@ HAN-ACKNOWLEDGMENT:
 
 > *"Constitutional Refresh v2.0 is the periodic reinjection of the Role Specification — with 13 fields, five trigger types (Context Length Threshold, Duration Threshold, HAN Initiated, Significant State Change, Role Specification Update), 12 refresh content items, and no session reset — that prevents context dilution and constitutional amnesia in extended sessions, ensuring agents remain aware of their constitutional boundaries throughout long interactions under ADTEP enforcement."*
 
-# AOBA v2
 
 # AOBA v2.0 — AI Output Bias Audit
 
@@ -9547,7 +9522,6 @@ AOBA-STATUS: "Open"
 
 > *"AOBA v2.0 audits AI agent output for bias — with 19 fields, three severity tiers (Flag/Review/Halt), IMP-grounded comparator baselines, cumulative pattern detection, AWOF agent suspension for Halt tier, RGI-8 Steer mode continuous monitoring, and HAN escalation for Review and Halt tiers — detecting disparate impact and systematic unfairness in AI outputs independent of human oversight under ADTEP enforcement."*
 
-# ABA v2
 
 # ABA v2.0 — Authority Bias Audit
 
@@ -9987,7 +9961,6 @@ ABA-STATUS: "Open"
 
 > *"ABA v2.0 audits the Human Authority Node's oversight pattern for bias — with 21 fields, a category taxonomy (Risk, Business Unit, Practitioner, Contestation Source, Decision Type, Capability Domain), three severity tiers (Flag/Review/Investigation), escalation to Accountability layer (H9–H12), ALL (Authority Learning Loop) integration, and cumulative pattern detection — detecting systematic favoritism or disfavoritism in human oversight, complementing AOBA's AI output bias audit under HOF governance."*
 
-# RGI-8 v2
 
 # RGI-8 v2.0 — Runtime Governance Interpretation
 
@@ -10493,7 +10466,6 @@ Status: "Active"
 
 > *"RGI-8 v2.0 operationalizes CTAM's Execution Mode attribute across 8 components — Declaration Binding, Gate vs. Steer execution mode, Fidelity-to-Declaration Trace, Drift Detection and Escalation Threshold, Constraint Supremacy Over Steering, Adaptation Firewall, Fail-Safe Reversion, and Steer Observability Premium — defining whether a declared boundary operates as a checkpoint (Gate) or a continuous influence (Steer), with Steer requiring a qualification event, continuous drift detection with mandatory human escalation, and Observability one tier above Gate, under AICA-5, ICC-8, AWOF, ADTEP, and CAD-7 governance."*
 
-# CAD-7 v2
 
 # CAD-7 v2.0 — Coalition Accountability Declaration
 
@@ -10947,7 +10919,6 @@ Reconstructability Trace: "Available"
 
 > *"CAD-7 v2.0 governs multi-agent coalitions as accountable units across 7 components — Coalition Trigger Definition, Coalition Principal Declaration, Composability Boundary, Dissolution and Reconstitution Rule, Lightweight Compilation Path, Cross-Entity Coalition Clause, and Reconstructability Requirement — with a named human Principal declared before acting, a Composability Boundary declared separately from members' grants (Gate behavior), dissolution on task completion/timeout/explicit end, re-declaration on membership change, templates for routine coalitions, deferral to CFL-F for cross-entity coordination, and fail-closed on trace unavailability, preserving ICC-8 I1 (human remains ultimately accountable) under AICA-5, AWOF, and RGI-8 governance."*
 
-# CIS v2
 
 # CIS v2.0 — Contestation Interface Standard (CIS)
 
@@ -11397,7 +11368,6 @@ HAN Escalation: false
 
 > *"CEN-1 to CEN-7 v2.0 define the Contestation Interface Standard for external legibility under ICC-8 I8 — Interpretability (CEN-1), Accessibility (CEN-2), Traceability (CEN-3), Confidentiality Protocol (CEN-4), Independence (CEN-5), Redress and Remediation (CEN-6), and Public Contestation (CEN-7) — with defined requirements, implementation mechanisms, contestation lifecycle, periodicity requirement, and CFL-V validation, ensuring every material institutional action is externally interpretable, auditable, and contestable under constitutional governance."*
 
-# IMP v2
 
 # IMP v2.0 — Institutional Memory Protocol
 
@@ -11888,7 +11858,6 @@ IMP may be amended only through the Doctrine Extension Protocol (DEP). DEP gover
 
 > *"IMP v2.0 governs the creation, structure, provenance, storage, retrieval, and retirement of all institutional state objects across 6 canonical object types — ECO, DRO, GAO, CRO, OEO, XOO — with complete provenance chains, temporal layering (Current/Historical/Revoked), governance version binding, 4 retrieval modes (Constraint Reconstruction, Precedent Matching, Governance Lineage Tracing, Outcome Similarity Mapping), and EAF supremacy, ensuring that 19 Integrated remembers itself, governs its own outputs, and compounds institutional intelligence over time under ICC-8 constitutional constraints."*
 
-# Raidillo
 
 # Raidillo — The Runtime AI Governance Guardian
 
@@ -13054,7 +13023,6 @@ CREATE TABLE IF NOT EXISTS xoo (
 | **Where it stores** | SQLite (default) / PostgreSQL (enterprise) |
 | **What it outputs** | Pattern reports, recommendations, scorecard updates, policy amendment suggestions |
 
-# CEF v2
 
 # CEF v2.0 — Client Engagement Framework
 
@@ -13578,7 +13546,6 @@ HAN (Terrylan\_Manalansan)
 
 > *"CEF v2.0 governs the full client engagement lifecycle across 6 stages — Qualification, Scoping, Mandate Close, Delivery, Delivery Close, and Post-Delivery/Retainer — with counterparty classification (C1-C4), non-negotiable terms (IP Assignment, HAN Mandate Acceptance, Post-Delivery Review Window), Scope Amendment Protocol, Retainer Lapse Protocol, complete Engagement Records logged in IMP, and HAN as the accountability terminus, ensuring every client engagement is constitutionally governed under ICC-8, EAF, AWOF, and ILTP."*
 
-# EAF v2
 
 # EAF v2.0 — Engagement Authority Framework
 
@@ -14170,7 +14137,6 @@ Regardless of tier, client consent, or commercial terms, the following categorie
 
 > *"EAF v2.0 defines the trust architecture for client engagements across 5 tiers — Public (1), Discovery (2), Active (3), Continuous (4), and Partnership (5) — with explicit permissions, IMP storage limits, inference boundaries, HAN trigger conditions (15 triggers), sequential elevation, immediate descent, intake doctrine, prohibited persistence categories, and mappings to IMP and AICA-5, ensuring that the AI-native operating architecture engages with the minimum client information necessary at every stage of the client relationship under ICC-8 constitutional constraints."*
 
-# ILTP v2
 
 # ILTP v2.0 — IP Licensing & Transfer Protocol
 
@@ -14580,7 +14546,6 @@ HAN (Terrylan\_Manalansan)
 
 > *"ILTP v2.0 governs IP classification (IP-FD, IP-PI, IP-CC, IP-ED), licensing (Commercial, Open-Source, Sovereign/DFI, Internal Use), transfer (Standard and Sovereign Transfer Protocols), version management (Framework Versioning, Curriculum Version Binding, Retired Versions), and inter-entity IP flows (Standing Grants, Specific Deployment Instruments, Publication Clearance Rule) — with the IP Register as the authoritative record, attribution requirements for all licensing models, non-delegable IP authorities reserved for HAN (including MCP Server Registration), and CFL-V validation, ensuring that all IP assets are protected, traceable, and properly attributed under ICC-8 constitutional constraints."*
 
-# CGF v2
 
 # CGF v2.0 — Certification Governance Framework
 
@@ -15082,7 +15047,6 @@ HAN (Terrylan\_Manalansan)
 
 > *"CGF v2.0 governs the full certification lifecycle — Designation Register (Active \+ Placeholder), Examination \+ Portfolio assessment model, Periodic Renewal (2-year) \+ Event-Triggered Revalidation, Public Designation Register, Candidate Contestation Protocol, Revocation Proceedings (RG-1 through RG-6, including I9), and Fellowship designation — with non-delegable certification authorities reserved for HAN, constitutional validity derived from ICC-8, and external legibility through the Public Designation Register under I8 of ICC-8."*
 
-# Public Designation Register v2
 
 # Public Designation Register v2.0
 
@@ -15461,7 +15425,6 @@ Verification Timestamp: 2026-08-31T10:00:00Z
 
 > *"The Public Designation Register v2.0 is the external legibility instrument of the certification function under I8 of ICC-8 — a canonical list of all designation holders with 12 fields including candidate name, designation post-nominal, current status (Active/Under Revalidation/Proceeding Suspended/Lapsed/Revoked), award and renewal dates, and governing framework version — providing public verification via web interface and API, satisfying CEN-1 through CEN-6, maintaining confidentiality under I6, and enabling misrepresentation detection and redress under CGF governance."*
 
-# ERDP v2
 
 # ERDP v2.0 — External Reporting & Disclosure Protocol
 
@@ -15826,7 +15789,6 @@ HAN (Terrylan\_Manalansan)
 
 > *"ERDP v2.0 governs external reporting and disclosure across 4 tiers — T-PB (Public), T-SH (Stakeholder), T-RG (Regulator), and T-DS (DFI/Sovereign) — with Annual Institutional Report (7 sections), Quarterly Operational Update, event-triggered reporting (10 event types), 7 special protocols (Contestation Disclosure, Tier Elevation, Emergency Disclosure, Post-Publication Correction, Jurisdictional Scope, Data Reconciliation, I9 Catastrophic Risk), Disclosure Records logged in IMP, and non-delegable HAN authorities, satisfying I6 Transparency Gradient and I8 External Legibility under ICC-8 and CEN-1 to CEN-7."*
 
-# AIR v2
 
 # AIR v2.0 — Annual Institutional Report
 
@@ -16269,7 +16231,6 @@ Disclosure Record:
 
 > *"AIR v2.0 is the Annual Institutional Report — a 7-section periodic disclosure instrument (Institutional Identity, Framework Stack Status, Certification Activity, Engagement Activity Summary, Governance Events, Regulatory Correspondence, Forward Governance) produced in tier-specific versions (T-PB, T-SH, T-RG, T-DS), attested by HAN under penalty of Ac-N2 violation, and logged in IMP as a GAO, satisfying I8 External Legibility and CEN-4 periodic disclosure under ERDP and ICC-8 constitutional governance."*
 
-# Stack Version Map v2
 
 # Stack Version Map v2.0
 
@@ -16601,7 +16562,6 @@ Instruments:
 
 > *"The Stack Version Map v2.0 is a living record of the current canonical version of every instrument in the 19 Integrated governance stack — with 11 fields per instrument (name, current version, previous version, layer, last DEP change date, change class, change description, DEP signal reference, dependencies, dependents, status), layer classifications (Constitutional, Primitive — Memory, Primitive — Trust, Meta-Governance, Governance Stack, Capability, Workforce, Technical Enforcement, Engagement, Institutional Capital), version binding for all IMP objects, update-on-DEP-change maintenance, 6 retrieval modes, and CFL-V validation — ensuring that every institutional object is bound to the version of the framework that governed its creation."*
 
-# DEP v2
 
 # DEP v2.0 — Doctrine Extension Protocol
 
@@ -16989,7 +16949,6 @@ Stack Version Map Updated: "2026-09-02"
 
 > *"DEP v2.0 is the meta-governance instrument governing how the institutional framework stack may be extended, amended, superseded, or retired — with 5 signal types (Engagement Gap, External Environment Change, Internal Contradiction, Stress-Test Failure, New Capability/Domain), 4 change classes (Clarification, Amendment, Structural Extension, Constitutional Amendment), a 9-step process flow, deliberation periods (none to 30 days), version increments (patch to major), Stack Version Map maintenance, DEP self-reference, and HAN as the sole authorization authority — ensuring the stack evolves without drifting under ICC-8 constitutional constraints."*
 
-# Regulatory Overlay — EU AI Act v1
 
 # Regulatory Overlay — EU AI Act v1.0
 
@@ -18077,7 +18036,6 @@ for control\_id in controls:
 
 > *"The EU AI Act Overlay v1.0 provides complete mapping of all 113 articles of the EU AI Act to 109 MCR controls — with 98% coverage (111/113 articles fully covered, 2 partially covered), gap analysis identifying Articles 10 (data governance) and 15 (accuracy) as requiring enhancement, evidence requirements for each article, and an implementation roadmap — operationalizing EU AI Act compliance across the entire AIGIS stack."*
 
-# Regulatory Overlay — NIST AI RMF v1
 
 # Regulatory Overlay — NIST AI RMF v1.0
 
@@ -18761,7 +18719,6 @@ print(f"  {', '.join(controls)}")
 
 > *"The NIST AI RMF Overlay v1.0 provides complete mapping of all 16 subcategories across 4 functions (GOVERN, MAP, MEASURE, MANAGE) to 109 MCR controls — with 100% coverage, no gaps identified, evidence requirements for each subcategory, and an implementation roadmap — operationalizing NIST AI RMF compliance across the entire AIGIS stack and directly aligning with AICA-5 layers (Govern → Authority/Accountability, Map → Cognitive, Measure → Continuity/Accountability, Manage → Execution/ADTEP)."*
 
-# Regulatory Overlay — Philippines v1
 
 # Regulatory Overlay — Philippines v1.0
 
@@ -19545,7 +19502,6 @@ for evidence\_type, count in evidence.items():
 
 > *"The Philippines Regulatory Overlay v1.0 provides complete mapping of 30 requirements across 4 Philippine frameworks — PFRS S1/S2 (12 requirements), BSP STARS (8), DICT-CSC JMC 003 (5), and NPC Advisory 2024-04 (5) — to 109 MCR controls with 100% coverage, evidence requirements for each, and an implementation roadmap — operationalizing Philippine regulatory compliance across the entire AIGIS stack for organizations operating in or serving the Philippine market."*
 
-# Agentic Security & Identity (AEGIS) v1
 
 # Agentic Security & Identity (AEGIS) v1.0
 
@@ -20112,7 +20068,6 @@ class AgenticSecurity:
 
 > *"The Agentic Security & Identity (AEGIS) Framework v1.0 establishes a complete security framework for AI agents — with 4 identity classes (Human, Machine, Agent, Agent Coalition), 5 lifecycle stages (Creation, Active, Suspended, Retired, Reactivated), Least Agency implementation via CTAM budgets (Decision, Scope, Time, Capability), Mutual Authentication for all agent-to-agent communications (Certificate, Token, API Key, mTLS), and NHI lifecycle management — treating agents as a distinct identity class requiring specialized security governance."*
 
-# Zero Trust & AI Runtime Security v1
 
 # Zero Trust & AI Runtime Security v1.0
 
@@ -20679,7 +20634,6 @@ class ZeroTrustRuntime:
 
 > *"The Zero Trust & AI Runtime Security Framework v1.0 applies Zero Trust principles to AI agents — with 4 segment levels (Public-Facing, Internal Business, Critical Business, Governance), AARM pre-execution interception (Identity Verification, Authorization Check, Policy Check, Risk Assessment), tamper-evident receipts with blockchain-style chain verification, and continuous action verification — ensuring every agent action is verified, authorized, and logged before execution (Zero Trust: Verify Explicitly, Use Least Privilege, Assume Breach)."*
 
-# MCP Server Governance v1
 
 # MCP Server Governance v1.0
 
@@ -21175,7 +21129,6 @@ class MCPRegistry:
 
 > *"MCP Server Governance v1.0 establishes a system of record for Model Context Protocol (MCP) servers and skills — with MCP Registry and Skill Registry schemas, HAN-only registration (Non-Delegable Authority), security scanning (vulnerability, malware, typosquatting, dependency confusion), risk classification (Low to Critical), agent-MCP interaction logging, and integration with AWOF, ADTEP, AICA-5, and IMP — treating MCP servers as the new software supply chain risk that must be governed like any other institutional asset."*
 
-# Supply Chain Governance v1
 
 # Supply Chain Governance v1.0
 
@@ -21858,7 +21811,6 @@ class SupplyChainGovernance:
 
 > *"Supply Chain Governance v1.0 establishes comprehensive governance for AI supply chains — with Model Provenance (16 fields, chain verification), Third-Party Model Assessment (6 assessment areas), Vulnerability Scanning (6 scan types, 3 response tiers), Dependency Management (Dependency Registry, CVE/malware/typosquatting/dependency confusion scanning), and 4 Risk Levels (Low, Medium, High, Critical) — ensuring that every model, library, training data source, and dependency in the AI supply chain is governed, verified, and traceable."*
 
-# Skills & Plugins Governance v1
 
 # Skills & Plugins Governance v1.0
 
@@ -22374,7 +22326,6 @@ class SkillsGovernance:
 
 > *"The Skills & Plugins Governance Framework v1.0 establishes formal governance for AI skills and plugins — with Skill Registry (16 fields), security scanning (CVE, malware, typosquatting, dependency confusion, post-publish changes), 5 skill types (Claude, GPT Store, Internal, Third-Party, Open-Source), 5 lifecycle stages (Registration, Verification, Active, Deprecated, Retired), 3 response tiers (Flag, Review, Halt), and supply chain attack prevention (typosquatting, dependency confusion, post-publish payload swap) — treating skills as packages in disguise with software supply chain risk equivalent to npm packages."*
 
-# Board-Level AI Governance Framework v1
 
 # Board-Level AI Governance Framework v1.0
 
@@ -22902,7 +22853,6 @@ class BoardAIGovernance:
 
 > *"The Board-Level AI Governance Framework v1.0 establishes a structured framework for board-level AI oversight — with a Board AI Governance Charter (6 sections), Board AI Governance Report (8 sections), Board AI competency requirements (Foundational to Expert), approval authority (Full Board for Tier 4/5, HAN appointment, I9 exceptions), quarterly reporting cadence, and integration with HAN, ICC-8, ERDP, AIR, AICA-5, and CAM-5 — making AI governance visible and accountable at the highest institutional level."*
 
-# Systemic Risk Framework v1
 
 # Systemic Risk Framework v1.0
 
@@ -23341,7 +23291,6 @@ class SystemicRiskFramework:
 
 > *"The Systemic Risk Framework v1.0 establishes a structured approach for managing systemic AI risks — with 4 risk levels (Single-Model, Multi-Model, Model-Platform, Model-Institution), 6 risk categories (Multi-Agent Coordination, Discrimination at Scale, Large-Scale Hallucination, Cascading Failure, Market Manipulation, Systemic Security), assessment gates for Tier 4/5 deployments, I9 extension with systemic risk category, continuous monitoring, and escalation to HAN/Board — ensuring that systemic risks that can destabilize institutions are identified, assessed, and governed alongside individual AI risks."*
 
-# Automated Compliance Remediation v1
 
 # Automated Compliance Remediation v1.0
 
@@ -24002,7 +23951,6 @@ class AutomatedComplianceRemediation:
 
 > *"Automated Compliance Remediation v1.0 provides AI-driven gap detection, prioritization, and remediation — with 7 gap types (Bias, Oversight, Drift, Control, Framework, Evidence, Performance), 4 severity levels (Critical, High, Medium, Low), 6 remediation types (Control Enhancement, Policy Update, Process Change, Technical Fix, Training, Framework Update), 8 lifecycle stages, priority scoring algorithm, pattern library, and integration with AOBA, ABA, Trigger System, RGI-8, Compliance Crosswalk, Real-time Evidence Streaming, and AICA-5 Ac-N5 — closing the loop from detection to resolution and ensuring compliance gaps are not just identified but actually fixed."*
 
-# AI OSI Integration v1
 
 # AI OSI Integration v1.0
 
@@ -24550,7 +24498,6 @@ class AIOSIIntegration:
 
 > *"The AI OSI Integration v1.0 maps AICA-5 layers to AI OSI layers (Cognitive → Data Link, Execution → Network, Authority/Continuity → Session, Accountability → Application), produces 5 accountability artifacts (ITP, DRR, GDS, OAM, ILE) from AIGIS sources (DRO, ECO, CRO, OEO, Evidence Packets), and ensures that every consequential decision produces audit-grade, time-bound, reconstructable evidence — making AIGIS accountability artifacts externally legible and institutionally durable."*
 
-# Real-time Evidence Streaming v1
 
 # Real-time Evidence Streaming v1.0
 
@@ -25191,7 +25138,6 @@ data: {
 
 > *"Real-time Evidence Streaming v1.0 transforms the Audit Evidence Engine from batch to continuous — with 7 evidence generators (DRO, GAO, OEO, XOO, PreDelivery, Drift, Bias), real-time compliance verification, 4 gap types (Missing Evidence, Incomplete Evidence, Non-Compliant Evidence, Control/Framework Gaps), 5 alert severities (Info, Low, Medium, High, Critical), SSE streaming API, and real-time dashboards — enabling continuous compliance monitoring, immediate gap detection, and real-time regulatory alerts."*
 
-# MCR v1
 
 # MCR v1.0 — Master Control Registry
 
@@ -25976,7 +25922,6 @@ print(mcr.export_registry())
 
 > *"MCR v1.0 is the Master Control Registry — a unified control set of 109 controls from AICA-5 (25 nodes, 24 functions), ICC-8 (9 invariants), ADTEP (7), RGI-8 (8), CAD-7 (7), IMP (6), HOF (12), EAF (5), and CEF (6) — mapped to 8 regulatory frameworks (EU AI Act, NIST AI RMF, OECD, ISO/IEC 42001, PFRS S1/S2, BSP STARS, DICT-CSC, NPC) with complete coverage, providing the single source of truth for AIGIS compliance automation."*
 
-# Audit Evidence Engine v1
 
 # Audit Evidence Engine v1.0
 
@@ -26793,7 +26738,6 @@ print(f"EU AI Act packets: {len(eu\_packets)}")
 
 > *"The Audit Evidence Engine v1.0 generates audit-ready evidence packets — with packet schema, evidence item schema, HAN attestation, hash verification, multi-format export (JSON, HTML), and integration with IMP, MCR, and Compliance Crosswalk — extracting and packaging AIGIS governance artifacts into structured, provable compliance evidence for regulatory frameworks including EU AI Act, NIST AI RMF, ISO 42001, and all Philippine frameworks (PFRS S1/S2, BSP STARS, DICT-CSC JMC 003, NPC Advisory 2024-04)."*
 
-# Compliance Crosswalk Engine v1
 
 # Compliance Crosswalk Engine v1.0
 
@@ -27587,7 +27531,6 @@ The Crosswalk Engine feeds into:
 
 > *"The Compliance Crosswalk Engine v1.0 provides bidirectional mapping between 109 AIGIS controls and 8 regulatory frameworks (EU AI Act, NIST AI RMF, ISO/IEC 42001, OECD, PFRS S1/S2, BSP STARS, DICT-CSC, NPC) with gap analysis, regulatory diff detection, coverage reporting, and component-level mapping, turning the static MCR into a dynamic, queryable compliance intelligence tool."*
 
-# Compliance Engine API/UI v1
 
 # Compliance Engine API/UI v1.0
 
@@ -28347,7 +28290,6 @@ python cli.py evidence \--export EVP-eu\_ai\_act-20260901120000-0001 \--format j
 
 > *"The Compliance Engine API/UI v1.0 provides three interfaces — REST API (20+ endpoints for controls, crosswalk, overlays, and evidence), Web UI (dashboard, controls browser, evidence generator, reports), and CLI (command-line automation) — making the AIGIS Compliance Engine accessible to developers, compliance officers, auditors, and executives through interactive and programmatic access."*
 
-# Compliance Dashboard v1
 
 # Compliance Dashboard v1.0
 
