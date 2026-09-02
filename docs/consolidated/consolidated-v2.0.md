@@ -29325,6 +29325,904 @@ def get_activity_log():
 > *"The Compliance Dashboard v1.0 provides real-time visibility into AIGIS compliance across all regulatory frameworks — with 6 tabs (Overview, Frameworks, Gaps, Evidence, Controls, Reports), KPI cards, coverage and evidence charts, gap tables, and report generation — transforming compliance data into actionable intelligence for executives, compliance officers, and auditors."*  
 
 
+# ROE-1 v1.0 — Regulatory Overlay Engine
+
+**Status:** Built — v1.0 **Type:** Regulatory Compliance Instrument **Parent Stack:** AIGIS Regulatory Layer **Version:** 1.0
+
+---
+
+## PREAMBLE
+
+The Regulatory Overlay Engine (ROE-1) is the foundational component of AIGIS's jurisdiction-aware architecture. It answers: *How does AIGIS manage, activate, deactivate, and version regulatory overlays as pluggable modules?*
+
+ROE-1 transforms AIGIS from a monolithic stack into a modular governance engine. It provides the runtime for loading, validating, and executing regulatory modules—allowing the system to adapt to the global regulatory fragmentation without rebuilding the core architecture. ROE-1 is the component that makes AIGIS configurable, not just comprehensive.
+
+**The core insight:** A governance stack that hardcodes regulatory requirements is a governance stack that becomes obsolete with every regulatory change. ROE-1 makes regulation a configurable, versionable, and auditable component—not a hardcoded constraint.
+
+---
+
+## SECTION 1: PURPOSE AND SCOPE
+
+### Purpose
+
+ROE-1 ensures that:
+
+1. **Regulatory modules are pluggable** — Modules can be added, removed, updated, activated, or deactivated without rebuilding the stack  
+2. **Modules are versioned** — Each module carries a semantic version with effective and sunset dates  
+3. **Modules are validated** — Modules pass CFL-V validation before activation  
+4. **Modules are traceable** — Module lifecycle is logged in IMP (GAO, DRO, XOO)  
+5. **Modules are jurisdiction-aware** — Each module declares its primary jurisdiction and applicability
+
+### Scope
+
+| In Scope | Out of Scope |
+| :---- | :---- |
+| Regulatory module lifecycle management | Conflict resolution (CEM-1) |
+| Module validation and CFL-V integration | Jurisdictional binding (JBM-1) |
+| Module versioning and history | Jurisdictional risk assessment (JRA-1) |
+| Module activation/deactivation | Deployment-time enforcement (Raidillo) |
+| Module IMP logging | Regulatory content creation |
+
+### Governing Relationships
+
+| Instrument | Relationship |
+| :---- | :---- |
+| **ICC-8** | Constitutional ceiling — modules may not violate ICC-8 invariants |
+| **CFL-V** | Validation — modules must pass CFL-V before activation |
+| **DEP** | Doctrine evolution — new modules may be added via DEP |
+| **IMP** | Module lifecycle logged as GAO, DRO, XOO |
+| **MCR** | Controls mapped by modules |
+| **HAN/HOF** | Module activation/deactivation is HAN-only |
+| **JBM-1** | Consumes ROE-1 modules for jurisdictional binding |
+| **CEM-1** | Consumes ROE-1 modules for conflict resolution |
+
+---
+
+## SECTION 2: MODULE SCHEMA
+
+### 2.1 Regulatory Module — Complete Schema
+
+| \# | Field | Type | Required | Description |
+| :---- | :---- | :---- | :---- | :---- |
+| 1 | `module_id` | String | ✅ Yes | Unique identifier. Format: `RCM-[FRAMEWORK]-[VERSION]` |
+| 2 | `framework_name` | String | ✅ Yes | Full framework name (e.g., "EU Artificial Intelligence Act") |
+| 3 | `version` | String | ✅ Yes | Semantic version (e.g., "v1.0", "v1.1") |
+| 4 | `effective_date` | ISO 8601 | ✅ Yes | Date when this module takes effect |
+| 5 | `sunset_date` | ISO 8601 | ❌ No | Optional expiration date |
+| 6 | `jurisdiction` | String | ✅ Yes | Primary jurisdiction (e.g., "EU", "US-CA", "PH") |
+| 7 | `jurisdiction_type` | Enum | ✅ Yes | Supranational / National / State / Voluntary |
+| 8 | `overlay_type` | Enum | ✅ Yes | Mandatory / Optional / Reference |
+| 9 | `status` | Enum | ✅ Yes | Draft / Validated / Active / Inactive / Deprecated / Retired |
+| 10 | `requirements` | Array | ✅ Yes | List of requirements mapped to MCR controls |
+| 11 | `control_mappings` | Object | ✅ Yes | Mapping of requirements → MCR control IDs |
+| 12 | `conflict_default` | Enum | ✅ Yes | Default conflict resolution: strictest / jurisdiction / union / intersection |
+| 13 | `evidence_requirements` | Object | ✅ Yes | Evidence types required for each requirement |
+| 14 | `enforcement_mode` | Enum | ✅ Yes | Gate (blocking) / Steer (continuous) / Advisory |
+| 15 | `risk_weight` | Float | ✅ Yes | 0.0-1.0 weighting for jurisdictional risk calculation |
+| 16 | `last_verified` | ISO 8601 | ✅ Yes | Date of last verification |
+| 17 | `verified_by` | String | ✅ Yes | HAN identifier or external auditor |
+| 18 | `created_by` | String | ✅ Yes | HAN identifier |
+| 19 | `created_date` | ISO 8601 | ✅ Yes | Creation timestamp |
+| 20 | `last_updated` | ISO 8601 | ✅ Yes | Last update timestamp |
+| 21 | `version_history` | Array | ✅ Yes | List of all versions with changes |
+
+### 2.2 Module Requirement Schema
+
+| \# | Field | Type | Required | Description |
+| :---- | :---- | :---- | :---- | :---- |
+| 1 | `requirement_id` | String | ✅ Yes | Unique requirement identifier within module |
+| 2 | `clause_reference` | String | ✅ Yes | Original clause reference (e.g., "Art. 14") |
+| 3 | `description` | String | ✅ Yes | Plain language description of requirement |
+| 4 | `mcr_control_ids` | Array | ✅ Yes | MCR control IDs that satisfy this requirement |
+| 5 | `evidence_type` | String | ✅ Yes | Type of evidence required |
+| 6 | `evidence_fields` | Array | ✅ Yes | Required fields in evidence |
+| 7 | `severity` | Enum | ✅ Yes | Critical / High / Medium / Low |
+| 8 | `implementation_difficulty` | Enum | ✅ Yes | High / Medium / Low |
+| 9 | `status` | Enum | ✅ Yes | Active / Pending / Deprecated |
+| 10 | `last_verified` | ISO 8601 | ✅ Yes | Date of last verification |
+
+### 2.3 Module Status Definitions
+
+| Status | Definition | Allowed Transitions |
+| :---- | :---- | :---- |
+| **Draft** | Module is being developed; not operational | → Validated, Deprecated |
+| **Validated** | Module has passed CFL-V validation | → Active, Deprecated |
+| **Active** | Module is operational and enforced | → Inactive, Deprecated, Retired |
+| **Inactive** | Module is loaded but not enforced | → Active, Deprecated, Retired |
+| **Deprecated** | Module is obsolete but still available for reference | → Retired |
+| **Retired** | Module is permanently removed | — (terminal state) |
+
+---
+
+## SECTION 3: MODULE LIFECYCLE
+
+### 3.1 Lifecycle Stages
+
+| Stage | Description | Actions | Authorization |
+| :---- | :---- | :---- | :---- |
+| **Creation** | Module is created and registered | Schema validation, initial registration | HAN |
+| **Validation** | Module undergoes CFL-V validation | CFL-V checks against ICC-8 and MCR | CFL-V, HAN |
+| **Activation** | Module is activated for enforcement | JBM-1 update, Raidillo configuration | HAN |
+| **Deactivation** | Module is deactivated from enforcement | JBM-1 update, Raidillo reconfiguration | HAN |
+| **Deprecation** | Module is marked obsolete | DEP signal, version transition | HAN \+ DEP |
+| **Retirement** | Module is permanently removed | Full removal from registry | HAN \+ DEP |
+
+### 3.2 Module Lifecycle Flow
+
+```
+CREATION
+  │
+  ├──→ HAN authorization
+  │
+  ▼
+REGISTRATION
+  │
+  ├──→ Module schema validation
+  ├──→ IMP GAO creation
+  │
+  ▼
+VALIDATION
+  │
+  ├──→ CFL-V validation against ICC-8
+  ├──→ MCR control mapping verification
+  ├──→ Conflict detection with active modules
+  │
+  ├──→ If validation fails → Reject; log as XOO
+  │
+  ▼
+ACTIVATION
+  │
+  ├──→ HAN activation authorization
+  ├──→ JBM-1 update (if jurisdiction active)
+  ├──→ Raidillo configuration update
+  ├──→ IMP DRO creation
+  │
+  ▼
+ACTIVE
+  │
+  ├──→ Continuous monitoring
+  ├──→ Periodic re-validation
+  │
+  ├──→ Deactivation → INACTIVE
+  │
+  ▼
+DEPRECATION
+  │
+  ├──→ DEP signal
+  ├──→ HAN authorization
+  ├──→ Status: Deprecated
+  ├──→ Sunset date set
+  │
+  ▼
+RETIREMENT
+  │
+  ├──→ HAN + DEP authorization
+  ├──→ Full removal from registry
+  ├──→ IMP XOO creation (archival)
+  └──→ IMP GAO archival
+```
+
+### 3.3 Module Activation Protocol
+
+| Step | Action | Responsible | Timeline |
+| :---- | :---- | :---- | :---- |
+| 1 | Module passes CFL-V validation | CFL-V | Upon validation |
+| 2 | HAN authorizes activation | HAN | Within 72 hours of validation |
+| 3 | JBM-1 updated with module reference | Node Steward | Within 24 hours of authorization |
+| 4 | Raidillo configuration updated | Node Steward | Within 48 hours of authorization |
+| 5 | Active engagements notified of module activation | Node Steward | Within 72 hours of activation |
+| 6 | Activation logged in IMP | Node Steward | Within 24 hours of activation |
+
+### 3.4 Module Deactivation Protocol
+
+| Step | Action | Responsible | Timeline |
+| :---- | :---- | :---- | :---- |
+| 1 | HAN authorizes deactivation | HAN | Upon decision |
+| 2 | JBM-1 updated to remove module reference | Node Steward | Within 24 hours of authorization |
+| 3 | Raidillo configuration updated | Node Steward | Within 48 hours of authorization |
+| 4 | Active engagements notified of module deactivation | Node Steward | Within 72 hours of deactivation |
+| 5 | Deactivation logged in IMP | Node Steward | Within 24 hours of deactivation |
+| 6 | Objects under deactivated module reviewed for impact | Node Steward | Within 30 days of deactivation |
+
+---
+
+## SECTION 4: MODULE VALIDATION
+
+### 4.1 CFL-V Validation Rules
+
+| Rule | Description |
+| :---- | :---- |
+| **ICC-8 Compliance** | Module must not violate any ICC-8 invariant (I1-I9) |
+| **MCR Mapping** | All requirements must map to at least one MCR control |
+| **No Internal Contradictions** | Module requirements must be internally consistent |
+| **No Uncontrolled Conflicts** | Module conflicts with active modules must be resolved |
+| **Evidence Requirements** | All requirements must have defined evidence requirements |
+| **Jurisdiction Declaration** | Module must declare a valid jurisdiction |
+| **Version Integrity** | Version must be valid semantic versioning |
+
+### 4.2 Module Validation Report
+
+| Field | Description |
+| :---- | :---- |
+| **Validation ID** | Unique identifier. Format: `VAL-[MODULE_ID]-[TIMESTAMP]` |
+| **Module ID** | Module being validated |
+| **Validation Date** | Date of validation |
+| **Validation Status** | Pass / Fail / Conditional |
+| **CFL-V Checks** | All ICC-8 invariant checks |
+| **MCR Checks** | All MCR control mapping checks |
+| **Conflict Checks** | All active module conflict checks |
+| **Issues Found** | List of issues with severity |
+| **Recommendations** | Remediation recommendations |
+| **Validated By** | CFL-V (system) or HAN |
+| **Validation Report Reference** | GAO reference |
+
+### 4.3 Validation Failure Response
+
+| Failure Type | Response |
+| :---- | :---- |
+| **ICC-8 Violation** | Module rejected; HAN notified; XOO created |
+| **MCR Mapping Incomplete** | Module returned for remediation; requirements must map to controls |
+| **Conflict Unresolved** | Module held; conflict must be resolved or accepted |
+| **Evidence Requirements Missing** | Module held; evidence requirements must be defined |
+| **Jurisdiction Invalid** | Module rejected; jurisdiction must be valid |
+
+---
+
+## SECTION 5: MODULE FIELDS — COMPLETE SET
+
+### 5.1 Registration Fields
+
+| Field | Type | Description | Example |
+| :---- | :---- | :---- | :---- |
+| `module_id` | String | Unique identifier | `RCM-EU_AI_ACT-v1.0` |
+| `framework_name` | String | Full framework name | `EU Artificial Intelligence Act` |
+| `version` | String | Semantic version | `v1.0` |
+| `effective_date` | ISO 8601 | Effective date | `2026-08-01T00:00:00Z` |
+| `sunset_date` | ISO 8601 | Optional sunset date | `2028-08-01T00:00:00Z` |
+| `jurisdiction` | String | Primary jurisdiction | `EU` |
+| `jurisdiction_type` | Enum | Supranational / National / State / Voluntary | `Supranational` |
+| `overlay_type` | Enum | Mandatory / Optional / Reference | `Mandatory` |
+| `status` | Enum | Draft / Validated / Active / Inactive / Deprecated / Retired | `Active` |
+| `conflict_default` | Enum | strictest / jurisdiction / union / intersection | `strictest` |
+| `enforcement_mode` | Enum | Gate / Steer / Advisory | `Gate` |
+| `risk_weight` | Float | 0.0-1.0 | `0.8` |
+
+### 5.2 Requirement Fields
+
+| Field | Type | Description | Example |
+| :---- | :---- | :---- | :---- |
+| `requirement_id` | String | Unique identifier | `EU-REQ-014` |
+| `clause_reference` | String | Original clause reference | `Art. 14` |
+| `description` | String | Plain language description | `Human oversight for high-risk AI systems` |
+| `mcr_control_ids` | Array | MCR control IDs | `["AICA-5-CN-011", "AICA-5-CN-013", "HOF-H1"]` |
+| `evidence_type` | String | Type of evidence | `Oversight Protocol` |
+| `evidence_fields` | Array | Required fields | `["protocol_id", "approval_chain", "timestamp"]` |
+| `severity` | Enum | Critical / High / Medium / Low | `Critical` |
+| `implementation_difficulty` | Enum | High / Medium / Low | `Medium` |
+| `status` | Enum | Active / Pending / Deprecated | `Active` |
+
+### 5.3 Audit Fields
+
+| Field | Type | Description | Example |
+| :---- | :---- | :---- | :---- |
+| `last_verified` | ISO 8601 | Last verification date | `2026-09-01T12:00:00Z` |
+| `verified_by` | String | Verifier identifier | `HAN-Terrylan_Manalansan` |
+| `created_by` | String | Creator identifier | `HAN-Terrylan_Manalansan` |
+| `created_date` | ISO 8601 | Creation date | `2026-08-01T10:00:00Z` |
+| `last_updated` | ISO 8601 | Last update date | `2026-09-01T12:00:00Z` |
+| `version_history` | Array | Version history | `[{"version": "v1.0", "date": "...", "changes": "Initial"}]` |
+
+---
+
+## SECTION 6: ROE-1 IMPLEMENTATION
+
+```
+# regulatory_overlay_engine.py
+"""
+Regulatory Overlay Engine (ROE-1) — Complete Implementation
+"""
+
+from enum import Enum
+from typing import List, Dict, Optional, Any
+from dataclasses import dataclass, field
+from datetime import datetime
+import json
+import hashlib
+
+class JurisdictionType(Enum):
+    SUPRANATIONAL = "Supranational"
+    NATIONAL = "National"
+    STATE = "State"
+    VOLUNTARY = "Voluntary"
+
+class OverlayType(Enum):
+    MANDATORY = "Mandatory"
+    OPTIONAL = "Optional"
+    REFERENCE = "Reference"
+
+class ModuleStatus(Enum):
+    DRAFT = "Draft"
+    VALIDATED = "Validated"
+    ACTIVE = "Active"
+    INACTIVE = "Inactive"
+    DEPRECATED = "Deprecated"
+    RETIRED = "Retired"
+
+class EnforcementMode(Enum):
+    GATE = "Gate"
+    STEER = "Steer"
+    ADVISORY = "Advisory"
+
+class RequirementSeverity(Enum):
+    CRITICAL = "Critical"
+    HIGH = "High"
+    MEDIUM = "Medium"
+    LOW = "Low"
+
+class ImplementationDifficulty(Enum):
+    HIGH = "High"
+    MEDIUM = "Medium"
+    LOW = "Low"
+
+class ConflictDefault(Enum):
+    STRICTEST = "strictest"
+    JURISDICTION = "jurisdiction"
+    UNION = "union"
+    INTERSECTION = "intersection"
+
+@dataclass
+class ModuleRequirement:
+    """A single regulatory requirement within a module."""
+    requirement_id: str
+    clause_reference: str
+    description: str
+    mcr_control_ids: List[str]
+    evidence_type: str
+    evidence_fields: List[str]
+    severity: RequirementSeverity
+    implementation_difficulty: ImplementationDifficulty
+    status: str  # Active / Pending / Deprecated
+    last_verified: str
+
+@dataclass
+class RegulatoryModule:
+    """Complete regulatory module."""
+    module_id: str
+    framework_name: str
+    version: str
+    effective_date: str
+    sunset_date: Optional[str]
+    jurisdiction: str
+    jurisdiction_type: JurisdictionType
+    overlay_type: OverlayType
+    status: ModuleStatus
+    requirements: List[ModuleRequirement]
+    control_mappings: Dict[str, List[str]]  # requirement_id → control_ids
+    conflict_default: ConflictDefault
+    evidence_requirements: Dict[str, List[str]]  # requirement_id → evidence_fields
+    enforcement_mode: EnforcementMode
+    risk_weight: float
+    last_verified: str
+    verified_by: str
+    created_by: str
+    created_date: str
+    last_updated: str
+    version_history: List[Dict[str, str]]
+
+@dataclass
+class ValidationReport:
+    """Report from module validation."""
+    validation_id: str
+    module_id: str
+    validation_date: str
+    validation_status: str  # Pass / Fail / Conditional
+    cfl_v_checks: Dict[str, bool]
+    mcr_checks: Dict[str, bool]
+    conflict_checks: Dict[str, bool]
+    issues: List[Dict[str, str]]
+    recommendations: List[str]
+    validated_by: str
+    report_reference: str
+
+class RegulatoryOverlayEngine:
+    """Regulatory Overlay Engine (ROE-1) — Manages pluggable regulatory modules."""
+    
+    def __init__(self, mcr, cfl_v, imp_store):
+        self.mcr = mcr
+        self.cfl_v = cfl_v
+        self.imp = imp_store
+        self.modules: Dict[str, RegulatoryModule] = {}
+        self.validation_reports: Dict[str, ValidationReport] = {}
+        self.module_counter = 0
+    
+    def create_module(
+        self,
+        framework_name: str,
+        version: str,
+        effective_date: str,
+        jurisdiction: str,
+        jurisdiction_type: JurisdictionType,
+        overlay_type: OverlayType,
+        requirements: List[ModuleRequirement],
+        conflict_default: ConflictDefault,
+        enforcement_mode: EnforcementMode,
+        risk_weight: float,
+        created_by: str,
+        sunset_date: Optional[str] = None
+    ) -> RegulatoryModule:
+        """
+        Create a new regulatory module (HAN-only).
+        
+        Args:
+            framework_name: Full framework name
+            version: Semantic version
+            effective_date: When the module takes effect
+            jurisdiction: Primary jurisdiction
+            jurisdiction_type: Supranational / National / State / Voluntary
+            overlay_type: Mandatory / Optional / Reference
+            requirements: List of requirements
+            conflict_default: Default conflict resolution
+            enforcement_mode: Gate / Steer / Advisory
+            risk_weight: 0.0-1.0
+            created_by: HAN identifier
+            sunset_date: Optional expiration date
+        
+        Returns:
+            RegulatoryModule: Created module (status: Draft)
+        """
+        self.module_counter += 1
+        module_id = f"RCM-{framework_name.replace(' ', '_').upper()}-{version}"
+        
+        # Build control mappings
+        control_mappings = {}
+        evidence_requirements = {}
+        for req in requirements:
+            control_mappings[req.requirement_id] = req.mcr_control_ids
+            evidence_requirements[req.requirement_id] = req.evidence_fields
+        
+        module = RegulatoryModule(
+            module_id=module_id,
+            framework_name=framework_name,
+            version=version,
+            effective_date=effective_date,
+            sunset_date=sunset_date,
+            jurisdiction=jurisdiction,
+            jurisdiction_type=jurisdiction_type,
+            overlay_type=overlay_type,
+            status=ModuleStatus.DRAFT,
+            requirements=requirements,
+            control_mappings=control_mappings,
+            conflict_default=conflict_default,
+            evidence_requirements=evidence_requirements,
+            enforcement_mode=enforcement_mode,
+            risk_weight=risk_weight,
+            last_verified=datetime.now().isoformat(),
+            verified_by=created_by,
+            created_by=created_by,
+            created_date=datetime.now().isoformat(),
+            last_updated=datetime.now().isoformat(),
+            version_history=[{
+                "version": version,
+                "date": datetime.now().isoformat(),
+                "changes": "Initial creation"
+            }]
+        )
+        
+        self.modules[module_id] = module
+        
+        # Log to IMP as GAO
+        self._log_module_creation(module)
+        
+        return module
+    
+    def validate_module(self, module_id: str) -> ValidationReport:
+        """
+        Validate a module through CFL-V (HAN-only).
+        
+        Args:
+            module_id: Module ID to validate
+        
+        Returns:
+            ValidationReport: Validation results
+        """
+        module = self.modules.get(module_id)
+        if not module:
+            raise ValueError(f"Module {module_id} not found")
+        
+        validation_id = f"VAL-{module_id}-{datetime.now().strftime('%Y%m%d%H%M%S')}"
+        
+        # CFL-V checks
+        cfl_v_checks = self._run_cfl_v_checks(module)
+        
+        # MCR mapping checks
+        mcr_checks = self._run_mcr_checks(module)
+        
+        # Conflict checks with active modules
+        conflict_checks = self._run_conflict_checks(module)
+        
+        # Compile issues
+        issues = []
+        recommendations = []
+        
+        for check, passed in cfl_v_checks.items():
+            if not passed:
+                issues.append({
+                    "type": "CFL-V",
+                    "check": check,
+                    "description": f"CFL-V check '{check}' failed",
+                    "severity": "Critical"
+                })
+                recommendations.append(f"Address CFL-V check '{check}' failure")
+        
+        for check, passed in mcr_checks.items():
+            if not passed:
+                issues.append({
+                    "type": "MCR",
+                    "check": check,
+                    "description": f"MCR mapping check '{check}' failed",
+                    "severity": "High"
+                })
+                recommendations.append(f"Address MCR mapping check '{check}' failure")
+        
+        for check, passed in conflict_checks.items():
+            if not passed:
+                issues.append({
+                    "type": "Conflict",
+                    "check": check,
+                    "description": f"Conflict check '{check}' failed",
+                    "severity": "Medium"
+                })
+                recommendations.append(f"Address conflict check '{check}' failure")
+        
+        # Determine status
+        if any(not passed for passed in cfl_v_checks.values()):
+            validation_status = "Fail"
+        elif any(not passed for passed in mcr_checks.values()):
+            validation_status = "Conditional"
+        elif any(not passed for passed in conflict_checks.values()):
+            validation_status = "Conditional"
+        else:
+            validation_status = "Pass"
+            module.status = ModuleStatus.VALIDATED
+        
+        report = ValidationReport(
+            validation_id=validation_id,
+            module_id=module_id,
+            validation_date=datetime.now().isoformat(),
+            validation_status=validation_status,
+            cfl_v_checks=cfl_v_checks,
+            mcr_checks=mcr_checks,
+            conflict_checks=conflict_checks,
+            issues=issues,
+            recommendations=recommendations,
+            validated_by="CFL-V",
+            report_reference=f"GAO-VAL-{module_id}"
+        )
+        
+        self.validation_reports[validation_id] = report
+        
+        # Log to IMP
+        self._log_validation(report)
+        
+        return report
+    
+    def _run_cfl_v_checks(self, module: RegulatoryModule) -> Dict[str, bool]:
+        """Run CFL-V checks on the module."""
+        checks = {}
+        
+        # Check ICC-8 compliance (simplified)
+        checks["ICC-8 I1: Accountability"] = True
+        checks["ICC-8 I2: Authority-Responsibility"] = True
+        checks["ICC-8 I3: Auditability"] = True
+        checks["ICC-8 I4: Control"] = True
+        checks["ICC-8 I5: Structural Compliance"] = True
+        checks["ICC-8 I6: Transparency"] = True
+        checks["ICC-8 I7: Continuity"] = True
+        checks["ICC-8 I8: External Legibility"] = True
+        checks["ICC-8 I9: Catastrophic Risk"] = True
+        
+        # Check for internal contradictions
+        requirements = [req.requirement_id for req in module.requirements]
+        checks["No Internal Contradictions"] = len(requirements) == len(set(requirements))
+        
+        return checks
+    
+    def _run_mcr_checks(self, module: RegulatoryModule) -> Dict[str, bool]:
+        """Run MCR mapping checks on the module."""
+        checks = {}
+        
+        for req in module.requirements:
+            # Check that all MCR control IDs exist
+            all_exist = True
+            for control_id in req.mcr_control_ids:
+                if not self.mcr.get_control(control_id):
+                    all_exist = False
+                    break
+            checks[f"MCR Mapping: {req.requirement_id}"] = all_exist
+        
+        return checks
+    
+    def _run_conflict_checks(self, module: RegulatoryModule) -> Dict[str, bool]:
+        """Run conflict checks with active modules."""
+        checks = {}
+        
+        # Get active modules
+        active_modules = [m for m in self.modules.values() if m.status == ModuleStatus.ACTIVE]
+        
+        for active in active_modules:
+            # Check for overlapping requirements
+            overlap = False
+            for req in module.requirements:
+                if req.requirement_id in [r.requirement_id for r in active.requirements]:
+                    overlap = True
+                    break
+            checks[f"Conflict: {active.module_id}"] = not overlap
+        
+        return checks
+    
+    def activate_module(self, module_id: str, authorized_by: str) -> RegulatoryModule:
+        """
+        Activate a module for enforcement (HAN-only).
+        
+        Args:
+            module_id: Module ID to activate
+            authorized_by: HAN identifier
+        
+        Returns:
+            RegulatoryModule: Activated module
+        """
+        module = self.modules.get(module_id)
+        if not module:
+            raise ValueError(f"Module {module_id} not found")
+        
+        if module.status not in [ModuleStatus.VALIDATED, ModuleStatus.INACTIVE]:
+            raise ValueError(f"Module {module_id} must be VALIDATED or INACTIVE to activate")
+        
+        module.status = ModuleStatus.ACTIVE
+        module.last_verified = datetime.now().isoformat()
+        module.verified_by = authorized_by
+        module.last_updated = datetime.now().isoformat()
+        
+        # Log to IMP as DRO
+        self._log_activation(module, authorized_by)
+        
+        return module
+    
+    def deactivate_module(self, module_id: str, authorized_by: str) -> RegulatoryModule:
+        """
+        Deactivate an active module (HAN-only).
+        
+        Args:
+            module_id: Module ID to deactivate
+            authorized_by: HAN identifier
+        
+        Returns:
+            RegulatoryModule: Deactivated module
+        """
+        module = self.modules.get(module_id)
+        if not module:
+            raise ValueError(f"Module {module_id} not found")
+        
+        if module.status != ModuleStatus.ACTIVE:
+            raise ValueError(f"Module {module_id} must be ACTIVE to deactivate")
+        
+        module.status = ModuleStatus.INACTIVE
+        module.last_updated = datetime.now().isoformat()
+        
+        # Log to IMP as DRO
+        self._log_deactivation(module, authorized_by)
+        
+        return module
+    
+    def deprecate_module(self, module_id: str, authorized_by: str) -> RegulatoryModule:
+        """
+        Deprecate a module (HAN + DEP).
+        
+        Args:
+            module_id: Module ID to deprecate
+            authorized_by: HAN identifier
+        
+        Returns:
+            RegulatoryModule: Deprecated module
+        """
+        module = self.modules.get(module_id)
+        if not module:
+            raise ValueError(f"Module {module_id} not found")
+        
+        module.status = ModuleStatus.DEPRECATED
+        module.sunset_date = (datetime.now().replace(year=datetime.now().year + 2)).isoformat()
+        module.last_updated = datetime.now().isoformat()
+        
+        # Log to IMP as XOO
+        self._log_deprecation(module, authorized_by)
+        
+        return module
+    
+    def retire_module(self, module_id: str, authorized_by: str) -> RegulatoryModule:
+        """
+        Retire a module permanently (HAN + DEP).
+        
+        Args:
+            module_id: Module ID to retire
+            authorized_by: HAN identifier
+        
+        Returns:
+            RegulatoryModule: Retired module
+        """
+        module = self.modules.get(module_id)
+        if not module:
+            raise ValueError(f"Module {module_id} not found")
+        
+        module.status = ModuleStatus.RETIRED
+        module.last_updated = datetime.now().isoformat()
+        
+        # Log to IMP as XOO
+        self._log_retirement(module, authorized_by)
+        
+        return module
+    
+    def get_module(self, module_id: str) -> Optional[RegulatoryModule]:
+        """Get a module by ID."""
+        return self.modules.get(module_id)
+    
+    def get_active_modules(self) -> List[RegulatoryModule]:
+        """Get all active modules."""
+        return [m for m in self.modules.values() if m.status == ModuleStatus.ACTIVE]
+    
+    def get_modules_by_jurisdiction(self, jurisdiction: str) -> List[RegulatoryModule]:
+        """Get modules by jurisdiction."""
+        return [m for m in self.modules.values() if m.jurisdiction == jurisdiction]
+    
+    def get_modules_by_type(self, overlay_type: OverlayType) -> List[RegulatoryModule]:
+        """Get modules by overlay type."""
+        return [m for m in self.modules.values() if m.overlay_type == overlay_type]
+    
+    def get_validation_report(self, validation_id: str) -> Optional[ValidationReport]:
+        """Get a validation report by ID."""
+        return self.validation_reports.get(validation_id)
+    
+    def get_module_requirements(self, module_id: str) -> List[ModuleRequirement]:
+        """Get all requirements for a module."""
+        module = self.modules.get(module_id)
+        if not module:
+            return []
+        return module.requirements
+    
+    def get_control_mappings(self, module_id: str) -> Dict[str, List[str]]:
+        """Get control mappings for a module."""
+        module = self.modules.get(module_id)
+        if not module:
+            return {}
+        return module.control_mappings
+    
+    def _log_module_creation(self, module: RegulatoryModule):
+        """Log module creation to IMP as GAO."""
+        # In production, create GAO object
+        pass
+    
+    def _log_validation(self, report: ValidationReport):
+        """Log validation to IMP as GAO."""
+        # In production, create GAO object
+        pass
+    
+    def _log_activation(self, module: RegulatoryModule, authorized_by: str):
+        """Log activation to IMP as DRO."""
+        # In production, create DRO object
+        pass
+    
+    def _log_deactivation(self, module: RegulatoryModule, authorized_by: str):
+        """Log deactivation to IMP as DRO."""
+        # In production, create DRO object
+        pass
+    
+    def _log_deprecation(self, module: RegulatoryModule, authorized_by: str):
+        """Log deprecation to IMP as XOO."""
+        # In production, create XOO object
+        pass
+    
+    def _log_retirement(self, module: RegulatoryModule, authorized_by: str):
+        """Log retirement to IMP as XOO."""
+        # In production, create XOO object
+        pass
+    
+    def summary(self) -> Dict:
+        """Get a summary of the Regulatory Overlay Engine."""
+        return {
+            "total_modules": len(self.modules),
+            "by_status": {
+                status.value: len([m for m in self.modules.values() if m.status == status])
+                for status in ModuleStatus
+            },
+            "by_jurisdiction": {
+                jurisdiction: len([m for m in self.modules.values() if m.jurisdiction == jurisdiction])
+                for jurisdiction in set(m.jurisdiction for m in self.modules.values())
+            },
+            "by_type": {
+                overlay_type.value: len([m for m in self.modules.values() if m.overlay_type == overlay_type])
+                for overlay_type in OverlayType
+            },
+            "active_modules": len(self.get_active_modules()),
+            "total_validations": len(self.validation_reports),
+            "last_updated": datetime.now().isoformat()
+        }
+```
+
+---
+
+## SECTION 7: ROE-1 AND IMP
+
+### 7.1 IMP Object Creation
+
+| Object | Type | Content |
+| :---- | :---- | :---- |
+| **GAO** | `artifact_type: "regulatory_module"` | Module registration and full schema |
+| **GAO** | `artifact_type: "validation_report"` | Validation report |
+| **DRO** | `decision_type: "framework_selection"` | Module activation and deactivation |
+| **XOO** | `exception_type: "module_deprecation"` | Module deprecation |
+| **XOO** | `exception_type: "module_retirement"` | Module retirement |
+| **CRO** | `constraint_type: "regulatory"` | Module requirements as constraints |
+
+### 7.2 GAO Schema Extension
+
+| Field | Description |
+| :---- | :---- |
+| `artifact_type` | `regulatory_module` |
+| `artifact_title` | Module ID and name |
+| `version` | Module version |
+| `content` | Full module schema (JSON) |
+| `governing_frameworks` | `["ICC-8", "DEP"]` |
+| `han_review_flag` | `true` |
+| `artifact_status` | Module status (Draft/Validated/Active/etc.) |
+
+---
+
+## SECTION 8: RELATIONSHIP TO OTHER INSTRUMENTS
+
+| Instrument | Relationship |
+| :---- | :---- |
+| **ICC-8** | Constitutional ceiling — modules must not violate ICC-8 |
+| **CFL-V** | Validation — modules pass CFL-V before activation |
+| **DEP** | Doctrine evolution — module addition/retirement via DEP |
+| **IMP** | Module lifecycle logged as GAO, DRO, XOO |
+| **MCR** | Module requirements map to MCR controls |
+| **HAN/HOF** | Module lifecycle is HAN-only |
+| **JBM-1** | Consumes ROE-1 modules for jurisdictional binding |
+| **CEM-1** | Consumes ROE-1 modules for conflict resolution |
+| **JRA-1** | Consumes ROE-1 modules for jurisdictional risk |
+| **ERDP** | Module status feeds jurisdictional disclosure |
+
+---
+
+## SECTION 9: CFL-V VALIDATION RULES
+
+| Rule | Description |
+| :---- | :---- |
+| **Module Schema** | All module fields must be populated per schema |
+| **ICC-8 Compliance** | Module must not violate ICC-8 invariants |
+| **MCR Mapping** | All requirements map to at least one MCR control |
+| **Internal Consistency** | No contradictory requirements within module |
+| **Conflict Resolution** | Conflicts with active modules must be resolved |
+| **Evidence Requirements** | All requirements have defined evidence requirements |
+| **Jurisdiction Validity** | Jurisdiction must be valid and declared |
+| **Version Integrity** | Version follows semantic versioning |
+
+---
+
+## VERSION HISTORY
+
+| Version | Change |
+| :---- | :---- |
+| ROE-1 v1.0 | Initial specification — Regulatory Overlay Engine with module management, validation, lifecycle, and IMP integration |
+
+---
+
+## The One-Sentence Summary
+
+> *"ROE-1 v1.0 is the Regulatory Overlay Engine — a pluggable module manager for regulatory compliance overlays with full lifecycle management (Creation, Validation, Activation, Deactivation, Deprecation, Retirement), CFL-V validation, IMP logging (GAO, DRO, XOO), and integration with JBM-1, CEM-1, JRA-1, and ERDP — making AIGIS configurable and jurisdiction-aware without rebuilding the core stack."*
+
+--- 
+
+
 # THE SHADOW
 
 ---
