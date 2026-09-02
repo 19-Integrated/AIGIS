@@ -10204,6 +10204,7 @@ Drift detection compares realized steering against declared intent continuously,
 
 ### Escalation Flow
 
+```
 Drift Detected  
   │  
   ├──→ Below Threshold → Logged (OEO)  
@@ -10213,6 +10214,7 @@ Drift Detected
           ├──→ Approved → Continue  
           ├──→ Modified → Adjust Steering  
           └──→ Rejected → Halt; Escalation Flag
+```
 
 ### Drift Detection Rules
 
@@ -10251,6 +10253,7 @@ Gate is absolute; Steer can never override a Gate boundary. A conflict between a
 
 ### Conflict Resolution Flow
 
+```
 Gate Boundary and Steer Signal Conflict  
   │  
   └──→ Resolve to Gate  
@@ -10258,6 +10261,7 @@ Gate Boundary and Steer Signal Conflict
           ├──→ Action Blocked (if Gate says block)  
           ├──→ Action Allowed (if Gate says allow)  
           └──→ Resolution Event Logged
+```
 
 ### Constraint Supremacy Rules
 
@@ -10294,6 +10298,7 @@ A Steer-mode signal's output may not be used as input to a live Adaptation-domai
 
 ### Adaptation Firewall Flow
 
+```
 Steer Output  
   │  
   ├──→ Not to Adaptation → Continue  
@@ -10302,6 +10307,7 @@ Steer Output
           │  
           ├──→ Fresh Declaration Binding Present → Allowed  
           └──→ No Fresh Declaration Binding → Blocked; Escalation Flag
+```
 
 ### Adaptation Firewall Rules
 
@@ -10339,7 +10345,7 @@ If the infrastructure a Steer grant depends on for trace and drift detection bec
 | **Restoration Detection** | Detects infrastructure restoration; reverts to Steer |
 
 ### Fail-Safe Flow
-
+```
 Steer Infrastructure Available  
   │  
   ├──→ Yes → Steer Mode Active  
@@ -10348,6 +10354,7 @@ Steer Infrastructure Available
           │  
           ├──→ Gate Mode Active (per-cell)  
           └──→ Infrastructure Restored → Revert to Steer
+```
 
 ### Fail-Safe Rules
 
@@ -10448,6 +10455,7 @@ A Steer-mode flag on any cell requires Observability at minimum one tier above w
 
 ### Mode Assignment Template
 
+```
 RGI-8 Mode Assignment  
 Domain: "Perception"  
 Tier: 3  
@@ -10458,6 +10466,7 @@ Drift Threshold: "0.05"
 Observability Tier: "4"  
 Gate Observability Tier: "3"  
 Status: "Active"
+```
 
 ---
 
@@ -10630,12 +10639,14 @@ A named, accountable human — declared before the coalition acts, never left im
 
 ### Principal Declaration Template
 
+```
 Principal Declaration  
 Coalition ID: "COL-2026-88b0d0"  
 Principal: "Terrylan\_Manalansan"  
 Source: "Inherited from F-DR-E-CN-T-SP-001 HAN"  
 Declaration Date: "2026-08-31T10:00:00Z"  
 Composability Boundary: "Joint advisory work on PFRS S1/S2 compliance"
+```
 
 ### Principal Rules
 
@@ -10674,6 +10685,7 @@ What the coalition is jointly authorized to produce, stated separately from the 
 
 ### Composability Boundary Template
 
+```
 Composability Boundary  
 Coalition ID: "COL-2026-88b0d0"  
 Boundary: "Joint advisory work on PFRS S1/S2 compliance"  
@@ -10681,6 +10693,7 @@ Domain: "Synthesis"
 Authorization: "Joint drafting of compliance reports"  
 Exclusions: "No autonomous decision-making; no issuance without HAN"  
 Gate Enforcement: "Active"
+```
 
 ### Boundary Rules
 
@@ -10719,6 +10732,7 @@ Defines when declared accountability lapses (task completion, timeout, explicit 
 
 ### Dissolution Flow
 
+```
 Coalition Active  
   │  
   ├──→ Task Completion → Dissolved  
@@ -10727,6 +10741,7 @@ Coalition Active
   └──→ Membership Change → Re-declaration Required  
           │  
           └──→ Re-declaration → Coalition Reconstituted
+```
 
 ### Dissolution Rules
 
@@ -10862,6 +10877,7 @@ After any coalition-level incident: who declared the coalition's Principal, unde
 
 ### Reconstructability Flow
 
+```
 Coalition Incident  
   │  
   ├──→ Trace Available → Reconstruct  
@@ -10873,6 +10889,7 @@ Coalition Incident
           ├──→ Individual Agents Continue  
           ├──→ Collective Decision-Making Halts  
           └──→ Trace Restored → Resume Collective Decision-Making
+```
 
 ### Reconstructability Rules
 
@@ -10899,19 +10916,21 @@ Coalition Incident
 
 ### Coalition Declaration Template
 
+```
 Coalition ID: "COL-2026-88b0d0"  
 Trigger Type: "Joint Decision"  
-Principal: "Terrylan\_Manalansan"  
+Principal: "Terrylan_Manalansan"  
 Principal Source: "Inherited from F-DR-E-CN-T-SP-001 HAN"  
 Declaration Date: "2026-08-31T10:00:00Z"  
 Composability Boundary: "Joint advisory work on PFRS S1/S2 compliance"  
 Members:  
-  \- "F-DR-E-CN-T-SP-001"  
-  \- "F-RE-E-CN-T-GN-001"  
+  - "F-DR-E-CN-T-SP-001"  
+  - "F-RE-E-CN-T-GN-001"  
 Template ID: null  
 Status: "Active"  
 Dissolution Date: null  
 Reconstructability Trace: "Available"
+```
 
 ---
 
@@ -11277,6 +11296,7 @@ Any individual may submit a governance concern regarding AI actions affecting th
 
 ### Lifecycle Transitions
 
+```
 Submitted  
   │  
   ├──→ Under Review (contestation accepted)  
@@ -11302,6 +11322,7 @@ Submitted
   │               └──→ Resolved  
   │  
   └──→ Rejected (contestation rejected at submission)
+```
 
 ### Contestation Rules
 
@@ -11349,6 +11370,7 @@ Every contestation event is logged in IMP.
 
 ### Contestation Template
 
+```
 Contestation ID: CONT-ECO-2026-0a26cb-001  
 CEN Standard: CEN-2  
 Submitting Party: "Regulator X"  
@@ -11361,6 +11383,7 @@ Finding: null
 Corrective Action: null  
 Resolution Timestamp: null  
 HAN Escalation: false
+```
 
 ---
 
@@ -11810,33 +11833,36 @@ IMP retrieval is governance-oriented, not search-oriented. Four retrieval modes 
 
 The following maps a standard AI Governance Charter engagement to IMP object production. This is the canonical reference sequence.
 
-INTAKE (CEF Stage 1\)  
-└── ECO created (engagement\_type: governance\_charter)  
+```
+INTAKE (CEF Stage 1)
+└── ECO created (engagement_type: governance_charter)
 └── CRO(s) created (initial constraint identification)
 
-DISCOVERY (CEF Stage 2\)  
-└── ECO updated (frameworks\_applicable, trust\_tier confirmed)  
-└── CRO(s) updated or added (additional constraints identified)  
-└── DRO created (framework\_selection decision)  
-└── DRO created (risk\_classification decision)
+DISCOVERY (CEF Stage 2)
+└── ECO updated (frameworks_applicable, trust_tier confirmed)
+└── CRO(s) updated or added (additional constraints identified)
+└── DRO created (framework_selection decision)
+└── DRO created (risk_classification decision)
 
-DRAFTING (CEF Stage 3-4)  
-└── GAO created v0.1 (artifact\_status: draft)  
+DRAFTING (CEF Stage 3-4)
+└── GAO created v0.1 (artifact_status: draft)
 └── DRO created (recommendation decisions embedded in artifact)
 
-HAN REVIEW (if triggered)  
-└── DRO updated (han\_review\_flag: true, han\_outcome recorded)  
-└── GAO updated (han\_review\_flag: true)  
+HAN REVIEW (if triggered)
+└── DRO updated (han_review_flag: true, han_outcome recorded)
+└── GAO updated (han_review_flag: true)
 └── XOO created IF any exception invoked during review
 
-ISSUANCE (CEF Stage 5\)  
-└── GAO finalized (artifact\_status: issued, issuance\_timestamp, content\_hash)  
-└── ECO updated (status: completed, closure\_timestamp)
+ISSUANCE (CEF Stage 5)
+└── GAO finalized (artifact_status: issued, issuance_timestamp, content_hash)
+└── ECO updated (status: completed, closure_timestamp)
 
-POST-ISSUANCE (CEF Stage 6\)  
-└── OEO created (as implementation evidence accumulates)  
-└── OEO updated (as additional outcomes observed)  
-└── ECO updated (linked\_objects includes all OEOs)
+POST-ISSUANCE (CEF Stage 6)
+└── OEO created (as implementation evidence accumulates)
+└── OEO updated (as additional outcomes observed)
+└── ECO updated (linked_objects includes all OEOs)
+
+```
 
 ---
 
@@ -12069,6 +12095,7 @@ Raidillo is built on the AI5 causal chain. For every AI system it governs, it ma
 
 ## Raidillo's Position in the 19 Integrated Ecosystem
 
+```
 ┌─────────────────────────────────────────────────────────────────┐  
 │                   19 Integrated Ecosystem                       │  
 │                                                                 │  
@@ -12107,18 +12134,19 @@ Raidillo is built on the AI5 causal chain. For every AI system it governs, it ma
 │  │  The systems Raidillo watches and guards                    ││  
 │  └─────────────────────────────────────────────────────────────┘│  
 └─────────────────────────────────────────────────────────────────┘
-
+```
 ---
 
 ## Raidillo's Runtime Architecture
 
+```
 ┌─────────────────────────────────────────────────────────────────┐  
 │                        RAIDILLO                                 │  
 │                     Runtime AI Guardian                         │  
 ├─────────────────────────────────────────────────────────────────┤  
 │                                                                 │  
 │  ┌─────────────────────────────────────────────────────────────┐│  
-│  │                   1\. Infrastructure Monitor                 ││  
+│  │                   1\. Infrastructure Monitor                ││  
 │  │  • Component inventory                                      ││  
 │  │  • Version tracking                                         ││  
 │  │  • Change detection                                         ││  
@@ -12126,7 +12154,7 @@ Raidillo is built on the AI5 causal chain. For every AI system it governs, it ma
 │                              │                                  │  
 │                              ▼                                  │  
 │  ┌─────────────────────────────────────────────────────────────┐│  
-│  │                   2\. Capability Monitor                     ││  
+│  │                   2\. Capability Monitor                    ││  
 │  │  • Perception tracker                                       ││  
 │  │  • Synthesis tracker                                        ││  
 │  │  • Decision tracker                                         ││  
@@ -12138,7 +12166,7 @@ Raidillo is built on the AI5 causal chain. For every AI system it governs, it ma
 │                              │                                  │  
 │                              ▼                                  │  
 │  ┌─────────────────────────────────────────────────────────────┐│  
-│  │                   3\. Control Enforcer                       ││  
+│  │                   3\. Control Enforcer                      ││  
 │  │  • EAF trust tier validation                                ││  
 │  │  • CTAM authorization checks                                ││  
 │  │  • RGI-8 Gate/Steer enforcement                             ││  
@@ -12148,7 +12176,7 @@ Raidillo is built on the AI5 causal chain. For every AI system it governs, it ma
 │                              │                                  │  
 │                              ▼                                  │  
 │  ┌─────────────────────────────────────────────────────────────┐│  
-│  │                   4\. Act Logger                             ││  
+│  │                   4\. Act Logger                            ││  
 │  │  • Full attribution chain                                   ││  
 │  │  • Context recording                                        ││  
 │  │  • Authorization trace                                      ││  
@@ -12157,7 +12185,7 @@ Raidillo is built on the AI5 causal chain. For every AI system it governs, it ma
 │                              │                                  │  
 │                              ▼                                  │  
 │  ┌─────────────────────────────────────────────────────────────┐│  
-│  │                   5\. Diagnostic Engine                      ││  
+│  │                   5\. Diagnostic Engine                     ││  
 │  │  • Hallucination detection                                  ││  
 │  │  • Drift detection (capability/control/act/consequence)     ││  
 │  │  • AOBA bias detection                                      ││  
@@ -12167,7 +12195,7 @@ Raidillo is built on the AI5 causal chain. For every AI system it governs, it ma
 │                              │                                  │  
 │                              ▼                                  │  
 │  ┌─────────────────────────────────────────────────────────────┐│  
-│  │                   6\. Scoring Engine                         ││  
+│  │                   6\. Scoring Engine                        ││  
 │  │  • MAGOS Scorecard maintenance                              ││  
 │  │  • Chapter-by-chapter compliance                            ││  
 │  │  • Trend analysis                                           ││  
@@ -12176,7 +12204,7 @@ Raidillo is built on the AI5 causal chain. For every AI system it governs, it ma
 │                              │                                  │  
 │                              ▼                                  │  
 │  ┌─────────────────────────────────────────────────────────────┐│  
-│  │                   7\. Reporting Engine                       ││  
+│  │                   7\. Reporting Engine                      ││  
 │  │  • System health reports                                    ││  
 │  │  • Compliance reports (ERDP)                                ││  
 │  │  • Incident reports                                         ││  
@@ -12185,7 +12213,7 @@ Raidillo is built on the AI5 causal chain. For every AI system it governs, it ma
 │                              │                                  │  
 │                              ▼                                  │  
 │  ┌─────────────────────────────────────────────────────────────┐│  
-│  │                   8\. Recommendation Engine                  ││  
+│  │                   8\. Recommendation Engine                 ││  
 │  │  • Remediation recommendations                              ││  
 │  │  • Policy amendment suggestions                             ││  
 │  │  • Escalation triggers                                      ││  
@@ -12201,6 +12229,7 @@ Raidillo is built on the AI5 causal chain. For every AI system it governs, it ma
 │  │  • Intervention requests                                    ││  
 │  └─────────────────────────────────────────────────────────────┘│  
 └─────────────────────────────────────────────────────────────────┘
+```
 
 ---
 
@@ -12268,128 +12297,131 @@ Raidillo enforces:
 
 # Raidillo Concrete Output Sample
 
-(venv) \[terrylan@arch aigis-governance\]$ python aigis\_agent\_complete.py  
-\======================================================================  
-AIGIS Constitutional Governance Agent — Complete Implementation  
-All 6 IMP Object Types | CAD-7 | RGI-8 | RCT Platform  
-Running on: arch | Arch Linux \+ i3wm  
-\======================================================================
+```
+(venv) [terrylan@arch aigis-governance]$ python aigis_agent_complete.py
+======================================================================
+AIGIS Constitutional Governance Agent — Complete Implementation
+All 6 IMP Object Types | CAD-7 | RGI-8 | RCT Platform
+Running on: arch | Arch Linux + i3wm
+======================================================================
 
-\[1\] Initializing AIGIS Agent at Tier 3 (Active)  
-\[INIT\] Agent F-DR-E-CN-T-SP-001 initialized for AcmeCorp at Tier 3  
-\[INIT\] ECO: ECO-2026-0a26cb  
-\[INIT\] RGI-8 Modes: {'perception': 'steer', 'synthesis': 'steer', 'decision': 'gate', 'interaction': 'gate', 'adaptation': 'gate', 'observability': 'steer', 'constraint': 'steer'}
+[1] Initializing AIGIS Agent at Tier 3 (Active)
+[INIT] Agent F-DR-E-CN-T-SP-001 initialized for AcmeCorp at Tier 3
+[INIT] ECO: ECO-2026-0a26cb
+[INIT] RGI-8 Modes: {'perception': 'steer', 'synthesis': 'steer', 'decision': 'gate', 'interaction': 'gate', 'adaptation': 'gate', 'observability': 'steer', 'constraint': 'steer'}
 
-Status:  
-  agent\_id: F-DR-E-CN-T-SP-001  
-  eco\_id: ECO-2026-0a26cb  
-  trust\_tier: 3  
-  trust\_tier\_name: Active  
-  linked\_objects: 0  
-  permitted\_actions: \['full\_discovery', 'draft\_deliverables', 'generate\_dros'\]  
-  rgi8\_modes: {'perception': 'steer', 'synthesis': 'steer', 'decision': 'gate', 'interaction': 'gate', 'adaptation': 'gate', 'observability': 'steer', 'constraint': 'steer'}  
-  ctam\_grants: {'perception': 'All sources authorized', 'synthesis': 'All generation types', 'decision': 'Autonomous (guardrails)', 'interaction': 'Read-only APIs (whitelist)', 'adaptation': 'Static', 'observability': 'Audit logging \+ Decision lineage \+ Drift detection', 'constraint': 'Boundary adherence \+ Compliance checking \+ Permission enforcement \+ abort'}  
-  active\_coalitions: \[\]
+Status:
+  agent_id: F-DR-E-CN-T-SP-001
+  eco_id: ECO-2026-0a26cb
+  trust_tier: 3
+  trust_tier_name: Active
+  linked_objects: 0
+  permitted_actions: ['full_discovery', 'draft_deliverables', 'generate_dros']
+  rgi8_modes: {'perception': 'steer', 'synthesis': 'steer', 'decision': 'gate', 'interaction': 'gate', 'adaptation': 'gate', 'observability': 'steer', 'constraint': 'steer'}
+  ctam_grants: {'perception': 'All sources authorized', 'synthesis': 'All generation types', 'decision': 'Autonomous (guardrails)', 'interaction': 'Read-only APIs (whitelist)', 'adaptation': 'Static', 'observability': 'Audit logging + Decision lineage + Drift detection', 'constraint': 'Boundary adherence + Compliance checking + Permission enforcement + abort'}
+  active_coalitions: []
 
-\[2\] Generating draft with NVIDIA NIM  
-\[CTAM\] Domain 'synthesis' at Tier 3: All generation types  
-\[RGI-8\] Domain 'synthesis' execution mode: steer  
-\[GAO\] Created: GAO-ECO-2026-0a26cb-46ad13 \- AI Governance Charter v1.0  
-\[HAN-TRIGGER\] GAO-ECO-2026-0a26cb-46ad13 requires HAN review before issuance
+[2] Generating draft with NVIDIA NIM
+[CTAM] Domain 'synthesis' at Tier 3: All generation types
+[RGI-8] Domain 'synthesis' execution mode: steer
+[GAO] Created: GAO-ECO-2026-0a26cb-46ad13 - AI Governance Charter v1.0
+[HAN-TRIGGER] GAO-ECO-2026-0a26cb-46ad13 requires HAN review before issuance
 
-\[3\] Draft created:  
-    GAO: GAO-ECO-2026-0a26cb-46ad13  
-    Title: AI Governance Charter v1.0  
-    HAN Review Required: True  
-    Content preview: \#\# AI GOVERNANCE CHARTER FOR \[COMPANY NAME\]    
-\*\*Aligned with PFRS S1 (General Requirements for Sustainability Reporting) and PFRS S2 (Climate-Related ...
+[3] Draft created:
+    GAO: GAO-ECO-2026-0a26cb-46ad13
+    Title: AI Governance Charter v1.0
+    HAN Review Required: True
+    Content preview: ## AI GOVERNANCE CHARTER FOR [COMPANY NAME]  
+**Aligned with PFRS S1 (General Requirements for Sustainability Reporting) and PFRS S2 (Climate-Related ...
 
-\[4\] Adding constraints (CRO)  
-\[CRO\] Added: CRO-ECO-2026-0a26cb-6f7e90 \- legal  
-\[CRO\] Added: CRO-ECO-2026-0a26cb-e2e6ca \- operational
+[4] Adding constraints (CRO)
+[CRO] Added: CRO-ECO-2026-0a26cb-6f7e90 - legal
+[CRO] Added: CRO-ECO-2026-0a26cb-e2e6ca - operational
 
-\[5\] Creating exception (XOO)  
-\[HAN-TRIGGER\] XOO XOO-ECO-2026-0a26cb-741787 created — requires HAN review  
-    XOO: XOO-ECO-2026-0a26cb-741787 — framework\_rule\_excepted  
+[5] Creating exception (XOO)
+[HAN-TRIGGER] XOO XOO-ECO-2026-0a26cb-741787 created — requires HAN review
+    XOO: XOO-ECO-2026-0a26cb-741787 — framework_rule_excepted
     HAN Authorization: True
 
-\[6\] Creating CAD-7 coalition  
-\[CAD-7\] Coalition created: COL-2026-88b0d0  
-    Members: \['F-DR-E-CN-T-SP-001', 'F-RE-E-CN-T-GN-001'\]  
-    Boundary: Joint advisory work on PFRS S1/S2 compliance  
+[6] Creating CAD-7 coalition
+[CAD-7] Coalition created: COL-2026-88b0d0
+    Members: ['F-DR-E-CN-T-SP-001', 'F-RE-E-CN-T-GN-001']
+    Boundary: Joint advisory work on PFRS S1/S2 compliance
     Coalition can act: True
 
-\[7\] Elevating to Tier 4 (Continuous)  
-\[HAN-TRIGGER\] Tier elevation 3→4 requires HAN review  
-\[HAN-TRIGGER\] XOO XOO-ECO-2026-0a26cb-e41fdf created — requires HAN review  
-\[ELEVATE\] Now at Tier 4: Continuous  
-\[RGI-8\] Updated modes: {'perception': 'steer', 'synthesis': 'steer', 'decision': 'steer', 'interaction': 'steer', 'adaptation': 'steer', 'observability': 'steer', 'constraint': 'steer'}
+[7] Elevating to Tier 4 (Continuous)
+[HAN-TRIGGER] Tier elevation 3→4 requires HAN review
+[HAN-TRIGGER] XOO XOO-ECO-2026-0a26cb-e41fdf created — requires HAN review
+[ELEVATE] Now at Tier 4: Continuous
+[RGI-8] Updated modes: {'perception': 'steer', 'synthesis': 'steer', 'decision': 'steer', 'interaction': 'steer', 'adaptation': 'steer', 'observability': 'steer', 'constraint': 'steer'}
 
-\[8\] RCT Compliance Platform Demo  
-\[INIT\] Agent F-EX-E-CN-T-SP-001 initialized for PhilippineCorp at Tier 3  
-\[INIT\] ECO: ECO-2026-ba428c  
-\[INIT\] RGI-8 Modes: {'perception': 'steer', 'synthesis': 'steer', 'decision': 'gate', 'interaction': 'gate', 'adaptation': 'gate', 'observability': 'steer', 'constraint': 'steer'}  
-\[CRO\] Added: CRO-ECO-2026-ba428c-babb8e \- regulatory  
-\[CRO\] Added: CRO-ECO-2026-ba428c-cce8e0 \- regulatory  
-\[RCT\] Compliance platform initialized for PhilippineCorp  
-\[RCT\] PFRS S1/S2 constraints applied
+[8] RCT Compliance Platform Demo
+[INIT] Agent F-EX-E-CN-T-SP-001 initialized for PhilippineCorp at Tier 3
+[INIT] ECO: ECO-2026-ba428c
+[INIT] RGI-8 Modes: {'perception': 'steer', 'synthesis': 'steer', 'decision': 'gate', 'interaction': 'gate', 'adaptation': 'gate', 'observability': 'steer', 'constraint': 'steer'}
+[CRO] Added: CRO-ECO-2026-ba428c-babb8e - regulatory
+[CRO] Added: CRO-ECO-2026-ba428c-cce8e0 - regulatory
+[RCT] Compliance platform initialized for PhilippineCorp
+[RCT] PFRS S1/S2 constraints applied
 
-\[9\] Generating PFRS S1/S2 Compliance Report  
-\[RCT\] Client revenue P25.0B — exceeds P15B LNL threshold  
-\[RCT\] Mandatory PFRS S1/S2 reporting required  
-\[RCT\] Scope 3 GHG emissions not required (transition relief)  
-\[CTAM\] Domain 'synthesis' at Tier 3: All generation types  
-\[RGI-8\] Domain 'synthesis' execution mode: steer  
-\[GAO\] Created: GAO-ECO-2026-ba428c-66d465 \- PFRS S1/S2 Compliance Report — PhilippineCorp  
-\[HAN-TRIGGER\] GAO-ECO-2026-ba428c-66d465 requires HAN review before issuance
+[9] Generating PFRS S1/S2 Compliance Report
+[RCT] Client revenue P25.0B — exceeds P15B LNL threshold
+[RCT] Mandatory PFRS S1/S2 reporting required
+[RCT] Scope 3 GHG emissions not required (transition relief)
+[CTAM] Domain 'synthesis' at Tier 3: All generation types
+[RGI-8] Domain 'synthesis' execution mode: steer
+[GAO] Created: GAO-ECO-2026-ba428c-66d465 - PFRS S1/S2 Compliance Report — PhilippineCorp
+[HAN-TRIGGER] GAO-ECO-2026-ba428c-66d465 requires HAN review before issuance
 
-\[10\] Compliance Report created:  
-    GAO: GAO-ECO-2026-ba428c-66d465  
-    Title: PFRS S1/S2 Compliance Report — PhilippineCorp  
-    Content preview: \#\#\# PFRS S1/S2 Sustainability Compliance Report    
-\*\*PhilippineCorp\*\* | Manufacturing Sector | Revenue: P25.0B    
-\*\*Reporting Period:\*\* FY2023 | \*\*Prepa...
+[10] Compliance Report created:
+    GAO: GAO-ECO-2026-ba428c-66d465
+    Title: PFRS S1/S2 Compliance Report — PhilippineCorp
+    Content preview: ### PFRS S1/S2 Sustainability Compliance Report  
+**PhilippineCorp** | Manufacturing Sector | Revenue: P25.0B  
+**Reporting Period:** FY2023 | **Prepa...
 
-\[11\] Validating compliance  
-\[RCT\] Validating GAO GAO-ECO-2026-ba428c-66d465 against PFRS S1/S2  
-    Validation: Compliance validation passed for GAO-ECO-2026-ba428c-66d465  
+[11] Validating compliance
+[RCT] Validating GAO GAO-ECO-2026-ba428c-66d465 against PFRS S1/S2
+    Validation: Compliance validation passed for GAO-ECO-2026-ba428c-66d465
     OEO: OEO-ECO-2026-ba428c-6332bc
 
-\[12\] Final status  
-    Trust Tier: 4 (Continuous)  
-    Linked Objects: 8  
-    Active Coalitions: \['COL-2026-88b0d0'\]
+[12] Final status
+    Trust Tier: 4 (Continuous)
+    Linked Objects: 8
+    Active Coalitions: ['COL-2026-88b0d0']
 
-\[13\] IMP Object Count  
-    ECO: 4  
-    DRO: 8  
-    GAO: 4  
-    CRO: 8  
-    OEO: 6  
+[13] IMP Object Count
+    ECO: 4
+    DRO: 8
+    GAO: 4
+    CRO: 8
+    OEO: 6
     XOO: 4
 
-\======================================================================  
-✅ AIGIS Governance Agent Ready  
-\======================================================================
+======================================================================
+✅ AIGIS Governance Agent Ready
+======================================================================
 
-Complete AIGIS components:  
-  ✅ IMP — All 6 canonical object types (ECO, DRO, GAO, CRO, OEO, XOO)  
-  ✅ EAF — 5 trust tiers with HAN triggers  
-  ✅ AWOF — Agent classification (FUNCTION-ENTITY-TIER-SEQ)  
-  ✅ CDT-7 — 7 capability domains  
-  ✅ CTAM — Capability-Tier Authorization Matrix  
-  ✅ RGI-8 — Gate/Steer execution mode  
-  ✅ CAD-7 — Coalition accountability  
+Complete AIGIS components:
+  ✅ IMP — All 6 canonical object types (ECO, DRO, GAO, CRO, OEO, XOO)
+  ✅ EAF — 5 trust tiers with HAN triggers
+  ✅ AWOF — Agent classification (FUNCTION-ENTITY-TIER-SEQ)
+  ✅ CDT-7 — 7 capability domains
+  ✅ CTAM — Capability-Tier Authorization Matrix
+  ✅ RGI-8 — Gate/Steer execution mode
+  ✅ CAD-7 — Coalition accountability
   ✅ RCT — PFRS S1/S2 compliance platform
 
-Next steps for production:  
-  1\. Deploy QuickBooks/Xero API integration  
-  2\. Add full ERDP external reporting  
-  3\. Implement HAN dashboard for review/override  
-  4\. Add AOBA/ABA bias audits  
-  5\. Containerize for cloud deployment  
-\======================================================================  
-(venv) \[terrylan@arch aigis-governance\]$
+Next steps for production:
+  1. Deploy QuickBooks/Xero API integration
+  2. Add full ERDP external reporting
+  3. Implement HAN dashboard for review/override
+  4. Add AOBA/ABA bias audits
+  5. Containerize for cloud deployment
+======================================================================
+(venv) [terrylan@arch aigis-governance]$
+
+```
 
 ## What the script output shows:
 
@@ -12492,13 +12524,14 @@ Raidillo's Knowledge Codification is the **institutional memory system** that ca
 
 ## Architecture Overview: Knowledge Codification Module
 
+```
 ┌─────────────────────────────────────────────────────────────────────────────┐  
 │                     RAIDILLO KNOWLEDGE CODIFICATION                         │  
-│                     (IMP \+ Ac-N5 \+ Chapter 24\)                              │  
+│                     (IMP \+ Ac-N5 \+ Chapter 24\)                           │  
 ├─────────────────────────────────────────────────────────────────────────────┤  
 │                                                                             │  
 │  ┌─────────────────────────────────────────────────────────────────────────┐│  
-│  │                   1\. OBJECT CAPTURE LAYER                               ││  
+│  │                   1\. OBJECT CAPTURE LAYER                              ││  
 │  │  Captures every governance-relevant event as structured IMP objects     ││  
 │  │                                                                         ││  
 │  │  ┌─────────────────────────────────────────────────────────────────┐    ││  
@@ -12518,7 +12551,7 @@ Raidillo's Knowledge Codification is the **institutional memory system** that ca
 │                                      │                                      │  
 │                                      ▼                                      │  
 │  ┌─────────────────────────────────────────────────────────────────────────┐│  
-│  │                   2\. PROVENANCE & ATTRIBUTION LAYER                     ││  
+│  │                   2\. PROVENANCE & ATTRIBUTION LAYER                    ││  
 │  │  Ensures every object carries complete traceability                     ││  
 │  │                                                                         ││  
 │  │  • Origin: AI agent / HAN / hybrid / system                             ││  
@@ -12533,7 +12566,7 @@ Raidillo's Knowledge Codification is the **institutional memory system** that ca
 │                                      │                                      │  
 │                                      ▼                                      │  
 │  ┌─────────────────────────────────────────────────────────────────────────┐│  
-│  │                   3\. TEMPORAL LAYERING LAYER                            ││  
+│  │                   3\. TEMPORAL LAYERING LAYER                           ││  
 │  │  Maintains truth states across time                                     ││  
 │  │                                                                         ││  
 │  │  ┌─────────────────────────────────────────────────────────────────┐    ││  
@@ -12549,7 +12582,7 @@ Raidillo's Knowledge Codification is the **institutional memory system** that ca
 │                                      │                                      │  
 │                                      ▼                                      │  
 │  ┌─────────────────────────────────────────────────────────────────────────┐│  
-│  │                   4\. STORAGE LAYER                                      ││  
+│  │                   4\. STORAGE LAYER                                     ││  
 │  │  Persistent storage with retrieval semantics                            ││  
 │  │                                                                         ││  
 │  │  ┌─────────────────────────────────────────────────────────────────┐    ││  
@@ -12566,7 +12599,7 @@ Raidillo's Knowledge Codification is the **institutional memory system** that ca
 │                                      │                                      │  
 │                                      ▼                                      │  
 │  ┌─────────────────────────────────────────────────────────────────────────┐│  
-│  │                   5\. RETRIEVAL & QUERY LAYER                            ││  
+│  │                   5\. RETRIEVAL & QUERY LAYER                           ││  
 │  │  Governance-oriented retrieval semantics                                ││  
 │  │                                                                         ││  
 │  │  ┌─────────────────────────────────────────────────────────────────┐    ││  
@@ -12582,7 +12615,7 @@ Raidillo's Knowledge Codification is the **institutional memory system** that ca
 │                                      │                                      │  
 │                                      ▼                                      │  
 │  ┌─────────────────────────────────────────────────────────────────────────┐│  
-│  │                   6\. PATTERN DETECTION LAYER                            ││  
+│  │                   6\. PATTERN DETECTION LAYER                           ││  
 │  │  Cross-object pattern detection and learning                            ││  
 │  │                                                                         ││  
 │  │  • Drift pattern detection (gradual capability creep)                   ││  
@@ -12595,7 +12628,7 @@ Raidillo's Knowledge Codification is the **institutional memory system** that ca
 │                                      │                                      │  
 │                                      ▼                                      │  
 │  ┌─────────────────────────────────────────────────────────────────────────┐│  
-│  │                   7\. LEARNING INTEGRATION LAYER                         ││  
+│  │                   7\. LEARNING INTEGRATION LAYER                        ││  
 │  │  AICA-5 Ac-N5 — feeds findings back upstream                            ││  
 │  │                                                                         ││  
 │  │  ┌─────────────────────────────────────────────────────────────────┐    ││  
@@ -12609,6 +12642,7 @@ Raidillo's Knowledge Codification is the **institutional memory system** that ca
 │  │  └─────────────────────────────────────────────────────────────────┘    ││  
 │  └─────────────────────────────────────────────────────────────────────────┘│  
 └─────────────────────────────────────────────────────────────────────────────┘
+```
 
 ---
 
@@ -12616,104 +12650,121 @@ Raidillo's Knowledge Codification is the **institutional memory system** that ca
 
 ### 1\. ECO — Engagement Context
 
-@dataclass  
-class ECO:  
-    eco\_id: str  
-    client\_id: str  
-    trust\_tier: int          \# EAF 1-5  
-    intake\_timestamp: str  
-    engagement\_type: str     \# governance\_charter / monitoring / audit / etc.  
-    frameworks\_applicable: List\[str\]  \# AICA-5, ICC-8, etc.  
-    risk\_level: str          \# low / moderate / elevated / critical / existential  
-    status: str              \# active / completed / suspended  
-    closure\_timestamp: Optional\[str\]  
-    linked\_objects: List\[str\]  \# IDs of all DRO, GAO, CRO, OEO, XOO
+```
+@dataclass
+class ECO:
+    eco_id: str
+    client_id: str
+    trust_tier: int          # EAF 1-5
+    intake_timestamp: str
+    engagement_type: str     # governance_charter / monitoring / audit / etc.
+    frameworks_applicable: List[str]  # AICA-5, ICC-8, etc.
+    risk_level: str          # low / moderate / elevated / critical / existential
+    status: str              # active / completed / suspended
+    closure_timestamp: Optional[str]
+    linked_objects: List[str]  # IDs of all DRO, GAO, CRO, OEO, XOO
+
+```
 
 ### 2\. DRO — Decision Record
 
-@dataclass  
-class DRO:  
-    dro\_id: str  
-    eco\_id: str  
-    decision\_type: str       \# authorization / escalation / recommendation / etc.  
-    decision\_timestamp: str  
-    decision\_origin: str     \# ai / human / hybrid  
-    ai\_model\_ref: Optional\[str\]  
-    human\_actor\_ref: Optional\[str\]  \# HAN identifier  
-    justification\_trace: str        \# reasoning chain  
-    framework\_source: List\[str\]     \# AICA-5 node(s) that governed this  
-    han\_review\_flag: bool  
-    han\_review\_timestamp: Optional\[str\]  
-    han\_outcome: Optional\[str\]      \# approved / modified / rejected  
-    client\_acknowledgment\_state: str \# pending / acknowledged / disputed  
-    truth\_state: str                \# current / historical / revoked  
-    superseded\_by: Optional\[str\]
+```
+@dataclass
+class DRO:
+    dro_id: str
+    eco_id: str
+    decision_type: str       # authorization / escalation / recommendation / etc.
+    decision_timestamp: str
+    decision_origin: str     # ai / human / hybrid
+    ai_model_ref: Optional[str]
+    human_actor_ref: Optional[str]  # HAN identifier
+    justification_trace: str        # reasoning chain
+    framework_source: List[str]     # AICA-5 node(s) that governed this
+    han_review_flag: bool
+    han_review_timestamp: Optional[str]
+    han_outcome: Optional[str]      # approved / modified / rejected
+    client_acknowledgment_state: str # pending / acknowledged / disputed
+    truth_state: str                # current / historical / revoked
+    superseded_by: Optional[str]
+
+```
 
 ### 3\. GAO — Governance Artifact
 
-@dataclass  
-class GAO:  
-    gao\_id: str  
-    eco\_id: str  
-    artifact\_type: str        \# policy\_instrument / scorecard / report / memo  
-    artifact\_title: str  
-    content: str  
-    version: str  
-    draft\_origin: str         \# ai / human / hybrid  
-    governing\_frameworks: List\[str\]  
-    han\_review\_flag: bool  
-    issuance\_timestamp: Optional\[str\]  
-    artifact\_status: str      \# draft / issued / superseded / revoked  
-    truth\_state: str          \# current / historical / revoked  
-    content\_hash: Optional\[str\]
+```
+@dataclass
+class GAO:
+    gao_id: str
+    eco_id: str
+    artifact_type: str        # policy_instrument / scorecard / report / memo
+    artifact_title: str
+    content: str
+    version: str
+    draft_origin: str         # ai / human / hybrid
+    governing_frameworks: List[str]
+    han_review_flag: bool
+    issuance_timestamp: Optional[str]
+    artifact_status: str      # draft / issued / superseded / revoked
+    truth_state: str          # current / historical / revoked
+    content_hash: Optional[str]
+```
 
 ### 4\. CRO — Constraint Record
 
-@dataclass  
-class CRO:  
-    cro\_id: str  
-    eco\_id: str  
-    constraint\_type: str      \# legal / regulatory / operational / capital / temporal  
-    constraint\_source: str    \# regulation name, policy reference  
-    constraint\_description: str  
-    binding\_scope: str        \# engagement\_wide / artifact\_specific / decision\_specific  
-    affected\_objects: List\[str\]  
-    constraint\_status: str    \# active / lifted / superseded  
-    truth\_state: str          \# current / historical / revoked  
-    lift\_basis: Optional\[str\]
+```
+@dataclass
+class CRO:
+    cro_id: str
+    eco_id: str
+    constraint_type: str      # legal / regulatory / operational / capital / temporal
+    constraint_source: str    # regulation name, policy reference
+    constraint_description: str
+    binding_scope: str        # engagement_wide / artifact_specific / decision_specific
+    affected_objects: List[str]
+    constraint_status: str    # active / lifted / superseded
+    truth_state: str          # current / historical / revoked
+    lift_basis: Optional[str]
+
+```
 
 ### 5\. OEO — Outcome Evidence
 
-@dataclass  
-class OEO:  
-    oeo\_id: str  
-    eco\_id: str  
-    gao\_reference: str        \# GAO this outcome relates to  
-    observation\_timestamp: str  
-    observation\_origin: str   \# client\_reported / ai\_monitored / han\_assessed / third\_party  
-    outcome\_type: str         \# implementation\_success / governance\_drift / incident / etc.  
-    outcome\_description: str  
-    drift\_detected: bool  
-    drift\_description: Optional\[str\]  
-    framework\_efficacy\_signal: str  \# positive / neutral / negative  
-    precedent\_applicability: str    \# high / moderate / low  
-    precedent\_domain\_tags: List\[str\]
+```
+@dataclass
+class OEO:
+    oeo_id: str
+    eco_id: str
+    gao_reference: str        # GAO this outcome relates to
+    observation_timestamp: str
+    observation_origin: str   # client_reported / ai_monitored / han_assessed / third_party
+    outcome_type: str         # implementation_success / governance_drift / incident / etc.
+    outcome_description: str
+    drift_detected: bool
+    drift_description: Optional[str]
+    framework_efficacy_signal: str  # positive / neutral / negative
+    precedent_applicability: str    # high / moderate / low
+    precedent_domain_tags: List[str]
+
+```
 
 ### 6\. XOO — Exception/Override
 
-@dataclass  
-class XOO:  
-    xoo\_id: str  
-    eco\_id: str  
-    exception\_type: str      \# han\_review\_waived / framework\_rule\_excepted / etc.  
-    excepted\_rule\_reference: str  
-    exception\_basis: str     \# justification  
-    exception\_authority: str \# han / eaf\_rule / client\_request  
-    exception\_timestamp: str  
-    han\_authorization: bool  
-    risk\_assessment: str     \# low / moderate / elevated / critical  
-    affected\_objects: List\[str\]  
-    exception\_status: str    \# active / resolved / escalated
+```
+@dataclass
+class XOO:
+    xoo_id: str
+    eco_id: str
+    exception_type: str      # han_review_waived / framework_rule_excepted / etc.
+    excepted_rule_reference: str
+    exception_basis: str     # justification
+    exception_authority: str # han / eaf_rule / client_request
+    exception_timestamp: str
+    han_authorization: bool
+    risk_assessment: str     # low / moderate / elevated / critical
+    affected_objects: List[str]
+    exception_status: str    # active / resolved / escalated
+
+```
 
 ---
 
@@ -12721,316 +12772,334 @@ class XOO:
 
 ### 1\. Constraint Reconstruction
 
-def reconstruct\_constraints(eco\_id: str) \-\> List\[CRO\]:  
-    """Reconstruct all active constraints for an engagement."""  
-    cursor \= conn.execute(  
-        "SELECT json\_data FROM cro WHERE eco\_id \= ? AND constraint\_status \= 'active'",  
-        (eco\_id,)  
-    )  
-    return \[CRO(\*\*json.loads(row\[0\])) for row in cursor.fetchall()\]  
-def get\_applicable\_constraints(eco\_id: str, domain: str) \-\> List\[CRO\]:  
-    """Get constraints relevant to a specific capability domain."""  
-    all\_constraints \= reconstruct\_constraints(eco\_id)  
-    return \[c for c in all\_constraints if domain in c.affected\_objects\]
+```
+def reconstruct_constraints(eco_id: str) -> List[CRO]:
+    """Reconstruct all active constraints for an engagement."""
+    cursor = conn.execute(
+        "SELECT json_data FROM cro WHERE eco_id = ? AND constraint_status = 'active'",
+        (eco_id,)
+    )
+    return [CRO(**json.loads(row[0])) for row in cursor.fetchall()]
+def get_applicable_constraints(eco_id: str, domain: str) -> List[CRO]:
+    """Get constraints relevant to a specific capability domain."""
+    all_constraints = reconstruct_constraints(eco_id)
+    return [c for c in all_constraints if domain in c.affected_objects]
+```
 
 ### 2\. Precedent Matching
 
-def find\_precedents(eco\_id: str, outcome\_type: str, domain\_tags: List\[str\]) \-\> List\[OEO\]:  
-    """Find similar past outcomes for precedent matching."""  
-    tag\_condition \= " OR ".join(\["precedent\_domain\_tags LIKE ?" for \_ in domain\_tags\])  
-    params \= \[f"%{tag}%" for tag in domain\_tags\]      
-    cursor \= conn.execute(  
-        f"SELECT json\_data FROM oeo "  
-        f"WHERE eco\_id \!= ? AND outcome\_type \= ? AND ({tag\_condition})",  
-        \[eco\_id, outcome\_type\] \+ params  
-    )  
-    return sorted(  
-        \[OEO(\*\*json.loads(row\[0\])) for row in cursor.fetchall()\],  
-        key=lambda o: o.observation\_timestamp,  
-        reverse=True  
+```
+def find_precedents(eco_id: str, outcome_type: str, domain_tags: List[str]) -> List[OEO]:
+    """Find similar past outcomes for precedent matching."""
+    tag_condition = " OR ".join(["precedent_domain_tags LIKE ?" for _ in domain_tags])
+    params = [f"%{tag}%" for tag in domain_tags]    
+    cursor = conn.execute(
+        f"SELECT json_data FROM oeo "
+        f"WHERE eco_id != ? AND outcome_type = ? AND ({tag_condition})",
+        [eco_id, outcome_type] + params
     )
+    return sorted(
+        [OEO(**json.loads(row[0])) for row in cursor.fetchall()],
+        key=lambda o: o.observation_timestamp,
+        reverse=True
+    )
+```
 
 ### 3\. Governance Lineage Tracing
 
-def trace\_lineage(gao\_id: str) \-\> Dict:  
-    """Trace the complete governance lineage of a GAO."""  
-    lineage \= {  
-        "gao": None,  
-        "dros": \[\],  
-        "cros": \[\],  
-        "xoos": \[\],  
-        "eco": None  
-    }  
-      
-    \# Get the GAO  
-    cursor \= conn.execute("SELECT json\_data FROM gao WHERE gao\_id \= ?", (gao\_id,))  
-    row \= cursor.fetchone()  
-    if row:  
-        lineage\["gao"\] \= json.loads(row\[0\])  
-      
-    \# Find all DROs that reference this GAO  
-    cursor \= conn.execute(  
-        "SELECT json\_data FROM dro WHERE json\_data LIKE ?",  
-        (f'%"{gao\_id}"%',)  
-    )  
-    lineage\["dros"\] \= \[json.loads(row\[0\]) for row in cursor.fetchall()\]  
-      
-    \# Find all CROs that reference this GAO  
-    cursor \= conn.execute(  
-        "SELECT json\_data FROM cro WHERE json\_data LIKE ?",  
-        (f'%"{gao\_id}"%',)  
-    )  
-    lineage\["cros"\] \= \[json.loads(row\[0\]) for row in cursor.fetchall()\]  
-      
-    \# Find all XOOs that reference this GAO  
-    cursor \= conn.execute(  
-        "SELECT json\_data FROM xoo WHERE json\_data LIKE ?",  
-        (f'%"{gao\_id}"%',)  
-    )  
-    lineage\["xoos"\] \= \[json.loads(row\[0\]) for row in cursor.fetchall()\]  
-      
-    \# Get the parent ECO  
-    if lineage\["gao"\]:  
-        eco\_id \= lineage\["gao"\]\["eco\_id"\]  
-        cursor \= conn.execute("SELECT json\_data FROM eco WHERE eco\_id \= ?", (eco\_id,))  
-        row \= cursor.fetchone()  
-        if row:  
-            lineage\["eco"\] \= json.loads(row\[0\])  
-      
+```
+def trace_lineage(gao_id: str) -> Dict:
+    """Trace the complete governance lineage of a GAO."""
+    lineage = {
+        "gao": None,
+        "dros": [],
+        "cros": [],
+        "xoos": [],
+        "eco": None
+    }
+    
+    # Get the GAO
+    cursor = conn.execute("SELECT json_data FROM gao WHERE gao_id = ?", (gao_id,))
+    row = cursor.fetchone()
+    if row:
+        lineage["gao"] = json.loads(row[0])
+    
+    # Find all DROs that reference this GAO
+    cursor = conn.execute(
+        "SELECT json_data FROM dro WHERE json_data LIKE ?",
+        (f'%"{gao_id}"%',)
+    )
+    lineage["dros"] = [json.loads(row[0]) for row in cursor.fetchall()]
+    
+    # Find all CROs that reference this GAO
+    cursor = conn.execute(
+        "SELECT json_data FROM cro WHERE json_data LIKE ?",
+        (f'%"{gao_id}"%',)
+    )
+    lineage["cros"] = [json.loads(row[0]) for row in cursor.fetchall()]
+    
+    # Find all XOOs that reference this GAO
+    cursor = conn.execute(
+        "SELECT json_data FROM xoo WHERE json_data LIKE ?",
+        (f'%"{gao_id}"%',)
+    )
+    lineage["xoos"] = [json.loads(row[0]) for row in cursor.fetchall()]
+    
+    # Get the parent ECO
+    if lineage["gao"]:
+        eco_id = lineage["gao"]["eco_id"]
+        cursor = conn.execute("SELECT json_data FROM eco WHERE eco_id = ?", (eco_id,))
+        row = cursor.fetchone()
+        if row:
+            lineage["eco"] = json.loads(row[0])
+    
     return lineage
+```
 
 ### 4\. Outcome Similarity Mapping
 
-def map\_similar\_outcomes(eco\_id: str, framework: str) \-\> List\[OEO\]:  
-    """Find outcomes with similar framework application."""  
-    cursor \= conn.execute(  
-        "SELECT json\_data FROM oeo WHERE eco\_id \!= ? AND json\_data LIKE ?",  
-        (eco\_id, f'%"{framework}"%')  
-    )  
-    return \[OEO(\*\*json.loads(row\[0\])) for row in cursor.fetchall()\]  
+```
+def map_similar_outcomes(eco_id: str, framework: str) -> List[OEO]:
+    """Find outcomes with similar framework application."""
+    cursor = conn.execute(
+        "SELECT json_data FROM oeo WHERE eco_id != ? AND json_data LIKE ?",
+        (eco_id, f'%"{framework}"%')
+    )
+    return [OEO(**json.loads(row[0])) for row in cursor.fetchall()]  
+```
+
 ---
 
 ## Pattern Detection Implementation
 
 ### 1\. Drift Pattern Detection
 
-def detect\_drift\_patterns(eco\_id: str, window\_days: int \= 30\) \-\> List\[Dict\]:  
-    """Detect patterns of drift over time."""  
-    cutoff \= datetime.now() \- timedelta(days=window\_days)  
-      
-    \# Get all OEOs with drift detected  
-    cursor \= conn.execute(  
-        "SELECT json\_data FROM oeo "  
-        "WHERE eco\_id \= ? AND drift\_detected \= 1 "  
-        "AND observation\_timestamp \> ?",  
-        (eco\_id, cutoff.isoformat())  
-    )  
-    drift\_events \= \[json.loads(row\[0\]) for row in cursor.fetchall()\]  
-      
-    if not drift\_events:  
-        return \[\]  
-      
-    \# Group by drift description pattern  
-    patterns \= {}  
-    for event in drift\_events:  
-        desc \= event.get("drift\_description", "unknown")  
-        if desc not in patterns:  
-            patterns\[desc\] \= {"count": 0, "first": event\["observation\_timestamp"\],   
-                             "last": event\["observation\_timestamp"\], "events": \[\]}  
-        patterns\[desc\]\["count"\] \+= 1  
-        patterns\[desc\]\["last"\] \= event\["observation\_timestamp"\]  
-        patterns\[desc\]\["events"\].append(event\["oeo\_id"\])  
-      
-    \# Flag patterns that are becoming more frequent  
-    result \= \[\]  
-    for desc, data in patterns.items():  
-        if data\["count"\] \>= 3:  
-            result.append({  
-                "pattern": desc,  
-                "frequency": data\["count"\],  
-                "first\_seen": data\["first"\],  
-                "last\_seen": data\["last"\],  
-                "trend": "increasing" if data\["count"\] \> 2 else "stable",  
-                "severity": "high" if data\["count"\] \>= 5 else "moderate",  
-                "references": data\["events"\]  
-            })  
-      
+```
+def detect_drift_patterns(eco_id: str, window_days: int = 30) -> List[Dict]:
+    """Detect patterns of drift over time."""
+    cutoff = datetime.now() - timedelta(days=window_days)
+    
+    # Get all OEOs with drift detected
+    cursor = conn.execute(
+        "SELECT json_data FROM oeo "
+        "WHERE eco_id = ? AND drift_detected = 1 "
+        "AND observation_timestamp > ?",
+        (eco_id, cutoff.isoformat())
+    )
+    drift_events = [json.loads(row[0]) for row in cursor.fetchall()]
+    
+    if not drift_events:
+        return []
+    
+    # Group by drift description pattern
+    patterns = {}
+    for event in drift_events:
+        desc = event.get("drift_description", "unknown")
+        if desc not in patterns:
+            patterns[desc] = {"count": 0, "first": event["observation_timestamp"], 
+                             "last": event["observation_timestamp"], "events": []}
+        patterns[desc]["count"] += 1
+        patterns[desc]["last"] = event["observation_timestamp"]
+        patterns[desc]["events"].append(event["oeo_id"])
+    
+    # Flag patterns that are becoming more frequent
+    result = []
+    for desc, data in patterns.items():
+        if data["count"] >= 3:
+            result.append({
+                "pattern": desc,
+                "frequency": data["count"],
+                "first_seen": data["first"],
+                "last_seen": data["last"],
+                "trend": "increasing" if data["count"] > 2 else "stable",
+                "severity": "high" if data["count"] >= 5 else "moderate",
+                "references": data["events"]
+            })
+    
     return result
+```
 
 ### 2\. Constraint Failure Pattern Detection
 
-def detect\_constraint\_failure\_patterns(eco\_id: str) \-\> List\[Dict\]:  
-    """Detect which constraints fail most often."""  
-    \# Get all XOOs (exceptions/overrides) and CROs (constraints)  
-    cursor \= conn.execute(  
-        "SELECT json\_data FROM xoo WHERE eco\_id \= ? AND exception\_status \= 'active'",  
-        (eco\_id,)  
-    )  
-    xoos \= \[json.loads(row\[0\]) for row in cursor.fetchall()\]  
-      
-    cursor \= conn.execute(  
-        "SELECT json\_data FROM cro WHERE eco\_id \= ? AND constraint\_status \= 'active'",  
-        (eco\_id,)  
-    )  
-    cros \= {cro\["cro\_id"\]: cro for cro in \[json.loads(row\[0\]) for row in cursor.fetchall()\]}  
-      
-    \# Map exceptions to constraints  
-    constraint\_failures \= {}  
-    for xoo in xoos:  
-        rule\_ref \= xoo.get("excepted\_rule\_reference", "")  
-        for cro\_id, cro in cros.items():  
-            if rule\_ref in cro.get("constraint\_description", ""):  
-                if cro\_id not in constraint\_failures:  
-                    constraint\_failures\[cro\_id\] \= {  
-                        "constraint": cro,  
-                        "failure\_count": 0,  
-                        "exceptions": \[\]  
-                    }  
-                constraint\_failures\[cro\_id\]\["failure\_count"\] \+= 1  
-                constraint\_failures\[cro\_id\]\["exceptions"\].append(xoo\["xoo\_id"\])  
-      
-    \# Sort by failure count  
-    return sorted(  
-        \[{"cro\_id": k, \*\*v} for k, v in constraint\_failures.items()\],  
-        key=lambda x: x\["failure\_count"\],  
-        reverse=True  
+```
+def detect_constraint_failure_patterns(eco_id: str) -> List[Dict]:
+    """Detect which constraints fail most often."""
+    # Get all XOOs (exceptions/overrides) and CROs (constraints)
+    cursor = conn.execute(
+        "SELECT json_data FROM xoo WHERE eco_id = ? AND exception_status = 'active'",
+        (eco_id,)
     )
+    xoos = [json.loads(row[0]) for row in cursor.fetchall()]
+    
+    cursor = conn.execute(
+        "SELECT json_data FROM cro WHERE eco_id = ? AND constraint_status = 'active'",
+        (eco_id,)
+    )
+    cros = {cro["cro_id"]: cro for cro in [json.loads(row[0]) for row in cursor.fetchall()]}
+    
+    # Map exceptions to constraints
+    constraint_failures = {}
+    for xoo in xoos:
+        rule_ref = xoo.get("excepted_rule_reference", "")
+        for cro_id, cro in cros.items():
+            if rule_ref in cro.get("constraint_description", ""):
+                if cro_id not in constraint_failures:
+                    constraint_failures[cro_id] = {
+                        "constraint": cro,
+                        "failure_count": 0,
+                        "exceptions": []
+                    }
+                constraint_failures[cro_id]["failure_count"] += 1
+                constraint_failures[cro_id]["exceptions"].append(xoo["xoo_id"])
+    
+    # Sort by failure count
+    return sorted(
+        [{"cro_id": k, **v} for k, v in constraint_failures.items()],
+        key=lambda x: x["failure_count"],
+        reverse=True
+    )
+```
 
 ### 3\. Hallucination Pattern Detection
 
-def detect\_hallucination\_patterns(eco\_id: str) \-\> List\[Dict\]:  
-    """Detect patterns in AI hallucinations."""  
-    cursor \= conn.execute(  
-        "SELECT json\_data FROM oeo "  
-        "WHERE eco\_id \= ? AND outcome\_type \= 'hallucination'",  
-        (eco\_id,)  
-    )  
-    hallucinations \= \[json.loads(row\[0\]) for row in cursor.fetchall()\]  
-      
-    if not hallucinations:  
-        return \[\]  
-      
-    \# Group by pattern in the description  
-    patterns \= {}  
-    for h in hallucinations:  
-        desc \= h.get("outcome\_description", "")  
-        \# Extract key phrases (simplified)  
-        for word in desc.split():  
-            if len(word) \> 5 and word.lower() not in \["hallucination", "detected", "reported"\]:  
-                if word not in patterns:  
-                    patterns\[word\] \= {"count": 0, "examples": \[\]}  
-                patterns\[word\]\["count"\] \+= 1  
-                if len(patterns\[word\]\["examples"\]) \< 3:  
-                    patterns\[word\]\["examples"\].append(desc\[:100\])  
-      
-    return \[  
-        {"pattern": word, "frequency": data\["count"\], "examples": data\["examples"\]}  
-        for word, data in patterns.items()  
-        if data\["count"\] \>= 2  
-    \]  
+```
+def detect_hallucination_patterns(eco_id: str) -> List[Dict]:
+    """Detect patterns in AI hallucinations."""
+    cursor = conn.execute(
+        "SELECT json_data FROM oeo "
+        "WHERE eco_id = ? AND outcome_type = 'hallucination'",
+        (eco_id,)
+    )
+    hallucinations = [json.loads(row[0]) for row in cursor.fetchall()]
+    
+    if not hallucinations:
+        return []
+    
+    # Group by pattern in the description
+    patterns = {}
+    for h in hallucinations:
+        desc = h.get("outcome_description", "")
+        # Extract key phrases (simplified)
+        for word in desc.split():
+            if len(word) > 5 and word.lower() not in ["hallucination", "detected", "reported"]:
+                if word not in patterns:
+                    patterns[word] = {"count": 0, "examples": []}
+                patterns[word]["count"] += 1
+                if len(patterns[word]["examples"]) < 3:
+                    patterns[word]["examples"].append(desc[:100])
+    
+    return [
+        {"pattern": word, "frequency": data["count"], "examples": data["examples"]}
+        for word, data in patterns.items()
+        if data["count"] >= 2
+    ]  
+```
+
 ---
 
 ## Storage Schema (SQLite)
 
-\-- ECO table  
-CREATE TABLE IF NOT EXISTS eco (  
-    eco\_id TEXT PRIMARY KEY,  
-    client\_id TEXT,  
-    trust\_tier INTEGER,  
-    intake\_timestamp TEXT,  
-    engagement\_type TEXT,  
-    frameworks\_applicable TEXT,  
-    risk\_level TEXT,  
-    status TEXT,  
-    closure\_timestamp TEXT,  
-    linked\_objects TEXT,  
-    json\_data TEXT  
-);  
-\-- DRO table  
-CREATE TABLE IF NOT EXISTS dro (  
-    dro\_id TEXT PRIMARY KEY,  
-    eco\_id TEXT,  
-    decision\_type TEXT,  
-    decision\_timestamp TEXT,  
-    decision\_origin TEXT,  
-    ai\_model\_ref TEXT,  
-    human\_actor\_ref TEXT,  
-    justification\_trace TEXT,  
-    framework\_source TEXT,  
-    han\_review\_flag INTEGER,  
-    han\_review\_timestamp TEXT,  
-    han\_outcome TEXT,  
-    client\_acknowledgment\_state TEXT,  
-    truth\_state TEXT,  
-    superseded\_by TEXT,  
-    json\_data TEXT  
-);  
-\-- GAO table  
-CREATE TABLE IF NOT EXISTS gao (  
-    gao\_id TEXT PRIMARY KEY,  
-    eco\_id TEXT,  
-    artifact\_type TEXT,  
-    artifact\_title TEXT,  
-    content TEXT,  
-    version TEXT,  
-    draft\_origin TEXT,  
-    governing\_frameworks TEXT,  
-    han\_review\_flag INTEGER,  
-    han\_review\_timestamp TEXT,  
-    issuance\_timestamp TEXT,  
-    artifact\_status TEXT,  
-    client\_acknowledgment\_state TEXT,  
-    truth\_state TEXT,  
-    superseded\_by TEXT,  
-    content\_hash TEXT,  
-    json\_data TEXT  
-);  
-\-- CRO table  
-CREATE TABLE IF NOT EXISTS cro (  
-    cro\_id TEXT PRIMARY KEY,  
-    eco\_id TEXT,  
-    constraint\_type TEXT,  
-    constraint\_source TEXT,  
-    constraint\_description TEXT,  
-    binding\_scope TEXT,  
-    affected\_objects TEXT,  
-    constraint\_status TEXT,  
-    truth\_state TEXT,  
-    lift\_basis TEXT,  
-    json\_data TEXT  
-);  
-\-- OEO table  
-CREATE TABLE IF NOT EXISTS oeo (  
-    oeo\_id TEXT PRIMARY KEY,  
-    eco\_id TEXT,  
-    gao\_reference TEXT,  
-    observation\_timestamp TEXT,  
-    observation\_origin TEXT,  
-    outcome\_type TEXT,  
-    outcome\_description TEXT,  
-    drift\_detected INTEGER,  
-    drift\_description TEXT,  
-    framework\_efficacy\_signal TEXT,  
-    precedent\_applicability TEXT,  
-    precedent\_domain\_tags TEXT,  
-    json\_data TEXT  
-);  
-\-- XOO table  
-CREATE TABLE IF NOT EXISTS xoo (  
-    xoo\_id TEXT PRIMARY KEY,  
-    eco\_id TEXT,  
-    exception\_type TEXT,  
-    excepted\_rule\_reference TEXT,  
-    exception\_basis TEXT,  
-    exception\_authority TEXT,  
-    exception\_timestamp TEXT,  
-    han\_authorization INTEGER,  
-    han\_authorization\_timestamp TEXT,  
-    risk\_assessment TEXT,  
-    affected\_objects TEXT,  
-    exception\_status TEXT,  
-    json\_data TEXT  
+```
+-- ECO table
+CREATE TABLE IF NOT EXISTS eco (
+    eco_id TEXT PRIMARY KEY,
+    client_id TEXT,
+    trust_tier INTEGER,
+    intake_timestamp TEXT,
+    engagement_type TEXT,
+    frameworks_applicable TEXT,
+    risk_level TEXT,
+    status TEXT,
+    closure_timestamp TEXT,
+    linked_objects TEXT,
+    json_data TEXT
 );
+-- DRO table
+CREATE TABLE IF NOT EXISTS dro (
+    dro_id TEXT PRIMARY KEY,
+    eco_id TEXT,
+    decision_type TEXT,
+    decision_timestamp TEXT,
+    decision_origin TEXT,
+    ai_model_ref TEXT,
+    human_actor_ref TEXT,
+    justification_trace TEXT,
+    framework_source TEXT,
+    han_review_flag INTEGER,
+    han_review_timestamp TEXT,
+    han_outcome TEXT,
+    client_acknowledgment_state TEXT,
+    truth_state TEXT,
+    superseded_by TEXT,
+    json_data TEXT
+);
+-- GAO table
+CREATE TABLE IF NOT EXISTS gao (
+    gao_id TEXT PRIMARY KEY,
+    eco_id TEXT,
+    artifact_type TEXT,
+    artifact_title TEXT,
+    content TEXT,
+    version TEXT,
+    draft_origin TEXT,
+    governing_frameworks TEXT,
+    han_review_flag INTEGER,
+    han_review_timestamp TEXT,
+    issuance_timestamp TEXT,
+    artifact_status TEXT,
+    client_acknowledgment_state TEXT,
+    truth_state TEXT,
+    superseded_by TEXT,
+    content_hash TEXT,
+    json_data TEXT
+);
+-- CRO table
+CREATE TABLE IF NOT EXISTS cro (
+    cro_id TEXT PRIMARY KEY,
+    eco_id TEXT,
+    constraint_type TEXT,
+    constraint_source TEXT,
+    constraint_description TEXT,
+    binding_scope TEXT,
+    affected_objects TEXT,
+    constraint_status TEXT,
+    truth_state TEXT,
+    lift_basis TEXT,
+    json_data TEXT
+);
+-- OEO table
+CREATE TABLE IF NOT EXISTS oeo (
+    oeo_id TEXT PRIMARY KEY,
+    eco_id TEXT,
+    gao_reference TEXT,
+    observation_timestamp TEXT,
+    observation_origin TEXT,
+    outcome_type TEXT,
+    outcome_description TEXT,
+    drift_detected INTEGER,
+    drift_description TEXT,
+    framework_efficacy_signal TEXT,
+    precedent_applicability TEXT,
+    precedent_domain_tags TEXT,
+    json_data TEXT
+);
+-- XOO table
+CREATE TABLE IF NOT EXISTS xoo (
+    xoo_id TEXT PRIMARY KEY,
+    eco_id TEXT,
+    exception_type TEXT,
+    excepted_rule_reference TEXT,
+    exception_basis TEXT,
+    exception_authority TEXT,
+    exception_timestamp TEXT,
+    han_authorization INTEGER,
+    han_authorization_timestamp TEXT,
+    risk_assessment TEXT,
+    affected_objects TEXT,
+    exception_status TEXT,
+    json_data TEXT
+);
+```
 
 ---
 
@@ -13519,6 +13588,7 @@ The following terms apply to every engagement regardless of counterparty type, c
 
 ## SECTION 12: ACCOUNTABILITY CHAIN FOR ENGAGEMENTS
 
+```
 HAN (Terrylan\_Manalansan)  
   │  
   ├──→ Mandate Acceptance (Stage 3\)  
@@ -13538,6 +13608,7 @@ HAN (Terrylan\_Manalansan)
   └──→ Audit (I3 Audit Chain \+ Handoff Packages)  
           │  
           └──→ Accountability Terminus: HAN (Terrylan\_Manalansan)
+```
 
 ---
 
