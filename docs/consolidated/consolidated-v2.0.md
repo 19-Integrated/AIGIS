@@ -14587,6 +14587,7 @@ The following IP actions are non-delegable HAN authorities:
 
 ## SECTION 11: ACCOUNTABILITY CHAIN FOR IP ACTIONS
 
+```
 HAN (Terrylan\_Manalansan)  
   │  
   ├──→ IP Register Acknowledgment  
@@ -14604,6 +14605,7 @@ HAN (Terrylan\_Manalansan)
   └──→ Audit (IP Register \+ CEF Engagement Records \+ I3 Audit Chain)  
           │  
           └──→ Accountability Terminus: HAN (Terrylan\_Manalansan)
+```
 
 ---
 
@@ -15088,6 +15090,7 @@ The following certification actions are non-delegable HAN authorities:
 
 ## SECTION 11: ACCOUNTABILITY CHAIN FOR CERTIFICATION ACTIONS
 
+```
 HAN (Terrylan\_Manalansan)  
   │  
   ├──→ Designation Registration  
@@ -15110,6 +15113,7 @@ HAN (Terrylan\_Manalansan)
   └──→ Audit (Candidate Record \+ Public Designation Register \+ I3 Audit Chain)  
           │  
           └──→ Accountability Terminus: HAN (Terrylan\_Manalansan)
+```
 
 ---
 
@@ -15451,38 +15455,41 @@ The Public Designation Register satisfies I8 External Legibility by providing:
 
 ### 9.1 Entry Template
 
-Registration ID: PDR-000001  
-Candidate Name: "John Q. Practitioner"  
-Designation Post-Nominal: "CGO"  
-Designation Class: "Practitioner — Senior"  
-Award Date: "2026-01-15T00:00:00Z"  
-Current Status: "Active"  
-Last Renewal or Revalidation Date: "2026-07-15T00:00:00Z"  
-Next Renewal Due Date: "2028-01-15T00:00:00Z"  
-Governing Framework Version: "AICA-5 v2.0"  
-Status Change History:  
-  \- timestamp: "2026-01-15T00:00:00Z"  
-    previous\_status: null  
-    new\_status: "Active"  
-    authorizer: "HAN-Terrylan\_Manalansan"  
-    basis: "Designation awarded"  
-  \- timestamp: "2026-07-15T00:00:00Z"  
-    previous\_status: "Active"  
-    new\_status: "Under Revalidation"  
-    authorizer: "System"  
-    basis: "Event-triggered revalidation triggered"  
-  \- timestamp: "2026-07-15T12:00:00Z"  
-    previous\_status: "Under Revalidation"  
-    new\_status: "Active"  
-    authorizer: "HAN-Terrylan\_Manalansan"  
-    basis: "Revalidation completed"  
-HAN Acknowledgment:  
-  HAN: "Terrylan\_Manalansan"  
-  Date: "2026-01-15T00:00:00Z"  
+```
+Registration ID: PDR-000001
+Candidate Name: "John Q. Practitioner"
+Designation Post-Nominal: "CGO"
+Designation Class: "Practitioner — Senior"
+Award Date: "2026-01-15T00:00:00Z"
+Current Status: "Active"
+Last Renewal or Revalidation Date: "2026-07-15T00:00:00Z"
+Next Renewal Due Date: "2028-01-15T00:00:00Z"
+Governing Framework Version: "AICA-5 v2.0"
+Status Change History:
+  - timestamp: "2026-01-15T00:00:00Z"
+    previous_status: null
+    new_status: "Active"
+    authorizer: "HAN-Terrylan_Manalansan"
+    basis: "Designation awarded"
+  - timestamp: "2026-07-15T00:00:00Z"
+    previous_status: "Active"
+    new_status: "Under Revalidation"
+    authorizer: "System"
+    basis: "Event-triggered revalidation triggered"
+  - timestamp: "2026-07-15T12:00:00Z"
+    previous_status: "Under Revalidation"
+    new_status: "Active"
+    authorizer: "HAN-Terrylan_Manalansan"
+    basis: "Revalidation completed"
+HAN Acknowledgment:
+  HAN: "Terrylan_Manalansan"
+  Date: "2026-01-15T00:00:00Z"
 Verification Count: 15
+```
 
 ### 9.2 Public Display Template
 
+```
 Candidate: John Q. Practitioner  
 Designation: CGO — AICA-5 Certified Governance Officer  
 Class: Practitioner — Senior  
@@ -15491,6 +15498,7 @@ Award Date: 2026-01-15
 Last Renewal: 2026-07-15  
 Governing Framework: AICA-5 v2.0  
 Verification Timestamp: 2026-08-31T10:00:00Z
+```
 
 ---
 
@@ -15821,6 +15829,7 @@ The following disclosure actions are non-delegable HAN authorities:
 
 ## SECTION 8: ACCOUNTABILITY CHAIN FOR DISCLOSURE ACTIONS
 
+```
 HAN (Terrylan\_Manalansan)  
   │  
   ├──→ Disclosure Authorization  
@@ -15838,6 +15847,7 @@ HAN (Terrylan\_Manalansan)
   └──→ Audit (Disclosure Record \+ I3 Audit Chain \+ IP Register archive)  
           │  
           └──→ Accountability Terminus: HAN (Terrylan\_Manalansan)
+```
 
 ---
 
@@ -16241,58 +16251,61 @@ Provides external parties with planned governance developments and anticipated c
 
 ### AIR Template
 
-AIR-ID: AIR-2026-001  
-Reporting Period:  
-  start: "2026-01-01"  
-  end: "2026-12-31"  
-Publication Date: "2027-03-31"  
-Tier Version: "T-SH"  
-HAN Attestation:  
-  HAN: "Terrylan\_Manalansan"  
-  Date: "2027-03-31"  
-  Status: "Attested"  
-Sections:  
-  Section 1: Institutional Identity  
-    HoldCo Structure: "..."  
-    SPV Federation: "..."  
-    HAN Identification: "..."  
-    Constitutional Stack: "ICC-8 v2.0"  
-    ...  
-  Section 2: Framework Stack Status  
-    IP Register Summary: "..."  
-    Active Frameworks: "..."  
-    Version Changes: "..."  
-    ...  
-  Section 3: Certification Activity  
-    Designation Register Status: "..."  
-    Active Programs: "..."  
-    Designation Holder Counts: "..."  
-    ...  
-  Section 4: Engagement Activity Summary  
-    Counterparty Classification Distribution: "..."  
-    Engagement Lifecycle Stage Distribution: "..."  
-    Retainer Count: "..."  
-    ...  
-  Section 5: Governance Events  
-    Material Institutional Actions: "..."  
-    Contestation Proceedings: "..."  
-    MVOS Events: "..."  
-    ...  
-  Section 6: Regulatory Correspondence  
-    Crosswalk Status: "..."  
-    EU AI Act Alignment: "..."  
-    NIST AI RMF Alignment: "..."  
-    ...  
-  Section 7: Forward Governance  
-    Planned Framework Developments: "..."  
-    Designation Launches: "..."  
-    Structural Changes: "..."  
-    ...  
-Disclosure Record:  
-  Disclosure ID: "DISC-AIR-2026-001"  
-  Distribution List: "\[T-SH List\]"  
-  Content Hash: "sha256:..."  
+```
+AIR-ID: AIR-2026-001
+Reporting Period:
+  start: "2026-01-01"
+  end: "2026-12-31"
+Publication Date: "2027-03-31"
+Tier Version: "T-SH"
+HAN Attestation:
+  HAN: "Terrylan_Manalansan"
+  Date: "2027-03-31"
+  Status: "Attested"
+Sections:
+  Section 1: Institutional Identity
+    HoldCo Structure: "..."
+    SPV Federation: "..."
+    HAN Identification: "..."
+    Constitutional Stack: "ICC-8 v2.0"
+    ...
+  Section 2: Framework Stack Status
+    IP Register Summary: "..."
+    Active Frameworks: "..."
+    Version Changes: "..."
+    ...
+  Section 3: Certification Activity
+    Designation Register Status: "..."
+    Active Programs: "..."
+    Designation Holder Counts: "..."
+    ...
+  Section 4: Engagement Activity Summary
+    Counterparty Classification Distribution: "..."
+    Engagement Lifecycle Stage Distribution: "..."
+    Retainer Count: "..."
+    ...
+  Section 5: Governance Events
+    Material Institutional Actions: "..."
+    Contestation Proceedings: "..."
+    MVOS Events: "..."
+    ...
+  Section 6: Regulatory Correspondence
+    Crosswalk Status: "..."
+    EU AI Act Alignment: "..."
+    NIST AI RMF Alignment: "..."
+    ...
+  Section 7: Forward Governance
+    Planned Framework Developments: "..."
+    Designation Launches: "..."
+    Structural Changes: "..."
+    ...
+Disclosure Record:
+  Disclosure ID: "DISC-AIR-2026-001"
+  Distribution List: "[T-SH List]"
+  Content Hash: "sha256:..."
   Archive Reference: "IP-REG-2026-001"
+
+```
 
 ---
 
@@ -16504,14 +16517,16 @@ Governance version binding ensures that every institutional object is bound to t
 
 ### Binding Example
 
-Object: GAO-ECO-2026-0a26cb-001  
-governing\_framework\_versions:  
-  ICC-8: "v2.0"  
-  AICA-5: "v2.0"  
-  AWOF: "v2.0"  
-  IMP: "v2.0"  
-version\_binding\_timestamp: "2026-08-31T10:00:00Z"  
-stack\_version\_map\_reference: "SVM-2026-08-31"
+```
+Object: GAO-ECO-2026-0a26cb-001
+governing_framework_versions:
+  ICC-8: "v2.0"
+  AICA-5: "v2.0"
+  AWOF: "v2.0"
+  IMP: "v2.0"
+version_binding_timestamp: "2026-08-31T10:00:00Z"
+stack_version_map_reference: "SVM-2026-08-31"
+```
 
 ---
 
@@ -16601,34 +16616,36 @@ stack\_version\_map\_reference: "SVM-2026-08-31"
 
 ## SECTION 8: MAP TEMPLATE
 
-Stack Version Map  
-Generated: 2026-08-31T10:00:00Z  
-Version: v2.0  
-Status: Current  
-Instruments:  
-  \- Instrument: ICC-8  
-    Current Version: v2.0  
-    Previous Version: v1.2  
-    Layer: Constitutional  
-    Last DEP Change: 2026-08-31  
-    Change Class: II  
-    Change Description: "I9 Catastrophic Risk Invariant added; CEN-7 Public Contestation added"  
-    DEP Signal Reference: "DEP-SIG-2026-001"  
-    Dependencies: \["MICOS-25"\]  
-    Dependents: \["All instruments"\]  
-    Status: Active  
-  \- Instrument: AICA-5  
-    Current Version: v2.0  
-    Previous Version: v1.1  
-    Layer: Governance Stack  
-    Last DEP Change: 2026-08-31  
-    Change Class: II  
-    Change Description: "Complete rebuild — reconciliation with CDT-7, CTAM, CAM-5, ICC-8, and RGI-8"  
-    DEP Signal Reference: "DEP-SIG-2026-002"  
-    Dependencies: \["ICC-8", "CDT-7", "CTAM", "CAM-5"\]  
-    Dependents: \["AWOF", "ADTEP", "CEF", "EAF", "ERDP"\]  
-    Status: Active  
-  \# ... additional instruments
+```
+SStack Version Map
+Generated: 2026-08-31T10:00:00Z
+Version: v2.0
+Status: Current
+Instruments:
+  - Instrument: ICC-8
+    Current Version: v2.0
+    Previous Version: v1.2
+    Layer: Constitutional
+    Last DEP Change: 2026-08-31
+    Change Class: II
+    Change Description: "I9 Catastrophic Risk Invariant added; CEN-7 Public Contestation added"
+    DEP Signal Reference: "DEP-SIG-2026-001"
+    Dependencies: ["MICOS-25"]
+    Dependents: ["All instruments"]
+    Status: Active
+  - Instrument: AICA-5
+    Current Version: v2.0
+    Previous Version: v1.1
+    Layer: Governance Stack
+    Last DEP Change: 2026-08-31
+    Change Class: II
+    Change Description: "Complete rebuild — reconciliation with CDT-7, CTAM, CAM-5, ICC-8, and RGI-8"
+    DEP Signal Reference: "DEP-SIG-2026-002"
+    Dependencies: ["ICC-8", "CDT-7", "CTAM", "CAM-5"]
+    Dependents: ["AWOF", "ADTEP", "CEF", "EAF", "ERDP"]
+    Status: Active
+  # ... additional instruments
+```
 
 ---
 
@@ -16822,6 +16839,7 @@ Every proposed doctrine change is classified into one of four classes. The class
 
 ## SECTION 7: DEP PROCESS FLOW
 
+```
 SIGNAL IDENTIFICATION  
 └── Signal observed (engagement gap, external change, contradiction,  
     stress-test failure, or new capability)  
@@ -16872,6 +16890,8 @@ NOTIFICATION
 └── Active engagements at affected trust tiers notified of  
     version change in their ECO  
 └── No retroactive alteration to historical objects  
+```
+
 ---
 
 ## SECTION 8: DELIBERATION PERIOD REQUIREMENTS
@@ -16993,6 +17013,7 @@ DEP may not be amended in a manner that reduces the authorization requirements f
 
 ### DEP Signal Template
 
+```
 Signal ID: DEP-SIG-2026-001  
 Signal Type: "Engagement Gap"  
 Description: "AICA-5 does not address specific class of autonomous agent deployment"  
@@ -17002,11 +17023,12 @@ Qualification Date: "2026-08-31"
 Proposed Change Class: "Class II"  
 Impact Assessment: "See GAO-IMP-2026-001"  
 Deliberation Period: "48 hours"  
-HAN Authorization: "Terrylan\_Manalansan"  
+HAN Authorization: "Terrylan_Manalansan"  
 Authorization Date: "2026-09-02"  
 Instrument Revision: "AICA-5 v2.1"  
 Version Increment: "Minor"  
 Stack Version Map Updated: "2026-09-02"
+```
 
 ---
 
@@ -17336,713 +17358,716 @@ The EU AI Act Overlay ensures that:
 
 ## SECTION 4: EU AI ACT OVERLAY IMPLEMENTATION
 
-\# eu\_ai\_act\_overlay.py  
-"""  
-EU AI Act Regulatory Overlay — Complete Implementation  
+```
+# eu_ai_act_overlay.py
+"""
+EU AI Act Regulatory Overlay — Complete Implementation
 """
 
-from enum import Enum  
-from typing import List, Dict, Optional  
-from dataclasses import dataclass, field  
+from enum import Enum
+from typing import List, Dict, Optional
+from dataclasses import dataclass, field
 from datetime import datetime
 
-class EUAIArticle(Enum):  
-    """EU AI Act Article Enumeration"""  
-    \# Title I  
-    ART\_1 \= "Art. 1"  
-    ART\_2 \= "Art. 2"  
-    ART\_3 \= "Art. 3"  
-    ART\_4 \= "Art. 4"  
-    \# Title II  
-    ART\_5A \= "Art. 5(a)"  
-    ART\_5B \= "Art. 5(b)"  
-    ART\_5C \= "Art. 5(c)"  
-    ART\_5D \= "Art. 5(d)"  
-    \# Title III  
-    ART\_6 \= "Art. 6"  
-    ART\_7 \= "Art. 7"  
-    ART\_8 \= "Art. 8"  
-    ART\_9 \= "Art. 9"  
-    ART\_10 \= "Art. 10"  
-    ART\_11 \= "Art. 11"  
-    ART\_12 \= "Art. 12"  
-    ART\_13 \= "Art. 13"  
-    ART\_14 \= "Art. 14"  
-    ART\_15 \= "Art. 15"  
-    ART\_16 \= "Art. 16"  
-    ART\_17 \= "Art. 17"  
-    ART\_18 \= "Art. 18"  
-    ART\_19 \= "Art. 19"  
-    ART\_20 \= "Art. 20"  
-    ART\_21 \= "Art. 21"  
-    ART\_22 \= "Art. 22"  
-    ART\_23 \= "Art. 23"  
-    ART\_24 \= "Art. 24"  
-    ART\_25 \= "Art. 25"  
-    ART\_26 \= "Art. 26"  
-    ART\_27 \= "Art. 27"  
-    ART\_28 \= "Art. 28"  
-    ART\_29 \= "Art. 29"  
-    ART\_30 \= "Art. 30"  
-    ART\_31 \= "Art. 31"  
-    ART\_32 \= "Art. 32"  
-    ART\_33 \= "Art. 33"  
-    ART\_34 \= "Art. 34"  
-    ART\_35 \= "Art. 35"  
-    ART\_36 \= "Art. 36"  
-    ART\_37 \= "Art. 37"  
-    ART\_38 \= "Art. 38"  
-    ART\_39 \= "Art. 39"  
-    ART\_40 \= "Art. 40"  
-    ART\_41 \= "Art. 41"  
-    ART\_42 \= "Art. 42"  
-    ART\_43 \= "Art. 43"  
-    ART\_44 \= "Art. 44"  
-    ART\_45 \= "Art. 45"  
-    ART\_46 \= "Art. 46"  
-    ART\_47 \= "Art. 47"  
-    ART\_48 \= "Art. 48"  
-    ART\_49 \= "Art. 49"  
-    ART\_50 \= "Art. 50"  
-    ART\_51 \= "Art. 51"  
-    \# Title IV  
-    ART\_52 \= "Art. 52"  
-    \# Title V  
-    ART\_53 \= "Art. 53"  
-    ART\_54 \= "Art. 54"  
-    ART\_55 \= "Art. 55"  
-    ART\_56 \= "Art. 56"  
-    ART\_57 \= "Art. 57"  
-    ART\_58 \= "Art. 58"  
-    ART\_59 \= "Art. 59"  
-    ART\_60 \= "Art. 60"  
-    ART\_61 \= "Art. 61"  
-    ART\_62 \= "Art. 62"  
-    ART\_63 \= "Art. 63"  
-    \# Title VI  
-    ART\_64 \= "Art. 64"  
-    ART\_65 \= "Art. 65"  
-    \# Title VII  
-    ART\_66 \= "Art. 66"  
-    ART\_67 \= "Art. 67"  
-    ART\_68 \= "Art. 68"  
-    ART\_69 \= "Art. 69"  
-    ART\_70 \= "Art. 70"  
-    ART\_71 \= "Art. 71"  
-    ART\_72 \= "Art. 72"  
-    ART\_73 \= "Art. 73"  
-    ART\_74 \= "Art. 74"  
-    ART\_75 \= "Art. 75"  
-    ART\_76 \= "Art. 76"  
-    ART\_77 \= "Art. 77"  
-    \# Title VIII  
-    ART\_78 \= "Art. 78"  
-    ART\_79 \= "Art. 79"  
-    ART\_80 \= "Art. 80"  
-    ART\_81 \= "Art. 81"  
-    ART\_82 \= "Art. 82"  
-    ART\_83 \= "Art. 83"  
-    ART\_84 \= "Art. 84"  
-    ART\_85 \= "Art. 85"  
-    ART\_86 \= "Art. 86"  
-    ART\_87 \= "Art. 87"  
-    ART\_88 \= "Art. 88"  
-    ART\_89 \= "Art. 89"  
-    ART\_90 \= "Art. 90"  
-    ART\_91 \= "Art. 91"  
-    ART\_92 \= "Art. 92"  
-    ART\_93 \= "Art. 93"  
-    ART\_94 \= "Art. 94"  
-    ART\_95 \= "Art. 95"  
-    ART\_96 \= "Art. 96"  
-    ART\_97 \= "Art. 97"  
-    ART\_98 \= "Art. 98"  
-    ART\_99 \= "Art. 99"  
-    ART\_100 \= "Art. 100"  
-    \# Title IX  
-    ART\_101 \= "Art. 101"  
-    ART\_102 \= "Art. 102"  
-    ART\_103 \= "Art. 103"  
-    ART\_104 \= "Art. 104"  
-    ART\_105 \= "Art. 105"  
-    ART\_106 \= "Art. 106"  
-    ART\_107 \= "Art. 107"  
-    ART\_108 \= "Art. 108"  
-    ART\_109 \= "Art. 109"  
-    ART\_110 \= "Art. 110"  
-    ART\_111 \= "Art. 111"  
-    ART\_112 \= "Art. 112"  
-    ART\_113 \= "Art. 113"
+class EUAIArticle(Enum):
+    """EU AI Act Article Enumeration"""
+    # Title I
+    ART_1 = "Art. 1"
+    ART_2 = "Art. 2"
+    ART_3 = "Art. 3"
+    ART_4 = "Art. 4"
+    # Title II
+    ART_5A = "Art. 5(a)"
+    ART_5B = "Art. 5(b)"
+    ART_5C = "Art. 5(c)"
+    ART_5D = "Art. 5(d)"
+    # Title III
+    ART_6 = "Art. 6"
+    ART_7 = "Art. 7"
+    ART_8 = "Art. 8"
+    ART_9 = "Art. 9"
+    ART_10 = "Art. 10"
+    ART_11 = "Art. 11"
+    ART_12 = "Art. 12"
+    ART_13 = "Art. 13"
+    ART_14 = "Art. 14"
+    ART_15 = "Art. 15"
+    ART_16 = "Art. 16"
+    ART_17 = "Art. 17"
+    ART_18 = "Art. 18"
+    ART_19 = "Art. 19"
+    ART_20 = "Art. 20"
+    ART_21 = "Art. 21"
+    ART_22 = "Art. 22"
+    ART_23 = "Art. 23"
+    ART_24 = "Art. 24"
+    ART_25 = "Art. 25"
+    ART_26 = "Art. 26"
+    ART_27 = "Art. 27"
+    ART_28 = "Art. 28"
+    ART_29 = "Art. 29"
+    ART_30 = "Art. 30"
+    ART_31 = "Art. 31"
+    ART_32 = "Art. 32"
+    ART_33 = "Art. 33"
+    ART_34 = "Art. 34"
+    ART_35 = "Art. 35"
+    ART_36 = "Art. 36"
+    ART_37 = "Art. 37"
+    ART_38 = "Art. 38"
+    ART_39 = "Art. 39"
+    ART_40 = "Art. 40"
+    ART_41 = "Art. 41"
+    ART_42 = "Art. 42"
+    ART_43 = "Art. 43"
+    ART_44 = "Art. 44"
+    ART_45 = "Art. 45"
+    ART_46 = "Art. 46"
+    ART_47 = "Art. 47"
+    ART_48 = "Art. 48"
+    ART_49 = "Art. 49"
+    ART_50 = "Art. 50"
+    ART_51 = "Art. 51"
+    # Title IV
+    ART_52 = "Art. 52"
+    # Title V
+    ART_53 = "Art. 53"
+    ART_54 = "Art. 54"
+    ART_55 = "Art. 55"
+    ART_56 = "Art. 56"
+    ART_57 = "Art. 57"
+    ART_58 = "Art. 58"
+    ART_59 = "Art. 59"
+    ART_60 = "Art. 60"
+    ART_61 = "Art. 61"
+    ART_62 = "Art. 62"
+    ART_63 = "Art. 63"
+    # Title VI
+    ART_64 = "Art. 64"
+    ART_65 = "Art. 65"
+    # Title VII
+    ART_66 = "Art. 66"
+    ART_67 = "Art. 67"
+    ART_68 = "Art. 68"
+    ART_69 = "Art. 69"
+    ART_70 = "Art. 70"
+    ART_71 = "Art. 71"
+    ART_72 = "Art. 72"
+    ART_73 = "Art. 73"
+    ART_74 = "Art. 74"
+    ART_75 = "Art. 75"
+    ART_76 = "Art. 76"
+    ART_77 = "Art. 77"
+    # Title VIII
+    ART_78 = "Art. 78"
+    ART_79 = "Art. 79"
+    ART_80 = "Art. 80"
+    ART_81 = "Art. 81"
+    ART_82 = "Art. 82"
+    ART_83 = "Art. 83"
+    ART_84 = "Art. 84"
+    ART_85 = "Art. 85"
+    ART_86 = "Art. 86"
+    ART_87 = "Art. 87"
+    ART_88 = "Art. 88"
+    ART_89 = "Art. 89"
+    ART_90 = "Art. 90"
+    ART_91 = "Art. 91"
+    ART_92 = "Art. 92"
+    ART_93 = "Art. 93"
+    ART_94 = "Art. 94"
+    ART_95 = "Art. 95"
+    ART_96 = "Art. 96"
+    ART_97 = "Art. 97"
+    ART_98 = "Art. 98"
+    ART_99 = "Art. 99"
+    ART_100 = "Art. 100"
+    # Title IX
+    ART_101 = "Art. 101"
+    ART_102 = "Art. 102"
+    ART_103 = "Art. 103"
+    ART_104 = "Art. 104"
+    ART_105 = "Art. 105"
+    ART_106 = "Art. 106"
+    ART_107 = "Art. 107"
+    ART_108 = "Art. 108"
+    ART_109 = "Art. 109"
+    ART_110 = "Art. 110"
+    ART_111 = "Art. 111"
+    ART_112 = "Art. 112"
+    ART_113 = "Art. 113"
 
-class ArticleTitle(Enum):  
-    """Article title enumeration"""  
-    \# Title I  
-    ART\_1 \= "Subject Matter"  
-    ART\_2 \= "Scope"  
-    ART\_3 \= "Definitions"  
-    ART\_4 \= "AI Literacy"  
-    \# Title II  
-    ART\_5A \= "Subliminal techniques"  
-    ART\_5B \= "Exploiting vulnerabilities"  
-    ART\_5C \= "Social scoring"  
-    ART\_5D \= "Real-time biometric identification"  
-    \# Title III  
-    ART\_6 \= "Classification of high-risk AI systems"  
-    ART\_7 \= "Amendments to classification"  
-    ART\_8 \= "Compliance with requirements"  
-    ART\_9 \= "Risk management system"  
-    ART\_10 \= "Data and data governance"  
-    ART\_11 \= "Technical documentation"  
-    ART\_12 \= "Record-keeping"  
-    ART\_13 \= "Transparency and provision of information"  
-    ART\_14 \= "Human oversight"  
-    ART\_15 \= "Accuracy, robustness, cybersecurity"  
-    ART\_16 \= "Obligations of providers"  
-    ART\_17 \= "Quality management system"  
-    ART\_18 \= "Technical documentation"  
-    ART\_19 \= "Conformity assessment"  
-    ART\_20 \= "EU declaration of conformity"  
-    ART\_21 \= "CE marking"  
-    ART\_22 \= "Authorized representatives"  
-    ART\_23 \= "Obligations of importers"  
-    ART\_24 \= "Obligations of distributors"  
-    ART\_25 \= "Obligations of deployers"  
-    ART\_26 \= "Obligations of other parties"  
-    ART\_27 \= "Fundamental rights impact assessment"  
-    ART\_28 \= "Notifying authorities"  
-    ART\_29 \= "Application for notification"  
-    ART\_30 \= "Requirements for notified bodies"  
-    ART\_31 \= "Presumption of conformity"  
-    ART\_32 \= "Conformity assessment procedures"  
-    ART\_33 \= "Common specifications"  
-    ART\_34 \= "EU database"  
-    ART\_35 \= "Standards"  
-    ART\_36 \= "Conformity assessment bodies"  
-    ART\_37 \= "Conformity assessment"  
-    ART\_38 \= "Certificates"  
-    ART\_39 \= "Obligations of notified bodies"  
-    ART\_40 \= "Harmonized standards"  
-    ART\_41 \= "Common specifications"  
-    ART\_42 \= "Conformity assessment bodies"  
-    ART\_43 \= "Conformity assessment"  
-    ART\_44 \= "Certificates"  
-    ART\_45 \= "Obligations of notified bodies"  
-    ART\_46 \= "Appeal procedures"  
-    ART\_47 \= "Information exchange"  
-    ART\_48 \= "Market surveillance"  
-    ART\_49 \= "Access to data"  
-    ART\_50 \= "Confidentiality"  
-    ART\_51 \= "Committee procedure"  
-    \# Title IV  
-    ART\_52 \= "Transparency obligations"  
-    \# Title V  
-    ART\_53 \= "Classification"  
-    ART\_54 \= "Requirements"  
-    ART\_55 \= "Obligations"  
-    ART\_56 \= "Codes of conduct"  
-    ART\_57 \= "General-purpose AI"  
-    ART\_58 \= "Transparency"  
-    ART\_59 \= "Risk assessment"  
-    ART\_60 \= "Mitigation"  
-    ART\_61 \= "Monitoring"  
-    ART\_62 \= "Incident reporting"  
-    ART\_63 \= "Cooperation"  
-    \# Title VI  
-    ART\_64 \= "AI regulatory sandboxes"  
-    ART\_65 \= "Testing in real-world conditions"  
-    \# Title VII  
-    ART\_66 \= "AI Office"  
-    ART\_67 \= "AI Board"  
-    ART\_68 \= "Advisory Forum"  
-    ART\_69 \= "Codes of conduct"  
-    ART\_70 \= "Guidelines"  
-    ART\_71 \= "Market surveillance"  
-    ART\_72 \= "Mutual assistance"  
-    ART\_73 \= "Power of authorities"  
-    ART\_74 \= "Procedural rights"  
-    ART\_75 \= "Confidentiality"  
-    ART\_76 \= "Penalties"  
-    ART\_77 \= "Implementation"  
-    \# Title VIII  
-    ART\_78 \= "Codes of conduct"  
-    ART\_79 \= "Voluntary commitments"  
-    ART\_80 \= "Guidelines for competent authorities"  
-    ART\_81 \= "Guidelines for providers"  
-    ART\_82 \= "Guidelines for users"  
-    ART\_83 \= "Guidelines for transparency"  
-    ART\_84 \= "Guidelines for data governance"  
-    ART\_85 \= "Guidelines for technical documentation"  
-    ART\_86 \= "Guidelines for conformity assessment"  
-    ART\_87 \= "Guidelines for quality management"  
-    ART\_88 \= "Guidelines for incident reporting"  
-    ART\_89 \= "Guidelines for human oversight"  
-    ART\_90 \= "Guidelines for transparency"  
-    ART\_91 \= "Guidelines for robustness"  
-    ART\_92 \= "Guidelines for cybersecurity"  
-    ART\_93 \= "Guidelines for accuracy"  
-    ART\_94 \= "Guidelines for explainability"  
-    ART\_95 \= "Guidelines for bias"  
-    ART\_96 \= "Guidelines for sustainability"  
-    ART\_97 \= "Guidelines for SMEs"  
-    ART\_98 \= "Guidelines for public sector"  
-    ART\_99 \= "Guidelines for conformity assessment"  
-    ART\_100 \= "Guidelines for enforcement"  
-    \# Title IX  
-    ART\_101 \= "Amendments"  
-    ART\_102 \= "Delegated acts"  
-    ART\_103 \= "Implementing acts"  
-    ART\_104 \= "Committee procedure"  
-    ART\_105 \= "Exercise of delegation"  
-    ART\_106 \= "Review"  
-    ART\_107 \= "Report"  
-    ART\_108 \= "Entry into force"  
-    ART\_109 \= "Transitional provisions"  
-    ART\_110 \= "Date of application"  
-    ART\_111 \= "Repeal"  
-    ART\_112 \= "References"  
-    ART\_113 \= "Final provisions"
+class ArticleTitle(Enum):
+    """Article title enumeration"""
+    # Title I
+    ART_1 = "Subject Matter"
+    ART_2 = "Scope"
+    ART_3 = "Definitions"
+    ART_4 = "AI Literacy"
+    # Title II
+    ART_5A = "Subliminal techniques"
+    ART_5B = "Exploiting vulnerabilities"
+    ART_5C = "Social scoring"
+    ART_5D = "Real-time biometric identification"
+    # Title III
+    ART_6 = "Classification of high-risk AI systems"
+    ART_7 = "Amendments to classification"
+    ART_8 = "Compliance with requirements"
+    ART_9 = "Risk management system"
+    ART_10 = "Data and data governance"
+    ART_11 = "Technical documentation"
+    ART_12 = "Record-keeping"
+    ART_13 = "Transparency and provision of information"
+    ART_14 = "Human oversight"
+    ART_15 = "Accuracy, robustness, cybersecurity"
+    ART_16 = "Obligations of providers"
+    ART_17 = "Quality management system"
+    ART_18 = "Technical documentation"
+    ART_19 = "Conformity assessment"
+    ART_20 = "EU declaration of conformity"
+    ART_21 = "CE marking"
+    ART_22 = "Authorized representatives"
+    ART_23 = "Obligations of importers"
+    ART_24 = "Obligations of distributors"
+    ART_25 = "Obligations of deployers"
+    ART_26 = "Obligations of other parties"
+    ART_27 = "Fundamental rights impact assessment"
+    ART_28 = "Notifying authorities"
+    ART_29 = "Application for notification"
+    ART_30 = "Requirements for notified bodies"
+    ART_31 = "Presumption of conformity"
+    ART_32 = "Conformity assessment procedures"
+    ART_33 = "Common specifications"
+    ART_34 = "EU database"
+    ART_35 = "Standards"
+    ART_36 = "Conformity assessment bodies"
+    ART_37 = "Conformity assessment"
+    ART_38 = "Certificates"
+    ART_39 = "Obligations of notified bodies"
+    ART_40 = "Harmonized standards"
+    ART_41 = "Common specifications"
+    ART_42 = "Conformity assessment bodies"
+    ART_43 = "Conformity assessment"
+    ART_44 = "Certificates"
+    ART_45 = "Obligations of notified bodies"
+    ART_46 = "Appeal procedures"
+    ART_47 = "Information exchange"
+    ART_48 = "Market surveillance"
+    ART_49 = "Access to data"
+    ART_50 = "Confidentiality"
+    ART_51 = "Committee procedure"
+    # Title IV
+    ART_52 = "Transparency obligations"
+    # Title V
+    ART_53 = "Classification"
+    ART_54 = "Requirements"
+    ART_55 = "Obligations"
+    ART_56 = "Codes of conduct"
+    ART_57 = "General-purpose AI"
+    ART_58 = "Transparency"
+    ART_59 = "Risk assessment"
+    ART_60 = "Mitigation"
+    ART_61 = "Monitoring"
+    ART_62 = "Incident reporting"
+    ART_63 = "Cooperation"
+    # Title VI
+    ART_64 = "AI regulatory sandboxes"
+    ART_65 = "Testing in real-world conditions"
+    # Title VII
+    ART_66 = "AI Office"
+    ART_67 = "AI Board"
+    ART_68 = "Advisory Forum"
+    ART_69 = "Codes of conduct"
+    ART_70 = "Guidelines"
+    ART_71 = "Market surveillance"
+    ART_72 = "Mutual assistance"
+    ART_73 = "Power of authorities"
+    ART_74 = "Procedural rights"
+    ART_75 = "Confidentiality"
+    ART_76 = "Penalties"
+    ART_77 = "Implementation"
+    # Title VIII
+    ART_78 = "Codes of conduct"
+    ART_79 = "Voluntary commitments"
+    ART_80 = "Guidelines for competent authorities"
+    ART_81 = "Guidelines for providers"
+    ART_82 = "Guidelines for users"
+    ART_83 = "Guidelines for transparency"
+    ART_84 = "Guidelines for data governance"
+    ART_85 = "Guidelines for technical documentation"
+    ART_86 = "Guidelines for conformity assessment"
+    ART_87 = "Guidelines for quality management"
+    ART_88 = "Guidelines for incident reporting"
+    ART_89 = "Guidelines for human oversight"
+    ART_90 = "Guidelines for transparency"
+    ART_91 = "Guidelines for robustness"
+    ART_92 = "Guidelines for cybersecurity"
+    ART_93 = "Guidelines for accuracy"
+    ART_94 = "Guidelines for explainability"
+    ART_95 = "Guidelines for bias"
+    ART_96 = "Guidelines for sustainability"
+    ART_97 = "Guidelines for SMEs"
+    ART_98 = "Guidelines for public sector"
+    ART_99 = "Guidelines for conformity assessment"
+    ART_100 = "Guidelines for enforcement"
+    # Title IX
+    ART_101 = "Amendments"
+    ART_102 = "Delegated acts"
+    ART_103 = "Implementing acts"
+    ART_104 = "Committee procedure"
+    ART_105 = "Exercise of delegation"
+    ART_106 = "Review"
+    ART_107 = "Report"
+    ART_108 = "Entry into force"
+    ART_109 = "Transitional provisions"
+    ART_110 = "Date of application"
+    ART_111 = "Repeal"
+    ART_112 = "References"
+    ART_113 = "Final provisions"
 
-@dataclass  
-class EUAIMapping:  
-    """EU AI Act mapping for a single article"""  
-    article: EUAIArticle  
-    title: str  
-    description: str  
-    mcr\_control\_ids: List\[str\]  
-    coverage: str  \# Full / Partial / None  
-    evidence\_required: bool  
-    evidence\_type: str
+@dataclass
+class EUAIMapping:
+    """EU AI Act mapping for a single article"""
+    article: EUAIArticle
+    title: str
+    description: str
+    mcr_control_ids: List[str]
+    coverage: str  # Full / Partial / None
+    evidence_required: bool
+    evidence_type: str
 
-class EUAIOverlay:  
-    """EU AI Act Regulatory Overlay"""  
-      
-    def \_\_init\_\_(self):  
-        self.mappings: Dict\[EUAIArticle, EUAIMapping\] \= {}  
-        self.\_build\_mappings()  
-      
-    def \_build\_mappings(self):  
-        """Build all article mappings"""  
-          
-        \# Article 1 — Subject Matter  
-        self.mappings\[EUAIArticle.ART\_1\] \= EUAIMapping(  
-            article=EUAIArticle.ART\_1,  
-            title=ArticleTitle.ART\_1.value,  
-            description="Subject matter and scope of the Regulation",  
-            mcr\_control\_ids=\["ICC-8-I1", "ICC-8-I2", "ICC-8-I3"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Constitutional charter"  
-        )  
-          
-        \# Article 2 — Scope  
-        self.mappings\[EUAIArticle.ART\_2\] \= EUAIMapping(  
-            article=EUAIArticle.ART\_2,  
-            title=ArticleTitle.ART\_2.value,  
-            description="Scope of application",  
-            mcr\_control\_ids=\["HOF-H1", "ICC-8-I1"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Scope declaration"  
-        )  
-          
-        \# Article 3 — Definitions  
-        self.mappings\[EUAIArticle.ART\_3\] \= EUAIMapping(  
-            article=EUAIArticle.ART\_3,  
-            title=ArticleTitle.ART\_3.value,  
-            description="Definitions",  
-            mcr\_control\_ids=\[\],  
-            coverage="Full",  
-            evidence\_required=False,  
-            evidence\_type="Definition alignment"  
-        )  
-          
-        \# Article 4 — AI Literacy  
-        self.mappings\[EUAIArticle.ART\_4\] \= EUAIMapping(  
-            article=EUAIArticle.ART\_4,  
-            title=ArticleTitle.ART\_4.value,  
-            description="AI literacy",  
-            mcr\_control\_ids=\["HAWI-001", "HAWI-002", "HAWI-003"\],  
-            coverage="Partial",  
-            evidence\_required=True,  
-            evidence\_type="Training records"  
-        )  
-          
-        \# Article 5(a) — Subliminal techniques  
-        self.mappings\[EUAIArticle.ART\_5A\] \= EUAIMapping(  
-            article=EUAIArticle.ART\_5A,  
-            title=ArticleTitle.ART\_5A.value,  
-            description="Subliminal techniques",  
-            mcr\_control\_ids=\["ICC-8-I4", "ADTEP-007"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Control mechanisms"  
-        )  
-          
-        \# Article 5(b) — Exploiting vulnerabilities  
-        self.mappings\[EUAIArticle.ART\_5B\] \= EUAIMapping(  
-            article=EUAIArticle.ART\_5B,  
-            title=ArticleTitle.ART\_5B.value,  
-            description="Exploiting vulnerabilities",  
-            mcr\_control\_ids=\["ICC-8-I9", "ADTEP-007"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Vulnerability assessment"  
-        )  
-          
-        \# Article 5(c) — Social scoring  
-        self.mappings\[EUAIArticle.ART\_5C\] \= EUAIMapping(  
-            article=EUAIArticle.ART\_5C,  
-            title=ArticleTitle.ART\_5C.value,  
-            description="Social scoring",  
-            mcr\_control\_ids=\["ICC-8-I6", "ICC-8-I8", "AOBA-001"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Bias audit records"  
-        )  
-          
-        \# Article 5(d) — Real-time biometric identification  
-        self.mappings\[EUAIArticle.ART\_5D\] \= EUAIMapping(  
-            article=EUAIArticle.ART\_5D,  
-            title=ArticleTitle.ART\_5D.value,  
-            description="Real-time biometric identification",  
-            mcr\_control\_ids=\["ICC-8-I9", "ADTEP-007"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Use case declaration"  
-        )  
-          
-        \# Article 6 — Classification of high-risk AI systems  
-        self.mappings\[EUAIArticle.ART\_6\] \= EUAIMapping(  
-            article=EUAIArticle.ART\_6,  
-            title=ArticleTitle.ART\_6.value,  
-            description="Classification of high-risk AI systems",  
-            mcr\_control\_ids=\["AICA-5-CN-012", "ICC-8-I9"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Risk classification"  
-        )  
-          
-        \# Article 7 — Amendments to classification  
-        self.mappings\[EUAIArticle.ART\_7\] \= EUAIMapping(  
-            article=EUAIArticle.ART\_7,  
-            title=ArticleTitle.ART\_7.value,  
-            description="Amendments to classification",  
-            mcr\_control\_ids=\["DEP-001"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Amendment process"  
-        )  
-          
-        \# Article 8 — Compliance with requirements  
-        self.mappings\[EUAIArticle.ART\_8\] \= EUAIMapping(  
-            article=EUAIArticle.ART\_8,  
-            title=ArticleTitle.ART\_8.value,  
-            description="Compliance with requirements",  
-            mcr\_control\_ids=\[\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Compliance declaration"  
-        )  
-          
-        \# Article 9 — Risk management system  
-        self.mappings\[EUAIArticle.ART\_9\] \= EUAIMapping(  
-            article=EUAIArticle.ART\_9,  
-            title=ArticleTitle.ART\_9.value,  
-            description="Risk management system",  
-            mcr\_control\_ids=\["AICA-5-CN-012", "AICA-5-CN-017", "AICA-5-CN-023",   
-                            "RGI-8-001", "RGI-8-006"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Risk register"  
-        )  
-          
-        \# Article 10 — Data and data governance (PARTIAL)  
-        self.mappings\[EUAIArticle.ART\_10\] \= EUAIMapping(  
-            article=EUAIArticle.ART\_10,  
-            title=ArticleTitle.ART\_10.value,  
-            description="Data and data governance",  
-            mcr\_control\_ids=\["AICA-5-CN-001", "AICA-5-CN-005", "IMP-004"\],  
-            coverage="Partial",  
-            evidence\_required=True,  
-            evidence\_type="Data governance framework"  
-        )  
-          
-        \# Article 11 — Technical documentation  
-        self.mappings\[EUAIArticle.ART\_11\] \= EUAIMapping(  
-            article=EUAIArticle.ART\_11,  
-            title=ArticleTitle.ART\_11.value,  
-            description="Technical documentation",  
-            mcr\_control\_ids=\["IMP-003", "IMP-002", "AICA-5-CN-021"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Technical docs"  
-        )  
-          
-        \# Article 12 — Record-keeping  
-        self.mappings\[EUAIArticle.ART\_12\] \= EUAIMapping(  
-            article=EUAIArticle.ART\_12,  
-            title=ArticleTitle.ART\_12.value,  
-            description="Record-keeping",  
-            mcr\_control\_ids=\["IMP-001", "IMP-002", "IMP-003", "IMP-005",   
-                            "AICA-5-CN-021", "ADTEP-003", "RGI-8-003"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Audit logs"  
-        )  
-          
-        \# Article 13 — Transparency  
-        self.mappings\[EUAIArticle.ART\_13\] \= EUAIMapping(  
-            article=EUAIArticle.ART\_13,  
-            title=ArticleTitle.ART\_13.value,  
-            description="Transparency and provision of information",  
-            mcr\_control\_ids=\["ICC-8-I6", "ICC-8-I8", "AICA-5-CN-004", "RGI-8-008"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Transparency docs"  
-        )  
-          
-        \# Article 14 — Human oversight  
-        self.mappings\[EUAIArticle.ART\_14\] \= EUAIMapping(  
-            article=EUAIArticle.ART\_14,  
-            title=ArticleTitle.ART\_14.value,  
-            description="Human oversight",  
-            mcr\_control\_ids=\["AICA-5-CN-011", "AICA-5-CN-013", "AICA-5-CN-014",   
-                            "AICA-5-CN-015", "HOF-H1", "HOF-H3",   
-                            "ADTEP-001", "ADTEP-004", "ADTEP-005",  
-                            "RGI-8-002", "RGI-8-005", "RGI-8-007",  
-                            "CAD-7-001", "CAD-7-002"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Oversight protocols"  
-        )  
-          
-        \# Article 15 — Accuracy, robustness, cybersecurity (PARTIAL)  
-        self.mappings\[EUAIArticle.ART\_15\] \= EUAIMapping(  
-            article=EUAIArticle.ART\_15,  
-            title=ArticleTitle.ART\_15.value,  
-            description="Accuracy, robustness, cybersecurity",  
-            mcr\_control\_ids=\["AICA-5-CN-023", "AICA-5-CN-024", "ADTEP-007", "ICC-8-I9"\],  
-            coverage="Partial",  
-            evidence\_required=True,  
-            evidence\_type="Accuracy metrics"  
-        )  
-          
-        \# Article 16 — Obligations of providers  
-        self.mappings\[EUAIArticle.ART\_16\] \= EUAIMapping(  
-            article=EUAIArticle.ART\_16,  
-            title=ArticleTitle.ART\_16.value,  
-            description="Obligations of providers",  
-            mcr\_control\_ids=\["HOF-H1", "ICC-8-I1", "ICC-8-I2"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Provider obligations"  
-        )  
-          
-        \# ... (additional articles truncated for brevity — full implementation in code)  
-      
-    def get\_mapping(self, article: EUAIArticle) \-\> Optional\[EUAIMapping\]:  
-        """Get mapping for a specific article"""  
-        return self.mappings.get(article)  
-      
-    def get\_controls\_for\_article(self, article: EUAIArticle) \-\> List\[str\]:  
-        """Get MCR control IDs for a specific article"""  
-        mapping \= self.mappings.get(article)  
-        if not mapping:  
-            return \[\]  
-        return mapping.mcr\_control\_ids  
-      
-    def get\_articles\_for\_control(self, control\_id: str) \-\> List\[str\]:  
-        """Get articles that map to a specific control"""  
-        result \= \[\]  
-        for mapping in self.mappings.values():  
-            if control\_id in mapping.mcr\_control\_ids:  
-                result.append(mapping.article.value)  
-        return result  
-      
-    def get\_gap\_analysis(self) \-\> Dict:  
-        """Get gap analysis for EU AI Act"""  
-        total \= len(self.mappings)  
-        full \= sum(1 for m in self.mappings.values() if m.coverage \== "Full")  
-        partial \= sum(1 for m in self.mappings.values() if m.coverage \== "Partial")  
-        none \= sum(1 for m in self.mappings.values() if m.coverage \== "None")  
-          
-        return {  
-            "total\_articles": total,  
-            "full\_coverage": full,  
-            "partial\_coverage": partial,  
-            "no\_coverage": none,  
-            "coverage\_pct": (full / total) \* 100 if total \> 0 else 0,  
-            "partial\_articles": \[m.article.value for m in self.mappings.values()   
-                                if m.coverage \== "Partial"\],  
-            "uncovered\_articles": \[m.article.value for m in self.mappings.values()   
-                                  if m.coverage \== "None"\]  
-        }  
-      
-    def get\_evidence\_summary(self) \-\> Dict:  
-        """Get evidence requirements summary"""  
-        evidence\_types \= {}  
-        for mapping in self.mappings.values():  
-            if mapping.evidence\_required:  
-                evidence\_types\[mapping.evidence\_type\] \= evidence\_types.get(mapping.evidence\_type, 0\) \+ 1  
-        return evidence\_types  
-      
-    def export\_overlay(self, format: str \= "json") \-\> str:  
-        """Export the overlay in requested format"""  
-        if format \== "json":  
-            import json  
-            return json.dumps({  
-                "framework": "eu\_ai\_act",  
-                "version": "1.0",  
-                "mappings": {  
-                    m.article.value: {  
-                        "title": m.title,  
-                        "description": m.description,  
-                        "mcr\_control\_ids": m.mcr\_control\_ids,  
-                        "coverage": m.coverage,  
-                        "evidence\_required": m.evidence\_required,  
-                        "evidence\_type": m.evidence\_type  
-                    } for m in self.mappings.values()  
-                }  
-            }, indent=2)  
+class EUAIOverlay:
+    """EU AI Act Regulatory Overlay"""
+    
+    def __init__(self):
+        self.mappings: Dict[EUAIArticle, EUAIMapping] = {}
+        self._build_mappings()
+    
+    def _build_mappings(self):
+        """Build all article mappings"""
+        
+        # Article 1 — Subject Matter
+        self.mappings[EUAIArticle.ART_1] = EUAIMapping(
+            article=EUAIArticle.ART_1,
+            title=ArticleTitle.ART_1.value,
+            description="Subject matter and scope of the Regulation",
+            mcr_control_ids=["ICC-8-I1", "ICC-8-I2", "ICC-8-I3"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Constitutional charter"
+        )
+        
+        # Article 2 — Scope
+        self.mappings[EUAIArticle.ART_2] = EUAIMapping(
+            article=EUAIArticle.ART_2,
+            title=ArticleTitle.ART_2.value,
+            description="Scope of application",
+            mcr_control_ids=["HOF-H1", "ICC-8-I1"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Scope declaration"
+        )
+        
+        # Article 3 — Definitions
+        self.mappings[EUAIArticle.ART_3] = EUAIMapping(
+            article=EUAIArticle.ART_3,
+            title=ArticleTitle.ART_3.value,
+            description="Definitions",
+            mcr_control_ids=[],
+            coverage="Full",
+            evidence_required=False,
+            evidence_type="Definition alignment"
+        )
+        
+        # Article 4 — AI Literacy
+        self.mappings[EUAIArticle.ART_4] = EUAIMapping(
+            article=EUAIArticle.ART_4,
+            title=ArticleTitle.ART_4.value,
+            description="AI literacy",
+            mcr_control_ids=["HAWI-001", "HAWI-002", "HAWI-003"],
+            coverage="Partial",
+            evidence_required=True,
+            evidence_type="Training records"
+        )
+        
+        # Article 5(a) — Subliminal techniques
+        self.mappings[EUAIArticle.ART_5A] = EUAIMapping(
+            article=EUAIArticle.ART_5A,
+            title=ArticleTitle.ART_5A.value,
+            description="Subliminal techniques",
+            mcr_control_ids=["ICC-8-I4", "ADTEP-007"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Control mechanisms"
+        )
+        
+        # Article 5(b) — Exploiting vulnerabilities
+        self.mappings[EUAIArticle.ART_5B] = EUAIMapping(
+            article=EUAIArticle.ART_5B,
+            title=ArticleTitle.ART_5B.value,
+            description="Exploiting vulnerabilities",
+            mcr_control_ids=["ICC-8-I9", "ADTEP-007"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Vulnerability assessment"
+        )
+        
+        # Article 5(c) — Social scoring
+        self.mappings[EUAIArticle.ART_5C] = EUAIMapping(
+            article=EUAIArticle.ART_5C,
+            title=ArticleTitle.ART_5C.value,
+            description="Social scoring",
+            mcr_control_ids=["ICC-8-I6", "ICC-8-I8", "AOBA-001"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Bias audit records"
+        )
+        
+        # Article 5(d) — Real-time biometric identification
+        self.mappings[EUAIArticle.ART_5D] = EUAIMapping(
+            article=EUAIArticle.ART_5D,
+            title=ArticleTitle.ART_5D.value,
+            description="Real-time biometric identification",
+            mcr_control_ids=["ICC-8-I9", "ADTEP-007"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Use case declaration"
+        )
+        
+        # Article 6 — Classification of high-risk AI systems
+        self.mappings[EUAIArticle.ART_6] = EUAIMapping(
+            article=EUAIArticle.ART_6,
+            title=ArticleTitle.ART_6.value,
+            description="Classification of high-risk AI systems",
+            mcr_control_ids=["AICA-5-CN-012", "ICC-8-I9"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Risk classification"
+        )
+        
+        # Article 7 — Amendments to classification
+        self.mappings[EUAIArticle.ART_7] = EUAIMapping(
+            article=EUAIArticle.ART_7,
+            title=ArticleTitle.ART_7.value,
+            description="Amendments to classification",
+            mcr_control_ids=["DEP-001"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Amendment process"
+        )
+        
+        # Article 8 — Compliance with requirements
+        self.mappings[EUAIArticle.ART_8] = EUAIMapping(
+            article=EUAIArticle.ART_8,
+            title=ArticleTitle.ART_8.value,
+            description="Compliance with requirements",
+            mcr_control_ids=[],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Compliance declaration"
+        )
+        
+        # Article 9 — Risk management system
+        self.mappings[EUAIArticle.ART_9] = EUAIMapping(
+            article=EUAIArticle.ART_9,
+            title=ArticleTitle.ART_9.value,
+            description="Risk management system",
+            mcr_control_ids=["AICA-5-CN-012", "AICA-5-CN-017", "AICA-5-CN-023", 
+                            "RGI-8-001", "RGI-8-006"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Risk register"
+        )
+        
+        # Article 10 — Data and data governance (PARTIAL)
+        self.mappings[EUAIArticle.ART_10] = EUAIMapping(
+            article=EUAIArticle.ART_10,
+            title=ArticleTitle.ART_10.value,
+            description="Data and data governance",
+            mcr_control_ids=["AICA-5-CN-001", "AICA-5-CN-005", "IMP-004"],
+            coverage="Partial",
+            evidence_required=True,
+            evidence_type="Data governance framework"
+        )
+        
+        # Article 11 — Technical documentation
+        self.mappings[EUAIArticle.ART_11] = EUAIMapping(
+            article=EUAIArticle.ART_11,
+            title=ArticleTitle.ART_11.value,
+            description="Technical documentation",
+            mcr_control_ids=["IMP-003", "IMP-002", "AICA-5-CN-021"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Technical docs"
+        )
+        
+        # Article 12 — Record-keeping
+        self.mappings[EUAIArticle.ART_12] = EUAIMapping(
+            article=EUAIArticle.ART_12,
+            title=ArticleTitle.ART_12.value,
+            description="Record-keeping",
+            mcr_control_ids=["IMP-001", "IMP-002", "IMP-003", "IMP-005", 
+                            "AICA-5-CN-021", "ADTEP-003", "RGI-8-003"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Audit logs"
+        )
+        
+        # Article 13 — Transparency
+        self.mappings[EUAIArticle.ART_13] = EUAIMapping(
+            article=EUAIArticle.ART_13,
+            title=ArticleTitle.ART_13.value,
+            description="Transparency and provision of information",
+            mcr_control_ids=["ICC-8-I6", "ICC-8-I8", "AICA-5-CN-004", "RGI-8-008"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Transparency docs"
+        )
+        
+        # Article 14 — Human oversight
+        self.mappings[EUAIArticle.ART_14] = EUAIMapping(
+            article=EUAIArticle.ART_14,
+            title=ArticleTitle.ART_14.value,
+            description="Human oversight",
+            mcr_control_ids=["AICA-5-CN-011", "AICA-5-CN-013", "AICA-5-CN-014", 
+                            "AICA-5-CN-015", "HOF-H1", "HOF-H3", 
+                            "ADTEP-001", "ADTEP-004", "ADTEP-005",
+                            "RGI-8-002", "RGI-8-005", "RGI-8-007",
+                            "CAD-7-001", "CAD-7-002"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Oversight protocols"
+        )
+        
+        # Article 15 — Accuracy, robustness, cybersecurity (PARTIAL)
+        self.mappings[EUAIArticle.ART_15] = EUAIMapping(
+            article=EUAIArticle.ART_15,
+            title=ArticleTitle.ART_15.value,
+            description="Accuracy, robustness, cybersecurity",
+            mcr_control_ids=["AICA-5-CN-023", "AICA-5-CN-024", "ADTEP-007", "ICC-8-I9"],
+            coverage="Partial",
+            evidence_required=True,
+            evidence_type="Accuracy metrics"
+        )
+        
+        # Article 16 — Obligations of providers
+        self.mappings[EUAIArticle.ART_16] = EUAIMapping(
+            article=EUAIArticle.ART_16,
+            title=ArticleTitle.ART_16.value,
+            description="Obligations of providers",
+            mcr_control_ids=["HOF-H1", "ICC-8-I1", "ICC-8-I2"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Provider obligations"
+        )
+        
+        # ... (additional articles truncated for brevity — full implementation in code)
+    
+    def get_mapping(self, article: EUAIArticle) -> Optional[EUAIMapping]:
+        """Get mapping for a specific article"""
+        return self.mappings.get(article)
+    
+    def get_controls_for_article(self, article: EUAIArticle) -> List[str]:
+        """Get MCR control IDs for a specific article"""
+        mapping = self.mappings.get(article)
+        if not mapping:
+            return []
+        return mapping.mcr_control_ids
+    
+    def get_articles_for_control(self, control_id: str) -> List[str]:
+        """Get articles that map to a specific control"""
+        result = []
+        for mapping in self.mappings.values():
+            if control_id in mapping.mcr_control_ids:
+                result.append(mapping.article.value)
+        return result
+    
+    def get_gap_analysis(self) -> Dict:
+        """Get gap analysis for EU AI Act"""
+        total = len(self.mappings)
+        full = sum(1 for m in self.mappings.values() if m.coverage == "Full")
+        partial = sum(1 for m in self.mappings.values() if m.coverage == "Partial")
+        none = sum(1 for m in self.mappings.values() if m.coverage == "None")
+        
+        return {
+            "total_articles": total,
+            "full_coverage": full,
+            "partial_coverage": partial,
+            "no_coverage": none,
+            "coverage_pct": (full / total) * 100 if total > 0 else 0,
+            "partial_articles": [m.article.value for m in self.mappings.values() 
+                                if m.coverage == "Partial"],
+            "uncovered_articles": [m.article.value for m in self.mappings.values() 
+                                  if m.coverage == "None"]
+        }
+    
+    def get_evidence_summary(self) -> Dict:
+        """Get evidence requirements summary"""
+        evidence_types = {}
+        for mapping in self.mappings.values():
+            if mapping.evidence_required:
+                evidence_types[mapping.evidence_type] = evidence_types.get(mapping.evidence_type, 0) + 1
+        return evidence_types
+    
+    def export_overlay(self, format: str = "json") -> str:
+        """Export the overlay in requested format"""
+        if format == "json":
+            import json
+            return json.dumps({
+                "framework": "eu_ai_act",
+                "version": "1.0",
+                "mappings": {
+                    m.article.value: {
+                        "title": m.title,
+                        "description": m.description,
+                        "mcr_control_ids": m.mcr_control_ids,
+                        "coverage": m.coverage,
+                        "evidence_required": m.evidence_required,
+                        "evidence_type": m.evidence_type
+                    } for m in self.mappings.values()
+                }
+            }, indent=2)
         return ""
 
-    def get\_compliance\_checklist(self) \-\> Dict\[str, List\[str\]\]:  
-        """Get a compliance checklist by article category"""  
-        checklist \= {  
-            "Title I — General Provisions": \[\],  
-            "Title II — Prohibited AI Practices": \[\],  
-            "Title III — High-Risk AI Systems": \[\],  
-            "Title IV — Transparency": \[\],  
-            "Title V — General-Purpose AI": \[\],  
-            "Title VI — Innovation": \[\],  
-            "Title VII — Governance": \[\],  
-            "Title VIII — Codes of Conduct": \[\],  
-            "Title IX — Final Provisions": \[\]  
-        }  
-          
-        \# Map articles to categories  
-        title\_mapping \= {  
-            "Art. 1": "Title I — General Provisions",  
-            "Art. 2": "Title I — General Provisions",  
-            "Art. 3": "Title I — General Provisions",  
-            "Art. 4": "Title I — General Provisions",  
-            "Art. 5": "Title II — Prohibited AI Practices",  
-            "Art. 6": "Title III — High-Risk AI Systems",  
-            "Art. 7": "Title III — High-Risk AI Systems",  
-            "Art. 8": "Title III — High-Risk AI Systems",  
-            "Art. 9": "Title III — High-Risk AI Systems",  
-            "Art. 10": "Title III — High-Risk AI Systems",  
-            "Art. 11": "Title III — High-Risk AI Systems",  
-            "Art. 12": "Title III — High-Risk AI Systems",  
-            "Art. 13": "Title III — High-Risk AI Systems",  
-            "Art. 14": "Title III — High-Risk AI Systems",  
-            "Art. 15": "Title III — High-Risk AI Systems",  
-            "Art. 16": "Title III — High-Risk AI Systems",  
-            "Art. 17": "Title III — High-Risk AI Systems",  
-            "Art. 18": "Title III — High-Risk AI Systems",  
-            "Art. 19": "Title III — High-Risk AI Systems",  
-            "Art. 20": "Title III — High-Risk AI Systems",  
-            "Art. 21": "Title III — High-Risk AI Systems",  
-            "Art. 22": "Title III — High-Risk AI Systems",  
-            "Art. 23": "Title III — High-Risk AI Systems",  
-            "Art. 24": "Title III — High-Risk AI Systems",  
-            "Art. 25": "Title III — High-Risk AI Systems",  
-            "Art. 26": "Title III — High-Risk AI Systems",  
-            "Art. 27": "Title III — High-Risk AI Systems",  
-            "Art. 28": "Title III — High-Risk AI Systems",  
-            "Art. 29": "Title III — High-Risk AI Systems",  
-            "Art. 30": "Title III — High-Risk AI Systems",  
-            "Art. 31": "Title III — High-Risk AI Systems",  
-            "Art. 32": "Title III — High-Risk AI Systems",  
-            "Art. 33": "Title III — High-Risk AI Systems",  
-            "Art. 34": "Title III — High-Risk AI Systems",  
-            "Art. 35": "Title III — High-Risk AI Systems",  
-            "Art. 36": "Title III — High-Risk AI Systems",  
-            "Art. 37": "Title III — High-Risk AI Systems",  
-            "Art. 38": "Title III — High-Risk AI Systems",  
-            "Art. 39": "Title III — High-Risk AI Systems",  
-            "Art. 40": "Title III — High-Risk AI Systems",  
-            "Art. 41": "Title III — High-Risk AI Systems",  
-            "Art. 42": "Title III — High-Risk AI Systems",  
-            "Art. 43": "Title III — High-Risk AI Systems",  
-            "Art. 44": "Title III — High-Risk AI Systems",  
-            "Art. 45": "Title III — High-Risk AI Systems",  
-            "Art. 46": "Title III — High-Risk AI Systems",  
-            "Art. 47": "Title III — High-Risk AI Systems",  
-            "Art. 48": "Title III — High-Risk AI Systems",  
-            "Art. 49": "Title III — High-Risk AI Systems",  
-            "Art. 50": "Title III — High-Risk AI Systems",  
-            "Art. 51": "Title III — High-Risk AI Systems",  
-            "Art. 52": "Title IV — Transparency",  
-            "Art. 53": "Title V — General-Purpose AI",  
-            "Art. 54": "Title V — General-Purpose AI",  
-            "Art. 55": "Title V — General-Purpose AI",  
-            "Art. 56": "Title V — General-Purpose AI",  
-            "Art. 57": "Title V — General-Purpose AI",  
-            "Art. 58": "Title V — General-Purpose AI",  
-            "Art. 59": "Title V — General-Purpose AI",  
-            "Art. 60": "Title V — General-Purpose AI",  
-            "Art. 61": "Title V — General-Purpose AI",  
-            "Art. 62": "Title V — General-Purpose AI",  
-            "Art. 63": "Title V — General-Purpose AI",  
-            "Art. 64": "Title VI — Innovation",  
-            "Art. 65": "Title VI — Innovation",  
-            "Art. 66": "Title VII — Governance",  
-            "Art. 67": "Title VII — Governance",  
-            "Art. 68": "Title VII — Governance",  
-            "Art. 69": "Title VII — Governance",  
-            "Art. 70": "Title VII — Governance",  
-            "Art. 71": "Title VII — Governance",  
-            "Art. 72": "Title VII — Governance",  
-            "Art. 73": "Title VII — Governance",  
-            "Art. 74": "Title VII — Governance",  
-            "Art. 75": "Title VII — Governance",  
-            "Art. 76": "Title VII — Governance",  
-            "Art. 77": "Title VII — Governance",  
-            "Art. 78": "Title VIII — Codes of Conduct",  
-            "Art. 79": "Title VIII — Codes of Conduct",  
-            "Art. 80": "Title VIII — Codes of Conduct",  
-            "Art. 81": "Title VIII — Codes of Conduct",  
-            "Art. 82": "Title VIII — Codes of Conduct",  
-            "Art. 83": "Title VIII — Codes of Conduct",  
-            "Art. 84": "Title VIII — Codes of Conduct",  
-            "Art. 85": "Title VIII — Codes of Conduct",  
-            "Art. 86": "Title VIII — Codes of Conduct",  
-            "Art. 87": "Title VIII — Codes of Conduct",  
-            "Art. 88": "Title VIII — Codes of Conduct",  
-            "Art. 89": "Title VIII — Codes of Conduct",  
-            "Art. 90": "Title VIII — Codes of Conduct",  
-            "Art. 91": "Title VIII — Codes of Conduct",  
-            "Art. 92": "Title VIII — Codes of Conduct",  
-            "Art. 93": "Title VIII — Codes of Conduct",  
-            "Art. 94": "Title VIII — Codes of Conduct",  
-            "Art. 95": "Title VIII — Codes of Conduct",  
-            "Art. 96": "Title VIII — Codes of Conduct",  
-            "Art. 97": "Title VIII — Codes of Conduct",  
-            "Art. 98": "Title VIII — Codes of Conduct",  
-            "Art. 99": "Title VIII — Codes of Conduct",  
-            "Art. 100": "Title VIII — Codes of Conduct",  
-            "Art. 101": "Title IX — Final Provisions",  
-            "Art. 102": "Title IX — Final Provisions",  
-            "Art. 103": "Title IX — Final Provisions",  
-            "Art. 104": "Title IX — Final Provisions",  
-            "Art. 105": "Title IX — Final Provisions",  
-            "Art. 106": "Title IX — Final Provisions",  
-            "Art. 107": "Title IX — Final Provisions",  
-            "Art. 108": "Title IX — Final Provisions",  
-            "Art. 109": "Title IX — Final Provisions",  
-            "Art. 110": "Title IX — Final Provisions",  
-            "Art. 111": "Title IX — Final Provisions",  
-            "Art. 112": "Title IX — Final Provisions",  
-            "Art. 113": "Title IX — Final Provisions",  
-        }  
-          
-        for mapping in self.mappings.values():  
-            category \= title\_mapping.get(mapping.article.value, "Other")  
-            if category in checklist:  
-                checklist\[category\].append(mapping.article.value)  
-          
+    def get_compliance_checklist(self) -> Dict[str, List[str]]:
+        """Get a compliance checklist by article category"""
+        checklist = {
+            "Title I — General Provisions": [],
+            "Title II — Prohibited AI Practices": [],
+            "Title III — High-Risk AI Systems": [],
+            "Title IV — Transparency": [],
+            "Title V — General-Purpose AI": [],
+            "Title VI — Innovation": [],
+            "Title VII — Governance": [],
+            "Title VIII — Codes of Conduct": [],
+            "Title IX — Final Provisions": []
+        }
+        
+        # Map articles to categories
+        title_mapping = {
+            "Art. 1": "Title I — General Provisions",
+            "Art. 2": "Title I — General Provisions",
+            "Art. 3": "Title I — General Provisions",
+            "Art. 4": "Title I — General Provisions",
+            "Art. 5": "Title II — Prohibited AI Practices",
+            "Art. 6": "Title III — High-Risk AI Systems",
+            "Art. 7": "Title III — High-Risk AI Systems",
+            "Art. 8": "Title III — High-Risk AI Systems",
+            "Art. 9": "Title III — High-Risk AI Systems",
+            "Art. 10": "Title III — High-Risk AI Systems",
+            "Art. 11": "Title III — High-Risk AI Systems",
+            "Art. 12": "Title III — High-Risk AI Systems",
+            "Art. 13": "Title III — High-Risk AI Systems",
+            "Art. 14": "Title III — High-Risk AI Systems",
+            "Art. 15": "Title III — High-Risk AI Systems",
+            "Art. 16": "Title III — High-Risk AI Systems",
+            "Art. 17": "Title III — High-Risk AI Systems",
+            "Art. 18": "Title III — High-Risk AI Systems",
+            "Art. 19": "Title III — High-Risk AI Systems",
+            "Art. 20": "Title III — High-Risk AI Systems",
+            "Art. 21": "Title III — High-Risk AI Systems",
+            "Art. 22": "Title III — High-Risk AI Systems",
+            "Art. 23": "Title III — High-Risk AI Systems",
+            "Art. 24": "Title III — High-Risk AI Systems",
+            "Art. 25": "Title III — High-Risk AI Systems",
+            "Art. 26": "Title III — High-Risk AI Systems",
+            "Art. 27": "Title III — High-Risk AI Systems",
+            "Art. 28": "Title III — High-Risk AI Systems",
+            "Art. 29": "Title III — High-Risk AI Systems",
+            "Art. 30": "Title III — High-Risk AI Systems",
+            "Art. 31": "Title III — High-Risk AI Systems",
+            "Art. 32": "Title III — High-Risk AI Systems",
+            "Art. 33": "Title III — High-Risk AI Systems",
+            "Art. 34": "Title III — High-Risk AI Systems",
+            "Art. 35": "Title III — High-Risk AI Systems",
+            "Art. 36": "Title III — High-Risk AI Systems",
+            "Art. 37": "Title III — High-Risk AI Systems",
+            "Art. 38": "Title III — High-Risk AI Systems",
+            "Art. 39": "Title III — High-Risk AI Systems",
+            "Art. 40": "Title III — High-Risk AI Systems",
+            "Art. 41": "Title III — High-Risk AI Systems",
+            "Art. 42": "Title III — High-Risk AI Systems",
+            "Art. 43": "Title III — High-Risk AI Systems",
+            "Art. 44": "Title III — High-Risk AI Systems",
+            "Art. 45": "Title III — High-Risk AI Systems",
+            "Art. 46": "Title III — High-Risk AI Systems",
+            "Art. 47": "Title III — High-Risk AI Systems",
+            "Art. 48": "Title III — High-Risk AI Systems",
+            "Art. 49": "Title III — High-Risk AI Systems",
+            "Art. 50": "Title III — High-Risk AI Systems",
+            "Art. 51": "Title III — High-Risk AI Systems",
+            "Art. 52": "Title IV — Transparency",
+            "Art. 53": "Title V — General-Purpose AI",
+            "Art. 54": "Title V — General-Purpose AI",
+            "Art. 55": "Title V — General-Purpose AI",
+            "Art. 56": "Title V — General-Purpose AI",
+            "Art. 57": "Title V — General-Purpose AI",
+            "Art. 58": "Title V — General-Purpose AI",
+            "Art. 59": "Title V — General-Purpose AI",
+            "Art. 60": "Title V — General-Purpose AI",
+            "Art. 61": "Title V — General-Purpose AI",
+            "Art. 62": "Title V — General-Purpose AI",
+            "Art. 63": "Title V — General-Purpose AI",
+            "Art. 64": "Title VI — Innovation",
+            "Art. 65": "Title VI — Innovation",
+            "Art. 66": "Title VII — Governance",
+            "Art. 67": "Title VII — Governance",
+            "Art. 68": "Title VII — Governance",
+            "Art. 69": "Title VII — Governance",
+            "Art. 70": "Title VII — Governance",
+            "Art. 71": "Title VII — Governance",
+            "Art. 72": "Title VII — Governance",
+            "Art. 73": "Title VII — Governance",
+            "Art. 74": "Title VII — Governance",
+            "Art. 75": "Title VII — Governance",
+            "Art. 76": "Title VII — Governance",
+            "Art. 77": "Title VII — Governance",
+            "Art. 78": "Title VIII — Codes of Conduct",
+            "Art. 79": "Title VIII — Codes of Conduct",
+            "Art. 80": "Title VIII — Codes of Conduct",
+            "Art. 81": "Title VIII — Codes of Conduct",
+            "Art. 82": "Title VIII — Codes of Conduct",
+            "Art. 83": "Title VIII — Codes of Conduct",
+            "Art. 84": "Title VIII — Codes of Conduct",
+            "Art. 85": "Title VIII — Codes of Conduct",
+            "Art. 86": "Title VIII — Codes of Conduct",
+            "Art. 87": "Title VIII — Codes of Conduct",
+            "Art. 88": "Title VIII — Codes of Conduct",
+            "Art. 89": "Title VIII — Codes of Conduct",
+            "Art. 90": "Title VIII — Codes of Conduct",
+            "Art. 91": "Title VIII — Codes of Conduct",
+            "Art. 92": "Title VIII — Codes of Conduct",
+            "Art. 93": "Title VIII — Codes of Conduct",
+            "Art. 94": "Title VIII — Codes of Conduct",
+            "Art. 95": "Title VIII — Codes of Conduct",
+            "Art. 96": "Title VIII — Codes of Conduct",
+            "Art. 97": "Title VIII — Codes of Conduct",
+            "Art. 98": "Title VIII — Codes of Conduct",
+            "Art. 99": "Title VIII — Codes of Conduct",
+            "Art. 100": "Title VIII — Codes of Conduct",
+            "Art. 101": "Title IX — Final Provisions",
+            "Art. 102": "Title IX — Final Provisions",
+            "Art. 103": "Title IX — Final Provisions",
+            "Art. 104": "Title IX — Final Provisions",
+            "Art. 105": "Title IX — Final Provisions",
+            "Art. 106": "Title IX — Final Provisions",
+            "Art. 107": "Title IX — Final Provisions",
+            "Art. 108": "Title IX — Final Provisions",
+            "Art. 109": "Title IX — Final Provisions",
+            "Art. 110": "Title IX — Final Provisions",
+            "Art. 111": "Title IX — Final Provisions",
+            "Art. 112": "Title IX — Final Provisions",
+            "Art. 113": "Title IX — Final Provisions",
+        }
+        
+        for mapping in self.mappings.values():
+            category = title_mapping.get(mapping.article.value, "Other")
+            if category in checklist:
+                checklist[category].append(mapping.article.value)
+        
         return checklist
+
+```
 
 ---
 
@@ -18050,59 +18075,66 @@ class EUAIOverlay:
 
 ### 5.1 Basic Usage
 
-\# Initialize the EU AI Act overlay  
-eu\_ai \= EUAIOverlay()
+```
+# Initialize the EU AI Act overlay
+eu_ai = EUAIOverlay()
 
-\# Get mapping for Article 14 (Human Oversight)  
-mapping \= eu\_ai.get\_mapping(EUAIArticle.ART\_14)  
-print(f"Article: {mapping.article.value} — {mapping.title}")  
-print(f"Description: {mapping.description}")  
-print(f"MCR Controls: {mapping.mcr\_control\_ids}")  
+# Get mapping for Article 14 (Human Oversight)
+mapping = eu_ai.get_mapping(EUAIArticle.ART_14)
+print(f"Article: {mapping.article.value} — {mapping.title}")
+print(f"Description: {mapping.description}")
+print(f"MCR Controls: {mapping.mcr_control_ids}")
 print(f"Coverage: {mapping.coverage}")
 
-\# Get articles for a specific control  
-articles \= eu\_ai.get\_articles\_for\_control("AICA-5-CN-014")  
+# Get articles for a specific control
+articles = eu_ai.get_articles_for_control("AICA-5-CN-014")
 print(f"Articles for AICA-5-CN-014: {articles}")
 
-\# Get gap analysis  
-gap \= eu\_ai.get\_gap\_analysis()  
-print(f"Coverage: {gap\['coverage\_pct'\]}%")  
-print(f"Partial articles: {gap\['partial\_articles'\]}")
+# Get gap analysis
+gap = eu_ai.get_gap_analysis()
+print(f"Coverage: {gap['coverage_pct']}%")
+print(f"Partial articles: {gap['partial_articles']}")
 
-\# Get evidence requirements  
-evidence \= eu\_ai.get\_evidence\_summary()  
+# Get evidence requirements
+evidence = eu_ai.get_evidence_summary()
 print(f"Evidence types: {evidence}")
+```
 
 ### 5.2 Compliance Checklist
 
-\# Get compliance checklist  
-checklist \= eu\_ai.get\_compliance\_checklist()  
-for category, articles in checklist.items():  
-    print(f"\\n{category} ({len(articles)} articles)")  
-    for article in articles:  
-        mapping \= eu\_ai.get\_mapping(EUAIArticle(article))  
-        status \= "✅" if mapping.coverage \== "Full" else "⚠️" if mapping.coverage \== "Partial" else "❌"  
+```
+# Get compliance checklist
+checklist = eu_ai.get_compliance_checklist()
+for category, articles in checklist.items():
+    print(f"\n{category} ({len(articles)} articles)")
+    for article in articles:
+        mapping = eu_ai.get_mapping(EUAIArticle(article))
+        status = "✅" if mapping.coverage == "Full" else "⚠️" if mapping.coverage == "Partial" else "❌"
         print(f"  {status} {article}: {mapping.title}")
+
+```
 
 ### 5.3 Integration with Crosswalk Engine
 
-from compliance\_crosswalk\_engine import ComplianceCrosswalkEngine  
-from master\_control\_registry import MasterControlRegistry
+```
+from compliance_crosswalk_engine import ComplianceCrosswalkEngine
+from master_control_registry import MasterControlRegistry
 
-mcr \= MasterControlRegistry()  
-crosswalk \= ComplianceCrosswalkEngine(registry=mcr)  
-eu\_ai \= EUAIOverlay()
+mcr = MasterControlRegistry()
+crosswalk = ComplianceCrosswalkEngine(registry=mcr)
+eu_ai = EUAIOverlay()
 
-\# Map an article to MCR controls  
-article \= EUAIArticle.ART\_14  
-controls \= eu\_ai.get\_controls\_for\_article(article)  
+# Map an article to MCR controls
+article = EUAIArticle.ART_14
+controls = eu_ai.get_controls_for_article(article)
 print(f"Article {article.value} maps to {len(controls)} controls:")
 
-\# Cross-reference with crosswalk engine  
-for control\_id in controls:  
-    mappings \= crosswalk.map\_component\_to\_framework(control\_id, "eu\_ai\_act")  
-    for m in mappings:  
-        print(f"  {control\_id} → {m.clause}: {m.clause\_description}")
+# Cross-reference with crosswalk engine
+for control_id in controls:
+    mappings = crosswalk.map_component_to_framework(control_id, "eu_ai_act")
+    for m in mappings:
+        print(f"  {control_id} → {m.clause}: {m.clause_description}")
+```
 
 ---
 
@@ -18285,428 +18317,430 @@ The NIST AI RMF Overlay ensures that:
 
 ## SECTION 4: NIST AI RMF OVERLAY IMPLEMENTATION
 
-\# nist\_ai\_rmf\_overlay.py  
-"""  
-NIST AI RMF Regulatory Overlay — Complete Implementation  
+```
+# nist_ai_rmf_overlay.py
+"""
+NIST AI RMF Regulatory Overlay — Complete Implementation
 """
 
-from enum import Enum  
-from typing import List, Dict, Optional  
-from dataclasses import dataclass, field  
+from enum import Enum
+from typing import List, Dict, Optional
+from dataclasses import dataclass, field
 from datetime import datetime
 
-class NISTFunction(Enum):  
-    """NIST AI RMF Function Enumeration"""  
-    GOVERN \= "GOVERN"  
-    MAP \= "MAP"  
-    MEASURE \= "MEASURE"  
-    MANAGE \= "MANAGE"
+class NISTFunction(Enum):
+    """NIST AI RMF Function Enumeration"""
+    GOVERN = "GOVERN"
+    MAP = "MAP"
+    MEASURE = "MEASURE"
+    MANAGE = "MANAGE"
 
-class NISTCategory(Enum):  
-    """NIST AI RMF Category Enumeration"""  
-    \# GOVERN  
-    GV\_1 \= "GV-1"  
-    GV\_2 \= "GV-2"  
-    GV\_3 \= "GV-3"  
-    GV\_4 \= "GV-4"  
-    \# MAP  
-    MP\_1 \= "MP-1"  
-    MP\_2 \= "MP-2"  
-    MP\_3 \= "MP-3"  
-    MP\_4 \= "MP-4"  
-    \# MEASURE  
-    MS\_1 \= "MS-1"  
-    MS\_2 \= "MS-2"  
-    MS\_3 \= "MS-3"  
-    MS\_4 \= "MS-4"  
-    \# MANAGE  
-    MG\_1 \= "MG-1"  
-    MG\_2 \= "MG-2"  
-    MG\_3 \= "MG-3"  
-    MG\_4 \= "MG-4"
+class NISTCategory(Enum):
+    """NIST AI RMF Category Enumeration"""
+    # GOVERN
+    GV_1 = "GV-1"
+    GV_2 = "GV-2"
+    GV_3 = "GV-3"
+    GV_4 = "GV-4"
+    # MAP
+    MP_1 = "MP-1"
+    MP_2 = "MP-2"
+    MP_3 = "MP-3"
+    MP_4 = "MP-4"
+    # MEASURE
+    MS_1 = "MS-1"
+    MS_2 = "MS-2"
+    MS_3 = "MS-3"
+    MS_4 = "MS-4"
+    # MANAGE
+    MG_1 = "MG-1"
+    MG_2 = "MG-2"
+    MG_3 = "MG-3"
+    MG_4 = "MG-4"
 
-@dataclass  
-class NISTMapping:  
-    """NIST AI RMF mapping for a single subcategory"""  
-    category: NISTCategory  
-    function: NISTFunction  
-    title: str  
-    description: str  
-    mcr\_control\_ids: List\[str\]  
-    coverage: str  \# Full / Partial / None  
-    evidence\_required: bool  
-    evidence\_type: str
+@dataclass
+class NISTMapping:
+    """NIST AI RMF mapping for a single subcategory"""
+    category: NISTCategory
+    function: NISTFunction
+    title: str
+    description: str
+    mcr_control_ids: List[str]
+    coverage: str  # Full / Partial / None
+    evidence_required: bool
+    evidence_type: str
 
-class NISTAIRMFOverlay:  
-    """NIST AI RMF Regulatory Overlay"""  
-      
-    def \_\_init\_\_(self):  
-        self.mappings: Dict\[NISTCategory, NISTMapping\] \= {}  
-        self.\_build\_mappings()  
-      
-    def \_build\_mappings(self):  
-        """Build all NIST AI RMF mappings"""  
-          
-        \# \===== GOVERN Function \=====  
-          
-        \# GV-1: Policies, Processes, and Procedures  
-        self.mappings\[NISTCategory.GV\_1\] \= NISTMapping(  
-            category=NISTCategory.GV\_1,  
-            function=NISTFunction.GOVERN,  
-            title="Policies, Processes, and Procedures",  
-            description="AI risk management policies and procedures are established and maintained",  
-            mcr\_control\_ids=\[  
-                "HOF-H1", "HOF-H2", "HOF-H3",  
-                "EAF-001", "EAF-002", "EAF-003", "EAF-004", "EAF-005",  
-                "CEF-001", "CEF-002", "CEF-003", "CEF-004", "CEF-005", "CEF-006"  
-            \],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Governance charter, policies"  
-        )  
-          
-        \# GV-2: Accountability and Responsibility  
-        self.mappings\[NISTCategory.GV\_2\] \= NISTMapping(  
-            category=NISTCategory.GV\_2,  
-            function=NISTFunction.GOVERN,  
-            title="Accountability and Responsibility",  
-            description="Clearly defined AI roles and responsibilities",  
-            mcr\_control\_ids=\[  
-                "HOF-H1", "HOF-H2", "HOF-H3", "HOF-H4", "HOF-H5",  
-                "HOF-H6", "HOF-H7", "HOF-H8", "HOF-H9", "HOF-H10",  
-                "HOF-H11", "HOF-H12",  
-                "ICC-8-I1", "ICC-8-I2"  
-            \],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Role definitions, accountability assignments"  
-        )  
-          
-        \# GV-3: Legal and Regulatory Requirements  
-        self.mappings\[NISTCategory.GV\_3\] \= NISTMapping(  
-            category=NISTCategory.GV\_3,  
-            function=NISTFunction.GOVERN,  
-            title="Legal and Regulatory Requirements",  
-            description="Identification and management of legal and regulatory obligations",  
-            mcr\_control\_ids=\[  
-                "ICC-8-I5", "ICC-8-I8",  
-                "CRO-001", "CRO-002", "CRO-003", "CRO-004", "CRO-005"  
-            \],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Legal compliance register"  
-        )  
-          
-        \# GV-4: Resource Allocation  
-        self.mappings\[NISTCategory.GV\_4\] \= NISTMapping(  
-            category=NISTCategory.GV\_4,  
-            function=NISTFunction.GOVERN,  
-            title="Resource Allocation",  
-            description="Allocation of resources for AI risk management",  
-            mcr\_control\_ids=\[  
-                "HOF-H4",  
-                "EAF-005"  
-            \],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Budget documentation"  
-        )  
-          
-        \# \===== MAP Function \=====  
-          
-        \# MP-1: Contextualization  
-        self.mappings\[NISTCategory.MP\_1\] \= NISTMapping(  
-            category=NISTCategory.MP\_1,  
-            function=NISTFunction.MAP,  
-            title="Contextualization",  
-            description="Understand the AI system's context and environment",  
-            mcr\_control\_ids=\[  
-                "AICA-5-CN-001", "AICA-5-CN-005",  
-                "ECO-001"  
-            \],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="System context documentation"  
-        )  
-          
-        \# MP-2: Asset Identification  
-        self.mappings\[NISTCategory.MP\_2\] \= NISTMapping(  
-            category=NISTCategory.MP\_2,  
-            function=NISTFunction.MAP,  
-            title="Asset Identification",  
-            description="Identify assets including data, models, and infrastructure",  
-            mcr\_control\_ids=\[  
-                "AICA-5-CN-001", "AICA-5-CN-005",  
-                "ILTP-001", "ILTP-002"  
-            \],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Asset inventory"  
-        )  
-          
-        \# MP-3: Risk Categorization  
-        self.mappings\[NISTCategory.MP\_3\] \= NISTMapping(  
-            category=NISTCategory.MP\_3,  
-            function=NISTFunction.MAP,  
-            title="Risk Categorization",  
-            description="Categorize AI risks by type and severity",  
-            mcr\_control\_ids=\[  
-                "AICA-5-CN-012", "AICA-5-CN-017", "AICA-5-CN-023",  
-                "RGI-8-001"  
-            \],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Risk register"  
-        )  
-          
-        \# MP-4: Impact Assessment  
-        self.mappings\[NISTCategory.MP\_4\] \= NISTMapping(  
-            category=NISTCategory.MP\_4,  
-            function=NISTFunction.MAP,  
-            title="Impact Assessment",  
-            description="Assess potential impacts of AI system failures",  
-            mcr\_control\_ids=\[  
-                "AICA-5-CN-023",  
-                "AOBA-001",  
-                "OEO-001", "OEO-002", "OEO-003", "OEO-004", "OEO-005"  
-            \],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Impact assessments"  
-        )  
-          
-        \# \===== MEASURE Function \=====  
-          
-        \# MS-1: Performance Measurement  
-        self.mappings\[NISTCategory.MS\_1\] \= NISTMapping(  
-            category=NISTCategory.MS\_1,  
-            function=NISTFunction.MEASURE,  
-            title="Performance Measurement",  
-            description="Measure AI system performance and effectiveness",  
-            mcr\_control\_ids=\[  
-                "AICA-5-CN-023", "AICA-5-CN-025",  
-                "RGI-8-004"  
-            \],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Performance metrics"  
-        )  
-          
-        \# MS-2: Bias and Fairness  
-        self.mappings\[NISTCategory.MS\_2\] \= NISTMapping(  
-            category=NISTCategory.MS\_2,  
-            function=NISTFunction.MEASURE,  
-            title="Bias and Fairness",  
-            description="Measure and mitigate bias and unfairness",  
-            mcr\_control\_ids=\[  
-                "AOBA-001", "AOBA-002", "AOBA-003", "AOBA-004", "AOBA-005", "AOBA-006",  
-                "ABA-001", "ABA-002"  
-            \],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Bias audit reports"  
-        )  
-          
-        \# MS-3: Transparency and Explainability  
-        self.mappings\[NISTCategory.MS\_3\] \= NISTMapping(  
-            category=NISTCategory.MS\_3,  
-            function=NISTFunction.MEASURE,  
-            title="Transparency and Explainability",  
-            description="Measure transparency and explainability",  
-            mcr\_control\_ids=\[  
-                "ICC-8-I6", "ICC-8-I8",  
-                "AICA-5-CN-004",  
-                "RGI-8-003"  
-            \],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Transparency documentation"  
-        )  
-          
-        \# MS-4: Auditability  
-        self.mappings\[NISTCategory.MS\_4\] \= NISTMapping(  
-            category=NISTCategory.MS\_4,  
-            function=NISTFunction.MEASURE,  
-            title="Auditability",  
-            description="Ensure AI systems are auditable",  
-            mcr\_control\_ids=\[  
-                "IMP-001", "IMP-002", "IMP-003", "IMP-005",  
-                "AICA-5-CN-021", "AICA-5-CN-019",  
-                "ADTEP-003"  
-            \],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Audit logs"  
-        )  
-          
-        \# \===== MANAGE Function \=====  
-          
-        \# MG-1: Risk Treatment  
-        self.mappings\[NISTCategory.MG\_1\] \= NISTMapping(  
-            category=NISTCategory.MG\_1,  
-            function=NISTFunction.MANAGE,  
-            title="Risk Treatment",  
-            description="Implement risk treatment measures",  
-            mcr\_control\_ids=\[  
-                "AICA-5-CN-013", "AICA-5-CN-014", "AICA-5-CN-020",  
-                "ADTEP-004", "ADTEP-005",  
-                "RGI-8-005", "RGI-8-006"  
-            \],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Risk treatment plans"  
-        )  
-          
-        \# MG-2: Monitoring and Improvement  
-        self.mappings\[NISTCategory.MG\_2\] \= NISTMapping(  
-            category=NISTCategory.MG\_2,  
-            function=NISTFunction.MANAGE,  
-            title="Monitoring and Improvement",  
-            description="Continuously monitor and improve AI systems",  
-            mcr\_control\_ids=\[  
-                "AICA-5-CN-017", "AICA-5-CN-025",  
-                "RGI-8-004",  
-                "CAD-7-007"  
-            \],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Monitoring reports"  
-        )  
-          
-        \# MG-3: Incident Response  
-        self.mappings\[NISTCategory.MG\_3\] \= NISTMapping(  
-            category=NISTCategory.MG\_3,  
-            function=NISTFunction.MANAGE,  
-            title="Incident Response",  
-            description="Respond to AI incidents",  
-            mcr\_control\_ids=\[  
-                "ADTEP-004", "ADTEP-005",  
-                "XOO-001", "XOO-002", "XOO-003", "XOO-004", "XOO-005", "XOO-006"  
-            \],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Incident response plans"  
-        )  
-          
-        \# MG-4: Continuity and Resilience  
-        self.mappings\[NISTCategory.MG\_4\] \= NISTMapping(  
-            category=NISTCategory.MG\_4,  
-            function=NISTFunction.MANAGE,  
-            title="Continuity and Resilience",  
-            description="Ensure continuity and resilience",  
-            mcr\_control\_ids=\[  
-                "ICC-8-I7",  
-                "ADTEP-007",  
-                "RGI-8-007",  
-                "CAD-7-006"  
-            \],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Continuity plans"  
-        )  
-      
-    def get\_mapping(self, category: NISTCategory) \-\> Optional\[NISTMapping\]:  
-        """Get mapping for a specific subcategory"""  
-        return self.mappings.get(category)  
-      
-    def get\_controls\_for\_category(self, category: NISTCategory) \-\> List\[str\]:  
-        """Get MCR control IDs for a specific category"""  
-        mapping \= self.mappings.get(category)  
-        if not mapping:  
-            return \[\]  
-        return mapping.mcr\_control\_ids  
-      
-    def get\_controls\_for\_function(self, function: NISTFunction) \-\> List\[str\]:  
-        """Get MCR control IDs for all categories in a function"""  
-        result \= \[\]  
-        for mapping in self.mappings.values():  
-            if mapping.function \== function:  
-                result.extend(mapping.mcr\_control\_ids)  
-        return list(set(result))  
-      
-    def get\_categories\_for\_control(self, control\_id: str) \-\> List\[str\]:  
-        """Get categories that map to a specific control"""  
-        result \= \[\]  
-        for mapping in self.mappings.values():  
-            if control\_id in mapping.mcr\_control\_ids:  
-                result.append(mapping.category.value)  
-        return result  
-      
-    def get\_gap\_analysis(self) \-\> Dict:  
-        """Get gap analysis for NIST AI RMF"""  
-        total \= len(self.mappings)  
-        full \= sum(1 for m in self.mappings.values() if m.coverage \== "Full")  
-        partial \= sum(1 for m in self.mappings.values() if m.coverage \== "Partial")  
-        none \= sum(1 for m in self.mappings.values() if m.coverage \== "None")  
-          
-        return {  
-            "total\_subcategories": total,  
-            "full\_coverage": full,  
-            "partial\_coverage": partial,  
-            "no\_coverage": none,  
-            "coverage\_pct": (full / total) \* 100 if total \> 0 else 0,  
-            "partial\_subcategories": \[m.category.value for m in self.mappings.values()   
-                                      if m.coverage \== "Partial"\],  
-            "uncovered\_subcategories": \[m.category.value for m in self.mappings.values()   
-                                        if m.coverage \== "None"\]  
-        }  
-      
-    def get\_function\_summary(self) \-\> Dict:  
-        """Get summary by function"""  
-        summary \= {}  
-        for function in NISTFunction:  
-            controls \= self.get\_controls\_for\_function(function)  
-            categories \= \[m for m in self.mappings.values() if m.function \== function\]  
-            summary\[function.value\] \= {  
-                "total\_categories": len(categories),  
-                "full\_coverage": sum(1 for m in categories if m.coverage \== "Full"),  
-                "total\_controls": len(controls),  
-                "unique\_controls": len(set(controls))  
-            }  
-        return summary  
-      
-    def get\_evidence\_summary(self) \-\> Dict:  
-        """Get evidence requirements summary"""  
-        evidence\_types \= {}  
-        for mapping in self.mappings.values():  
-            if mapping.evidence\_required:  
-                evidence\_types\[mapping.evidence\_type\] \= evidence\_types.get(mapping.evidence\_type, 0\) \+ 1  
-        return evidence\_types  
-      
-    def export\_overlay(self, format: str \= "json") \-\> str:  
-        """Export the overlay in requested format"""  
-        if format \== "json":  
-            import json  
-            return json.dumps({  
-                "framework": "nist\_ai\_rmf",  
-                "version": "1.0",  
-                "mappings": {  
-                    m.category.value: {  
-                        "function": m.function.value,  
-                        "title": m.title,  
-                        "description": m.description,  
-                        "mcr\_control\_ids": m.mcr\_control\_ids,  
-                        "coverage": m.coverage,  
-                        "evidence\_required": m.evidence\_required,  
-                        "evidence\_type": m.evidence\_type  
-                    } for m in self.mappings.values()  
-                }  
-            }, indent=2)  
-        return ""  
-      
-    def get\_compliance\_checklist(self) \-\> Dict\[str, List\[str\]\]:  
-        """Get a compliance checklist by function"""  
-        checklist \= {  
-            "GOVERN": \[\],  
-            "MAP": \[\],  
-            "MEASURE": \[\],  
-            "MANAGE": \[\]  
-        }  
-          
-        for mapping in self.mappings.values():  
-            checklist\[mapping.function.value\].append(mapping.category.value)  
-          
+class NISTAIRMFOverlay:
+    """NIST AI RMF Regulatory Overlay"""
+    
+    def __init__(self):
+        self.mappings: Dict[NISTCategory, NISTMapping] = {}
+        self._build_mappings()
+    
+    def _build_mappings(self):
+        """Build all NIST AI RMF mappings"""
+        
+        # ===== GOVERN Function =====
+        
+        # GV-1: Policies, Processes, and Procedures
+        self.mappings[NISTCategory.GV_1] = NISTMapping(
+            category=NISTCategory.GV_1,
+            function=NISTFunction.GOVERN,
+            title="Policies, Processes, and Procedures",
+            description="AI risk management policies and procedures are established and maintained",
+            mcr_control_ids=[
+                "HOF-H1", "HOF-H2", "HOF-H3",
+                "EAF-001", "EAF-002", "EAF-003", "EAF-004", "EAF-005",
+                "CEF-001", "CEF-002", "CEF-003", "CEF-004", "CEF-005", "CEF-006"
+            ],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Governance charter, policies"
+        )
+        
+        # GV-2: Accountability and Responsibility
+        self.mappings[NISTCategory.GV_2] = NISTMapping(
+            category=NISTCategory.GV_2,
+            function=NISTFunction.GOVERN,
+            title="Accountability and Responsibility",
+            description="Clearly defined AI roles and responsibilities",
+            mcr_control_ids=[
+                "HOF-H1", "HOF-H2", "HOF-H3", "HOF-H4", "HOF-H5",
+                "HOF-H6", "HOF-H7", "HOF-H8", "HOF-H9", "HOF-H10",
+                "HOF-H11", "HOF-H12",
+                "ICC-8-I1", "ICC-8-I2"
+            ],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Role definitions, accountability assignments"
+        )
+        
+        # GV-3: Legal and Regulatory Requirements
+        self.mappings[NISTCategory.GV_3] = NISTMapping(
+            category=NISTCategory.GV_3,
+            function=NISTFunction.GOVERN,
+            title="Legal and Regulatory Requirements",
+            description="Identification and management of legal and regulatory obligations",
+            mcr_control_ids=[
+                "ICC-8-I5", "ICC-8-I8",
+                "CRO-001", "CRO-002", "CRO-003", "CRO-004", "CRO-005"
+            ],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Legal compliance register"
+        )
+        
+        # GV-4: Resource Allocation
+        self.mappings[NISTCategory.GV_4] = NISTMapping(
+            category=NISTCategory.GV_4,
+            function=NISTFunction.GOVERN,
+            title="Resource Allocation",
+            description="Allocation of resources for AI risk management",
+            mcr_control_ids=[
+                "HOF-H4",
+                "EAF-005"
+            ],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Budget documentation"
+        )
+        
+        # ===== MAP Function =====
+        
+        # MP-1: Contextualization
+        self.mappings[NISTCategory.MP_1] = NISTMapping(
+            category=NISTCategory.MP_1,
+            function=NISTFunction.MAP,
+            title="Contextualization",
+            description="Understand the AI system's context and environment",
+            mcr_control_ids=[
+                "AICA-5-CN-001", "AICA-5-CN-005",
+                "ECO-001"
+            ],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="System context documentation"
+        )
+        
+        # MP-2: Asset Identification
+        self.mappings[NISTCategory.MP_2] = NISTMapping(
+            category=NISTCategory.MP_2,
+            function=NISTFunction.MAP,
+            title="Asset Identification",
+            description="Identify assets including data, models, and infrastructure",
+            mcr_control_ids=[
+                "AICA-5-CN-001", "AICA-5-CN-005",
+                "ILTP-001", "ILTP-002"
+            ],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Asset inventory"
+        )
+        
+        # MP-3: Risk Categorization
+        self.mappings[NISTCategory.MP_3] = NISTMapping(
+            category=NISTCategory.MP_3,
+            function=NISTFunction.MAP,
+            title="Risk Categorization",
+            description="Categorize AI risks by type and severity",
+            mcr_control_ids=[
+                "AICA-5-CN-012", "AICA-5-CN-017", "AICA-5-CN-023",
+                "RGI-8-001"
+            ],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Risk register"
+        )
+        
+        # MP-4: Impact Assessment
+        self.mappings[NISTCategory.MP_4] = NISTMapping(
+            category=NISTCategory.MP_4,
+            function=NISTFunction.MAP,
+            title="Impact Assessment",
+            description="Assess potential impacts of AI system failures",
+            mcr_control_ids=[
+                "AICA-5-CN-023",
+                "AOBA-001",
+                "OEO-001", "OEO-002", "OEO-003", "OEO-004", "OEO-005"
+            ],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Impact assessments"
+        )
+        
+        # ===== MEASURE Function =====
+        
+        # MS-1: Performance Measurement
+        self.mappings[NISTCategory.MS_1] = NISTMapping(
+            category=NISTCategory.MS_1,
+            function=NISTFunction.MEASURE,
+            title="Performance Measurement",
+            description="Measure AI system performance and effectiveness",
+            mcr_control_ids=[
+                "AICA-5-CN-023", "AICA-5-CN-025",
+                "RGI-8-004"
+            ],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Performance metrics"
+        )
+        
+        # MS-2: Bias and Fairness
+        self.mappings[NISTCategory.MS_2] = NISTMapping(
+            category=NISTCategory.MS_2,
+            function=NISTFunction.MEASURE,
+            title="Bias and Fairness",
+            description="Measure and mitigate bias and unfairness",
+            mcr_control_ids=[
+                "AOBA-001", "AOBA-002", "AOBA-003", "AOBA-004", "AOBA-005", "AOBA-006",
+                "ABA-001", "ABA-002"
+            ],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Bias audit reports"
+        )
+        
+        # MS-3: Transparency and Explainability
+        self.mappings[NISTCategory.MS_3] = NISTMapping(
+            category=NISTCategory.MS_3,
+            function=NISTFunction.MEASURE,
+            title="Transparency and Explainability",
+            description="Measure transparency and explainability",
+            mcr_control_ids=[
+                "ICC-8-I6", "ICC-8-I8",
+                "AICA-5-CN-004",
+                "RGI-8-003"
+            ],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Transparency documentation"
+        )
+        
+        # MS-4: Auditability
+        self.mappings[NISTCategory.MS_4] = NISTMapping(
+            category=NISTCategory.MS_4,
+            function=NISTFunction.MEASURE,
+            title="Auditability",
+            description="Ensure AI systems are auditable",
+            mcr_control_ids=[
+                "IMP-001", "IMP-002", "IMP-003", "IMP-005",
+                "AICA-5-CN-021", "AICA-5-CN-019",
+                "ADTEP-003"
+            ],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Audit logs"
+        )
+        
+        # ===== MANAGE Function =====
+        
+        # MG-1: Risk Treatment
+        self.mappings[NISTCategory.MG_1] = NISTMapping(
+            category=NISTCategory.MG_1,
+            function=NISTFunction.MANAGE,
+            title="Risk Treatment",
+            description="Implement risk treatment measures",
+            mcr_control_ids=[
+                "AICA-5-CN-013", "AICA-5-CN-014", "AICA-5-CN-020",
+                "ADTEP-004", "ADTEP-005",
+                "RGI-8-005", "RGI-8-006"
+            ],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Risk treatment plans"
+        )
+        
+        # MG-2: Monitoring and Improvement
+        self.mappings[NISTCategory.MG_2] = NISTMapping(
+            category=NISTCategory.MG_2,
+            function=NISTFunction.MANAGE,
+            title="Monitoring and Improvement",
+            description="Continuously monitor and improve AI systems",
+            mcr_control_ids=[
+                "AICA-5-CN-017", "AICA-5-CN-025",
+                "RGI-8-004",
+                "CAD-7-007"
+            ],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Monitoring reports"
+        )
+        
+        # MG-3: Incident Response
+        self.mappings[NISTCategory.MG_3] = NISTMapping(
+            category=NISTCategory.MG_3,
+            function=NISTFunction.MANAGE,
+            title="Incident Response",
+            description="Respond to AI incidents",
+            mcr_control_ids=[
+                "ADTEP-004", "ADTEP-005",
+                "XOO-001", "XOO-002", "XOO-003", "XOO-004", "XOO-005", "XOO-006"
+            ],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Incident response plans"
+        )
+        
+        # MG-4: Continuity and Resilience
+        self.mappings[NISTCategory.MG_4] = NISTMapping(
+            category=NISTCategory.MG_4,
+            function=NISTFunction.MANAGE,
+            title="Continuity and Resilience",
+            description="Ensure continuity and resilience",
+            mcr_control_ids=[
+                "ICC-8-I7",
+                "ADTEP-007",
+                "RGI-8-007",
+                "CAD-7-006"
+            ],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Continuity plans"
+        )
+    
+    def get_mapping(self, category: NISTCategory) -> Optional[NISTMapping]:
+        """Get mapping for a specific subcategory"""
+        return self.mappings.get(category)
+    
+    def get_controls_for_category(self, category: NISTCategory) -> List[str]:
+        """Get MCR control IDs for a specific category"""
+        mapping = self.mappings.get(category)
+        if not mapping:
+            return []
+        return mapping.mcr_control_ids
+    
+    def get_controls_for_function(self, function: NISTFunction) -> List[str]:
+        """Get MCR control IDs for all categories in a function"""
+        result = []
+        for mapping in self.mappings.values():
+            if mapping.function == function:
+                result.extend(mapping.mcr_control_ids)
+        return list(set(result))
+    
+    def get_categories_for_control(self, control_id: str) -> List[str]:
+        """Get categories that map to a specific control"""
+        result = []
+        for mapping in self.mappings.values():
+            if control_id in mapping.mcr_control_ids:
+                result.append(mapping.category.value)
+        return result
+    
+    def get_gap_analysis(self) -> Dict:
+        """Get gap analysis for NIST AI RMF"""
+        total = len(self.mappings)
+        full = sum(1 for m in self.mappings.values() if m.coverage == "Full")
+        partial = sum(1 for m in self.mappings.values() if m.coverage == "Partial")
+        none = sum(1 for m in self.mappings.values() if m.coverage == "None")
+        
+        return {
+            "total_subcategories": total,
+            "full_coverage": full,
+            "partial_coverage": partial,
+            "no_coverage": none,
+            "coverage_pct": (full / total) * 100 if total > 0 else 0,
+            "partial_subcategories": [m.category.value for m in self.mappings.values() 
+                                      if m.coverage == "Partial"],
+            "uncovered_subcategories": [m.category.value for m in self.mappings.values() 
+                                        if m.coverage == "None"]
+        }
+    
+    def get_function_summary(self) -> Dict:
+        """Get summary by function"""
+        summary = {}
+        for function in NISTFunction:
+            controls = self.get_controls_for_function(function)
+            categories = [m for m in self.mappings.values() if m.function == function]
+            summary[function.value] = {
+                "total_categories": len(categories),
+                "full_coverage": sum(1 for m in categories if m.coverage == "Full"),
+                "total_controls": len(controls),
+                "unique_controls": len(set(controls))
+            }
+        return summary
+    
+    def get_evidence_summary(self) -> Dict:
+        """Get evidence requirements summary"""
+        evidence_types = {}
+        for mapping in self.mappings.values():
+            if mapping.evidence_required:
+                evidence_types[mapping.evidence_type] = evidence_types.get(mapping.evidence_type, 0) + 1
+        return evidence_types
+    
+    def export_overlay(self, format: str = "json") -> str:
+        """Export the overlay in requested format"""
+        if format == "json":
+            import json
+            return json.dumps({
+                "framework": "nist_ai_rmf",
+                "version": "1.0",
+                "mappings": {
+                    m.category.value: {
+                        "function": m.function.value,
+                        "title": m.title,
+                        "description": m.description,
+                        "mcr_control_ids": m.mcr_control_ids,
+                        "coverage": m.coverage,
+                        "evidence_required": m.evidence_required,
+                        "evidence_type": m.evidence_type
+                    } for m in self.mappings.values()
+                }
+            }, indent=2)
+        return ""
+    
+    def get_compliance_checklist(self) -> Dict[str, List[str]]:
+        """Get a compliance checklist by function"""
+        checklist = {
+            "GOVERN": [],
+            "MAP": [],
+            "MEASURE": [],
+            "MANAGE": []
+        }
+        
+        for mapping in self.mappings.values():
+            checklist[mapping.function.value].append(mapping.category.value)
+        
         return checklist
+```
 
 ---
 
@@ -18714,62 +18748,70 @@ class NISTAIRMFOverlay:
 
 ### 5.1 Basic Usage
 
-\# Initialize the NIST AI RMF overlay  
-nist \= NISTAIRMFOverlay()
+```
+# Initialize the NIST AI RMF overlay
+nist = NISTAIRMFOverlay()
 
-\# Get mapping for GV-2 (Accountability)  
-mapping \= nist.get\_mapping(NISTCategory.GV\_2)  
-print(f"Category: {mapping.category.value} — {mapping.title}")  
-print(f"Function: {mapping.function.value}")  
-print(f"Description: {mapping.description}")  
-print(f"MCR Controls: {mapping.mcr\_control\_ids}")  
+# Get mapping for GV-2 (Accountability)
+mapping = nist.get_mapping(NISTCategory.GV_2)
+print(f"Category: {mapping.category.value} — {mapping.title}")
+print(f"Function: {mapping.function.value}")
+print(f"Description: {mapping.description}")
+print(f"MCR Controls: {mapping.mcr_control_ids}")
 print(f"Coverage: {mapping.coverage}")
 
-\# Get categories for a specific control  
-categories \= nist.get\_categories\_for\_control("HOF-H1")  
+# Get categories for a specific control
+categories = nist.get_categories_for_control("HOF-H1")
 print(f"Categories for HOF-H1: {categories}")
 
-\# Get gap analysis  
-gap \= nist.get\_gap\_analysis()  
-print(f"Coverage: {gap\['coverage\_pct'\]}%")  
-print(f"Total subcategories: {gap\['total\_subcategories'\]}")
+# Get gap analysis
+gap = nist.get_gap_analysis()
+print(f"Coverage: {gap['coverage_pct']}%")
+print(f"Total subcategories: {gap['total_subcategories']}")
+```
 
 ### 5.2 Function Summary
 
-\# Get function summary  
-summary \= nist.get\_function\_summary()  
-for function, data in summary.items():  
-    print(f"\\n{function}:")  
-    print(f"  Categories: {data\['total\_categories'\]}")  
-    print(f"  Full coverage: {data\['full\_coverage'\]}")  
-    print(f"  Total controls: {data\['total\_controls'\]}")  
-    print(f"  Unique controls: {data\['unique\_controls'\]}")
+```
+# Get function summary
+summary = nist.get_function_summary()
+for function, data in summary.items():
+    print(f"\n{function}:")
+    print(f"  Categories: {data['total_categories']}")
+    print(f"  Full coverage: {data['full_coverage']}")
+    print(f"  Total controls: {data['total_controls']}")
+    print(f"  Unique controls: {data['unique_controls']}")
+```
 
 ### 5.3 Compliance Checklist
 
-\# Get compliance checklist  
-checklist \= nist.get\_compliance\_checklist()  
-for function, categories in checklist.items():  
-    print(f"\\n{function} Function ({len(categories)} categories):")  
-    for category in categories:  
-        mapping \= nist.get\_mapping(NISTCategory(category))  
-        status \= "✅" if mapping.coverage \== "Full" else "⚠️"  
+```
+# Get compliance checklist
+checklist = nist.get_compliance_checklist()
+for function, categories in checklist.items():
+    print(f"\n{function} Function ({len(categories)} categories):")
+    for category in categories:
+        mapping = nist.get_mapping(NISTCategory(category))
+        status = "✅" if mapping.coverage == "Full" else "⚠️"
         print(f"  {status} {category}: {mapping.title}")
+```
 
 ### 5.4 Integration with Crosswalk Engine
 
-from compliance\_crosswalk\_engine import ComplianceCrosswalkEngine  
-from master\_control\_registry import MasterControlRegistry
+```
+from compliance_crosswalk_engine import ComplianceCrosswalkEngine
+from master_control_registry import MasterControlRegistry
 
-mcr \= MasterControlRegistry()  
-crosswalk \= ComplianceCrosswalkEngine(registry=mcr)  
-nist \= NISTAIRMFOverlay()
+mcr = MasterControlRegistry()
+crosswalk = ComplianceCrosswalkEngine(registry=mcr)
+nist = NISTAIRMFOverlay()
 
-\# Map a category to MCR controls  
-category \= NISTCategory.GV\_2  
-controls \= nist.get\_controls\_for\_category(category)  
-print(f"Category {category.value} maps to {len(controls)} controls:")  
+# Map a category to MCR controls
+category = NISTCategory.GV_2
+controls = nist.get_controls_for_category(category)
+print(f"Category {category.value} maps to {len(controls)} controls:")
 print(f"  {', '.join(controls)}")
+```
 
 ---
 
