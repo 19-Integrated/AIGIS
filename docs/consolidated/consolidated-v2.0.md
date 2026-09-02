@@ -19090,473 +19090,475 @@ The Philippines Overlay ensures that:
 
 ## SECTION 7: PHILIPPINES OVERLAY IMPLEMENTATION
 
-\# philippines\_overlay.py  
-"""  
-Philippines Regulatory Overlay — Complete Implementation  
+```
+# philippines_overlay.py
+"""
+Philippines Regulatory Overlay — Complete Implementation
 """
 
-from enum import Enum  
-from typing import List, Dict, Optional  
-from dataclasses import dataclass, field  
+from enum import Enum
+from typing import List, Dict, Optional
+from dataclasses import dataclass, field
 from datetime import datetime
 
-class PhilippinesFramework(Enum):  
-    """Philippine Framework Enumeration"""  
-    PFRS\_S1\_S2 \= "pfrs\_s1\_s2"  
-    BSP\_STARS \= "bsp\_stars"  
-    DICT\_CSC\_JMC\_003 \= "dict\_csc\_jmc\_003"  
-    NPC\_ADVISORY\_2024\_04 \= "npc\_advisory\_2024\_04"
+class PhilippinesFramework(Enum):
+    """Philippine Framework Enumeration"""
+    PFRS_S1_S2 = "pfrs_s1_s2"
+    BSP_STARS = "bsp_stars"
+    DICT_CSC_JMC_003 = "dict_csc_jmc_003"
+    NPC_ADVISORY_2024_04 = "npc_advisory_2024_04"
 
-@dataclass  
-class PhilippinesMapping:  
-    """Philippines regulatory mapping for a single requirement"""  
-    framework: PhilippinesFramework  
-    requirement\_id: str  
-    requirement\_title: str  
-    description: str  
-    mcr\_control\_ids: List\[str\]  
-    coverage: str  \# Full / Partial / None  
-    evidence\_required: bool  
-    evidence\_type: str
+@dataclass
+class PhilippinesMapping:
+    """Philippines regulatory mapping for a single requirement"""
+    framework: PhilippinesFramework
+    requirement_id: str
+    requirement_title: str
+    description: str
+    mcr_control_ids: List[str]
+    coverage: str  # Full / Partial / None
+    evidence_required: bool
+    evidence_type: str
 
-class PhilippinesOverlay:  
-    """Philippines Regulatory Overlay"""  
-      
-    def \_\_init\_\_(self):  
-        self.mappings: List\[PhilippinesMapping\] \= \[\]  
-        self.\_build\_mappings()  
-      
-    def \_build\_mappings(self):  
-        """Build all Philippines regulatory mappings"""  
-          
-        \# \===== PFRS S1/S2 Mappings \=====  
-          
-        \# PFRS S1 — Governance  
-        self.mappings.append(PhilippinesMapping(  
-            framework=PhilippinesFramework.PFRS\_S1\_S2,  
-            requirement\_id="PFRS-S1-001",  
-            requirement\_title="Governance Disclosure",  
-            description="Disclosure of sustainability governance structure",  
-            mcr\_control\_ids=\["HOF-H1", "HOF-H2", "HOF-H3", "HOF-H5", "ICC-8-I1", "ICC-8-I2"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Board minutes, governance charter"  
-        ))  
-          
-        \# PFRS S1 — Strategy  
-        self.mappings.append(PhilippinesMapping(  
-            framework=PhilippinesFramework.PFRS\_S1\_S2,  
-            requirement\_id="PFRS-S1-002",  
-            requirement\_title="Strategy Disclosure",  
-            description="Disclosure of sustainability strategy and business model",  
-            mcr\_control\_ids=\["AICA-5-CN-001", "AICA-5-CN-005"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Strategy documentation"  
-        ))  
-          
-        \# PFRS S1 — Risk Management  
-        self.mappings.append(PhilippinesMapping(  
-            framework=PhilippinesFramework.PFRS\_S1\_S2,  
-            requirement\_id="PFRS-S1-003",  
-            requirement\_title="Risk Management Disclosure",  
-            description="Disclosure of sustainability risk management",  
-            mcr\_control\_ids=\["AICA-5-CN-012", "AICA-5-CN-017", "AICA-5-CN-014"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Risk register"  
-        ))  
-          
-        \# PFRS S1 — Metrics and Targets  
-        self.mappings.append(PhilippinesMapping(  
-            framework=PhilippinesFramework.PFRS\_S1\_S2,  
-            requirement\_id="PFRS-S1-004",  
-            requirement\_title="Metrics and Targets",  
-            description="Disclosure of sustainability metrics and targets",  
-            mcr\_control\_ids=\["AICA-5-CN-021", "IMP-002", "IMP-005"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Metrics reports"  
-        ))  
-          
-        \# PFRS S2 — Climate Governance  
-        self.mappings.append(PhilippinesMapping(  
-            framework=PhilippinesFramework.PFRS\_S1\_S2,  
-            requirement\_id="PFRS-S2-001",  
-            requirement\_title="Climate Governance",  
-            description="Board oversight of climate risks",  
-            mcr\_control\_ids=\["HOF-H1", "HOF-H2", "HOF-H5", "ICC-8-I1"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Board minutes"  
-        ))  
-          
-        \# PFRS S2 — Climate Strategy  
-        self.mappings.append(PhilippinesMapping(  
-            framework=PhilippinesFramework.PFRS\_S1\_S2,  
-            requirement\_id="PFRS-S2-002",  
-            requirement\_title="Climate Strategy",  
-            description="Climate risk assessment",  
-            mcr\_control\_ids=\["AICA-5-CN-001", "AICA-5-CN-005", "AICA-5-CN-012"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Risk assessment"  
-        ))  
-          
-        \# PFRS S2 — Climate Risk Management  
-        self.mappings.append(PhilippinesMapping(  
-            framework=PhilippinesFramework.PFRS\_S1\_S2,  
-            requirement\_id="PFRS-S2-003",  
-            requirement\_title="Climate Risk Management",  
-            description="Climate risk identification and management",  
-            mcr\_control\_ids=\["AICA-5-CN-017", "AICA-5-CN-023"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Risk management records"  
-        ))  
-          
-        \# PFRS S2 — Emissions  
-        self.mappings.append(PhilippinesMapping(  
-            framework=PhilippinesFramework.PFRS\_S1\_S2,  
-            requirement\_id="PFRS-S2-004",  
-            requirement\_title="GHG Emissions",  
-            description="Scope 1, 2, and 3 GHG emissions reporting",  
-            mcr\_control\_ids=\["IMP-002", "IMP-005", "OEO-001", "OEO-002"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Emissions reports"  
-        ))  
-          
-        \# PFRS S2 — External Assurance  
-        self.mappings.append(PhilippinesMapping(  
-            framework=PhilippinesFramework.PFRS\_S1\_S2,  
-            requirement\_id="PFRS-S2-005",  
-            requirement\_title="External Assurance",  
-            description="ISSA 5000 assurance readiness",  
-            mcr\_control\_ids=\["AICA-5-CN-019", "AICA-5-CN-021", "IMP-001", "IMP-002", "IMP-003", "IMP-005"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Assurance records"  
-        ))  
-          
-        \# \===== BSP STARS Mappings \=====  
-          
-        \# BSP STARS — Governance  
-        self.mappings.append(PhilippinesMapping(  
-            framework=PhilippinesFramework.BSP\_STARS,  
-            requirement\_id="BSP-001",  
-            requirement\_title="Governance and Accountability",  
-            description="AI governance structure for financial institutions",  
-            mcr\_control\_ids=\["HOF-H1", "HOF-H2", "HOF-H3", "HOF-H5", "ICC-8-I1", "ICC-8-I2"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Governance charter"  
-        ))  
-          
-        \# BSP STARS — Risk Management  
-        self.mappings.append(PhilippinesMapping(  
-            framework=PhilippinesFramework.BSP\_STARS,  
-            requirement\_id="BSP-002",  
-            requirement\_title="Risk Management",  
-            description="AI risk management framework",  
-            mcr\_control\_ids=\["AICA-5-CN-012", "AICA-5-CN-017", "AICA-5-CN-014"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Risk framework"  
-        ))  
-          
-        \# BSP STARS — Data Governance  
-        self.mappings.append(PhilippinesMapping(  
-            framework=PhilippinesFramework.BSP\_STARS,  
-            requirement\_id="BSP-003",  
-            requirement\_title="Data Governance",  
-            description="Data quality and provenance",  
-            mcr\_control\_ids=\["AICA-5-CN-001", "AICA-5-CN-005", "IMP-004"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Data governance records"  
-        ))  
-          
-        \# BSP STARS — Model Risk  
-        self.mappings.append(PhilippinesMapping(  
-            framework=PhilippinesFramework.BSP\_STARS,  
-            requirement\_id="BSP-004",  
-            requirement\_title="Model Risk Management",  
-            description="Model validation and monitoring",  
-            mcr\_control\_ids=\["AICA-5-CN-023", "IMP-005", "RGI-8-004"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Model validation"  
-        ))  
-          
-        \# BSP STARS — Cybersecurity  
-        self.mappings.append(PhilippinesMapping(  
-            framework=PhilippinesFramework.BSP\_STARS,  
-            requirement\_id="BSP-005",  
-            requirement\_title="Cybersecurity",  
-            description="AI security controls",  
-            mcr\_control\_ids=\["ADTEP-007", "ICC-8-I9"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Security assessment"  
-        ))  
-          
-        \# BSP STARS — Third-Party  
-        self.mappings.append(PhilippinesMapping(  
-            framework=PhilippinesFramework.BSP\_STARS,  
-            requirement\_id="BSP-006",  
-            requirement\_title="Third-Party Risk",  
-            description="Vendor management",  
-            mcr\_control\_ids=\["CAD-7-006", "EAF-003", "EAF-004", "EAF-005"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Vendor assessments"  
-        ))  
-          
-        \# BSP STARS — Transparency  
-        self.mappings.append(PhilippinesMapping(  
-            framework=PhilippinesFramework.BSP\_STARS,  
-            requirement\_id="BSP-007",  
-            requirement\_title="Transparency",  
-            description="AI disclosure",  
-            mcr\_control\_ids=\["ICC-8-I6", "ICC-8-I8", "ERDP-001"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Disclosure records"  
-        ))  
-          
-        \# BSP STARS — Human Oversight  
-        self.mappings.append(PhilippinesMapping(  
-            framework=PhilippinesFramework.BSP\_STARS,  
-            requirement\_id="BSP-008",  
-            requirement\_title="Human Oversight",  
-            description="Human-in-the-loop",  
-            mcr\_control\_ids=\["AICA-5-CN-011", "AICA-5-CN-013", "AICA-5-CN-014", "HOF-H3", "ADTEP-004"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Oversight protocols"  
-        ))  
-          
-        \# \===== DICT-CSC JMC 003 Mappings \=====  
-          
-        \# DICT-CSC — Governance  
-        self.mappings.append(PhilippinesMapping(  
-            framework=PhilippinesFramework.DICT\_CSC\_JMC\_003,  
-            requirement\_id="JMC-001",  
-            requirement\_title="Governance Framework",  
-            description="AI governance for government",  
-            mcr\_control\_ids=\["HOF-H1", "HOF-H2", "HOF-H3", "HOF-H5", "ICC-8-I1"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Governance charter"  
-        ))  
-          
-        \# DICT-CSC — Transparency  
-        self.mappings.append(PhilippinesMapping(  
-            framework=PhilippinesFramework.DICT\_CSC\_JMC\_003,  
-            requirement\_id="JMC-002",  
-            requirement\_title="Transparency",  
-            description="AI transparency in government",  
-            mcr\_control\_ids=\["ICC-8-I6", "ICC-8-I8", "AICA-5-CN-004"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Transparency documentation"  
-        ))  
-          
-        \# DICT-CSC — Accountability  
-        self.mappings.append(PhilippinesMapping(  
-            framework=PhilippinesFramework.DICT\_CSC\_JMC\_003,  
-            requirement\_id="JMC-003",  
-            requirement\_title="Accountability",  
-            description="AI accountability",  
-            mcr\_control\_ids=\["ICC-8-I1", "ICC-8-I2", "HOF-H1"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Accountability assignments"  
-        ))  
-          
-        \# DICT-CSC — Data Privacy  
-        self.mappings.append(PhilippinesMapping(  
-            framework=PhilippinesFramework.DICT\_CSC\_JMC\_003,  
-            requirement\_id="JMC-004",  
-            requirement\_title="Data Privacy",  
-            description="Data protection",  
-            mcr\_control\_ids=\["ICC-8-I6", "AICA-5-CN-001", "AICA-5-CN-005"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Privacy impact assessment"  
-        ))  
-          
-        \# DICT-CSC — Human Oversight  
-        self.mappings.append(PhilippinesMapping(  
-            framework=PhilippinesFramework.DICT\_CSC\_JMC\_003,  
-            requirement\_id="JMC-005",  
-            requirement\_title="Human Oversight",  
-            description="Human review of AI decisions",  
-            mcr\_control\_ids=\["HOF-H3", "AICA-5-CN-013", "AICA-5-CN-014"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Oversight protocols"  
-        ))  
-          
-        \# \===== NPC Advisory Mappings \=====  
-          
-        \# NPC — Data Processing  
-        self.mappings.append(PhilippinesMapping(  
-            framework=PhilippinesFramework.NPC\_ADVISORY\_2024\_04,  
-            requirement\_id="NPC-001",  
-            requirement\_title="Data Processing Principles",  
-            description="Lawful, fair, transparent processing",  
-            mcr\_control\_ids=\["ICC-8-I6", "AICA-5-CN-001"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Privacy notices"  
-        ))  
-          
-        \# NPC — Data Subject Rights  
-        self.mappings.append(PhilippinesMapping(  
-            framework=PhilippinesFramework.NPC\_ADVISORY\_2024\_04,  
-            requirement\_id="NPC-002",  
-            requirement\_title="Data Subject Rights",  
-            description="Access, correction, deletion",  
-            mcr\_control\_ids=\["ICC-8-I6", "ICC-8-I8"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Rights fulfillment records"  
-        ))  
-          
-        \# NPC — Accountability  
-        self.mappings.append(PhilippinesMapping(  
-            framework=PhilippinesFramework.NPC\_ADVISORY\_2024\_04,  
-            requirement\_id="NPC-003",  
-            requirement\_title="Accountability",  
-            description="Data protection accountability",  
-            mcr\_control\_ids=\["HOF-H1", "HOF-H2", "HOF-H3", "ICC-8-I1"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="DPO appointment"  
-        ))  
-          
-        \# NPC — Transparency  
-        self.mappings.append(PhilippinesMapping(  
-            framework=PhilippinesFramework.NPC\_ADVISORY\_2024\_04,  
-            requirement\_id="NPC-004",  
-            requirement\_title="Transparency",  
-            description="Privacy notices",  
-            mcr\_control\_ids=\["ICC-8-I6", "ICC-8-I8"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Privacy notices"  
-        ))  
-          
-        \# NPC — Security  
-        self.mappings.append(PhilippinesMapping(  
-            framework=PhilippinesFramework.NPC\_ADVISORY\_2024\_04,  
-            requirement\_id="NPC-005",  
-            requirement\_title="Security Measures",  
-            description="Data security",  
-            mcr\_control\_ids=\["ADTEP-007", "ICC-8-I9"\],  
-            coverage="Full",  
-            evidence\_required=True,  
-            evidence\_type="Security assessment"  
-        ))  
-      
-    def get\_mappings\_for\_framework(self, framework: PhilippinesFramework) \-\> List\[PhilippinesMapping\]:  
-        """Get all mappings for a specific framework"""  
-        return \[m for m in self.mappings if m.framework \== framework\]  
-      
-    def get\_controls\_for\_framework(self, framework: PhilippinesFramework) \-\> List\[str\]:  
-        """Get all MCR control IDs for a specific framework"""  
-        result \= \[\]  
-        for mapping in self.get\_mappings\_for\_framework(framework):  
-            result.extend(mapping.mcr\_control\_ids)  
-        return list(set(result))  
-      
-    def get\_mappings\_for\_control(self, control\_id: str) \-\> List\[PhilippinesMapping\]:  
-        """Get all mappings for a specific control"""  
-        return \[m for m in self.mappings if control\_id in m.mcr\_control\_ids\]  
-      
-    def get\_framework\_summary(self) \-\> Dict:  
-        """Get summary by framework"""  
-        summary \= {}  
-        for framework in PhilippinesFramework:  
-            mappings \= self.get\_mappings\_for\_framework(framework)  
-            unique\_controls \= set()  
-            for m in mappings:  
-                unique\_controls.update(m.mcr\_control\_ids)  
-            summary\[framework.value\] \= {  
-                "total\_requirements": len(mappings),  
-                "full\_coverage": sum(1 for m in mappings if m.coverage \== "Full"),  
-                "partial\_coverage": sum(1 for m in mappings if m.coverage \== "Partial"),  
-                "total\_controls": len(unique\_controls)  
-            }  
-        return summary  
-      
-    def get\_gap\_analysis(self) \-\> Dict:  
-        """Get gap analysis for all Philippine frameworks"""  
-        total \= len(self.mappings)  
-        full \= sum(1 for m in self.mappings if m.coverage \== "Full")  
-        partial \= sum(1 for m in self.mappings if m.coverage \== "Partial")  
-        none \= sum(1 for m in self.mappings if m.coverage \== "None")  
-          
-        return {  
-            "total\_requirements": total,  
-            "full\_coverage": full,  
-            "partial\_coverage": partial,  
-            "no\_coverage": none,  
-            "coverage\_pct": (full / total) \* 100 if total \> 0 else 0,  
-            "by\_framework": self.get\_framework\_summary()  
-        }  
-      
-    def get\_evidence\_summary(self) \-\> Dict:  
-        """Get evidence requirements summary"""  
-        evidence\_types \= {}  
-        for mapping in self.mappings:  
-            if mapping.evidence\_required:  
-                evidence\_types\[mapping.evidence\_type\] \= evidence\_types.get(mapping.evidence\_type, 0\) \+ 1  
-        return evidence\_types  
-      
-    def export\_overlay(self, format: str \= "json") \-\> str:  
-        """Export the overlay in requested format"""  
-        if format \== "json":  
-            import json  
-            return json.dumps({  
-                "framework": "philippines",  
-                "version": "1.0",  
-                "mappings": \[{  
-                    "framework": m.framework.value,  
-                    "requirement\_id": m.requirement\_id,  
-                    "requirement\_title": m.requirement\_title,  
-                    "description": m.description,  
-                    "mcr\_control\_ids": m.mcr\_control\_ids,  
-                    "coverage": m.coverage,  
-                    "evidence\_required": m.evidence\_required,  
-                    "evidence\_type": m.evidence\_type  
-                } for m in self.mappings\]  
-            }, indent=2)  
-        return ""  
-      
-    def get\_compliance\_checklist(self) \-\> Dict\[str, List\[str\]\]:  
-        """Get a compliance checklist by framework"""  
-        checklist \= {  
-            "PFRS S1/S2": \[\],  
-            "BSP STARS": \[\],  
-            "DICT-CSC JMC 003": \[\],  
-            "NPC Advisory 2024-04": \[\]  
-        }  
-          
-        framework\_names \= {  
-            PhilippinesFramework.PFRS\_S1\_S2: "PFRS S1/S2",  
-            PhilippinesFramework.BSP\_STARS: "BSP STARS",  
-            PhilippinesFramework.DICT\_CSC\_JMC\_003: "DICT-CSC JMC 003",  
-            PhilippinesFramework.NPC\_ADVISORY\_2024\_04: "NPC Advisory 2024-04"  
-        }  
-          
-        for mapping in self.mappings:  
-            name \= framework\_names.get(mapping.framework, mapping.framework.value)  
-            checklist\[name\].append(mapping.requirement\_id)  
-          
+class PhilippinesOverlay:
+    """Philippines Regulatory Overlay"""
+    
+    def __init__(self):
+        self.mappings: List[PhilippinesMapping] = []
+        self._build_mappings()
+    
+    def _build_mappings(self):
+        """Build all Philippines regulatory mappings"""
+        
+        # ===== PFRS S1/S2 Mappings =====
+        
+        # PFRS S1 — Governance
+        self.mappings.append(PhilippinesMapping(
+            framework=PhilippinesFramework.PFRS_S1_S2,
+            requirement_id="PFRS-S1-001",
+            requirement_title="Governance Disclosure",
+            description="Disclosure of sustainability governance structure",
+            mcr_control_ids=["HOF-H1", "HOF-H2", "HOF-H3", "HOF-H5", "ICC-8-I1", "ICC-8-I2"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Board minutes, governance charter"
+        ))
+        
+        # PFRS S1 — Strategy
+        self.mappings.append(PhilippinesMapping(
+            framework=PhilippinesFramework.PFRS_S1_S2,
+            requirement_id="PFRS-S1-002",
+            requirement_title="Strategy Disclosure",
+            description="Disclosure of sustainability strategy and business model",
+            mcr_control_ids=["AICA-5-CN-001", "AICA-5-CN-005"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Strategy documentation"
+        ))
+        
+        # PFRS S1 — Risk Management
+        self.mappings.append(PhilippinesMapping(
+            framework=PhilippinesFramework.PFRS_S1_S2,
+            requirement_id="PFRS-S1-003",
+            requirement_title="Risk Management Disclosure",
+            description="Disclosure of sustainability risk management",
+            mcr_control_ids=["AICA-5-CN-012", "AICA-5-CN-017", "AICA-5-CN-014"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Risk register"
+        ))
+        
+        # PFRS S1 — Metrics and Targets
+        self.mappings.append(PhilippinesMapping(
+            framework=PhilippinesFramework.PFRS_S1_S2,
+            requirement_id="PFRS-S1-004",
+            requirement_title="Metrics and Targets",
+            description="Disclosure of sustainability metrics and targets",
+            mcr_control_ids=["AICA-5-CN-021", "IMP-002", "IMP-005"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Metrics reports"
+        ))
+        
+        # PFRS S2 — Climate Governance
+        self.mappings.append(PhilippinesMapping(
+            framework=PhilippinesFramework.PFRS_S1_S2,
+            requirement_id="PFRS-S2-001",
+            requirement_title="Climate Governance",
+            description="Board oversight of climate risks",
+            mcr_control_ids=["HOF-H1", "HOF-H2", "HOF-H5", "ICC-8-I1"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Board minutes"
+        ))
+        
+        # PFRS S2 — Climate Strategy
+        self.mappings.append(PhilippinesMapping(
+            framework=PhilippinesFramework.PFRS_S1_S2,
+            requirement_id="PFRS-S2-002",
+            requirement_title="Climate Strategy",
+            description="Climate risk assessment",
+            mcr_control_ids=["AICA-5-CN-001", "AICA-5-CN-005", "AICA-5-CN-012"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Risk assessment"
+        ))
+        
+        # PFRS S2 — Climate Risk Management
+        self.mappings.append(PhilippinesMapping(
+            framework=PhilippinesFramework.PFRS_S1_S2,
+            requirement_id="PFRS-S2-003",
+            requirement_title="Climate Risk Management",
+            description="Climate risk identification and management",
+            mcr_control_ids=["AICA-5-CN-017", "AICA-5-CN-023"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Risk management records"
+        ))
+        
+        # PFRS S2 — Emissions
+        self.mappings.append(PhilippinesMapping(
+            framework=PhilippinesFramework.PFRS_S1_S2,
+            requirement_id="PFRS-S2-004",
+            requirement_title="GHG Emissions",
+            description="Scope 1, 2, and 3 GHG emissions reporting",
+            mcr_control_ids=["IMP-002", "IMP-005", "OEO-001", "OEO-002"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Emissions reports"
+        ))
+        
+        # PFRS S2 — External Assurance
+        self.mappings.append(PhilippinesMapping(
+            framework=PhilippinesFramework.PFRS_S1_S2,
+            requirement_id="PFRS-S2-005",
+            requirement_title="External Assurance",
+            description="ISSA 5000 assurance readiness",
+            mcr_control_ids=["AICA-5-CN-019", "AICA-5-CN-021", "IMP-001", "IMP-002", "IMP-003", "IMP-005"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Assurance records"
+        ))
+        
+        # ===== BSP STARS Mappings =====
+        
+        # BSP STARS — Governance
+        self.mappings.append(PhilippinesMapping(
+            framework=PhilippinesFramework.BSP_STARS,
+            requirement_id="BSP-001",
+            requirement_title="Governance and Accountability",
+            description="AI governance structure for financial institutions",
+            mcr_control_ids=["HOF-H1", "HOF-H2", "HOF-H3", "HOF-H5", "ICC-8-I1", "ICC-8-I2"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Governance charter"
+        ))
+        
+        # BSP STARS — Risk Management
+        self.mappings.append(PhilippinesMapping(
+            framework=PhilippinesFramework.BSP_STARS,
+            requirement_id="BSP-002",
+            requirement_title="Risk Management",
+            description="AI risk management framework",
+            mcr_control_ids=["AICA-5-CN-012", "AICA-5-CN-017", "AICA-5-CN-014"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Risk framework"
+        ))
+        
+        # BSP STARS — Data Governance
+        self.mappings.append(PhilippinesMapping(
+            framework=PhilippinesFramework.BSP_STARS,
+            requirement_id="BSP-003",
+            requirement_title="Data Governance",
+            description="Data quality and provenance",
+            mcr_control_ids=["AICA-5-CN-001", "AICA-5-CN-005", "IMP-004"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Data governance records"
+        ))
+        
+        # BSP STARS — Model Risk
+        self.mappings.append(PhilippinesMapping(
+            framework=PhilippinesFramework.BSP_STARS,
+            requirement_id="BSP-004",
+            requirement_title="Model Risk Management",
+            description="Model validation and monitoring",
+            mcr_control_ids=["AICA-5-CN-023", "IMP-005", "RGI-8-004"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Model validation"
+        ))
+        
+        # BSP STARS — Cybersecurity
+        self.mappings.append(PhilippinesMapping(
+            framework=PhilippinesFramework.BSP_STARS,
+            requirement_id="BSP-005",
+            requirement_title="Cybersecurity",
+            description="AI security controls",
+            mcr_control_ids=["ADTEP-007", "ICC-8-I9"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Security assessment"
+        ))
+        
+        # BSP STARS — Third-Party
+        self.mappings.append(PhilippinesMapping(
+            framework=PhilippinesFramework.BSP_STARS,
+            requirement_id="BSP-006",
+            requirement_title="Third-Party Risk",
+            description="Vendor management",
+            mcr_control_ids=["CAD-7-006", "EAF-003", "EAF-004", "EAF-005"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Vendor assessments"
+        ))
+        
+        # BSP STARS — Transparency
+        self.mappings.append(PhilippinesMapping(
+            framework=PhilippinesFramework.BSP_STARS,
+            requirement_id="BSP-007",
+            requirement_title="Transparency",
+            description="AI disclosure",
+            mcr_control_ids=["ICC-8-I6", "ICC-8-I8", "ERDP-001"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Disclosure records"
+        ))
+        
+        # BSP STARS — Human Oversight
+        self.mappings.append(PhilippinesMapping(
+            framework=PhilippinesFramework.BSP_STARS,
+            requirement_id="BSP-008",
+            requirement_title="Human Oversight",
+            description="Human-in-the-loop",
+            mcr_control_ids=["AICA-5-CN-011", "AICA-5-CN-013", "AICA-5-CN-014", "HOF-H3", "ADTEP-004"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Oversight protocols"
+        ))
+        
+        # ===== DICT-CSC JMC 003 Mappings =====
+        
+        # DICT-CSC — Governance
+        self.mappings.append(PhilippinesMapping(
+            framework=PhilippinesFramework.DICT_CSC_JMC_003,
+            requirement_id="JMC-001",
+            requirement_title="Governance Framework",
+            description="AI governance for government",
+            mcr_control_ids=["HOF-H1", "HOF-H2", "HOF-H3", "HOF-H5", "ICC-8-I1"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Governance charter"
+        ))
+        
+        # DICT-CSC — Transparency
+        self.mappings.append(PhilippinesMapping(
+            framework=PhilippinesFramework.DICT_CSC_JMC_003,
+            requirement_id="JMC-002",
+            requirement_title="Transparency",
+            description="AI transparency in government",
+            mcr_control_ids=["ICC-8-I6", "ICC-8-I8", "AICA-5-CN-004"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Transparency documentation"
+        ))
+        
+        # DICT-CSC — Accountability
+        self.mappings.append(PhilippinesMapping(
+            framework=PhilippinesFramework.DICT_CSC_JMC_003,
+            requirement_id="JMC-003",
+            requirement_title="Accountability",
+            description="AI accountability",
+            mcr_control_ids=["ICC-8-I1", "ICC-8-I2", "HOF-H1"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Accountability assignments"
+        ))
+        
+        # DICT-CSC — Data Privacy
+        self.mappings.append(PhilippinesMapping(
+            framework=PhilippinesFramework.DICT_CSC_JMC_003,
+            requirement_id="JMC-004",
+            requirement_title="Data Privacy",
+            description="Data protection",
+            mcr_control_ids=["ICC-8-I6", "AICA-5-CN-001", "AICA-5-CN-005"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Privacy impact assessment"
+        ))
+        
+        # DICT-CSC — Human Oversight
+        self.mappings.append(PhilippinesMapping(
+            framework=PhilippinesFramework.DICT_CSC_JMC_003,
+            requirement_id="JMC-005",
+            requirement_title="Human Oversight",
+            description="Human review of AI decisions",
+            mcr_control_ids=["HOF-H3", "AICA-5-CN-013", "AICA-5-CN-014"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Oversight protocols"
+        ))
+        
+        # ===== NPC Advisory Mappings =====
+        
+        # NPC — Data Processing
+        self.mappings.append(PhilippinesMapping(
+            framework=PhilippinesFramework.NPC_ADVISORY_2024_04,
+            requirement_id="NPC-001",
+            requirement_title="Data Processing Principles",
+            description="Lawful, fair, transparent processing",
+            mcr_control_ids=["ICC-8-I6", "AICA-5-CN-001"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Privacy notices"
+        ))
+        
+        # NPC — Data Subject Rights
+        self.mappings.append(PhilippinesMapping(
+            framework=PhilippinesFramework.NPC_ADVISORY_2024_04,
+            requirement_id="NPC-002",
+            requirement_title="Data Subject Rights",
+            description="Access, correction, deletion",
+            mcr_control_ids=["ICC-8-I6", "ICC-8-I8"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Rights fulfillment records"
+        ))
+        
+        # NPC — Accountability
+        self.mappings.append(PhilippinesMapping(
+            framework=PhilippinesFramework.NPC_ADVISORY_2024_04,
+            requirement_id="NPC-003",
+            requirement_title="Accountability",
+            description="Data protection accountability",
+            mcr_control_ids=["HOF-H1", "HOF-H2", "HOF-H3", "ICC-8-I1"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="DPO appointment"
+        ))
+        
+        # NPC — Transparency
+        self.mappings.append(PhilippinesMapping(
+            framework=PhilippinesFramework.NPC_ADVISORY_2024_04,
+            requirement_id="NPC-004",
+            requirement_title="Transparency",
+            description="Privacy notices",
+            mcr_control_ids=["ICC-8-I6", "ICC-8-I8"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Privacy notices"
+        ))
+        
+        # NPC — Security
+        self.mappings.append(PhilippinesMapping(
+            framework=PhilippinesFramework.NPC_ADVISORY_2024_04,
+            requirement_id="NPC-005",
+            requirement_title="Security Measures",
+            description="Data security",
+            mcr_control_ids=["ADTEP-007", "ICC-8-I9"],
+            coverage="Full",
+            evidence_required=True,
+            evidence_type="Security assessment"
+        ))
+    
+    def get_mappings_for_framework(self, framework: PhilippinesFramework) -> List[PhilippinesMapping]:
+        """Get all mappings for a specific framework"""
+        return [m for m in self.mappings if m.framework == framework]
+    
+    def get_controls_for_framework(self, framework: PhilippinesFramework) -> List[str]:
+        """Get all MCR control IDs for a specific framework"""
+        result = []
+        for mapping in self.get_mappings_for_framework(framework):
+            result.extend(mapping.mcr_control_ids)
+        return list(set(result))
+    
+    def get_mappings_for_control(self, control_id: str) -> List[PhilippinesMapping]:
+        """Get all mappings for a specific control"""
+        return [m for m in self.mappings if control_id in m.mcr_control_ids]
+    
+    def get_framework_summary(self) -> Dict:
+        """Get summary by framework"""
+        summary = {}
+        for framework in PhilippinesFramework:
+            mappings = self.get_mappings_for_framework(framework)
+            unique_controls = set()
+            for m in mappings:
+                unique_controls.update(m.mcr_control_ids)
+            summary[framework.value] = {
+                "total_requirements": len(mappings),
+                "full_coverage": sum(1 for m in mappings if m.coverage == "Full"),
+                "partial_coverage": sum(1 for m in mappings if m.coverage == "Partial"),
+                "total_controls": len(unique_controls)
+            }
+        return summary
+    
+    def get_gap_analysis(self) -> Dict:
+        """Get gap analysis for all Philippine frameworks"""
+        total = len(self.mappings)
+        full = sum(1 for m in self.mappings if m.coverage == "Full")
+        partial = sum(1 for m in self.mappings if m.coverage == "Partial")
+        none = sum(1 for m in self.mappings if m.coverage == "None")
+        
+        return {
+            "total_requirements": total,
+            "full_coverage": full,
+            "partial_coverage": partial,
+            "no_coverage": none,
+            "coverage_pct": (full / total) * 100 if total > 0 else 0,
+            "by_framework": self.get_framework_summary()
+        }
+    
+    def get_evidence_summary(self) -> Dict:
+        """Get evidence requirements summary"""
+        evidence_types = {}
+        for mapping in self.mappings:
+            if mapping.evidence_required:
+                evidence_types[mapping.evidence_type] = evidence_types.get(mapping.evidence_type, 0) + 1
+        return evidence_types
+    
+    def export_overlay(self, format: str = "json") -> str:
+        """Export the overlay in requested format"""
+        if format == "json":
+            import json
+            return json.dumps({
+                "framework": "philippines",
+                "version": "1.0",
+                "mappings": [{
+                    "framework": m.framework.value,
+                    "requirement_id": m.requirement_id,
+                    "requirement_title": m.requirement_title,
+                    "description": m.description,
+                    "mcr_control_ids": m.mcr_control_ids,
+                    "coverage": m.coverage,
+                    "evidence_required": m.evidence_required,
+                    "evidence_type": m.evidence_type
+                } for m in self.mappings]
+            }, indent=2)
+        return ""
+    
+    def get_compliance_checklist(self) -> Dict[str, List[str]]:
+        """Get a compliance checklist by framework"""
+        checklist = {
+            "PFRS S1/S2": [],
+            "BSP STARS": [],
+            "DICT-CSC JMC 003": [],
+            "NPC Advisory 2024-04": []
+        }
+        
+        framework_names = {
+            PhilippinesFramework.PFRS_S1_S2: "PFRS S1/S2",
+            PhilippinesFramework.BSP_STARS: "BSP STARS",
+            PhilippinesFramework.DICT_CSC_JMC_003: "DICT-CSC JMC 003",
+            PhilippinesFramework.NPC_ADVISORY_2024_04: "NPC Advisory 2024-04"
+        }
+        
+        for mapping in self.mappings:
+            name = framework_names.get(mapping.framework, mapping.framework.value)
+            checklist[name].append(mapping.requirement_id)
+        
         return checklist
+```
 
 ---
 
@@ -19564,51 +19566,59 @@ class PhilippinesOverlay:
 
 ### 8.1 Basic Usage
 
-\# Initialize the Philippines overlay  
-ph \= PhilippinesOverlay()
+```
+# Initialize the Philippines overlay
+ph = PhilippinesOverlay()
 
-\# Get PFRS S1/S2 mappings  
-pfrs\_mappings \= ph.get\_mappings\_for\_framework(PhilippinesFramework.PFRS\_S1\_S2)  
-print(f"PFRS S1/S2 requirements: {len(pfrs\_mappings)}")  
-for mapping in pfrs\_mappings:  
-    print(f"  {mapping.requirement\_id}: {mapping.requirement\_title}")
+# Get PFRS S1/S2 mappings
+pfrs_mappings = ph.get_mappings_for_framework(PhilippinesFramework.PFRS_S1_S2)
+print(f"PFRS S1/S2 requirements: {len(pfrs_mappings)}")
+for mapping in pfrs_mappings:
+    print(f"  {mapping.requirement_id}: {mapping.requirement_title}")
 
-\# Get controls for BSP STARS  
-bsp\_controls \= ph.get\_controls\_for\_framework(PhilippinesFramework.BSP\_STARS)  
-print(f"BSP STARS controls: {len(bsp\_controls)}")  
-print(f"  {', '.join(bsp\_controls)}")
+# Get controls for BSP STARS
+bsp_controls = ph.get_controls_for_framework(PhilippinesFramework.BSP_STARS)
+print(f"BSP STARS controls: {len(bsp_controls)}")
+print(f"  {', '.join(bsp_controls)}")
 
-\# Get gap analysis  
-gap \= ph.get\_gap\_analysis()  
-print(f"Overall coverage: {gap\['coverage\_pct'\]}%")
+# Get gap analysis
+gap = ph.get_gap_analysis()
+print(f"Overall coverage: {gap['coverage_pct']}%")
+```
 
 ### 8.2 Framework Summary
 
-\# Get framework summary  
-summary \= ph.get\_framework\_summary()  
-for framework, data in summary.items():  
-    print(f"\\n{framework}:")  
-    print(f"  Requirements: {data\['total\_requirements'\]}")  
-    print(f"  Full coverage: {data\['full\_coverage'\]}")  
-    print(f"  Controls: {data\['total\_controls'\]}")
+```
+# Get framework summary
+summary = ph.get_framework_summary()
+for framework, data in summary.items():
+    print(f"\n{framework}:")
+    print(f"  Requirements: {data['total_requirements']}")
+    print(f"  Full coverage: {data['full_coverage']}")
+    print(f"  Controls: {data['total_controls']}")
+```
 
 ### 8.3 Compliance Checklist
 
-\# Get compliance checklist  
-checklist \= ph.get\_compliance\_checklist()  
-for framework, requirements in checklist.items():  
-    print(f"\\n{framework} ({len(requirements)} requirements):")  
-    for req in requirements:  
-        status \= "✅"  \# All requirements have full coverage  
+```
+# Get compliance checklist
+checklist = ph.get_compliance_checklist()
+for framework, requirements in checklist.items():
+    print(f"\n{framework} ({len(requirements)} requirements):")
+    for req in requirements:
+        status = "✅"  # All requirements have full coverage
         print(f"  {status} {req}")
+```
 
 ### 8.4 Evidence Summary
 
-\# Get evidence summary  
-evidence \= ph.get\_evidence\_summary()  
-print("Evidence types required:")  
-for evidence\_type, count in evidence.items():  
-    print(f"  {evidence\_type}: {count} instances")
+```
+# Get evidence summary
+evidence = ph.get_evidence_summary()
+print("Evidence types required:")
+for evidence_type, count in evidence.items():
+    print(f"  {evidence_type}: {count} instances")
+```
 
 ---
 
@@ -19839,356 +19849,356 @@ Agent A → Encrypted Communication → Agent B
 ## SECTION 6: AGENTIC SECURITY IMPLEMENTATION
 
 ```
-\# agentic\_security.py  
-"""  
-Agentic Security & Identity (AEGIS) — Complete Implementation  
+# agentic_security.py
+"""
+Agentic Security & Identity (AEGIS) — Complete Implementation
 """
 
-from enum import Enum  
-from typing import List, Dict, Optional  
-from dataclasses import dataclass, field  
-from datetime import datetime  
-import hashlib  
+from enum import Enum
+from typing import List, Dict, Optional
+from dataclasses import dataclass, field
+from datetime import datetime
+import hashlib
 import secrets
 
-class IdentityClass(Enum):  
-    HUMAN \= "Human"  
-    MACHINE \= "Machine"  
-    AGENT \= "Agent"  
-    AGENT\_COALITION \= "Agent Coalition"
+class IdentityClass(Enum):
+    HUMAN = "Human"
+    MACHINE = "Machine"
+    AGENT = "Agent"
+    AGENT_COALITION = "Agent Coalition"
 
-class IdentityStatus(Enum):  
-    CREATED \= "Created"  
-    ACTIVE \= "Active"  
-    SUSPENDED \= "Suspended"  
-    RETIRED \= "Retired"  
-    REACTIVATED \= "Reactivated"
+class IdentityStatus(Enum):
+    CREATED = "Created"
+    ACTIVE = "Active"
+    SUSPENDED = "Suspended"
+    RETIRED = "Retired"
+    REACTIVATED = "Reactivated"
 
-class AuthType(Enum):  
-    CERTIFICATE \= "Certificate"  
-    TOKEN \= "Token"  
-    API\_KEY \= "API Key"  
-    MUTUAL\_TLS \= "Mutual TLS"
+class AuthType(Enum):
+    CERTIFICATE = "Certificate"
+    TOKEN = "Token"
+    API_KEY = "API Key"
+    MUTUAL_TLS = "Mutual TLS"
 
-@dataclass  
-class AgentIdentity:  
-    """Agent identity record"""  
-    agent\_id: str  
-    identity\_class: IdentityClass  
-    status: IdentityStatus  
-    created\_date: str  
-    credentials: Dict\[str, str\]  
-    lifecycle\_events: List\[Dict\]  
-    last\_updated: str
+@dataclass
+class AgentIdentity:
+    """Agent identity record"""
+    agent_id: str
+    identity_class: IdentityClass
+    status: IdentityStatus
+    created_date: str
+    credentials: Dict[str, str]
+    lifecycle_events: List[Dict]
+    last_updated: str
 
-@dataclass  
-class LeastAgencyBudgets:  
-    """Least Agency budgets for an agent"""  
-    decision\_budget: int  \# Maximum autonomous decisions per session  
-    scope\_budget: int     \# Maximum scope expansion per session  
-    time\_budget: int      \# Maximum autonomous execution time (seconds)  
-    capability\_budget: List\[str\]  \# Maximum CTAM grants per session
+@dataclass
+class LeastAgencyBudgets:
+    """Least Agency budgets for an agent"""
+    decision_budget: int  # Maximum autonomous decisions per session
+    scope_budget: int     # Maximum scope expansion per session
+    time_budget: int      # Maximum autonomous execution time (seconds)
+    capability_budget: List[str]  # Maximum CTAM grants per session
 
-@dataclass  
-class AuthenticationEvent:  
-    """Authentication event record"""  
-    event\_id: str  
-    timestamp: str  
-    source\_agent: str  
-    target\_agent: str  
-    auth\_type: AuthType  
-    success: bool  
-    certificate\_ref: Optional\[str\] \= None  
-    token\_ref: Optional\[str\] \= None  
-    error: Optional\[str\] \= None
+@dataclass
+class AuthenticationEvent:
+    """Authentication event record"""
+    event_id: str
+    timestamp: str
+    source_agent: str
+    target_agent: str
+    auth_type: AuthType
+    success: bool
+    certificate_ref: Optional[str] = None
+    token_ref: Optional[str] = None
+    error: Optional[str] = None
 
-class AgenticSecurity:  
-    """Agentic Security & Identity (AEGIS) Framework"""  
-      
-    def \_\_init\_\_(self):  
-        self.identities: Dict\[str, AgentIdentity\] \= {}  
-        self.auth\_events: List\[AuthenticationEvent\] \= {}  
-        self.budgets: Dict\[str, LeastAgencyBudgets\] \= {}  
-        self.auth\_events \= \[\]  
-      
-    def create\_agent\_identity(  
-        self,  
-        agent\_id: str,  
-        identity\_class: IdentityClass,  
-        decision\_budget: int \= 10,  
-        scope\_budget: int \= 3,  
-        time\_budget: int \= 3600,  
-        capability\_budget: List\[str\] \= None  
-    ) \-\> AgentIdentity:  
-        """Create a new agent identity with Least Agency budgets"""  
-        if capability\_budget is None:  
-            capability\_budget \= \["perception", "synthesis"\]  
-          
-        \# Generate credentials  
-        credentials \= {  
-            "certificate": self.\_generate\_certificate(agent\_id),  
-            "api\_key": self.\_generate\_api\_key(),  
-            "token": self.\_generate\_token()  
-        }  
-          
-        identity \= AgentIdentity(  
-            agent\_id=agent\_id,  
-            identity\_class=identity\_class,  
-            status=IdentityStatus.CREATED,  
-            created\_date=datetime.now().isoformat(),  
-            credentials=credentials,  
-            lifecycle\_events=\[{  
-                "event": "Identity Created",  
-                "timestamp": datetime.now().isoformat(),  
-                "details": f"Identity class: {identity\_class.value}"  
-            }\],  
-            last\_updated=datetime.now().isoformat()  
-        )  
-          
-        \# Set budgets  
-        budgets \= LeastAgencyBudgets(  
-            decision\_budget=decision\_budget,  
-            scope\_budget=scope\_budget,  
-            time\_budget=time\_budget,  
-            capability\_budget=capability\_budget  
-        )  
-          
-        self.identities\[agent\_id\] \= identity  
-        self.budgets\[agent\_id\] \= budgets  
-          
-        \# Activate  
-        self.activate\_agent(agent\_id)  
-          
-        return identity  
-      
-    def activate\_agent(self, agent\_id: str) \-\> AgentIdentity:  
-        """Activate an agent identity"""  
-        identity \= self.identities.get(agent\_id)  
-        if not identity:  
-            raise ValueError(f"Agent {agent\_id} not found")  
-          
-        identity.status \= IdentityStatus.ACTIVE  
-        identity.lifecycle\_events.append({  
-            "event": "Identity Activated",  
-            "timestamp": datetime.now().isoformat()  
-        })  
-        identity.last\_updated \= datetime.now().isoformat()  
-          
-        return identity  
-      
-    def suspend\_agent(self, agent\_id: str, reason: str) \-\> AgentIdentity:  
-        """Suspend an agent identity"""  
-        identity \= self.identities.get(agent\_id)  
-        if not identity:  
-            raise ValueError(f"Agent {agent\_id} not found")  
-          
-        identity.status \= IdentityStatus.SUSPENDED  
-        identity.lifecycle\_events.append({  
-            "event": "Identity Suspended",  
-            "timestamp": datetime.now().isoformat(),  
-            "details": reason  
-        })  
-        identity.last\_updated \= datetime.now().isoformat()  
-          
-        return identity  
-      
-    def retire\_agent(self, agent\_id: str, reason: str) \-\> AgentIdentity:  
-        """Retire an agent identity"""  
-        identity \= self.identities.get(agent\_id)  
-        if not identity:  
-            raise ValueError(f"Agent {agent\_id} not found")  
-          
-        identity.status \= IdentityStatus.RETIRED  
-        identity.lifecycle\_events.append({  
-            "event": "Identity Retired",  
-            "timestamp": datetime.now().isoformat(),  
-            "details": reason  
-        })  
-        identity.last\_updated \= datetime.now().isoformat()  
-          
-        \# Revoke credentials  
-        identity.credentials\["certificate"\] \= "REVOKED"  
-        identity.credentials\["api\_key"\] \= "REVOKED"  
-        identity.credentials\["token"\] \= "REVOKED"  
-          
-        return identity  
-      
-    def reactivate\_agent(self, agent\_id: str) \-\> AgentIdentity:  
-        """Reactivate a retired agent identity"""  
-        identity \= self.identities.get(agent\_id)  
-        if not identity:  
-            raise ValueError(f"Agent {agent\_id} not found")  
-          
-        \# Generate new credentials  
-        identity.credentials \= {  
-            "certificate": self.\_generate\_certificate(agent\_id),  
-            "api\_key": self.\_generate\_api\_key(),  
-            "token": self.\_generate\_token()  
-        }  
-          
-        identity.status \= IdentityStatus.REACTIVATED  
-        identity.lifecycle\_events.append({  
-            "event": "Identity Reactivated",  
-            "timestamp": datetime.now().isoformat()  
-        })  
-        identity.last\_updated \= datetime.now().isoformat()  
-          
-        return identity  
-      
-    def authenticate(  
-        self,  
-        source\_agent: str,  
-        target\_agent: str,  
-        auth\_type: AuthType,  
-        credential: str  
-    ) \-\> AuthenticationEvent:  
-        """Authenticate an agent-to-agent communication"""  
-        event\_id \= f"AUTH-{datetime.now().strftime('%Y%m%d')}-{len(self.auth\_events)+1:04d}"  
-          
-        \# Verify source agent  
-        source \= self.identities.get(source\_agent)  
-        if not source or source.status not in \[IdentityStatus.ACTIVE, IdentityStatus.REACTIVATED\]:  
-            event \= AuthenticationEvent(  
-                event\_id=event\_id,  
-                timestamp=datetime.now().isoformat(),  
-                source\_agent=source\_agent,  
-                target\_agent=target\_agent,  
-                auth\_type=auth\_type,  
-                success=False,  
-                error="Source agent not active"  
-            )  
-            self.auth\_events.append(event)  
-            return event  
-          
-        \# Verify target agent  
-        target \= self.identities.get(target\_agent)  
-        if not target or target.status not in \[IdentityStatus.ACTIVE, IdentityStatus.REACTIVATED\]:  
-            event \= AuthenticationEvent(  
-                event\_id=event\_id,  
-                timestamp=datetime.now().isoformat(),  
-                source\_agent=source\_agent,  
-                target\_agent=target\_agent,  
-                auth\_type=auth\_type,  
-                success=False,  
-                error="Target agent not active"  
-            )  
-            self.auth\_events.append(event)  
-            return event  
-          
-        \# Verify credential  
-        success \= self.\_verify\_credential(source\_agent, auth\_type, credential)  
-          
-        event \= AuthenticationEvent(  
-            event\_id=event\_id,  
-            timestamp=datetime.now().isoformat(),  
-            source\_agent=source\_agent,  
-            target\_agent=target\_agent,  
-            auth\_type=auth\_type,  
-            success=success,  
-            certificate\_ref=credential if auth\_type \== AuthType.CERTIFICATE else None,  
-            token\_ref=credential if auth\_type \== AuthType.TOKEN else None  
-        )  
-          
-        self.auth\_events.append(event)  
-        return event  
-      
-    def check\_budget(  
-        self,  
-        agent\_id: str,  
-        budget\_type: str,  
-        current\_usage: int  
-    ) \-\> bool:  
-        """Check if an agent has budget remaining"""  
-        budgets \= self.budgets.get(agent\_id)  
-        if not budgets:  
-            return False  
-          
-        if budget\_type \== "decision":  
-            return current\_usage \< budgets.decision\_budget  
-        elif budget\_type \== "scope":  
-            return current\_usage \< budgets.scope\_budget  
-        elif budget\_type \== "time":  
-            return current\_usage \< budgets.time\_budget  
-        elif budget\_type \== "capability":  
-            \# In production, check capability against budget  
-            return True  
-          
-        return False  
-      
-    def \_generate\_certificate(self, agent\_id: str) \-\> str:  
-        """Generate a certificate for an agent"""  
-        \# In production, use proper certificate generation  
-        return f"CERT-{agent\_id}-{hashlib.sha256(secrets.token\_bytes(32)).hexdigest()\[:16\]}"  
-      
-    def \_generate\_api\_key(self) \-\> str:  
-        """Generate an API key"""  
-        return f"API-{hashlib.sha256(secrets.token\_bytes(32)).hexdigest()\[:32\]}"  
-      
-    def \_generate\_token(self) \-\> str:  
-        """Generate a token"""  
-        return f"TOKEN-{hashlib.sha256(secrets.token\_bytes(32)).hexdigest()\[:32\]}"  
-      
-    def \_verify\_credential(self, agent\_id: str, auth\_type: AuthType, credential: str) \-\> bool:  
-        """Verify an agent's credential"""  
-        identity \= self.identities.get(agent\_id)  
-        if not identity:  
-            return False  
-          
-        if auth\_type \== AuthType.CERTIFICATE:  
-            return identity.credentials.get("certificate") \== credential  
-        elif auth\_type \== AuthType.API\_KEY:  
-            return identity.credentials.get("api\_key") \== credential  
-        elif auth\_type \== AuthType.TOKEN:  
-            return identity.credentials.get("token") \== credential  
-        elif auth\_type \== AuthType.MUTUAL\_TLS:  
-            \# In production, verify mTLS  
-            return True  
-          
-        return False  
-      
-    def get\_identity(self, agent\_id: str) \-\> Optional\[AgentIdentity\]:  
-        """Get an agent identity"""  
-        return self.identities.get(agent\_id)  
-      
-    def get\_budgets(self, agent\_id: str) \-\> Optional\[LeastAgencyBudgets\]:  
-        """Get Least Agency budgets for an agent"""  
-        return self.budgets.get(agent\_id)  
-      
-    def get\_auth\_events(  
-        self,  
-        source\_agent: Optional\[str\] \= None,  
-        target\_agent: Optional\[str\] \= None,  
-        limit: int \= 100  
-    ) \-\> List\[AuthenticationEvent\]:  
-        """Get authentication events"""  
-        events \= self.auth\_events  
-          
-        if source\_agent:  
-            events \= \[e for e in events if e.source\_agent \== source\_agent\]  
-        if target\_agent:  
-            events \= \[e for e in events if e.target\_agent \== target\_agent\]  
-          
-        return sorted(events, key=lambda x: x.timestamp, reverse=True)\[:limit\]  
-      
-    def summary(self) \-\> Dict:  
-        """Get a summary of agent security status"""  
-        return {  
-            "total\_identities": len(self.identities),  
-            "by\_status": {  
-                status.value: len(\[i for i in self.identities.values() if i.status \== status\])  
-                for status in IdentityStatus  
-            },  
-            "by\_class": {  
-                cls.value: len(\[i for i in self.identities.values() if i.identity\_class \== cls\])  
-                for cls in IdentityClass  
-            },  
-            "total\_auth\_events": len(self.auth\_events),  
-            "auth\_success\_rate": (  
-                len(\[e for e in self.auth\_events if e.success\]) / len(self.auth\_events) \* 100  
-                if self.auth\_events else 0  
-            ),  
-            "active\_agents": len(\[i for i in self.identities.values()   
-                                 if i.status in \[IdentityStatus.ACTIVE, IdentityStatus.REACTIVATED\]\])  
+class AgenticSecurity:
+    """Agentic Security & Identity (AEGIS) Framework"""
+    
+    def __init__(self):
+        self.identities: Dict[str, AgentIdentity] = {}
+        self.auth_events: List[AuthenticationEvent] = {}
+        self.budgets: Dict[str, LeastAgencyBudgets] = {}
+        self.auth_events = []
+    
+    def create_agent_identity(
+        self,
+        agent_id: str,
+        identity_class: IdentityClass,
+        decision_budget: int = 10,
+        scope_budget: int = 3,
+        time_budget: int = 3600,
+        capability_budget: List[str] = None
+    ) -> AgentIdentity:
+        """Create a new agent identity with Least Agency budgets"""
+        if capability_budget is None:
+            capability_budget = ["perception", "synthesis"]
+        
+        # Generate credentials
+        credentials = {
+            "certificate": self._generate_certificate(agent_id),
+            "api_key": self._generate_api_key(),
+            "token": self._generate_token()
+        }
+        
+        identity = AgentIdentity(
+            agent_id=agent_id,
+            identity_class=identity_class,
+            status=IdentityStatus.CREATED,
+            created_date=datetime.now().isoformat(),
+            credentials=credentials,
+            lifecycle_events=[{
+                "event": "Identity Created",
+                "timestamp": datetime.now().isoformat(),
+                "details": f"Identity class: {identity_class.value}"
+            }],
+            last_updated=datetime.now().isoformat()
+        )
+        
+        # Set budgets
+        budgets = LeastAgencyBudgets(
+            decision_budget=decision_budget,
+            scope_budget=scope_budget,
+            time_budget=time_budget,
+            capability_budget=capability_budget
+        )
+        
+        self.identities[agent_id] = identity
+        self.budgets[agent_id] = budgets
+        
+        # Activate
+        self.activate_agent(agent_id)
+        
+        return identity
+    
+    def activate_agent(self, agent_id: str) -> AgentIdentity:
+        """Activate an agent identity"""
+        identity = self.identities.get(agent_id)
+        if not identity:
+            raise ValueError(f"Agent {agent_id} not found")
+        
+        identity.status = IdentityStatus.ACTIVE
+        identity.lifecycle_events.append({
+            "event": "Identity Activated",
+            "timestamp": datetime.now().isoformat()
+        })
+        identity.last_updated = datetime.now().isoformat()
+        
+        return identity
+    
+    def suspend_agent(self, agent_id: str, reason: str) -> AgentIdentity:
+        """Suspend an agent identity"""
+        identity = self.identities.get(agent_id)
+        if not identity:
+            raise ValueError(f"Agent {agent_id} not found")
+        
+        identity.status = IdentityStatus.SUSPENDED
+        identity.lifecycle_events.append({
+            "event": "Identity Suspended",
+            "timestamp": datetime.now().isoformat(),
+            "details": reason
+        })
+        identity.last_updated = datetime.now().isoformat()
+        
+        return identity
+    
+    def retire_agent(self, agent_id: str, reason: str) -> AgentIdentity:
+        """Retire an agent identity"""
+        identity = self.identities.get(agent_id)
+        if not identity:
+            raise ValueError(f"Agent {agent_id} not found")
+        
+        identity.status = IdentityStatus.RETIRED
+        identity.lifecycle_events.append({
+            "event": "Identity Retired",
+            "timestamp": datetime.now().isoformat(),
+            "details": reason
+        })
+        identity.last_updated = datetime.now().isoformat()
+        
+        # Revoke credentials
+        identity.credentials["certificate"] = "REVOKED"
+        identity.credentials["api_key"] = "REVOKED"
+        identity.credentials["token"] = "REVOKED"
+        
+        return identity
+    
+    def reactivate_agent(self, agent_id: str) -> AgentIdentity:
+        """Reactivate a retired agent identity"""
+        identity = self.identities.get(agent_id)
+        if not identity:
+            raise ValueError(f"Agent {agent_id} not found")
+        
+        # Generate new credentials
+        identity.credentials = {
+            "certificate": self._generate_certificate(agent_id),
+            "api_key": self._generate_api_key(),
+            "token": self._generate_token()
+        }
+        
+        identity.status = IdentityStatus.REACTIVATED
+        identity.lifecycle_events.append({
+            "event": "Identity Reactivated",
+            "timestamp": datetime.now().isoformat()
+        })
+        identity.last_updated = datetime.now().isoformat()
+        
+        return identity
+    
+    def authenticate(
+        self,
+        source_agent: str,
+        target_agent: str,
+        auth_type: AuthType,
+        credential: str
+    ) -> AuthenticationEvent:
+        """Authenticate an agent-to-agent communication"""
+        event_id = f"AUTH-{datetime.now().strftime('%Y%m%d')}-{len(self.auth_events)+1:04d}"
+        
+        # Verify source agent
+        source = self.identities.get(source_agent)
+        if not source or source.status not in [IdentityStatus.ACTIVE, IdentityStatus.REACTIVATED]:
+            event = AuthenticationEvent(
+                event_id=event_id,
+                timestamp=datetime.now().isoformat(),
+                source_agent=source_agent,
+                target_agent=target_agent,
+                auth_type=auth_type,
+                success=False,
+                error="Source agent not active"
+            )
+            self.auth_events.append(event)
+            return event
+        
+        # Verify target agent
+        target = self.identities.get(target_agent)
+        if not target or target.status not in [IdentityStatus.ACTIVE, IdentityStatus.REACTIVATED]:
+            event = AuthenticationEvent(
+                event_id=event_id,
+                timestamp=datetime.now().isoformat(),
+                source_agent=source_agent,
+                target_agent=target_agent,
+                auth_type=auth_type,
+                success=False,
+                error="Target agent not active"
+            )
+            self.auth_events.append(event)
+            return event
+        
+        # Verify credential
+        success = self._verify_credential(source_agent, auth_type, credential)
+        
+        event = AuthenticationEvent(
+            event_id=event_id,
+            timestamp=datetime.now().isoformat(),
+            source_agent=source_agent,
+            target_agent=target_agent,
+            auth_type=auth_type,
+            success=success,
+            certificate_ref=credential if auth_type == AuthType.CERTIFICATE else None,
+            token_ref=credential if auth_type == AuthType.TOKEN else None
+        )
+        
+        self.auth_events.append(event)
+        return event
+    
+    def check_budget(
+        self,
+        agent_id: str,
+        budget_type: str,
+        current_usage: int
+    ) -> bool:
+        """Check if an agent has budget remaining"""
+        budgets = self.budgets.get(agent_id)
+        if not budgets:
+            return False
+        
+        if budget_type == "decision":
+            return current_usage < budgets.decision_budget
+        elif budget_type == "scope":
+            return current_usage < budgets.scope_budget
+        elif budget_type == "time":
+            return current_usage < budgets.time_budget
+        elif budget_type == "capability":
+            # In production, check capability against budget
+            return True
+        
+        return False
+    
+    def _generate_certificate(self, agent_id: str) -> str:
+        """Generate a certificate for an agent"""
+        # In production, use proper certificate generation
+        return f"CERT-{agent_id}-{hashlib.sha256(secrets.token_bytes(32)).hexdigest()[:16]}"
+    
+    def _generate_api_key(self) -> str:
+        """Generate an API key"""
+        return f"API-{hashlib.sha256(secrets.token_bytes(32)).hexdigest()[:32]}"
+    
+    def _generate_token(self) -> str:
+        """Generate a token"""
+        return f"TOKEN-{hashlib.sha256(secrets.token_bytes(32)).hexdigest()[:32]}"
+    
+    def _verify_credential(self, agent_id: str, auth_type: AuthType, credential: str) -> bool:
+        """Verify an agent's credential"""
+        identity = self.identities.get(agent_id)
+        if not identity:
+            return False
+        
+        if auth_type == AuthType.CERTIFICATE:
+            return identity.credentials.get("certificate") == credential
+        elif auth_type == AuthType.API_KEY:
+            return identity.credentials.get("api_key") == credential
+        elif auth_type == AuthType.TOKEN:
+            return identity.credentials.get("token") == credential
+        elif auth_type == AuthType.MUTUAL_TLS:
+            # In production, verify mTLS
+            return True
+        
+        return False
+    
+    def get_identity(self, agent_id: str) -> Optional[AgentIdentity]:
+        """Get an agent identity"""
+        return self.identities.get(agent_id)
+    
+    def get_budgets(self, agent_id: str) -> Optional[LeastAgencyBudgets]:
+        """Get Least Agency budgets for an agent"""
+        return self.budgets.get(agent_id)
+    
+    def get_auth_events(
+        self,
+        source_agent: Optional[str] = None,
+        target_agent: Optional[str] = None,
+        limit: int = 100
+    ) -> List[AuthenticationEvent]:
+        """Get authentication events"""
+        events = self.auth_events
+        
+        if source_agent:
+            events = [e for e in events if e.source_agent == source_agent]
+        if target_agent:
+            events = [e for e in events if e.target_agent == target_agent]
+        
+        return sorted(events, key=lambda x: x.timestamp, reverse=True)[:limit]
+    
+    def summary(self) -> Dict:
+        """Get a summary of agent security status"""
+        return {
+            "total_identities": len(self.identities),
+            "by_status": {
+                status.value: len([i for i in self.identities.values() if i.status == status])
+                for status in IdentityStatus
+            },
+            "by_class": {
+                cls.value: len([i for i in self.identities.values() if i.identity_class == cls])
+                for cls in IdentityClass
+            },
+            "total_auth_events": len(self.auth_events),
+            "auth_success_rate": (
+                len([e for e in self.auth_events if e.success]) / len(self.auth_events) * 100
+                if self.auth_events else 0
+            ),
+            "active_agents": len([i for i in self.identities.values() 
+                                 if i.status in [IdentityStatus.ACTIVE, IdentityStatus.REACTIVATED]])
         }
 ```
 ---
@@ -20342,6 +20352,7 @@ The Zero Trust & AI Runtime Security Framework ensures that:
 
 ### 3.3 Action Verification Flow
 
+``
 Action Request → Identity Verification → Authorization Check → Policy Check → Risk Assessment
 
        ↓
@@ -20351,410 +20362,410 @@ Allowed → Action Execution → Tamper-Evident Receipt
 Blocked → Escalation Flag → HAN Notification
 
 Flagged → Review → HAN Decision
-
+```
 ---
 
 ## SECTION 4: ZERO TRUST IMPLEMENTATION
 
 ```
-\# zero\_trust\_runtime.py  
-"""  
-Zero Trust & AI Runtime Security — Complete Implementation  
+# zero_trust_runtime.py
+"""
+Zero Trust & AI Runtime Security — Complete Implementation
 """
 
-from enum import Enum  
-from typing import List, Dict, Optional  
-from dataclasses import dataclass, field  
-from datetime import datetime  
-import hashlib  
+from enum import Enum
+from typing import List, Dict, Optional
+from dataclasses import dataclass, field
+from datetime import datetime
+import hashlib
 import secrets
 
-class SegmentLevel(Enum):  
-    PUBLIC\_FACING \= "Public-Facing Agents"  
-    INTERNAL\_BUSINESS \= "Internal Business Agents"  
-    CRITICAL\_BUSINESS \= "Critical Business Agents"  
-    GOVERNANCE \= "Governance Agents"
+class SegmentLevel(Enum):
+    PUBLIC_FACING = "Public-Facing Agents"
+    INTERNAL_BUSINESS = "Internal Business Agents"
+    CRITICAL_BUSINESS = "Critical Business Agents"
+    GOVERNANCE = "Governance Agents"
 
-class ActionStatus(Enum):  
-    ALLOWED \= "Allowed"  
-    BLOCKED \= "Blocked"  
-    FLAGGED \= "Flagged"  
-    ESCALATED \= "Escalated"
+class ActionStatus(Enum):
+    ALLOWED = "Allowed"
+    BLOCKED = "Blocked"
+    FLAGGED = "Flagged"
+    ESCALATED = "Escalated"
 
-@dataclass  
-class TamperEvidentReceipt:  
-    """Tamper-evident receipt for an agent action"""  
-    receipt\_id: str  
-    action\_id: str  
-    agent\_id: str  
-    timestamp: str  
-    action\_description: str  
-    authorization\_status: ActionStatus  
-    decision\_reason: str  
-    hash: str  
-    previous\_hash: Optional\[str\] \= None
+@dataclass
+class TamperEvidentReceipt:
+    """Tamper-evident receipt for an agent action"""
+    receipt_id: str
+    action_id: str
+    agent_id: str
+    timestamp: str
+    action_description: str
+    authorization_status: ActionStatus
+    decision_reason: str
+    hash: str
+    previous_hash: Optional[str] = None
 
-@dataclass  
-class Segment:  
-    """Zero Trust segment"""  
-    segment\_id: str  
-    segment\_name: str  
-    segment\_level: SegmentLevel  
-    allowed\_agents: List\[str\]  
-    allowed\_communications: List\[Dict\]  
-    created\_date: str  
-    last\_updated: str
+@dataclass
+class Segment:
+    """Zero Trust segment"""
+    segment_id: str
+    segment_name: str
+    segment_level: SegmentLevel
+    allowed_agents: List[str]
+    allowed_communications: List[Dict]
+    created_date: str
+    last_updated: str
 
-@dataclass  
-class RuntimeAction:  
-    """Runtime action with verification"""  
-    action\_id: str  
-    agent\_id: str  
-    action\_type: str  
-    action\_context: Dict  
-    timestamp: str  
-    verification\_status: ActionStatus  
-    verification\_details: Dict  
-    receipt: Optional\[TamperEvidentReceipt\] \= None
+@dataclass
+class RuntimeAction:
+    """Runtime action with verification"""
+    action_id: str
+    agent_id: str
+    action_type: str
+    action_context: Dict
+    timestamp: str
+    verification_status: ActionStatus
+    verification_details: Dict
+    receipt: Optional[TamperEvidentReceipt] = None
 
-class ZeroTrustRuntime:  
-    """Zero Trust & AI Runtime Security"""  
-      
-    def \_\_init\_\_(self):  
-        self.segments: Dict\[str, Segment\] \= {}  
-        self.actions: List\[RuntimeAction\] \= {}  
-        self.receipts: List\[TamperEvidentReceipt\] \= {}  
-        self.actions \= \[\]  
-        self.receipts \= \[\]  
-      
-    def create\_segment(  
-        self,  
-        name: str,  
-        level: SegmentLevel,  
-        allowed\_agents: List\[str\],  
-        allowed\_communications: List\[Dict\]  
-    ) \-\> Segment:  
-        """Create a Zero Trust segment"""  
-        segment\_id \= f"SEG-{datetime.now().strftime('%Y%m%d')}-{len(self.segments)+1:04d}"  
-          
-        segment \= Segment(  
-            segment\_id=segment\_id,  
-            segment\_name=name,  
-            segment\_level=level,  
-            allowed\_agents=allowed\_agents,  
-            allowed\_communications=allowed\_communications,  
-            created\_date=datetime.now().isoformat(),  
-            last\_updated=datetime.now().isoformat()  
-        )  
-          
-        self.segments\[segment\_id\] \= segment  
-        return segment  
-      
-    def intercept\_action(  
-        self,  
-        agent\_id: str,  
-        action\_type: str,  
-        action\_context: Dict  
-    ) \-\> RuntimeAction:  
-        """  
-        Intercept and verify an agent action before execution (AARM)  
-        """  
-        action\_id \= f"ACT-{datetime.now().strftime('%Y%m%d')}-{len(self.actions)+1:04d}"  
-          
-        \# Step 1: Identity verification  
-        identity\_verified \= self.\_verify\_identity(agent\_id)  
-        if not identity\_verified:  
-            return self.\_create\_blocked\_action(action\_id, agent\_id, action\_type,   
-                                              action\_context, "Identity verification failed")  
-          
-        \# Step 2: Authorization check  
-        authorized \= self.\_check\_authorization(agent\_id, action\_type)  
-        if not authorized:  
-            return self.\_create\_blocked\_action(action\_id, agent\_id, action\_type,  
-                                              action\_context, "Authorization failed")  
-          
-        \# Step 3: Policy check  
-        policy\_ok \= self.\_check\_policies(agent\_id, action\_type, action\_context)  
-        if not policy\_ok:  
-            return self.\_create\_blocked\_action(action\_id, agent\_id, action\_type,  
-                                              action\_context, "Policy violation")  
-          
-        \# Step 4: Risk assessment  
-        risk\_level \= self.\_assess\_risk(agent\_id, action\_type, action\_context)  
-        if risk\_level \== "Critical":  
-            return self.\_create\_escalated\_action(action\_id, agent\_id, action\_type,  
-                                                action\_context, "Critical risk detected")  
-          
-        \# Step 5: Interception decision  
-        if risk\_level \== "High":  
-            action \= self.\_create\_flagged\_action(action\_id, agent\_id, action\_type,  
-                                                action\_context, "High risk flagged for review")  
-        else:  
-            action \= self.\_create\_allowed\_action(action\_id, agent\_id, action\_type,  
-                                                action\_context, "All actions verified")  
-          
-        \# Generate tamper-evident receipt  
-        receipt \= self.\_generate\_receipt(action)  
-        action.receipt \= receipt  
-          
-        return action  
-      
-    def \_verify\_identity(self, agent\_id: str) \-\> bool:  
-        """Verify agent identity (Zero Trust: Verify Explicitly)"""  
-        \# In production, check against identity registry  
-        \# Check: Is agent active? Is credential valid? Is agent in correct segment?  
-        return True  
-      
-    def \_check\_authorization(self, agent\_id: str, action\_type: str) \-\> bool:  
-        """Check authorization (Zero Trust: Verify Explicitly)"""  
-        \# In production, check CTAM grants  
-        \# Check: Is action authorized by CTAM? Are budgets available?  
-        return True  
-      
-    def \_check\_policies(self, agent\_id: str, action\_type: str, action\_context: Dict) \-\> bool:  
-        """Check policies (Zero Trust: Verify Explicitly)"""  
-        \# In production, check policies  
-        \# Check: Does action violate I9? Does action violate Segment boundaries?  
-        return True  
-      
-    def \_assess\_risk(self, agent\_id: str, action\_type: str, action\_context: Dict) \-\> str:  
-        """Assess action risk"""  
-        \# In production, use risk assessment  
-        risk\_factors \= \[\]  
-          
-        \# Check if action crosses segment boundaries  
-        segment \= self.\_get\_agent\_segment(agent\_id)  
-        if segment and self.\_crosses\_segment\_boundary(segment, action\_context):  
-            risk\_factors.append("Crosses segment boundary")  
-          
-        \# Check if action is high-impact  
-        if action\_type in \["DECISION", "INTERACTION", "ADAPTATION"\]:  
-            risk\_factors.append("High-impact action type")  
-          
-        \# Determine risk level  
-        if len(risk\_factors) \>= 3:  
-            return "Critical"  
-        elif len(risk\_factors) \>= 2:  
-            return "High"  
-        elif len(risk\_factors) \>= 1:  
-            return "Medium"  
-        else:  
-            return "Low"  
-      
-    def \_get\_agent\_segment(self, agent\_id: str) \-\> Optional\[Segment\]:  
-        """Get the segment for an agent"""  
-        for segment in self.segments.values():  
-            if agent\_id in segment.allowed\_agents:  
-                return segment  
-        return None  
-      
-    def \_crosses\_segment\_boundary(self, segment: Segment, action\_context: Dict) \-\> bool:  
-        """Check if action crosses segment boundaries"""  
-        \# Check if target is in same segment  
-        target \= action\_context.get("target\_agent")  
-        if target:  
-            target\_segment \= self.\_get\_agent\_segment(target)  
-            if target\_segment and target\_segment.segment\_id \!= segment.segment\_id:  
-                return True  
-        return False  
-      
-    def \_create\_allowed\_action(  
-        self,  
-        action\_id: str,  
-        agent\_id: str,  
-        action\_type: str,  
-        action\_context: Dict,  
-        reason: str  
-    ) \-\> RuntimeAction:  
-        """Create an allowed action"""  
-        return RuntimeAction(  
-            action\_id=action\_id,  
-            agent\_id=agent\_id,  
-            action\_type=action\_type,  
-            action\_context=action\_context,  
-            timestamp=datetime.now().isoformat(),  
-            verification\_status=ActionStatus.ALLOWED,  
-            verification\_details={  
-                "identity\_verified": True,  
-                "authorized": True,  
-                "policy\_ok": True,  
-                "risk\_level": "Low",  
-                "reason": reason  
-            }  
-        )  
-      
-    def \_create\_blocked\_action(  
-        self,  
-        action\_id: str,  
-        agent\_id: str,  
-        action\_type: str,  
-        action\_context: Dict,  
-        reason: str  
-    ) \-\> RuntimeAction:  
-        """Create a blocked action"""  
-        return RuntimeAction(  
-            action\_id=action\_id,  
-            agent\_id=agent\_id,  
-            action\_type=action\_type,  
-            action\_context=action\_context,  
-            timestamp=datetime.now().isoformat(),  
-            verification\_status=ActionStatus.BLOCKED,  
-            verification\_details={  
-                "identity\_verified": False,  
-                "authorized": False,  
-                "policy\_ok": False,  
-                "risk\_level": "Blocked",  
-                "reason": reason  
-            }  
-        )  
-      
-    def \_create\_flagged\_action(  
-        self,  
-        action\_id: str,  
-        agent\_id: str,  
-        action\_type: str,  
-        action\_context: Dict,  
-        reason: str  
-    ) \-\> RuntimeAction:  
-        """Create a flagged action (requires review)"""  
-        return RuntimeAction(  
-            action\_id=action\_id,  
-            agent\_id=agent\_id,  
-            action\_type=action\_type,  
-            action\_context=action\_context,  
-            timestamp=datetime.now().isoformat(),  
-            verification\_status=ActionStatus.FLAGGED,  
-            verification\_details={  
-                "identity\_verified": True,  
-                "authorized": True,  
-                "policy\_ok": True,  
-                "risk\_level": "High",  
-                "reason": reason,  
-                "requires\_review": True  
-            }  
-        )  
-      
-    def \_create\_escalated\_action(  
-        self,  
-        action\_id: str,  
-        agent\_id: str,  
-        action\_type: str,  
-        action\_context: Dict,  
-        reason: str  
-    ) \-\> RuntimeAction:  
-        """Create an escalated action (escalated to HAN)"""  
-        return RuntimeAction(  
-            action\_id=action\_id,  
-            agent\_id=agent\_id,  
-            action\_type=action\_type,  
-            action\_context=action\_context,  
-            timestamp=datetime.now().isoformat(),  
-            verification\_status=ActionStatus.ESCALATED,  
-            verification\_details={  
-                "identity\_verified": True,  
-                "authorized": True,  
-                "policy\_ok": True,  
-                "risk\_level": "Critical",  
-                "reason": reason,  
-                "escalated\_to": "HAN",  
-                "escalation\_timestamp": datetime.now().isoformat()  
-            }  
-        )  
-      
-    def \_generate\_receipt(self, action: RuntimeAction) \-\> TamperEvidentReceipt:  
-        """Generate a tamper-evident receipt"""  
-        receipt\_id \= f"REC-{datetime.now().strftime('%Y%m%d')}-{len(self.receipts)+1:04d}"  
-          
-        receipt\_data \= {  
-            "action\_id": action.action\_id,  
-            "agent\_id": action.agent\_id,  
-            "timestamp": action.timestamp,  
-            "action\_type": action.action\_type,  
-            "verification\_status": action.verification\_status.value,  
-            "verification\_details": action.verification\_details  
-        }  
-          
-        receipt\_hash \= hashlib.sha256(  
-            json.dumps(receipt\_data, sort\_keys=True).encode()  
-        ).hexdigest()  
-          
-        receipt \= TamperEvidentReceipt(  
-            receipt\_id=receipt\_id,  
-            action\_id=action.action\_id,  
-            agent\_id=action.agent\_id,  
-            timestamp=datetime.now().isoformat(),  
-            action\_description=action.action\_type,  
-            authorization\_status=action.verification\_status,  
-            decision\_reason=action.verification\_details.get("reason", ""),  
-            hash=receipt\_hash,  
-            previous\_hash=self.\_get\_previous\_hash(action.agent\_id)  
-        )  
-          
-        self.receipts.append(receipt)  
-        return receipt  
-      
-    def \_get\_previous\_hash(self, agent\_id: str) \-\> Optional\[str\]:  
-        """Get the previous receipt hash for an agent (for chain)"""  
-        agent\_receipts \= \[r for r in self.receipts if r.agent\_id \== agent\_id\]  
-        if agent\_receipts:  
-            return agent\_receipts\[-1\].hash  
-        return None  
-      
-    def verify\_receipt\_chain(self, agent\_id: str) \-\> bool:  
-        """Verify the integrity of a receipt chain"""  
-        agent\_receipts \= sorted(\[r for r in self.receipts if r.agent\_id \== agent\_id\],  
-                               key=lambda x: x.timestamp)  
-          
-        if len(agent\_receipts) \<= 1:  
-            return True  
-          
-        for i in range(1, len(agent\_receipts)):  
-            previous \= agent\_receipts\[i-1\]  
-            current \= agent\_receipts\[i\]  
-              
-            \# Verify current hash matches previous hash  
-            if current.previous\_hash \!= previous.hash:  
-                return False  
-          
-        return True  
-      
-    def get\_action(self, action\_id: str) \-\> Optional\[RuntimeAction\]:  
-        """Get a runtime action"""  
-        for action in self.actions:  
-            if action.action\_id \== action\_id:  
-                return action  
-        return None  
-      
-    def get\_receipt(self, receipt\_id: str) \-\> Optional\[TamperEvidentReceipt\]:  
-        """Get a tamper-evident receipt"""  
-        for receipt in self.receipts:  
-            if receipt.receipt\_id \== receipt\_id:  
-                return receipt  
-        return None  
-      
-    def get\_actions\_by\_status(self, status: ActionStatus) \-\> List\[RuntimeAction\]:  
-        """Get actions by status"""  
-        return \[a for a in self.actions if a.verification\_status \== status\]  
-      
-    def summary(self) \-\> Dict:  
-        """Get a summary of Zero Trust runtime security"""  
-        return {  
-            "total\_segments": len(self.segments),  
-            "total\_actions": len(self.actions),  
-            "total\_receipts": len(self.receipts),  
-            "by\_status": {  
-                status.value: len(\[a for a in self.actions if a.verification\_status \== status\])  
-                for status in ActionStatus  
-            },  
-            "actions\_by\_segment": {  
-                seg\_id: len(\[a for a in self.actions   
-                            if a.agent\_id in seg.allowed\_agents\])  
-                for seg\_id, seg in self.segments.items()  
-            },  
-            "receipt\_chain\_integrity": {  
-                agent\_id: self.verify\_receipt\_chain(agent\_id)  
-                for agent\_id in set(r.agent\_id for r in self.receipts)  
-            }  
+class ZeroTrustRuntime:
+    """Zero Trust & AI Runtime Security"""
+    
+    def __init__(self):
+        self.segments: Dict[str, Segment] = {}
+        self.actions: List[RuntimeAction] = {}
+        self.receipts: List[TamperEvidentReceipt] = {}
+        self.actions = []
+        self.receipts = []
+    
+    def create_segment(
+        self,
+        name: str,
+        level: SegmentLevel,
+        allowed_agents: List[str],
+        allowed_communications: List[Dict]
+    ) -> Segment:
+        """Create a Zero Trust segment"""
+        segment_id = f"SEG-{datetime.now().strftime('%Y%m%d')}-{len(self.segments)+1:04d}"
+        
+        segment = Segment(
+            segment_id=segment_id,
+            segment_name=name,
+            segment_level=level,
+            allowed_agents=allowed_agents,
+            allowed_communications=allowed_communications,
+            created_date=datetime.now().isoformat(),
+            last_updated=datetime.now().isoformat()
+        )
+        
+        self.segments[segment_id] = segment
+        return segment
+    
+    def intercept_action(
+        self,
+        agent_id: str,
+        action_type: str,
+        action_context: Dict
+    ) -> RuntimeAction:
+        """
+        Intercept and verify an agent action before execution (AARM)
+        """
+        action_id = f"ACT-{datetime.now().strftime('%Y%m%d')}-{len(self.actions)+1:04d}"
+        
+        # Step 1: Identity verification
+        identity_verified = self._verify_identity(agent_id)
+        if not identity_verified:
+            return self._create_blocked_action(action_id, agent_id, action_type, 
+                                              action_context, "Identity verification failed")
+        
+        # Step 2: Authorization check
+        authorized = self._check_authorization(agent_id, action_type)
+        if not authorized:
+            return self._create_blocked_action(action_id, agent_id, action_type,
+                                              action_context, "Authorization failed")
+        
+        # Step 3: Policy check
+        policy_ok = self._check_policies(agent_id, action_type, action_context)
+        if not policy_ok:
+            return self._create_blocked_action(action_id, agent_id, action_type,
+                                              action_context, "Policy violation")
+        
+        # Step 4: Risk assessment
+        risk_level = self._assess_risk(agent_id, action_type, action_context)
+        if risk_level == "Critical":
+            return self._create_escalated_action(action_id, agent_id, action_type,
+                                                action_context, "Critical risk detected")
+        
+        # Step 5: Interception decision
+        if risk_level == "High":
+            action = self._create_flagged_action(action_id, agent_id, action_type,
+                                                action_context, "High risk flagged for review")
+        else:
+            action = self._create_allowed_action(action_id, agent_id, action_type,
+                                                action_context, "All actions verified")
+        
+        # Generate tamper-evident receipt
+        receipt = self._generate_receipt(action)
+        action.receipt = receipt
+        
+        return action
+    
+    def _verify_identity(self, agent_id: str) -> bool:
+        """Verify agent identity (Zero Trust: Verify Explicitly)"""
+        # In production, check against identity registry
+        # Check: Is agent active? Is credential valid? Is agent in correct segment?
+        return True
+    
+    def _check_authorization(self, agent_id: str, action_type: str) -> bool:
+        """Check authorization (Zero Trust: Verify Explicitly)"""
+        # In production, check CTAM grants
+        # Check: Is action authorized by CTAM? Are budgets available?
+        return True
+    
+    def _check_policies(self, agent_id: str, action_type: str, action_context: Dict) -> bool:
+        """Check policies (Zero Trust: Verify Explicitly)"""
+        # In production, check policies
+        # Check: Does action violate I9? Does action violate Segment boundaries?
+        return True
+    
+    def _assess_risk(self, agent_id: str, action_type: str, action_context: Dict) -> str:
+        """Assess action risk"""
+        # In production, use risk assessment
+        risk_factors = []
+        
+        # Check if action crosses segment boundaries
+        segment = self._get_agent_segment(agent_id)
+        if segment and self._crosses_segment_boundary(segment, action_context):
+            risk_factors.append("Crosses segment boundary")
+        
+        # Check if action is high-impact
+        if action_type in ["DECISION", "INTERACTION", "ADAPTATION"]:
+            risk_factors.append("High-impact action type")
+        
+        # Determine risk level
+        if len(risk_factors) >= 3:
+            return "Critical"
+        elif len(risk_factors) >= 2:
+            return "High"
+        elif len(risk_factors) >= 1:
+            return "Medium"
+        else:
+            return "Low"
+    
+    def _get_agent_segment(self, agent_id: str) -> Optional[Segment]:
+        """Get the segment for an agent"""
+        for segment in self.segments.values():
+            if agent_id in segment.allowed_agents:
+                return segment
+        return None
+    
+    def _crosses_segment_boundary(self, segment: Segment, action_context: Dict) -> bool:
+        """Check if action crosses segment boundaries"""
+        # Check if target is in same segment
+        target = action_context.get("target_agent")
+        if target:
+            target_segment = self._get_agent_segment(target)
+            if target_segment and target_segment.segment_id != segment.segment_id:
+                return True
+        return False
+    
+    def _create_allowed_action(
+        self,
+        action_id: str,
+        agent_id: str,
+        action_type: str,
+        action_context: Dict,
+        reason: str
+    ) -> RuntimeAction:
+        """Create an allowed action"""
+        return RuntimeAction(
+            action_id=action_id,
+            agent_id=agent_id,
+            action_type=action_type,
+            action_context=action_context,
+            timestamp=datetime.now().isoformat(),
+            verification_status=ActionStatus.ALLOWED,
+            verification_details={
+                "identity_verified": True,
+                "authorized": True,
+                "policy_ok": True,
+                "risk_level": "Low",
+                "reason": reason
+            }
+        )
+    
+    def _create_blocked_action(
+        self,
+        action_id: str,
+        agent_id: str,
+        action_type: str,
+        action_context: Dict,
+        reason: str
+    ) -> RuntimeAction:
+        """Create a blocked action"""
+        return RuntimeAction(
+            action_id=action_id,
+            agent_id=agent_id,
+            action_type=action_type,
+            action_context=action_context,
+            timestamp=datetime.now().isoformat(),
+            verification_status=ActionStatus.BLOCKED,
+            verification_details={
+                "identity_verified": False,
+                "authorized": False,
+                "policy_ok": False,
+                "risk_level": "Blocked",
+                "reason": reason
+            }
+        )
+    
+    def _create_flagged_action(
+        self,
+        action_id: str,
+        agent_id: str,
+        action_type: str,
+        action_context: Dict,
+        reason: str
+    ) -> RuntimeAction:
+        """Create a flagged action (requires review)"""
+        return RuntimeAction(
+            action_id=action_id,
+            agent_id=agent_id,
+            action_type=action_type,
+            action_context=action_context,
+            timestamp=datetime.now().isoformat(),
+            verification_status=ActionStatus.FLAGGED,
+            verification_details={
+                "identity_verified": True,
+                "authorized": True,
+                "policy_ok": True,
+                "risk_level": "High",
+                "reason": reason,
+                "requires_review": True
+            }
+        )
+    
+    def _create_escalated_action(
+        self,
+        action_id: str,
+        agent_id: str,
+        action_type: str,
+        action_context: Dict,
+        reason: str
+    ) -> RuntimeAction:
+        """Create an escalated action (escalated to HAN)"""
+        return RuntimeAction(
+            action_id=action_id,
+            agent_id=agent_id,
+            action_type=action_type,
+            action_context=action_context,
+            timestamp=datetime.now().isoformat(),
+            verification_status=ActionStatus.ESCALATED,
+            verification_details={
+                "identity_verified": True,
+                "authorized": True,
+                "policy_ok": True,
+                "risk_level": "Critical",
+                "reason": reason,
+                "escalated_to": "HAN",
+                "escalation_timestamp": datetime.now().isoformat()
+            }
+        )
+    
+    def _generate_receipt(self, action: RuntimeAction) -> TamperEvidentReceipt:
+        """Generate a tamper-evident receipt"""
+        receipt_id = f"REC-{datetime.now().strftime('%Y%m%d')}-{len(self.receipts)+1:04d}"
+        
+        receipt_data = {
+            "action_id": action.action_id,
+            "agent_id": action.agent_id,
+            "timestamp": action.timestamp,
+            "action_type": action.action_type,
+            "verification_status": action.verification_status.value,
+            "verification_details": action.verification_details
+        }
+        
+        receipt_hash = hashlib.sha256(
+            json.dumps(receipt_data, sort_keys=True).encode()
+        ).hexdigest()
+        
+        receipt = TamperEvidentReceipt(
+            receipt_id=receipt_id,
+            action_id=action.action_id,
+            agent_id=action.agent_id,
+            timestamp=datetime.now().isoformat(),
+            action_description=action.action_type,
+            authorization_status=action.verification_status,
+            decision_reason=action.verification_details.get("reason", ""),
+            hash=receipt_hash,
+            previous_hash=self._get_previous_hash(action.agent_id)
+        )
+        
+        self.receipts.append(receipt)
+        return receipt
+    
+    def _get_previous_hash(self, agent_id: str) -> Optional[str]:
+        """Get the previous receipt hash for an agent (for chain)"""
+        agent_receipts = [r for r in self.receipts if r.agent_id == agent_id]
+        if agent_receipts:
+            return agent_receipts[-1].hash
+        return None
+    
+    def verify_receipt_chain(self, agent_id: str) -> bool:
+        """Verify the integrity of a receipt chain"""
+        agent_receipts = sorted([r for r in self.receipts if r.agent_id == agent_id],
+                               key=lambda x: x.timestamp)
+        
+        if len(agent_receipts) <= 1:
+            return True
+        
+        for i in range(1, len(agent_receipts)):
+            previous = agent_receipts[i-1]
+            current = agent_receipts[i]
+            
+            # Verify current hash matches previous hash
+            if current.previous_hash != previous.hash:
+                return False
+        
+        return True
+    
+    def get_action(self, action_id: str) -> Optional[RuntimeAction]:
+        """Get a runtime action"""
+        for action in self.actions:
+            if action.action_id == action_id:
+                return action
+        return None
+    
+    def get_receipt(self, receipt_id: str) -> Optional[TamperEvidentReceipt]:
+        """Get a tamper-evident receipt"""
+        for receipt in self.receipts:
+            if receipt.receipt_id == receipt_id:
+                return receipt
+        return None
+    
+    def get_actions_by_status(self, status: ActionStatus) -> List[RuntimeAction]:
+        """Get actions by status"""
+        return [a for a in self.actions if a.verification_status == status]
+    
+    def summary(self) -> Dict:
+        """Get a summary of Zero Trust runtime security"""
+        return {
+            "total_segments": len(self.segments),
+            "total_actions": len(self.actions),
+            "total_receipts": len(self.receipts),
+            "by_status": {
+                status.value: len([a for a in self.actions if a.verification_status == status])
+                for status in ActionStatus
+            },
+            "actions_by_segment": {
+                seg_id: len([a for a in self.actions 
+                            if a.agent_id in seg.allowed_agents])
+                for seg_id, seg in self.segments.items()
+            },
+            "receipt_chain_integrity": {
+                agent_id: self.verify_receipt_chain(agent_id)
+                for agent_id in set(r.agent_id for r in self.receipts)
+            }
         }
 ```
 
@@ -20990,265 +21001,265 @@ When an agent interacts with an MCP server, it is logged as inter-agent communic
 ## SECTION 6: MCP REGISTRY IMPLEMENTATION
 
 ```
-\# mcp\_registry.py  
-"""  
-MCP Server Governance — Complete Implementation  
+# mcp_registry.py
+"""
+MCP Server Governance — Complete Implementation
 """
 
-from enum import Enum  
-from typing import List, Dict, Optional  
-from dataclasses import dataclass, field  
+from enum import Enum
+from typing import List, Dict, Optional
+from dataclasses import dataclass, field
 from datetime import datetime
 
-class MCPServerType(Enum):  
-    DATA \= "Data"  
-    API \= "API"  
-    FILE \= "File"  
-    SEARCH \= "Search"  
-    CUSTOM \= "Custom"  
-    OTHER \= "Other"
+class MCPServerType(Enum):
+    DATA = "Data"
+    API = "API"
+    FILE = "File"
+    SEARCH = "Search"
+    CUSTOM = "Custom"
+    OTHER = "Other"
 
-class RegistrationStatus(Enum):  
-    REGISTERED \= "Registered"  
-    ACTIVE \= "Active"  
-    DEPRECATED \= "Deprecated"  
-    RETIRED \= "Retired"
+class RegistrationStatus(Enum):
+    REGISTERED = "Registered"
+    ACTIVE = "Active"
+    DEPRECATED = "Deprecated"
+    RETIRED = "Retired"
 
-class SecurityStatus(Enum):  
-    VERIFIED \= "Verified"  
-    PENDING \= "Pending"  
-    FAILED \= "Failed"  
-    NEEDS\_REVIEW \= "Needs Review"
+class SecurityStatus(Enum):
+    VERIFIED = "Verified"
+    PENDING = "Pending"
+    FAILED = "Failed"
+    NEEDS_REVIEW = "Needs Review"
 
-class RiskLevel(Enum):  
-    LOW \= "Low"  
-    MEDIUM \= "Medium"  
-    HIGH \= "High"  
-    CRITICAL \= "Critical"
+class RiskLevel(Enum):
+    LOW = "Low"
+    MEDIUM = "Medium"
+    HIGH = "High"
+    CRITICAL = "Critical"
 
-@dataclass  
-class SecurityScan:  
-    """Security scan results for an MCP server"""  
-    scan\_id: str  
-    scan\_date: str  
-    vulnerabilities: List\[Dict\]  
-    malware\_detected: bool  
-    permission\_issues: List\[str\]  
-    typosquatting\_risk: bool  
-    dependency\_confusion\_risk: bool  
-    overall\_status: SecurityStatus
+@dataclass
+class SecurityScan:
+    """Security scan results for an MCP server"""
+    scan_id: str
+    scan_date: str
+    vulnerabilities: List[Dict]
+    malware_detected: bool
+    permission_issues: List[str]
+    typosquatting_risk: bool
+    dependency_confusion_risk: bool
+    overall_status: SecurityStatus
 
-@dataclass  
-class MCPServer:  
-    """An MCP server registered in the system"""  
-    mcp\_server\_id: str  
-    mcp\_server\_name: str  
-    mcp\_server\_version: str  
-    mcp\_server\_source: str  
-    mcp\_server\_type: MCPServerType  
-    capability\_mappings: Dict\[str, str\]  \# CTAM domain → specific capability  
-    authorized\_agents: List\[str\]  
-    registration\_status: RegistrationStatus  
-    security\_status: SecurityStatus  
-    last\_security\_scan: Optional\[str\]  
-    security\_scan\_results: Optional\[SecurityScan\]  
-    registered\_by: str  
-    registration\_date: str  
-    last\_updated: str  
-    risk\_level: RiskLevel  
-    skill\_registry\_reference: Optional\[str\]
+@dataclass
+class MCPServer:
+    """An MCP server registered in the system"""
+    mcp_server_id: str
+    mcp_server_name: str
+    mcp_server_version: str
+    mcp_server_source: str
+    mcp_server_type: MCPServerType
+    capability_mappings: Dict[str, str]  # CTAM domain → specific capability
+    authorized_agents: List[str]
+    registration_status: RegistrationStatus
+    security_status: SecurityStatus
+    last_security_scan: Optional[str]
+    security_scan_results: Optional[SecurityScan]
+    registered_by: str
+    registration_date: str
+    last_updated: str
+    risk_level: RiskLevel
+    skill_registry_reference: Optional[str]
 
-@dataclass  
-class Skill:  
-    """A skill/plugin registered in the system"""  
-    skill\_id: str  
-    skill\_name: str  
-    skill\_version: str  
-    skill\_source: str  
-    mcp\_server\_reference: str  
-    capability\_mappings: Dict\[str, str\]  
-    security\_status: SecurityStatus  
-    vulnerability\_scan: Optional\[Dict\]  
-    registered\_by: str  
-    registration\_date: str  
-    last\_updated: str
+@dataclass
+class Skill:
+    """A skill/plugin registered in the system"""
+    skill_id: str
+    skill_name: str
+    skill_version: str
+    skill_source: str
+    mcp_server_reference: str
+    capability_mappings: Dict[str, str]
+    security_status: SecurityStatus
+    vulnerability_scan: Optional[Dict]
+    registered_by: str
+    registration_date: str
+    last_updated: str
 
-class MCPRegistry:  
-    """System of record for MCP servers and skills"""  
-      
-    def \_\_init\_\_(self):  
-        self.mcp\_servers: Dict\[str, MCPServer\] \= {}  
-        self.skills: Dict\[str, Skill\] \= {}  
-        self.interaction\_logs: List\[Dict\] \= \[\]  
-      
-    def register\_mcp\_server(  
-        self,  
-        name: str,  
-        version: str,  
-        source: str,  
-        mcp\_type: MCPServerType,  
-        capability\_mappings: Dict\[str, str\],  
-        authorized\_agents: List\[str\],  
-        risk\_level: RiskLevel,  
-        registered\_by: str  
-    ) \-\> MCPServer:  
-        """Register a new MCP server (HAN-only)"""  
-        server\_id \= f"MCP-{len(self.mcp\_servers) \+ 1:04d}"  
-          
-        server \= MCPServer(  
-            mcp\_server\_id=server\_id,  
-            mcp\_server\_name=name,  
-            mcp\_server\_version=version,  
-            mcp\_server\_source=source,  
-            mcp\_server\_type=mcp\_type,  
-            capability\_mappings=capability\_mappings,  
-            authorized\_agents=authorized\_agents,  
-            registration\_status=RegistrationStatus.REGISTERED,  
-            security\_status=SecurityStatus.PENDING,  
-            last\_security\_scan=None,  
-            security\_scan\_results=None,  
-            registered\_by=registered\_by,  
-            registration\_date=datetime.now().isoformat(),  
-            last\_updated=datetime.now().isoformat(),  
-            risk\_level=risk\_level,  
-            skill\_registry\_reference=None  
-        )  
-          
-        self.mcp\_servers\[server\_id\] \= server  
-        return server  
-      
-    def register\_skill(  
-        self,  
-        name: str,  
-        version: str,  
-        source: str,  
-        mcp\_server\_reference: str,  
-        capability\_mappings: Dict\[str, str\],  
-        registered\_by: str  
-    ) \-\> Skill:  
-        """Register a new skill/plugin"""  
-        skill\_id \= f"SKILL-{len(self.skills) \+ 1:04d}"  
-          
-        skill \= Skill(  
-            skill\_id=skill\_id,  
-            skill\_name=name,  
-            skill\_version=version,  
-            skill\_source=source,  
-            mcp\_server\_reference=mcp\_server\_reference,  
-            capability\_mappings=capability\_mappings,  
-            security\_status=SecurityStatus.PENDING,  
-            vulnerability\_scan=None,  
-            registered\_by=registered\_by,  
-            registration\_date=datetime.now().isoformat(),  
-            last\_updated=datetime.now().isoformat()  
-        )  
-          
-        self.skills\[skill\_id\] \= skill  
-        return skill  
-      
-    def update\_security\_status(  
-        self,  
-        mcp\_server\_id: str,  
-        security\_status: SecurityStatus,  
-        scan\_results: SecurityScan  
-    ) \-\> MCPServer:  
-        """Update MCP server security status"""  
-        server \= self.mcp\_servers.get(mcp\_server\_id)  
-        if not server:  
-            raise ValueError(f"MCP server {mcp\_server\_id} not found")  
-          
-        server.security\_status \= security\_status  
-        server.security\_scan\_results \= scan\_results  
-        server.last\_security\_scan \= scan\_results.scan\_date  
-        server.last\_updated \= datetime.now().isoformat()  
-          
-        return server  
-      
-    def authorize\_agent(self, mcp\_server\_id: str, agent\_id: str) \-\> MCPServer:  
-        """Authorize an agent to use an MCP server"""  
-        server \= self.mcp\_servers.get(mcp\_server\_id)  
-        if not server:  
-            raise ValueError(f"MCP server {mcp\_server\_id} not found")  
-          
-        if agent\_id not in server.authorized\_agents:  
-            server.authorized\_agents.append(agent\_id)  
-            server.last\_updated \= datetime.now().isoformat()  
-          
-        return server  
-      
-    def log\_interaction(  
-        self,  
-        agent\_id: str,  
-        mcp\_server\_id: str,  
-        capability: str,  
-        authorized: bool  
-    ) \-\> Dict:  
-        """Log an agent-MCP interaction"""  
-        log\_entry \= {  
-            "timestamp": datetime.now().isoformat(),  
-            "agent\_id": agent\_id,  
-            "mcp\_server\_id": mcp\_server\_id,  
-            "capability": capability,  
-            "authorized": authorized,  
-            "decision\_type": "inter\_agent\_communication",  
-            "communication\_type": "mcp\_interaction"  
-        }  
-          
-        self.interaction\_logs.append(log\_entry)  
-        return log\_entry  
-      
-    def get\_server(self, mcp\_server\_id: str) \-\> Optional\[MCPServer\]:  
-        """Get an MCP server by ID"""  
-        return self.mcp\_servers.get(mcp\_server\_id)  
-      
-    def get\_servers\_by\_agent(self, agent\_id: str) \-\> List\[MCPServer\]:  
-        """Get all MCP servers authorized for an agent"""  
-        return \[s for s in self.mcp\_servers.values()   
-                if agent\_id in s.authorized\_agents\]  
-      
-    def get\_servers\_by\_risk\_level(self, risk\_level: RiskLevel) \-\> List\[MCPServer\]:  
-        """Get MCP servers by risk level"""  
-        return \[s for s in self.mcp\_servers.values()   
-                if s.risk\_level \== risk\_level\]  
-      
-    def get\_pending\_security\_scans(self) \-\> List\[MCPServer\]:  
-        """Get MCP servers pending security scans"""  
-        return \[s for s in self.mcp\_servers.values()   
-                if s.security\_status \== SecurityStatus.PENDING\]  
-      
-    def get\_failed\_security\_scans(self) \-\> List\[MCPServer\]:  
-        """Get MCP servers with failed security scans"""  
-        return \[s for s in self.mcp\_servers.values()   
-                if s.security\_status \== SecurityStatus.FAILED\]  
-      
-    def get\_skill(self, skill\_id: str) \-\> Optional\[Skill\]:  
-        """Get a skill by ID"""  
-        return self.skills.get(skill\_id)  
-      
-    def get\_skills\_by\_server(self, mcp\_server\_id: str) \-\> List\[Skill\]:  
-        """Get all skills for an MCP server"""  
-        return \[s for s in self.skills.values()   
-                if s.mcp\_server\_reference \== mcp\_server\_id\]  
-      
-    def summary(self) \-\> Dict:  
-        """Get a summary of the registry"""  
-        return {  
-            "total\_mcp\_servers": len(self.mcp\_servers),  
-            "total\_skills": len(self.skills),  
-            "total\_interactions": len(self.interaction\_logs),  
-            "by\_security\_status": {  
-                status.value: len(\[s for s in self.mcp\_servers.values()   
-                                   if s.security\_status \== status\])  
-                for status in SecurityStatus  
-            },  
-            "by\_risk\_level": {  
-                level.value: len(\[s for s in self.mcp\_servers.values()   
-                                  if s.risk\_level \== level\])  
-                for level in RiskLevel  
-            },  
-            "pending\_scans": len(self.get\_pending\_security\_scans()),  
-            "failed\_scans": len(self.get\_failed\_security\_scans())  
-        }  
+class MCPRegistry:
+    """System of record for MCP servers and skills"""
+    
+    def __init__(self):
+        self.mcp_servers: Dict[str, MCPServer] = {}
+        self.skills: Dict[str, Skill] = {}
+        self.interaction_logs: List[Dict] = []
+    
+    def register_mcp_server(
+        self,
+        name: str,
+        version: str,
+        source: str,
+        mcp_type: MCPServerType,
+        capability_mappings: Dict[str, str],
+        authorized_agents: List[str],
+        risk_level: RiskLevel,
+        registered_by: str
+    ) -> MCPServer:
+        """Register a new MCP server (HAN-only)"""
+        server_id = f"MCP-{len(self.mcp_servers) + 1:04d}"
+        
+        server = MCPServer(
+            mcp_server_id=server_id,
+            mcp_server_name=name,
+            mcp_server_version=version,
+            mcp_server_source=source,
+            mcp_server_type=mcp_type,
+            capability_mappings=capability_mappings,
+            authorized_agents=authorized_agents,
+            registration_status=RegistrationStatus.REGISTERED,
+            security_status=SecurityStatus.PENDING,
+            last_security_scan=None,
+            security_scan_results=None,
+            registered_by=registered_by,
+            registration_date=datetime.now().isoformat(),
+            last_updated=datetime.now().isoformat(),
+            risk_level=risk_level,
+            skill_registry_reference=None
+        )
+        
+        self.mcp_servers[server_id] = server
+        return server
+    
+    def register_skill(
+        self,
+        name: str,
+        version: str,
+        source: str,
+        mcp_server_reference: str,
+        capability_mappings: Dict[str, str],
+        registered_by: str
+    ) -> Skill:
+        """Register a new skill/plugin"""
+        skill_id = f"SKILL-{len(self.skills) + 1:04d}"
+        
+        skill = Skill(
+            skill_id=skill_id,
+            skill_name=name,
+            skill_version=version,
+            skill_source=source,
+            mcp_server_reference=mcp_server_reference,
+            capability_mappings=capability_mappings,
+            security_status=SecurityStatus.PENDING,
+            vulnerability_scan=None,
+            registered_by=registered_by,
+            registration_date=datetime.now().isoformat(),
+            last_updated=datetime.now().isoformat()
+        )
+        
+        self.skills[skill_id] = skill
+        return skill
+    
+    def update_security_status(
+        self,
+        mcp_server_id: str,
+        security_status: SecurityStatus,
+        scan_results: SecurityScan
+    ) -> MCPServer:
+        """Update MCP server security status"""
+        server = self.mcp_servers.get(mcp_server_id)
+        if not server:
+            raise ValueError(f"MCP server {mcp_server_id} not found")
+        
+        server.security_status = security_status
+        server.security_scan_results = scan_results
+        server.last_security_scan = scan_results.scan_date
+        server.last_updated = datetime.now().isoformat()
+        
+        return server
+    
+    def authorize_agent(self, mcp_server_id: str, agent_id: str) -> MCPServer:
+        """Authorize an agent to use an MCP server"""
+        server = self.mcp_servers.get(mcp_server_id)
+        if not server:
+            raise ValueError(f"MCP server {mcp_server_id} not found")
+        
+        if agent_id not in server.authorized_agents:
+            server.authorized_agents.append(agent_id)
+            server.last_updated = datetime.now().isoformat()
+        
+        return server
+    
+    def log_interaction(
+        self,
+        agent_id: str,
+        mcp_server_id: str,
+        capability: str,
+        authorized: bool
+    ) -> Dict:
+        """Log an agent-MCP interaction"""
+        log_entry = {
+            "timestamp": datetime.now().isoformat(),
+            "agent_id": agent_id,
+            "mcp_server_id": mcp_server_id,
+            "capability": capability,
+            "authorized": authorized,
+            "decision_type": "inter_agent_communication",
+            "communication_type": "mcp_interaction"
+        }
+        
+        self.interaction_logs.append(log_entry)
+        return log_entry
+    
+    def get_server(self, mcp_server_id: str) -> Optional[MCPServer]:
+        """Get an MCP server by ID"""
+        return self.mcp_servers.get(mcp_server_id)
+    
+    def get_servers_by_agent(self, agent_id: str) -> List[MCPServer]:
+        """Get all MCP servers authorized for an agent"""
+        return [s for s in self.mcp_servers.values() 
+                if agent_id in s.authorized_agents]
+    
+    def get_servers_by_risk_level(self, risk_level: RiskLevel) -> List[MCPServer]:
+        """Get MCP servers by risk level"""
+        return [s for s in self.mcp_servers.values() 
+                if s.risk_level == risk_level]
+    
+    def get_pending_security_scans(self) -> List[MCPServer]:
+        """Get MCP servers pending security scans"""
+        return [s for s in self.mcp_servers.values() 
+                if s.security_status == SecurityStatus.PENDING]
+    
+    def get_failed_security_scans(self) -> List[MCPServer]:
+        """Get MCP servers with failed security scans"""
+        return [s for s in self.mcp_servers.values() 
+                if s.security_status == SecurityStatus.FAILED]
+    
+    def get_skill(self, skill_id: str) -> Optional[Skill]:
+        """Get a skill by ID"""
+        return self.skills.get(skill_id)
+    
+    def get_skills_by_server(self, mcp_server_id: str) -> List[Skill]:
+        """Get all skills for an MCP server"""
+        return [s for s in self.skills.values() 
+                if s.mcp_server_reference == mcp_server_id]
+    
+    def summary(self) -> Dict:
+        """Get a summary of the registry"""
+        return {
+            "total_mcp_servers": len(self.mcp_servers),
+            "total_skills": len(self.skills),
+            "total_interactions": len(self.interaction_logs),
+            "by_security_status": {
+                status.value: len([s for s in self.mcp_servers.values() 
+                                   if s.security_status == status])
+                for status in SecurityStatus
+            },
+            "by_risk_level": {
+                level.value: len([s for s in self.mcp_servers.values() 
+                                  if s.risk_level == level])
+                for level in RiskLevel
+            },
+            "pending_scans": len(self.get_pending_security_scans()),
+            "failed_scans": len(self.get_failed_security_scans())
+        }
 ```
 
 ---
@@ -21459,48 +21470,50 @@ Supply Chain Governance ensures that:
 
 ### 4.3 Assessment Report Template
 
-Third-Party Model Assessment Report  
-Model ID: MODEL-2026-001  
-Model Name: \[Name\]  
-Assessment Date: \[Date\]  
-Assessed By: \[Assessor\]
+```
+Third-Party Model Assessment Report
+Model ID: MODEL-2026-001
+Model Name: [Name]
+Assessment Date: [Date]
+Assessed By: [Assessor]
 
-1\. Executive Summary:  
-   \- Overall Assessment: \[Pass / Conditional / Fail\]  
-   \- Key Findings: \[List\]  
-   \- Recommendations: \[List\]
+1. Executive Summary:
+   - Overall Assessment: [Pass / Conditional / Fail]
+   - Key Findings: [List]
+   - Recommendations: [List]
 
-2\. Security Assessment:  
-   \- Vulnerability Scan Results: \[Summary\]  
-   \- Security Issues: \[List\]  
-   \- Remediation Plan: \[List\]
+2. Security Assessment:
+   - Vulnerability Scan Results: [Summary]
+   - Security Issues: [List]
+   - Remediation Plan: [List]
 
-3\. Performance Assessment:  
-   \- Performance Metrics: \[Data\]  
-   \- Performance Issues: \[List\]  
-   \- Improvement Plan: \[List\]
+3. Performance Assessment:
+   - Performance Metrics: [Data]
+   - Performance Issues: [List]
+   - Improvement Plan: [List]
 
-4\. Bias/Fairness Assessment:  
-   \- Bias Audit Results: \[Summary\]  
-   \- Bias Issues: \[List\]  
-   \- Mitigation Plan: \[List\]
+4. Bias/Fairness Assessment:
+   - Bias Audit Results: [Summary]
+   - Bias Issues: [List]
+   - Mitigation Plan: [List]
 
-5\. Privacy Assessment:  
-   \- Privacy Implications: \[Summary\]  
-   \- Privacy Issues: \[List\]  
-   \- Mitigation Plan: \[List\]
+5. Privacy Assessment:
+   - Privacy Implications: [Summary]
+   - Privacy Issues: [List]
+   - Mitigation Plan: [List]
 
-6\. Compliance Assessment:  
-   \- Regulatory Compliance: \[Summary\]  
-   \- Compliance Gaps: \[List\]  
-   \- Remediation Plan: \[List\]
+6. Compliance Assessment:
+   - Regulatory Compliance: [Summary]
+   - Compliance Gaps: [List]
+   - Remediation Plan: [List]
 
-7\. Conclusion:  
-   \- Recommended Action: \[Approve / Conditional / Reject\]  
-   \- Conditions (if applicable): \[List\]  
-   \- Next Review Date: \[Date\]
+7. Conclusion:
+   - Recommended Action: [Approve / Conditional / Reject]
+   - Conditions (if applicable): [List]
+   - Next Review Date: [Date]
 
-HAN Authorization: \[HAN Name and Signature\]
+HAN Authorization: [HAN Name and Signature]
+```
 
 ---
 
@@ -21569,368 +21582,368 @@ HAN Authorization: \[HAN Name and Signature\]
 ## SECTION 7: SUPPLY CHAIN GOVERNANCE IMPLEMENTATION
 
 ```
-\# supply\_chain\_governance.py  
-"""  
-Supply Chain Governance — Complete Implementation  
+# supply_chain_governance.py
+"""
+Supply Chain Governance — Complete Implementation
 """
 
-from enum import Enum  
-from typing import List, Dict, Optional  
-from dataclasses import dataclass, field  
-from datetime import datetime  
+from enum import Enum
+from typing import List, Dict, Optional
+from dataclasses import dataclass, field
+from datetime import datetime
 import hashlib
 
-class SupplyChainRiskLevel(Enum):  
-    LOW \= "Low"  
-    MEDIUM \= "Medium"  
-    HIGH \= "High"  
-    CRITICAL \= "Critical"
+class SupplyChainRiskLevel(Enum):
+    LOW = "Low"
+    MEDIUM = "Medium"
+    HIGH = "High"
+    CRITICAL = "Critical"
 
-class SupplyChainRiskCategory(Enum):  
-    PROVENANCE \= "Provenance"  
-    VULNERABILITY \= "Vulnerability"  
-    MALWARE \= "Malware"  
-    TYPOSQUATTING \= "Typosquatting"  
-    DEPENDENCY\_CONFUSION \= "Dependency Confusion"  
-    POST\_PUBLISH\_CHANGE \= "Post-Publish Change"
+class SupplyChainRiskCategory(Enum):
+    PROVENANCE = "Provenance"
+    VULNERABILITY = "Vulnerability"
+    MALWARE = "Malware"
+    TYPOSQUATTING = "Typosquatting"
+    DEPENDENCY_CONFUSION = "Dependency Confusion"
+    POST_PUBLISH_CHANGE = "Post-Publish Change"
 
-class SecurityStatus(Enum):  
-    VERIFIED \= "Verified"  
-    PENDING \= "Pending"  
-    FAILED \= "Failed"  
-    NEEDS\_REVIEW \= "Needs Review"
+class SecurityStatus(Enum):
+    VERIFIED = "Verified"
+    PENDING = "Pending"
+    FAILED = "Failed"
+    NEEDS_REVIEW = "Needs Review"
 
-class AssessmentStatus(Enum):  
-    ASSESSED \= "Assessed"  
-    PENDING \= "Pending"  
-    NEEDS\_REVIEW \= "Needs Review"
+class AssessmentStatus(Enum):
+    ASSESSED = "Assessed"
+    PENDING = "Pending"
+    NEEDS_REVIEW = "Needs Review"
 
-class ModelType(Enum):  
-    FOUNDATION \= "Foundation"  
-    FINE\_TUNED \= "Fine-tuned"  
-    CUSTOM \= "Custom"  
-    THIRD\_PARTY \= "Third-Party"
+class ModelType(Enum):
+    FOUNDATION = "Foundation"
+    FINE_TUNED = "Fine-tuned"
+    CUSTOM = "Custom"
+    THIRD_PARTY = "Third-Party"
 
-class DependencyType(Enum):  
-    LIBRARY \= "Library"  
-    FRAMEWORK \= "Framework"  
-    TOOL \= "Tool"  
-    DATASET \= "Dataset"
+class DependencyType(Enum):
+    LIBRARY = "Library"
+    FRAMEWORK = "Framework"
+    TOOL = "Tool"
+    DATASET = "Dataset"
 
-@dataclass  
-class ProvenanceRecord:  
-    """Provenance record for a supply chain component"""  
-    record\_id: str  
-    component\_id: str  
-    component\_type: str  
-    source: str  
-    author: str  
-    timestamp: str  
-    signature: str  
-    hash: str  
-    parent\_record\_id: Optional\[str\] \= None
+@dataclass
+class ProvenanceRecord:
+    """Provenance record for a supply chain component"""
+    record_id: str
+    component_id: str
+    component_type: str
+    source: str
+    author: str
+    timestamp: str
+    signature: str
+    hash: str
+    parent_record_id: Optional[str] = None
 
-@dataclass  
-class ModelProvenance:  
-    """Model provenance record"""  
-    model\_id: str  
-    model\_name: str  
-    model\_version: str  
-    model\_source: str  
-    model\_type: ModelType  
-    training\_data\_source: str  
-    training\_data\_provenance: Dict  
-    model\_architecture: str  
-    model\_parameters: Dict  
-    authorship: List\[str\]  
-    creation\_date: str  
-    last\_updated: str  
-    provenance\_chain: List\[ProvenanceRecord\]  
-    security\_status: SecurityStatus  
-    security\_scan\_results: Dict  
-    assessment\_status: AssessmentStatus  
-    assessment\_report: Optional\[str\]
+@dataclass
+class ModelProvenance:
+    """Model provenance record"""
+    model_id: str
+    model_name: str
+    model_version: str
+    model_source: str
+    model_type: ModelType
+    training_data_source: str
+    training_data_provenance: Dict
+    model_architecture: str
+    model_parameters: Dict
+    authorship: List[str]
+    creation_date: str
+    last_updated: str
+    provenance_chain: List[ProvenanceRecord]
+    security_status: SecurityStatus
+    security_scan_results: Dict
+    assessment_status: AssessmentStatus
+    assessment_report: Optional[str]
 
-@dataclass  
-class Dependency:  
-    """Dependency record"""  
-    dependency\_id: str  
-    dependency\_name: str  
-    dependency\_version: str  
-    dependency\_type: DependencyType  
-    source: str  
-    used\_by: List\[str\]  
-    security\_status: SecurityStatus  
-    vulnerability\_scan: Dict  
-    license: str  
-    registration\_date: str
+@dataclass
+class Dependency:
+    """Dependency record"""
+    dependency_id: str
+    dependency_name: str
+    dependency_version: str
+    dependency_type: DependencyType
+    source: str
+    used_by: List[str]
+    security_status: SecurityStatus
+    vulnerability_scan: Dict
+    license: str
+    registration_date: str
 
-class SupplyChainGovernance:  
-    """Supply Chain Governance Framework"""  
-      
-    def \_\_init\_\_(self):  
-        self.models: Dict\[str, ModelProvenance\] \= {}  
-        self.dependencies: Dict\[str, Dependency\] \= {}  
-        self.assessments: List\[Dict\] \= \[\]  
-        self.scans: List\[Dict\] \= \[\]  
-      
-    def register\_model(  
-        self,  
-        name: str,  
-        version: str,  
-        model\_type: ModelType,  
-        source: str,  
-        training\_data\_source: str,  
-        model\_architecture: str,  
-        model\_parameters: Dict,  
-        authorship: List\[str\]  
-    ) \-\> ModelProvenance:  
-        """Register a model in the supply chain registry"""  
-        model\_id \= f"MODEL-{len(self.models) \+ 1:04d}"  
-          
-        model \= ModelProvenance(  
-            model\_id=model\_id,  
-            model\_name=name,  
-            model\_version=version,  
-            model\_source=source,  
-            model\_type=model\_type,  
-            training\_data\_source=training\_data\_source,  
-            training\_data\_provenance={  
-                "source": training\_data\_source,  
-                "date": datetime.now().isoformat(),  
-                "verified": False  
-            },  
-            model\_architecture=model\_architecture,  
-            model\_parameters=model\_parameters,  
-            authorship=authorship,  
-            creation\_date=datetime.now().isoformat(),  
-            last\_updated=datetime.now().isoformat(),  
-            provenance\_chain=\[\],  \# Build from source  
-            security\_status=SecurityStatus.PENDING,  
-            security\_scan\_results={},  
-            assessment\_status=AssessmentStatus.PENDING,  
-            assessment\_report=None  
-        )  
-          
-        \# Add initial provenance  
-        provenance \= ProvenanceRecord(  
-            record\_id=f"PROV-{datetime.now().strftime('%Y%m%d')}-{len(self.models)+1:04d}",  
-            component\_id=model\_id,  
-            component\_type="model",  
-            source=source,  
-            author=authorship\[0\] if authorship else "unknown",  
-            timestamp=datetime.now().isoformat(),  
-            signature=f"SIG-{model\_id}",  
-            hash=hashlib.sha256(f"{name}{version}{source}".encode()).hexdigest()  
-        )  
-        model.provenance\_chain.append(provenance)  
-          
-        self.models\[model\_id\] \= model  
-        return model  
-      
-    def assess\_model(  
-        self,  
-        model\_id: str,  
-        security\_scan\_results: Dict,  
-        performance\_assessment: Dict,  
-        bias\_assessment: Dict,  
-        privacy\_assessment: Dict,  
-        compliance\_assessment: Dict  
-    ) \-\> ModelProvenance:  
-        """Assess a third-party model"""  
-        model \= self.models.get(model\_id)  
-        if not model:  
-            raise ValueError(f"Model {model\_id} not found")  
-          
-        \# Determine overall assessment status  
-        critical\_issues \= \[\]  
-          
-        \# Security issues  
-        if security\_scan\_results.get("critical\_vulnerabilities", \[\]):  
-            critical\_issues.append("Critical security vulnerabilities found")  
-          
-        \# Bias issues  
-        if bias\_assessment.get("high\_bias\_found", False):  
-            critical\_issues.append("High bias detected")  
-          
-        \# Compliance issues  
-        if compliance\_assessment.get("compliance\_gaps", \[\]):  
-            critical\_issues.append("Compliance gaps found")  
-          
-        if critical\_issues:  
-            model.assessment\_status \= AssessmentStatus.NEEDS\_REVIEW  
-            model.security\_status \= SecurityStatus.NEEDS\_REVIEW  
-            model.assessment\_report \= self.\_create\_assessment\_report(  
-                model\_id,  
-                "Conditional",  
-                critical\_issues,  
-                {"security": security\_scan\_results, "performance": performance\_assessment,  
-                 "bias": bias\_assessment, "privacy": privacy\_assessment, "compliance": compliance\_assessment}  
-            )  
-        else:  
-            model.assessment\_status \= AssessmentStatus.ASSESSED  
-            model.security\_status \= SecurityStatus.VERIFIED  
-            model.assessment\_report \= self.\_create\_assessment\_report(  
-                model\_id,  
-                "Pass",  
-                \[\],  
-                {"security": security\_scan\_results, "performance": performance\_assessment,  
-                 "bias": bias\_assessment, "privacy": privacy\_assessment, "compliance": compliance\_assessment}  
-            )  
-          
-        model.last\_updated \= datetime.now().isoformat()  
-        model.security\_scan\_results \= security\_scan\_results  
-          
-        return model  
-      
-    def \_create\_assessment\_report(self, model\_id: str, status: str, issues: List\[str\], data: Dict) \-\> str:  
-        """Create an assessment report (stored as GAO in production)"""  
-        report \= {  
-            "model\_id": model\_id,  
-            "assessment\_date": datetime.now().isoformat(),  
-            "overall\_status": status,  
-            "issues": issues,  
-            "security": data.get("security", {}),  
-            "performance": data.get("performance", {}),  
-            "bias": data.get("bias", {}),  
-            "privacy": data.get("privacy", {}),  
-            "compliance": data.get("compliance", {})  
-        }  
-        self.assessments.append(report)  
-        return f"Assessment Report: {status} (See GAO-{model\_id})"  
-      
-    def register\_dependency(  
-        self,  
-        name: str,  
-        version: str,  
-        dep\_type: DependencyType,  
-        source: str,  
-        used\_by: List\[str\],  
-        license: str  
-    ) \-\> Dependency:  
-        """Register a dependency"""  
-        dependency\_id \= f"DEP-{len(self.dependencies) \+ 1:04d}"  
-          
-        dependency \= Dependency(  
-            dependency\_id=dependency\_id,  
-            dependency\_name=name,  
-            dependency\_version=version,  
-            dependency\_type=dep\_type,  
-            source=source,  
-            used\_by=used\_by,  
-            security\_status=SecurityStatus.PENDING,  
-            vulnerability\_scan={},  
-            license=license,  
-            registration\_date=datetime.now().isoformat()  
-        )  
-          
-        self.dependencies\[dependency\_id\] \= dependency  
-        return dependency  
-      
-    def scan\_dependency(  
-        self,  
-        dependency\_id: str,  
-        vulnerabilities: List\[Dict\],  
-        malware\_detected: bool,  
-        typosquatting\_risk: bool,  
-        dependency\_confusion\_risk: bool  
-    ) \-\> Dependency:  
-        """Scan a dependency for vulnerabilities"""  
-        dependency \= self.dependencies.get(dependency\_id)  
-        if not dependency:  
-            raise ValueError(f"Dependency {dependency\_id} not found")  
-          
-        scan\_results \= {  
-            "vulnerabilities": vulnerabilities,  
-            "malware\_detected": malware\_detected,  
-            "typosquatting\_risk": typosquatting\_risk,  
-            "dependency\_confusion\_risk": dependency\_confusion\_risk,  
-            "scan\_date": datetime.now().isoformat()  
-        }  
-          
-        dependency.vulnerability\_scan \= scan\_results  
-          
-        if malware\_detected or typosquatting\_risk or dependency\_confusion\_risk:  
-            dependency.security\_status \= SecurityStatus.FAILED  
-        elif vulnerabilities:  
-            \# Check if any are critical  
-            critical \= any(v.get("severity") in \["Critical", "High"\] for v in vulnerabilities)  
-            dependency.security\_status \= SecurityStatus.NEEDS\_REVIEW if critical else SecurityStatus.VERIFIED  
-        else:  
-            dependency.security\_status \= SecurityStatus.VERIFIED  
-          
-        self.scans.append(scan\_results)  
-        return dependency  
-      
-    def get\_model(self, model\_id: str) \-\> Optional\[ModelProvenance\]:  
-        """Get a model by ID"""  
-        return self.models.get(model\_id)  
-      
-    def get\_dependency(self, dependency\_id: str) \-\> Optional\[Dependency\]:  
-        """Get a dependency by ID"""  
-        return self.dependencies.get(dependency\_id)  
-      
-    def get\_models\_by\_status(self, status: SecurityStatus) \-\> List\[ModelProvenance\]:  
-        """Get models by security status"""  
-        return \[m for m in self.models.values() if m.security\_status \== status\]  
-      
-    def get\_models\_by\_risk(self, risk\_level: SupplyChainRiskLevel) \-\> List\[ModelProvenance\]:  
-        """Get models by risk level (derived from security status)"""  
-        mapping \= {  
-            SecurityStatus.VERIFIED: SupplyChainRiskLevel.LOW,  
-            SecurityStatus.PENDING: SupplyChainRiskLevel.MEDIUM,  
-            SecurityStatus.NEEDS\_REVIEW: SupplyChainRiskLevel.HIGH,  
-            SecurityStatus.FAILED: SupplyChainRiskLevel.CRITICAL  
-        }  
-        return \[m for m in self.models.values() if mapping.get(m.security\_status) \== risk\_level\]  
-      
-    def get\_dependencies\_by\_status(self, status: SecurityStatus) \-\> List\[Dependency\]:  
-        """Get dependencies by security status"""  
-        return \[d for d in self.dependencies.values() if d.security\_status \== status\]  
-      
-    def verify\_provenance\_chain(self, model\_id: str) \-\> bool:  
-        """Verify the provenance chain of a model"""  
-        model \= self.models.get(model\_id)  
-        if not model:  
-            return False  
-          
-        chain \= model.provenance\_chain  
-        if len(chain) \< 2:  
-            return False  
-          
-        \# Verify each link  
-        for i in range(1, len(chain)):  
-            current \= chain\[i\]  
-            previous \= chain\[i-1\]  
-              
-            \# Verify parent reference  
-            if current.parent\_record\_id \!= previous.record\_id:  
-                return False  
-              
-            \# Verify hash (in production, verify signatures)  
-          
-        return True  
-      
-    def summary(self) \-\> Dict:  
-        """Get a summary of supply chain governance"""  
-        return {  
-            "total\_models": len(self.models),  
-            "total\_dependencies": len(self.dependencies),  
-            "total\_assessments": len(self.assessments),  
-            "total\_scans": len(self.scans),  
-            "models\_by\_status": {  
-                status.value: len(\[m for m in self.models.values() if m.security\_status \== status\])  
-                for status in SecurityStatus  
-            },  
-            "models\_by\_type": {  
-                model\_type.value: len(\[m for m in self.models.values() if m.model\_type \== model\_type\])  
-                for model\_type in ModelType  
-            },  
-            "dependencies\_by\_status": {  
-                status.value: len(\[d for d in self.dependencies.values() if d.security\_status \== status\])  
-                for status in SecurityStatus  
-            },  
-            "pending\_assessments": len(\[m for m in self.models.values() if m.assessment\_status \== AssessmentStatus.PENDING\])  
+class SupplyChainGovernance:
+    """Supply Chain Governance Framework"""
+    
+    def __init__(self):
+        self.models: Dict[str, ModelProvenance] = {}
+        self.dependencies: Dict[str, Dependency] = {}
+        self.assessments: List[Dict] = []
+        self.scans: List[Dict] = []
+    
+    def register_model(
+        self,
+        name: str,
+        version: str,
+        model_type: ModelType,
+        source: str,
+        training_data_source: str,
+        model_architecture: str,
+        model_parameters: Dict,
+        authorship: List[str]
+    ) -> ModelProvenance:
+        """Register a model in the supply chain registry"""
+        model_id = f"MODEL-{len(self.models) + 1:04d}"
+        
+        model = ModelProvenance(
+            model_id=model_id,
+            model_name=name,
+            model_version=version,
+            model_source=source,
+            model_type=model_type,
+            training_data_source=training_data_source,
+            training_data_provenance={
+                "source": training_data_source,
+                "date": datetime.now().isoformat(),
+                "verified": False
+            },
+            model_architecture=model_architecture,
+            model_parameters=model_parameters,
+            authorship=authorship,
+            creation_date=datetime.now().isoformat(),
+            last_updated=datetime.now().isoformat(),
+            provenance_chain=[],  # Build from source
+            security_status=SecurityStatus.PENDING,
+            security_scan_results={},
+            assessment_status=AssessmentStatus.PENDING,
+            assessment_report=None
+        )
+        
+        # Add initial provenance
+        provenance = ProvenanceRecord(
+            record_id=f"PROV-{datetime.now().strftime('%Y%m%d')}-{len(self.models)+1:04d}",
+            component_id=model_id,
+            component_type="model",
+            source=source,
+            author=authorship[0] if authorship else "unknown",
+            timestamp=datetime.now().isoformat(),
+            signature=f"SIG-{model_id}",
+            hash=hashlib.sha256(f"{name}{version}{source}".encode()).hexdigest()
+        )
+        model.provenance_chain.append(provenance)
+        
+        self.models[model_id] = model
+        return model
+    
+    def assess_model(
+        self,
+        model_id: str,
+        security_scan_results: Dict,
+        performance_assessment: Dict,
+        bias_assessment: Dict,
+        privacy_assessment: Dict,
+        compliance_assessment: Dict
+    ) -> ModelProvenance:
+        """Assess a third-party model"""
+        model = self.models.get(model_id)
+        if not model:
+            raise ValueError(f"Model {model_id} not found")
+        
+        # Determine overall assessment status
+        critical_issues = []
+        
+        # Security issues
+        if security_scan_results.get("critical_vulnerabilities", []):
+            critical_issues.append("Critical security vulnerabilities found")
+        
+        # Bias issues
+        if bias_assessment.get("high_bias_found", False):
+            critical_issues.append("High bias detected")
+        
+        # Compliance issues
+        if compliance_assessment.get("compliance_gaps", []):
+            critical_issues.append("Compliance gaps found")
+        
+        if critical_issues:
+            model.assessment_status = AssessmentStatus.NEEDS_REVIEW
+            model.security_status = SecurityStatus.NEEDS_REVIEW
+            model.assessment_report = self._create_assessment_report(
+                model_id,
+                "Conditional",
+                critical_issues,
+                {"security": security_scan_results, "performance": performance_assessment,
+                 "bias": bias_assessment, "privacy": privacy_assessment, "compliance": compliance_assessment}
+            )
+        else:
+            model.assessment_status = AssessmentStatus.ASSESSED
+            model.security_status = SecurityStatus.VERIFIED
+            model.assessment_report = self._create_assessment_report(
+                model_id,
+                "Pass",
+                [],
+                {"security": security_scan_results, "performance": performance_assessment,
+                 "bias": bias_assessment, "privacy": privacy_assessment, "compliance": compliance_assessment}
+            )
+        
+        model.last_updated = datetime.now().isoformat()
+        model.security_scan_results = security_scan_results
+        
+        return model
+    
+    def _create_assessment_report(self, model_id: str, status: str, issues: List[str], data: Dict) -> str:
+        """Create an assessment report (stored as GAO in production)"""
+        report = {
+            "model_id": model_id,
+            "assessment_date": datetime.now().isoformat(),
+            "overall_status": status,
+            "issues": issues,
+            "security": data.get("security", {}),
+            "performance": data.get("performance", {}),
+            "bias": data.get("bias", {}),
+            "privacy": data.get("privacy", {}),
+            "compliance": data.get("compliance", {})
+        }
+        self.assessments.append(report)
+        return f"Assessment Report: {status} (See GAO-{model_id})"
+    
+    def register_dependency(
+        self,
+        name: str,
+        version: str,
+        dep_type: DependencyType,
+        source: str,
+        used_by: List[str],
+        license: str
+    ) -> Dependency:
+        """Register a dependency"""
+        dependency_id = f"DEP-{len(self.dependencies) + 1:04d}"
+        
+        dependency = Dependency(
+            dependency_id=dependency_id,
+            dependency_name=name,
+            dependency_version=version,
+            dependency_type=dep_type,
+            source=source,
+            used_by=used_by,
+            security_status=SecurityStatus.PENDING,
+            vulnerability_scan={},
+            license=license,
+            registration_date=datetime.now().isoformat()
+        )
+        
+        self.dependencies[dependency_id] = dependency
+        return dependency
+    
+    def scan_dependency(
+        self,
+        dependency_id: str,
+        vulnerabilities: List[Dict],
+        malware_detected: bool,
+        typosquatting_risk: bool,
+        dependency_confusion_risk: bool
+    ) -> Dependency:
+        """Scan a dependency for vulnerabilities"""
+        dependency = self.dependencies.get(dependency_id)
+        if not dependency:
+            raise ValueError(f"Dependency {dependency_id} not found")
+        
+        scan_results = {
+            "vulnerabilities": vulnerabilities,
+            "malware_detected": malware_detected,
+            "typosquatting_risk": typosquatting_risk,
+            "dependency_confusion_risk": dependency_confusion_risk,
+            "scan_date": datetime.now().isoformat()
+        }
+        
+        dependency.vulnerability_scan = scan_results
+        
+        if malware_detected or typosquatting_risk or dependency_confusion_risk:
+            dependency.security_status = SecurityStatus.FAILED
+        elif vulnerabilities:
+            # Check if any are critical
+            critical = any(v.get("severity") in ["Critical", "High"] for v in vulnerabilities)
+            dependency.security_status = SecurityStatus.NEEDS_REVIEW if critical else SecurityStatus.VERIFIED
+        else:
+            dependency.security_status = SecurityStatus.VERIFIED
+        
+        self.scans.append(scan_results)
+        return dependency
+    
+    def get_model(self, model_id: str) -> Optional[ModelProvenance]:
+        """Get a model by ID"""
+        return self.models.get(model_id)
+    
+    def get_dependency(self, dependency_id: str) -> Optional[Dependency]:
+        """Get a dependency by ID"""
+        return self.dependencies.get(dependency_id)
+    
+    def get_models_by_status(self, status: SecurityStatus) -> List[ModelProvenance]:
+        """Get models by security status"""
+        return [m for m in self.models.values() if m.security_status == status]
+    
+    def get_models_by_risk(self, risk_level: SupplyChainRiskLevel) -> List[ModelProvenance]:
+        """Get models by risk level (derived from security status)"""
+        mapping = {
+            SecurityStatus.VERIFIED: SupplyChainRiskLevel.LOW,
+            SecurityStatus.PENDING: SupplyChainRiskLevel.MEDIUM,
+            SecurityStatus.NEEDS_REVIEW: SupplyChainRiskLevel.HIGH,
+            SecurityStatus.FAILED: SupplyChainRiskLevel.CRITICAL
+        }
+        return [m for m in self.models.values() if mapping.get(m.security_status) == risk_level]
+    
+    def get_dependencies_by_status(self, status: SecurityStatus) -> List[Dependency]:
+        """Get dependencies by security status"""
+        return [d for d in self.dependencies.values() if d.security_status == status]
+    
+    def verify_provenance_chain(self, model_id: str) -> bool:
+        """Verify the provenance chain of a model"""
+        model = self.models.get(model_id)
+        if not model:
+            return False
+        
+        chain = model.provenance_chain
+        if len(chain) < 2:
+            return False
+        
+        # Verify each link
+        for i in range(1, len(chain)):
+            current = chain[i]
+            previous = chain[i-1]
+            
+            # Verify parent reference
+            if current.parent_record_id != previous.record_id:
+                return False
+            
+            # Verify hash (in production, verify signatures)
+        
+        return True
+    
+    def summary(self) -> Dict:
+        """Get a summary of supply chain governance"""
+        return {
+            "total_models": len(self.models),
+            "total_dependencies": len(self.dependencies),
+            "total_assessments": len(self.assessments),
+            "total_scans": len(self.scans),
+            "models_by_status": {
+                status.value: len([m for m in self.models.values() if m.security_status == status])
+                for status in SecurityStatus
+            },
+            "models_by_type": {
+                model_type.value: len([m for m in self.models.values() if m.model_type == model_type])
+                for model_type in ModelType
+            },
+            "dependencies_by_status": {
+                status.value: len([d for d in self.dependencies.values() if d.security_status == status])
+                for status in SecurityStatus
+            },
+            "pending_assessments": len([m for m in self.models.values() if m.assessment_status == AssessmentStatus.PENDING])
         }
 ```
 
@@ -22139,312 +22152,312 @@ The Skills & Plugins Governance Framework ensures that:
 ## SECTION 5: SKILLS & PLUGINS IMPLEMENTATION
 
 ```
-\# skills\_plugins\_governance.py  
-"""  
-Skills & Plugins Governance — Complete Implementation  
+# skills_plugins_governance.py
+"""
+Skills & Plugins Governance — Complete Implementation
 """
 
-from enum import Enum  
-from typing import List, Dict, Optional  
-from dataclasses import dataclass, field  
-from datetime import datetime  
+from enum import Enum
+from typing import List, Dict, Optional
+from dataclasses import dataclass, field
+from datetime import datetime
 import hashlib
 
-class SkillType(Enum):  
-    CLAUDE \= "Claude"  
-    GPT\_STORE \= "GPT Store"  
-    INTERNAL \= "Internal"  
-    THIRD\_PARTY \= "Third-Party"  
-    OPEN\_SOURCE \= "Open-Source"
+class SkillType(Enum):
+    CLAUDE = "Claude"
+    GPT_STORE = "GPT Store"
+    INTERNAL = "Internal"
+    THIRD_PARTY = "Third-Party"
+    OPEN_SOURCE = "Open-Source"
 
-class SecurityStatus(Enum):  
-    VERIFIED \= "Verified"  
-    PENDING \= "Pending"  
-    FAILED \= "Failed"  
-    NEEDS\_REVIEW \= "Needs Review"
+class SecurityStatus(Enum):
+    VERIFIED = "Verified"
+    PENDING = "Pending"
+    FAILED = "Failed"
+    NEEDS_REVIEW = "Needs Review"
 
-class RegistrationStatus(Enum):  
-    REGISTERED \= "Registered"  
-    ACTIVE \= "Active"  
-    DEPRECATED \= "Deprecated"  
-    RETIRED \= "Retired"
+class RegistrationStatus(Enum):
+    REGISTERED = "Registered"
+    ACTIVE = "Active"
+    DEPRECATED = "Deprecated"
+    RETIRED = "Retired"
 
-class ScanStatus(Enum):  
-    PASS \= "Pass"  
-    FAIL \= "Fail"  
-    NEEDS\_REVIEW \= "Needs Review"
+class ScanStatus(Enum):
+    PASS = "Pass"
+    FAIL = "Fail"
+    NEEDS_REVIEW = "Needs Review"
 
-@dataclass  
-class SecurityScanResults:  
-    """Security scan results for a skill/plugin"""  
-    scan\_id: str  
-    scan\_date: str  
-    cve\_findings: List\[Dict\]  
-    malware\_detected: bool  
-    typosquatting\_risk: bool  
-    dependency\_confusion\_risk: bool  
-    post\_publish\_changes: bool  
-    permission\_issues: List\[str\]  
-    overall\_status: ScanStatus
+@dataclass
+class SecurityScanResults:
+    """Security scan results for a skill/plugin"""
+    scan_id: str
+    scan_date: str
+    cve_findings: List[Dict]
+    malware_detected: bool
+    typosquatting_risk: bool
+    dependency_confusion_risk: bool
+    post_publish_changes: bool
+    permission_issues: List[str]
+    overall_status: ScanStatus
 
-@dataclass  
-class Skill:  
-    """A skill/plugin registered in the system"""  
-    skill\_id: str  
-    skill\_name: str  
-    skill\_version: str  
-    skill\_type: SkillType  
-    skill\_source: str  
-    mcp\_server\_reference: str  
-    author: str  
-    provenance: Dict  
-    capability\_mappings: Dict\[str, str\]  
-    security\_status: SecurityStatus  
-    security\_scan\_results: Optional\[SecurityScanResults\]  
-    version\_history: List\[Dict\]  
-    registration\_status: RegistrationStatus  
-    registered\_by: str  
-    registration\_date: str  
-    last\_updated: str
+@dataclass
+class Skill:
+    """A skill/plugin registered in the system"""
+    skill_id: str
+    skill_name: str
+    skill_version: str
+    skill_type: SkillType
+    skill_source: str
+    mcp_server_reference: str
+    author: str
+    provenance: Dict
+    capability_mappings: Dict[str, str]
+    security_status: SecurityStatus
+    security_scan_results: Optional[SecurityScanResults]
+    version_history: List[Dict]
+    registration_status: RegistrationStatus
+    registered_by: str
+    registration_date: str
+    last_updated: str
 
-class SkillsGovernance:  
-    """Skills & Plugins Governance Framework"""  
-      
-    def \_\_init\_\_(self):  
-        self.skills: Dict\[str, Skill\] \= {}  
-        self.scans: Dict\[str, SecurityScanResults\] \= {}  
-      
-    def register\_skill(  
-        self,  
-        name: str,  
-        version: str,  
-        skill\_type: SkillType,  
-        source: str,  
-        mcp\_server\_reference: str,  
-        author: str,  
-        provenance: Dict,  
-        capability\_mappings: Dict\[str, str\],  
-        registered\_by: str  
-    ) \-\> Skill:  
-        """Register a new skill/plugin (HAN-only)"""  
-        skill\_id \= f"SKILL-{len(self.skills) \+ 1:04d}"  
-          
-        skill \= Skill(  
-            skill\_id=skill\_id,  
-            skill\_name=name,  
-            skill\_version=version,  
-            skill\_type=skill\_type,  
-            skill\_source=source,  
-            mcp\_server\_reference=mcp\_server\_reference,  
-            author=author,  
-            provenance=provenance,  
-            capability\_mappings=capability\_mappings,  
-            security\_status=SecurityStatus.PENDING,  
-            security\_scan\_results=None,  
-            version\_history=\[{  
-                "version": version,  
-                "date": datetime.now().isoformat(),  
-                "changes": "Initial registration"  
-            }\],  
-            registration\_status=RegistrationStatus.REGISTERED,  
-            registered\_by=registered\_by,  
-            registration\_date=datetime.now().isoformat(),  
-            last\_updated=datetime.now().isoformat()  
-        )  
-          
-        self.skills\[skill\_id\] \= skill  
-        return skill  
-      
-    def update\_security\_scan(  
-        self,  
-        skill\_id: str,  
-        cve\_findings: List\[Dict\],  
-        malware\_detected: bool,  
-        typosquatting\_risk: bool,  
-        dependency\_confusion\_risk: bool,  
-        post\_publish\_changes: bool,  
-        permission\_issues: List\[str\]  
-    ) \-\> Skill:  
-        """Update security scan for a skill"""  
-        skill \= self.skills.get(skill\_id)  
-        if not skill:  
-            raise ValueError(f"Skill {skill\_id} not found")  
-          
-        \# Determine overall status  
-        if malware\_detected or post\_publish\_changes:  
-            overall\_status \= ScanStatus.FAIL  
-            security\_status \= SecurityStatus.FAILED  
-        elif cve\_findings or typosquatting\_risk or dependency\_confusion\_risk or permission\_issues:  
-            overall\_status \= ScanStatus.NEEDS\_REVIEW  
-            security\_status \= SecurityStatus.NEEDS\_REVIEW  
-        else:  
-            overall\_status \= ScanStatus.PASS  
-            security\_status \= SecurityStatus.VERIFIED  
-          
-        scan \= SecurityScanResults(  
-            scan\_id=f"SCAN-{datetime.now().strftime('%Y%m%d')}-{len(self.scans)+1:04d}",  
-            scan\_date=datetime.now().isoformat(),  
-            cve\_findings=cve\_findings,  
-            malware\_detected=malware\_detected,  
-            typosquatting\_risk=typosquatting\_risk,  
-            dependency\_confusion\_risk=dependency\_confusion\_risk,  
-            post\_publish\_changes=post\_publish\_changes,  
-            permission\_issues=permission\_issues,  
-            overall\_status=overall\_status  
-        )  
-          
-        self.scans\[scan.scan\_id\] \= scan  
-          
-        skill.security\_status \= security\_status  
-        skill.security\_scan\_results \= scan  
-        skill.last\_updated \= datetime.now().isoformat()  
-          
-        if security\_status \== SecurityStatus.VERIFIED:  
-            skill.registration\_status \= RegistrationStatus.ACTIVE  
-          
-        return skill  
-      
-    def update\_skill\_version(  
-        self,  
-        skill\_id: str,  
-        new\_version: str,  
-        changes: str,  
-        scan\_results: Optional\[SecurityScanResults\] \= None  
-    ) \-\> Skill:  
-        """Update a skill to a new version"""  
-        skill \= self.skills.get(skill\_id)  
-        if not skill:  
-            raise ValueError(f"Skill {skill\_id} not found")  
-          
-        \# Update version  
-        skill.skill\_version \= new\_version  
-        skill.version\_history.append({  
-            "version": new\_version,  
-            "date": datetime.now().isoformat(),  
-            "changes": changes  
-        })  
-          
-        \# Re-scan if no scan results provided  
-        if scan\_results:  
-            skill.security\_scan\_results \= scan\_results  
-            if scan\_results.overall\_status \== ScanStatus.PASS:  
-                skill.security\_status \= SecurityStatus.VERIFIED  
-                skill.registration\_status \= RegistrationStatus.ACTIVE  
-            elif scan\_results.overall\_status \== ScanStatus.NEEDS\_REVIEW:  
-                skill.security\_status \= SecurityStatus.NEEDS\_REVIEW  
-            else:  
-                skill.security\_status \= SecurityStatus.FAILED  
-          
-        skill.last\_updated \= datetime.now().isoformat()  
-          
-        return skill  
-      
-    def deprecate\_skill(self, skill\_id: str, reason: str) \-\> Skill:  
-        """Deprecate a skill"""  
-        skill \= self.skills.get(skill\_id)  
-        if not skill:  
-            raise ValueError(f"Skill {skill\_id} not found")  
-          
-        skill.registration\_status \= RegistrationStatus.DEPRECATED  
-        skill.last\_updated \= datetime.now().isoformat()  
-          
-        return skill  
-      
-    def retire\_skill(self, skill\_id: str, reason: str) \-\> Skill:  
-        """Retire a skill"""  
-        skill \= self.skills.get(skill\_id)  
-        if not skill:  
-            raise ValueError(f"Skill {skill\_id} not found")  
-          
-        skill.registration\_status \= RegistrationStatus.RETIRED  
-        skill.last\_updated \= datetime.now().isoformat()  
-          
-        return skill  
-      
-    def get\_skill(self, skill\_id: str) \-\> Optional\[Skill\]:  
-        """Get a skill by ID"""  
-        return self.skills.get(skill\_id)  
-      
-    def get\_skills\_by\_type(self, skill\_type: SkillType) \-\> List\[Skill\]:  
-        """Get skills by type"""  
-        return \[s for s in self.skills.values() if s.skill\_type \== skill\_type\]  
-      
-    def get\_skills\_by\_status(self, status: RegistrationStatus) \-\> List\[Skill\]:  
-        """Get skills by registration status"""  
-        return \[s for s in self.skills.values() if s.registration\_status \== status\]  
-      
-    def get\_skills\_by\_security\_status(self, status: SecurityStatus) \-\> List\[Skill\]:  
-        """Get skills by security status"""  
-        return \[s for s in self.skills.values() if s.security\_status \== status\]  
-      
-    def get\_skills\_by\_mcp\_server(self, mcp\_server\_id: str) \-\> List\[Skill\]:  
-        """Get skills for an MCP server"""  
-        return \[s for s in self.skills.values() if s.mcp\_server\_reference \== mcp\_server\_id\]  
-      
-    def verify\_skill\_provenance(self, skill\_id: str) \-\> bool:  
-        """Verify the provenance of a skill"""  
-        skill \= self.skills.get(skill\_id)  
-        if not skill:  
-            return False  
-          
-        \# Check provenance completeness  
-        required\_fields \= \["author", "source", "created\_date", "signature"\]  
-        for field in required\_fields:  
-            if field not in skill.provenance:  
-                return False  
-          
-        \# In production, verify signature  
-        return True  
-      
-    def detect\_typosquatting(self, skill\_name: str, known\_skills: List\[str\]) \-\> bool:  
-        """Detect typosquatting risk"""  
-        \# Simple Levenshtein distance check  
-        \# In production, use more sophisticated detection  
-        for known in known\_skills:  
-            if self.\_levenshtein\_distance(skill\_name.lower(), known.lower()) \<= 2:  
-                if skill\_name \!= known:  
-                    return True  
-        return False  
-      
-    def \_levenshtein\_distance(self, s1: str, s2: str) \-\> int:  
-        """Calculate Levenshtein distance between two strings"""  
-        if len(s1) \< len(s2):  
-            return self.\_levenshtein\_distance(s2, s1)  
-          
-        if len(s2) \== 0:  
-            return len(s1)  
-          
-        previous\_row \= range(len(s2) \+ 1\)  
-        for i, c1 in enumerate(s1):  
-            current\_row \= \[i \+ 1\]  
-            for j, c2 in enumerate(s2):  
-                insertions \= previous\_row\[j \+ 1\] \+ 1  
-                deletions \= current\_row\[j\] \+ 1  
-                substitutions \= previous\_row\[j\] \+ (c1 \!= c2)  
-                current\_row.append(min(insertions, deletions, substitutions))  
-            previous\_row \= current\_row  
-          
-        return previous\_row\[-1\]  
-      
-    def summary(self) \-\> Dict:  
-        """Get a summary of skills governance"""  
-        return {  
-            "total\_skills": len(self.skills),  
-            "by\_type": {  
-                skill\_type.value: len(\[s for s in self.skills.values() if s.skill\_type \== skill\_type\])  
-                for skill\_type in SkillType  
-            },  
-            "by\_registration\_status": {  
-                status.value: len(\[s for s in self.skills.values() if s.registration\_status \== status\])  
-                for status in RegistrationStatus  
-            },  
-            "by\_security\_status": {  
-                status.value: len(\[s for s in self.skills.values() if s.security\_status \== status\])  
-                for status in SecurityStatus  
-            },  
-            "pending\_scans": len(\[s for s in self.skills.values() if s.security\_status \== SecurityStatus.PENDING\]),  
-            "failed\_scans": len(\[s for s in self.skills.values() if s.security\_status \== SecurityStatus.FAILED\]),  
-            "active\_skills": len(\[s for s in self.skills.values() if s.registration\_status \== RegistrationStatus.ACTIVE\])  
+class SkillsGovernance:
+    """Skills & Plugins Governance Framework"""
+    
+    def __init__(self):
+        self.skills: Dict[str, Skill] = {}
+        self.scans: Dict[str, SecurityScanResults] = {}
+    
+    def register_skill(
+        self,
+        name: str,
+        version: str,
+        skill_type: SkillType,
+        source: str,
+        mcp_server_reference: str,
+        author: str,
+        provenance: Dict,
+        capability_mappings: Dict[str, str],
+        registered_by: str
+    ) -> Skill:
+        """Register a new skill/plugin (HAN-only)"""
+        skill_id = f"SKILL-{len(self.skills) + 1:04d}"
+        
+        skill = Skill(
+            skill_id=skill_id,
+            skill_name=name,
+            skill_version=version,
+            skill_type=skill_type,
+            skill_source=source,
+            mcp_server_reference=mcp_server_reference,
+            author=author,
+            provenance=provenance,
+            capability_mappings=capability_mappings,
+            security_status=SecurityStatus.PENDING,
+            security_scan_results=None,
+            version_history=[{
+                "version": version,
+                "date": datetime.now().isoformat(),
+                "changes": "Initial registration"
+            }],
+            registration_status=RegistrationStatus.REGISTERED,
+            registered_by=registered_by,
+            registration_date=datetime.now().isoformat(),
+            last_updated=datetime.now().isoformat()
+        )
+        
+        self.skills[skill_id] = skill
+        return skill
+    
+    def update_security_scan(
+        self,
+        skill_id: str,
+        cve_findings: List[Dict],
+        malware_detected: bool,
+        typosquatting_risk: bool,
+        dependency_confusion_risk: bool,
+        post_publish_changes: bool,
+        permission_issues: List[str]
+    ) -> Skill:
+        """Update security scan for a skill"""
+        skill = self.skills.get(skill_id)
+        if not skill:
+            raise ValueError(f"Skill {skill_id} not found")
+        
+        # Determine overall status
+        if malware_detected or post_publish_changes:
+            overall_status = ScanStatus.FAIL
+            security_status = SecurityStatus.FAILED
+        elif cve_findings or typosquatting_risk or dependency_confusion_risk or permission_issues:
+            overall_status = ScanStatus.NEEDS_REVIEW
+            security_status = SecurityStatus.NEEDS_REVIEW
+        else:
+            overall_status = ScanStatus.PASS
+            security_status = SecurityStatus.VERIFIED
+        
+        scan = SecurityScanResults(
+            scan_id=f"SCAN-{datetime.now().strftime('%Y%m%d')}-{len(self.scans)+1:04d}",
+            scan_date=datetime.now().isoformat(),
+            cve_findings=cve_findings,
+            malware_detected=malware_detected,
+            typosquatting_risk=typosquatting_risk,
+            dependency_confusion_risk=dependency_confusion_risk,
+            post_publish_changes=post_publish_changes,
+            permission_issues=permission_issues,
+            overall_status=overall_status
+        )
+        
+        self.scans[scan.scan_id] = scan
+        
+        skill.security_status = security_status
+        skill.security_scan_results = scan
+        skill.last_updated = datetime.now().isoformat()
+        
+        if security_status == SecurityStatus.VERIFIED:
+            skill.registration_status = RegistrationStatus.ACTIVE
+        
+        return skill
+    
+    def update_skill_version(
+        self,
+        skill_id: str,
+        new_version: str,
+        changes: str,
+        scan_results: Optional[SecurityScanResults] = None
+    ) -> Skill:
+        """Update a skill to a new version"""
+        skill = self.skills.get(skill_id)
+        if not skill:
+            raise ValueError(f"Skill {skill_id} not found")
+        
+        # Update version
+        skill.skill_version = new_version
+        skill.version_history.append({
+            "version": new_version,
+            "date": datetime.now().isoformat(),
+            "changes": changes
+        })
+        
+        # Re-scan if no scan results provided
+        if scan_results:
+            skill.security_scan_results = scan_results
+            if scan_results.overall_status == ScanStatus.PASS:
+                skill.security_status = SecurityStatus.VERIFIED
+                skill.registration_status = RegistrationStatus.ACTIVE
+            elif scan_results.overall_status == ScanStatus.NEEDS_REVIEW:
+                skill.security_status = SecurityStatus.NEEDS_REVIEW
+            else:
+                skill.security_status = SecurityStatus.FAILED
+        
+        skill.last_updated = datetime.now().isoformat()
+        
+        return skill
+    
+    def deprecate_skill(self, skill_id: str, reason: str) -> Skill:
+        """Deprecate a skill"""
+        skill = self.skills.get(skill_id)
+        if not skill:
+            raise ValueError(f"Skill {skill_id} not found")
+        
+        skill.registration_status = RegistrationStatus.DEPRECATED
+        skill.last_updated = datetime.now().isoformat()
+        
+        return skill
+    
+    def retire_skill(self, skill_id: str, reason: str) -> Skill:
+        """Retire a skill"""
+        skill = self.skills.get(skill_id)
+        if not skill:
+            raise ValueError(f"Skill {skill_id} not found")
+        
+        skill.registration_status = RegistrationStatus.RETIRED
+        skill.last_updated = datetime.now().isoformat()
+        
+        return skill
+    
+    def get_skill(self, skill_id: str) -> Optional[Skill]:
+        """Get a skill by ID"""
+        return self.skills.get(skill_id)
+    
+    def get_skills_by_type(self, skill_type: SkillType) -> List[Skill]:
+        """Get skills by type"""
+        return [s for s in self.skills.values() if s.skill_type == skill_type]
+    
+    def get_skills_by_status(self, status: RegistrationStatus) -> List[Skill]:
+        """Get skills by registration status"""
+        return [s for s in self.skills.values() if s.registration_status == status]
+    
+    def get_skills_by_security_status(self, status: SecurityStatus) -> List[Skill]:
+        """Get skills by security status"""
+        return [s for s in self.skills.values() if s.security_status == status]
+    
+    def get_skills_by_mcp_server(self, mcp_server_id: str) -> List[Skill]:
+        """Get skills for an MCP server"""
+        return [s for s in self.skills.values() if s.mcp_server_reference == mcp_server_id]
+    
+    def verify_skill_provenance(self, skill_id: str) -> bool:
+        """Verify the provenance of a skill"""
+        skill = self.skills.get(skill_id)
+        if not skill:
+            return False
+        
+        # Check provenance completeness
+        required_fields = ["author", "source", "created_date", "signature"]
+        for field in required_fields:
+            if field not in skill.provenance:
+                return False
+        
+        # In production, verify signature
+        return True
+    
+    def detect_typosquatting(self, skill_name: str, known_skills: List[str]) -> bool:
+        """Detect typosquatting risk"""
+        # Simple Levenshtein distance check
+        # In production, use more sophisticated detection
+        for known in known_skills:
+            if self._levenshtein_distance(skill_name.lower(), known.lower()) <= 2:
+                if skill_name != known:
+                    return True
+        return False
+    
+    def _levenshtein_distance(self, s1: str, s2: str) -> int:
+        """Calculate Levenshtein distance between two strings"""
+        if len(s1) < len(s2):
+            return self._levenshtein_distance(s2, s1)
+        
+        if len(s2) == 0:
+            return len(s1)
+        
+        previous_row = range(len(s2) + 1)
+        for i, c1 in enumerate(s1):
+            current_row = [i + 1]
+            for j, c2 in enumerate(s2):
+                insertions = previous_row[j + 1] + 1
+                deletions = current_row[j] + 1
+                substitutions = previous_row[j] + (c1 != c2)
+                current_row.append(min(insertions, deletions, substitutions))
+            previous_row = current_row
+        
+        return previous_row[-1]
+    
+    def summary(self) -> Dict:
+        """Get a summary of skills governance"""
+        return {
+            "total_skills": len(self.skills),
+            "by_type": {
+                skill_type.value: len([s for s in self.skills.values() if s.skill_type == skill_type])
+                for skill_type in SkillType
+            },
+            "by_registration_status": {
+                status.value: len([s for s in self.skills.values() if s.registration_status == status])
+                for status in RegistrationStatus
+            },
+            "by_security_status": {
+                status.value: len([s for s in self.skills.values() if s.security_status == status])
+                for status in SecurityStatus
+            },
+            "pending_scans": len([s for s in self.skills.values() if s.security_status == SecurityStatus.PENDING]),
+            "failed_scans": len([s for s in self.skills.values() if s.security_status == SecurityStatus.FAILED]),
+            "active_skills": len([s for s in self.skills.values() if s.registration_status == RegistrationStatus.ACTIVE])
         }
 ```
 
@@ -22589,42 +22602,44 @@ The Board-Level AI Governance Framework ensures that:
 
 ### 2.6 Charter Template
 
-Board AI Governance Charter  
-Version: v1.0  
+```
+Board AI Governance Charter
+Version: v1.0
 Effective Date: 2026-09-01
 
-1\. Board AI Oversight Mandate:  
-   \- The Board has ultimate authority and accountability for AI governance  
-   \- Delegation to AI Governance Committee does not relieve Board accountability
+1. Board AI Oversight Mandate:
+   - The Board has ultimate authority and accountability for AI governance
+   - Delegation to AI Governance Committee does not relieve Board accountability
 
-2\. AI Governance Committee:  
-   \- Composition: \[List members and qualifications\]  
-   \- Chair: \[Name\]  
-   \- Charter Reference: \[Link to committee charter\]
+2. AI Governance Committee:
+   - Composition: [List members and qualifications]
+   - Chair: [Name]
+   - Charter Reference: [Link to committee charter]
 
-3\. Board AI Competency Requirements:  
-   \- AI Fundamentals: \[List competencies\]  
-   \- AI Governance: \[List competencies\]  
-   \- AI Risk Management: \[List competencies\]
+3. Board AI Competency Requirements:
+   - AI Fundamentals: [List competencies]
+   - AI Governance: [List competencies]
+   - AI Risk Management: [List competencies]
 
-4\. Reporting and Escalation:  
-   \- Quarterly AI Governance Report  
-   \- Annual AI Governance Review  
-   \- Immediate escalation for high-risk incidents (I9, Constitutional Suspension)
+4. Reporting and Escalation:
+   - Quarterly AI Governance Report
+   - Annual AI Governance Review
+   - Immediate escalation for high-risk incidents (I9, Constitutional Suspension)
 
-5\. Approval Authority:  
-   \- Tier 4/5 Authorization: Board approval required  
-   \- Material Framework Changes: Board approval required  
-   \- High-Risk AI Deployment: Board approval required
+5. Approval Authority:
+   - Tier 4/5 Authorization: Board approval required
+   - Material Framework Changes: Board approval required
+   - High-Risk AI Deployment: Board approval required
 
-6\. Risk Oversight:  
-   \- AI risks integrated into Enterprise Risk Management  
-   \- Quarterly AI risk review  
-   \- Annual AI risk assessment
+6. Risk Oversight:
+   - AI risks integrated into Enterprise Risk Management
+   - Quarterly AI risk review
+   - Annual AI risk assessment
 
-HAN Acknowledgment: \[HAN Name and Signature\]  
-Board Approval Date: \[Date\]  
-Next Review Date: \[Date \+ 1 year\]
+HAN Acknowledgment: [HAN Name and Signature]
+Board Approval Date: [Date]
+Next Review Date: [Date + 1 year]
+```
 
 ---
 
@@ -22656,53 +22671,54 @@ Next Review Date: \[Date \+ 1 year\]
 
 ### 3.3 Board AI Governance Report Template
 
-Board AI Governance Report  
-Reporting Period: \[Quarter/Year\]  
-Generated: \[Date\]
+```Board AI Governance Report
+Reporting Period: [Quarter/Year]
+Generated: [Date]
 
-1\. Executive Summary:  
-   \- Overall AI governance health: \[Score/Status\]  
-   \- Key achievements: \[List\]  
-   \- Key risks: \[List\]  
-   \- Top priorities: \[List\]
+1. Executive Summary:
+   - Overall AI governance health: [Score/Status]
+   - Key achievements: [List]
+   - Key risks: [List]
+   - Top priorities: [List]
 
-2\. Board Oversight:  
-   \- Board AI governance structure: \[Description\]  
-   \- AI Governance Committee activities: \[Summary\]  
-   \- Board AI competency status: \[Current/Planned\]
+2. Board Oversight:
+   - Board AI governance structure: [Description]
+   - AI Governance Committee activities: [Summary]
+   - Board AI competency status: [Current/Planned]
 
-3\. AI Strategy:  
-   \- Strategic alignment: \[Description\]  
-   \- AI roadmap: \[Status\]  
-   \- AI investment: \[Summary\]
+3. AI Strategy:
+   - Strategic alignment: [Description]
+   - AI roadmap: [Status]
+   - AI investment: [Summary]
 
-4\. AI Risk Management:  
-   \- Risk assessment results: \[Summary\]  
-   \- Key risks and mitigations: \[List\]  
-   \- Risk trends: \[Analysis\]
+4. AI Risk Management:
+   - Risk assessment results: [Summary]
+   - Key risks and mitigations: [List]
+   - Risk trends: [Analysis]
 
-5\. AI Performance:  
-   \- System performance metrics: \[Data\]  
-   \- Business outcomes: \[Summary\]  
-   \- Key performance indicators: \[Metrics\]
+5. AI Performance:
+   - System performance metrics: [Data]
+   - Business outcomes: [Summary]
+   - Key performance indicators: [Metrics]
 
-6\. AI Compliance:  
-   \- Regulatory compliance status: \[Summary\]  
-   \- Compliance gaps: \[List\]  
-   \- Remediation plans: \[List\]
+6. AI Compliance:
+   - Regulatory compliance status: [Summary]
+   - Compliance gaps: [List]
+   - Remediation plans: [List]
 
-7\. AI Incidents:  
-   \- Material incidents: \[List\]  
-   \- Incident responses: \[Summary\]  
-   \- Lessons learned: \[List\]
+7. AI Incidents:
+   - Material incidents: [List]
+   - Incident responses: [Summary]
+   - Lessons learned: [List]
 
-8\. Forward Look:  
-   \- Priorities for next period: \[List\]  
-   \- Planned investments: \[Summary\]  
-   \- Emerging risks: \[List\]
+8. Forward Look:
+   - Priorities for next period: [List]
+   - Planned investments: [Summary]
+   - Emerging risks: [List]
 
-HAN Acknowledgment: \[HAN Name and Signature\]  
-Board Review Date: \[Date\]
+HAN Acknowledgment: [HAN Name and Signature]
+Board Review Date: [Date]
+```
 
 ---
 
@@ -22773,206 +22789,206 @@ Board Review Date: \[Date\]
 ## SECTION 6: BOARD AI GOVERNANCE IMPLEMENTATION
 
 ```
-\# board\_ai\_governance.py  
-"""  
-Board-Level AI Governance Framework — Complete Implementation  
+# board_ai_governance.py
+"""
+Board-Level AI Governance Framework — Complete Implementation
 """
 
-from enum import Enum  
-from typing import List, Dict, Optional  
-from dataclasses import dataclass, field  
+from enum import Enum
+from typing import List, Dict, Optional
+from dataclasses import dataclass, field
 from datetime import datetime
 
-class BoardApprovalLevel(Enum):  
-    FULL\_BOARD \= "Full Board"  
-    COMMITTEE \= "Committee"  
-    HAN \= "HAN"
+class BoardApprovalLevel(Enum):
+    FULL_BOARD = "Full Board"
+    COMMITTEE = "Committee"
+    HAN = "HAN"
 
-class ReportingFrequency(Enum):  
-    QUARTERLY \= "Quarterly"  
-    ANNUAL \= "Annual"  
-    EVENT \= "Event-triggered"
+class ReportingFrequency(Enum):
+    QUARTERLY = "Quarterly"
+    ANNUAL = "Annual"
+    EVENT = "Event-triggered"
 
-@dataclass  
-class BoardGovernanceCharter:  
-    """Board AI Governance Charter"""  
-    charter\_id: str  
-    version: str  
-    effective\_date: str  
-    board\_oversight\_mandate: str  
-    committee\_composition: List\[str\]  
-    committee\_chair: str  
-    competency\_requirements: Dict\[str, List\[str\]\]  
-    approval\_authority: Dict\[str, BoardApprovalLevel\]  
-    han\_acknowledgment: Dict\[str, str\]  
-    board\_approval\_date: str  
-    next\_review\_date: str
+@dataclass
+class BoardGovernanceCharter:
+    """Board AI Governance Charter"""
+    charter_id: str
+    version: str
+    effective_date: str
+    board_oversight_mandate: str
+    committee_composition: List[str]
+    committee_chair: str
+    competency_requirements: Dict[str, List[str]]
+    approval_authority: Dict[str, BoardApprovalLevel]
+    han_acknowledgment: Dict[str, str]
+    board_approval_date: str
+    next_review_date: str
 
-@dataclass  
-class BoardAIGovernanceReport:  
-    """Board AI Governance Report"""  
-    report\_id: str  
-    reporting\_period: str  
-    generated\_date: str  
-    executive\_summary: Dict\[str, str\]  
-    board\_oversight: Dict  
-    ai\_strategy: Dict  
-    ai\_risk\_management: Dict  
-    ai\_performance: Dict  
-    ai\_compliance: Dict  
-    ai\_incidents: List\[Dict\]  
-    forward\_look: Dict  
-    han\_acknowledgment: Dict  
-    board\_review\_date: str
+@dataclass
+class BoardAIGovernanceReport:
+    """Board AI Governance Report"""
+    report_id: str
+    reporting_period: str
+    generated_date: str
+    executive_summary: Dict[str, str]
+    board_oversight: Dict
+    ai_strategy: Dict
+    ai_risk_management: Dict
+    ai_performance: Dict
+    ai_compliance: Dict
+    ai_incidents: List[Dict]
+    forward_look: Dict
+    han_acknowledgment: Dict
+    board_review_date: str
 
-@dataclass  
-class BoardCompetencyAssessment:  
-    """Board AI Competency Assessment"""  
-    assessment\_id: str  
-    assessment\_date: str  
-    board\_member: str  
-    competency\_level: str  
-    gaps: List\[str\]  
-    training\_needs: List\[str\]  
-    assessment\_status: str
+@dataclass
+class BoardCompetencyAssessment:
+    """Board AI Competency Assessment"""
+    assessment_id: str
+    assessment_date: str
+    board_member: str
+    competency_level: str
+    gaps: List[str]
+    training_needs: List[str]
+    assessment_status: str
 
-class BoardAIGovernance:  
-    """Board-Level AI Governance Framework"""  
-      
-    def \_\_init\_\_(self):  
-        self.charters: Dict\[str, BoardGovernanceCharter\] \= {}  
-        self.reports: Dict\[str, BoardAIGovernanceReport\] \= {}  
-        self.assessments: Dict\[str, BoardCompetencyAssessment\] \= {}  
-      
-    def create\_charter(  
-        self,  
-        board\_oversight\_mandate: str,  
-        committee\_composition: List\[str\],  
-        committee\_chair: str,  
-        competency\_requirements: Dict\[str, List\[str\]\],  
-        approval\_authority: Dict\[str, BoardApprovalLevel\],  
-        han\_name: str,  
-        board\_approval\_date: str  
-    ) \-\> BoardGovernanceCharter:  
-        """Create a Board AI Governance Charter"""  
-        charter\_id \= f"BGC-{datetime.now().strftime('%Y%m%d')}-{len(self.charters)+1:04d}"  
-          
-        charter \= BoardGovernanceCharter(  
-            charter\_id=charter\_id,  
-            version="v1.0",  
-            effective\_date=datetime.now().isoformat(),  
-            board\_oversight\_mandate=board\_oversight\_mandate,  
-            committee\_composition=committee\_composition,  
-            committee\_chair=committee\_chair,  
-            competency\_requirements=competency\_requirements,  
-            approval\_authority=approval\_authority,  
-            han\_acknowledgment={  
-                "han\_name": han\_name,  
-                "date": datetime.now().isoformat()  
-            },  
-            board\_approval\_date=board\_approval\_date,  
-            next\_review\_date=(datetime.now().replace(year=datetime.now().year \+ 1)).isoformat()  
-        )  
-          
-        self.charters\[charter\_id\] \= charter  
-        return charter  
-      
-    def generate\_report(  
-        self,  
-        reporting\_period: str,  
-        executive\_summary: Dict\[str, str\],  
-        board\_oversight: Dict,  
-        ai\_strategy: Dict,  
-        ai\_risk\_management: Dict,  
-        ai\_performance: Dict,  
-        ai\_compliance: Dict,  
-        ai\_incidents: List\[Dict\],  
-        forward\_look: Dict,  
-        han\_name: str  
-    ) \-\> BoardAIGovernanceReport:  
-        """Generate a Board AI Governance Report"""  
-        report\_id \= f"BAGR-{datetime.now().strftime('%Y%m%d')}-{len(self.reports)+1:04d}"  
-          
-        report \= BoardAIGovernanceReport(  
-            report\_id=report\_id,  
-            reporting\_period=reporting\_period,  
-            generated\_date=datetime.now().isoformat(),  
-            executive\_summary=executive\_summary,  
-            board\_oversight=board\_oversight,  
-            ai\_strategy=ai\_strategy,  
-            ai\_risk\_management=ai\_risk\_management,  
-            ai\_performance=ai\_performance,  
-            ai\_compliance=ai\_compliance,  
-            ai\_incidents=ai\_incidents,  
-            forward\_look=forward\_look,  
-            han\_acknowledgment={  
-                "han\_name": han\_name,  
-                "date": datetime.now().isoformat()  
-            },  
-            board\_review\_date=datetime.now().isoformat()  
-        )  
-          
-        self.reports\[report\_id\] \= report  
-        return report  
-      
-    def assess\_competency(  
-        self,  
-        board\_member: str,  
-        competency\_level: str,  
-        gaps: List\[str\],  
-        training\_needs: List\[str\]  
-    ) \-\> BoardCompetencyAssessment:  
-        """Assess board member AI competency"""  
-        assessment\_id \= f"BCA-{datetime.now().strftime('%Y%m%d')}-{len(self.assessments)+1:04d}"  
-          
-        assessment \= BoardCompetencyAssessment(  
-            assessment\_id=assessment\_id,  
-            assessment\_date=datetime.now().isoformat(),  
-            board\_member=board\_member,  
-            competency\_level=competency\_level,  
-            gaps=gaps,  
-            training\_needs=training\_needs,  
-            assessment\_status="Completed"  
-        )  
-          
-        self.assessments\[assessment\_id\] \= assessment  
-        return assessment  
-      
-    def get\_required\_approvals(self, decision: str) \-\> BoardApprovalLevel:  
-        """Get the required approval level for a decision"""  
-        \# In production, look up from charter  
-        approvals \= {  
-            "tier\_4\_authorization": BoardApprovalLevel.FULL\_BOARD,  
-            "tier\_5\_authorization": BoardApprovalLevel.FULL\_BOARD,  
-            "material\_framework\_change": BoardApprovalLevel.FULL\_BOARD,  
-            "high\_risk\_ai\_deployment": BoardApprovalLevel.FULL\_BOARD,  
-            "ai\_budget\_allocation": BoardApprovalLevel.FULL\_BOARD,  
-            "ai\_governance\_charter\_amendment": BoardApprovalLevel.FULL\_BOARD,  
-            "han\_appointment\_removal": BoardApprovalLevel.FULL\_BOARD,  
-            "i9\_exception": BoardApprovalLevel.FULL\_BOARD  
-        }  
-        return approvals.get(decision, BoardApprovalLevel.HAN)  
-      
-    def get\_report(self, report\_id: str) \-\> Optional\[BoardAIGovernanceReport\]:  
-        """Get a board AI governance report"""  
-        return self.reports.get(report\_id)  
-      
-    def get\_charter(self, charter\_id: str) \-\> Optional\[BoardGovernanceCharter\]:  
-        """Get a board AI governance charter"""  
-        return self.charters.get(charter\_id)  
-      
-    def get\_assessment(self, assessment\_id: str) \-\> Optional\[BoardCompetencyAssessment\]:  
-        """Get a board competency assessment"""  
-        return self.assessments.get(assessment\_id)  
-      
-    def summary(self) \-\> Dict:  
-        """Get a summary of board AI governance"""  
-        return {  
-            "total\_charters": len(self.charters),  
-            "total\_reports": len(self.reports),  
-            "total\_assessments": len(self.assessments),  
-            "latest\_report": sorted(self.reports.keys(), reverse=True)\[0\] if self.reports else None,  
-            "current\_charter": sorted(self.charters.keys(), reverse=True)\[0\] if self.charters else None  
+class BoardAIGovernance:
+    """Board-Level AI Governance Framework"""
+    
+    def __init__(self):
+        self.charters: Dict[str, BoardGovernanceCharter] = {}
+        self.reports: Dict[str, BoardAIGovernanceReport] = {}
+        self.assessments: Dict[str, BoardCompetencyAssessment] = {}
+    
+    def create_charter(
+        self,
+        board_oversight_mandate: str,
+        committee_composition: List[str],
+        committee_chair: str,
+        competency_requirements: Dict[str, List[str]],
+        approval_authority: Dict[str, BoardApprovalLevel],
+        han_name: str,
+        board_approval_date: str
+    ) -> BoardGovernanceCharter:
+        """Create a Board AI Governance Charter"""
+        charter_id = f"BGC-{datetime.now().strftime('%Y%m%d')}-{len(self.charters)+1:04d}"
+        
+        charter = BoardGovernanceCharter(
+            charter_id=charter_id,
+            version="v1.0",
+            effective_date=datetime.now().isoformat(),
+            board_oversight_mandate=board_oversight_mandate,
+            committee_composition=committee_composition,
+            committee_chair=committee_chair,
+            competency_requirements=competency_requirements,
+            approval_authority=approval_authority,
+            han_acknowledgment={
+                "han_name": han_name,
+                "date": datetime.now().isoformat()
+            },
+            board_approval_date=board_approval_date,
+            next_review_date=(datetime.now().replace(year=datetime.now().year + 1)).isoformat()
+        )
+        
+        self.charters[charter_id] = charter
+        return charter
+    
+    def generate_report(
+        self,
+        reporting_period: str,
+        executive_summary: Dict[str, str],
+        board_oversight: Dict,
+        ai_strategy: Dict,
+        ai_risk_management: Dict,
+        ai_performance: Dict,
+        ai_compliance: Dict,
+        ai_incidents: List[Dict],
+        forward_look: Dict,
+        han_name: str
+    ) -> BoardAIGovernanceReport:
+        """Generate a Board AI Governance Report"""
+        report_id = f"BAGR-{datetime.now().strftime('%Y%m%d')}-{len(self.reports)+1:04d}"
+        
+        report = BoardAIGovernanceReport(
+            report_id=report_id,
+            reporting_period=reporting_period,
+            generated_date=datetime.now().isoformat(),
+            executive_summary=executive_summary,
+            board_oversight=board_oversight,
+            ai_strategy=ai_strategy,
+            ai_risk_management=ai_risk_management,
+            ai_performance=ai_performance,
+            ai_compliance=ai_compliance,
+            ai_incidents=ai_incidents,
+            forward_look=forward_look,
+            han_acknowledgment={
+                "han_name": han_name,
+                "date": datetime.now().isoformat()
+            },
+            board_review_date=datetime.now().isoformat()
+        )
+        
+        self.reports[report_id] = report
+        return report
+    
+    def assess_competency(
+        self,
+        board_member: str,
+        competency_level: str,
+        gaps: List[str],
+        training_needs: List[str]
+    ) -> BoardCompetencyAssessment:
+        """Assess board member AI competency"""
+        assessment_id = f"BCA-{datetime.now().strftime('%Y%m%d')}-{len(self.assessments)+1:04d}"
+        
+        assessment = BoardCompetencyAssessment(
+            assessment_id=assessment_id,
+            assessment_date=datetime.now().isoformat(),
+            board_member=board_member,
+            competency_level=competency_level,
+            gaps=gaps,
+            training_needs=training_needs,
+            assessment_status="Completed"
+        )
+        
+        self.assessments[assessment_id] = assessment
+        return assessment
+    
+    def get_required_approvals(self, decision: str) -> BoardApprovalLevel:
+        """Get the required approval level for a decision"""
+        # In production, look up from charter
+        approvals = {
+            "tier_4_authorization": BoardApprovalLevel.FULL_BOARD,
+            "tier_5_authorization": BoardApprovalLevel.FULL_BOARD,
+            "material_framework_change": BoardApprovalLevel.FULL_BOARD,
+            "high_risk_ai_deployment": BoardApprovalLevel.FULL_BOARD,
+            "ai_budget_allocation": BoardApprovalLevel.FULL_BOARD,
+            "ai_governance_charter_amendment": BoardApprovalLevel.FULL_BOARD,
+            "han_appointment_removal": BoardApprovalLevel.FULL_BOARD,
+            "i9_exception": BoardApprovalLevel.FULL_BOARD
+        }
+        return approvals.get(decision, BoardApprovalLevel.HAN)
+    
+    def get_report(self, report_id: str) -> Optional[BoardAIGovernanceReport]:
+        """Get a board AI governance report"""
+        return self.reports.get(report_id)
+    
+    def get_charter(self, charter_id: str) -> Optional[BoardGovernanceCharter]:
+        """Get a board AI governance charter"""
+        return self.charters.get(charter_id)
+    
+    def get_assessment(self, assessment_id: str) -> Optional[BoardCompetencyAssessment]:
+        """Get a board competency assessment"""
+        return self.assessments.get(assessment_id)
+    
+    def summary(self) -> Dict:
+        """Get a summary of board AI governance"""
+        return {
+            "total_charters": len(self.charters),
+            "total_reports": len(self.reports),
+            "total_assessments": len(self.assessments),
+            "latest_report": sorted(self.reports.keys(), reverse=True)[0] if self.reports else None,
+            "current_charter": sorted(self.charters.keys(), reverse=True)[0] if self.charters else None
         }
 ```
 
@@ -23208,210 +23224,210 @@ I9 — Catastrophic Risk Invariant (Revised)
 ## SECTION 6: SYSTEMIC RISK IMPLEMENTATION
 
 ```
-\# systemic\_risk\_framework.py  
-"""  
-Systemic Risk Framework — Complete Implementation  
+# systemic_risk_framework.py
+"""
+Systemic Risk Framework — Complete Implementation
 """
 
-from enum import Enum  
-from typing import List, Dict, Optional  
-from dataclasses import dataclass, field  
+from enum import Enum
+from typing import List, Dict, Optional
+from dataclasses import dataclass, field
 from datetime import datetime
 
-class SystemicRiskLevel(Enum):  
-    SINGLE\_MODEL \= 1  
-    MULTI\_MODEL \= 2  
-    MODEL\_PLATFORM \= 3  
-    MODEL\_INSTITUTION \= 4
+class SystemicRiskLevel(Enum):
+    SINGLE_MODEL = 1
+    MULTI_MODEL = 2
+    MODEL_PLATFORM = 3
+    MODEL_INSTITUTION = 4
 
-class SystemicRiskCategory(Enum):  
-    MULTI\_AGENT\_COORDINATION \= "Multi-Agent Coordination"  
-    DISCRIMINATION\_AT\_SCALE \= "Discrimination at Scale"  
-    LARGE\_SCALE\_HALLUCINATION \= "Large-Scale Hallucination"  
-    CASCADING\_FAILURE \= "Cascading Failure"  
-    MARKET\_MANIPULATION \= "Market Manipulation"  
-    SYSTEMIC\_SECURITY \= "Systemic Security"
+class SystemicRiskCategory(Enum):
+    MULTI_AGENT_COORDINATION = "Multi-Agent Coordination"
+    DISCRIMINATION_AT_SCALE = "Discrimination at Scale"
+    LARGE_SCALE_HALLUCINATION = "Large-Scale Hallucination"
+    CASCADING_FAILURE = "Cascading Failure"
+    MARKET_MANIPULATION = "Market Manipulation"
+    SYSTEMIC_SECURITY = "Systemic Security"
 
-class GateApprovalStatus(Enum):  
-    APPROVED \= "Approved"  
-    CONDITIONAL \= "Conditional"  
-    DENIED \= "Denied"
+class GateApprovalStatus(Enum):
+    APPROVED = "Approved"
+    CONDITIONAL = "Conditional"
+    DENIED = "Denied"
 
-@dataclass  
-class SystemicRiskAssessment:  
-    """Systemic risk assessment result"""  
-    assessment\_id: str  
-    assessment\_date: str  
-    system\_id: str  
-    system\_name: str  
-    risk\_level: SystemicRiskLevel  
-    risk\_categories: List\[SystemicRiskCategory\]  
-    risk\_score: float  
-    mitigation\_plan: str  
-    monitoring\_plan: str  
-    approval\_status: GateApprovalStatus  
-    conditions: List\[str\] \= field(default\_factory=list)  
-    assessed\_by: str \= "system"  
-    review\_date: str \= field(default\_factory=lambda: datetime.now().isoformat())  
-    next\_review\_date: str \= field(default\_factory=lambda: (datetime.now().replace(month=datetime.now().month \+ 3)).isoformat())
+@dataclass
+class SystemicRiskAssessment:
+    """Systemic risk assessment result"""
+    assessment_id: str
+    assessment_date: str
+    system_id: str
+    system_name: str
+    risk_level: SystemicRiskLevel
+    risk_categories: List[SystemicRiskCategory]
+    risk_score: float
+    mitigation_plan: str
+    monitoring_plan: str
+    approval_status: GateApprovalStatus
+    conditions: List[str] = field(default_factory=list)
+    assessed_by: str = "system"
+    review_date: str = field(default_factory=lambda: datetime.now().isoformat())
+    next_review_date: str = field(default_factory=lambda: (datetime.now().replace(month=datetime.now().month + 3)).isoformat())
 
-@dataclass  
-class SystemicRiskIndicator:  
-    """Systemic risk indicator"""  
-    indicator\_id: str  
-    indicator\_name: str  
-    category: SystemicRiskCategory  
-    threshold: float  
-    current\_value: float  
-    status: str  
-    detected\_at: str
+@dataclass
+class SystemicRiskIndicator:
+    """Systemic risk indicator"""
+    indicator_id: str
+    indicator_name: str
+    category: SystemicRiskCategory
+    threshold: float
+    current_value: float
+    status: str
+    detected_at: str
 
-class SystemicRiskFramework:  
-    """Systemic Risk Framework"""  
-      
-    def \_\_init\_\_(self):  
-        self.assessments: Dict\[str, SystemicRiskAssessment\] \= {}  
-        self.indicators: Dict\[str, SystemicRiskIndicator\] \= {}  
-        self.alerts: List\[Dict\] \= \[\]  
-      
-    def assess\_systemic\_risk(  
-        self,  
-        system\_id: str,  
-        system\_name: str,  
-        risk\_level: SystemicRiskLevel,  
-        risk\_categories: List\[SystemicRiskCategory\],  
-        risk\_score: float,  
-        mitigation\_plan: str,  
-        monitoring\_plan: str,  
-        is\_tier\_5: bool \= False  
-    ) \-\> SystemicRiskAssessment:  
-        """Assess systemic risk for a system"""  
-        assessment\_id \= f"SRA-{datetime.now().strftime('%Y%m%d')}-{len(self.assessments)+1:04d}"  
-          
-        \# Determine approval status based on risk level and tier  
-        if risk\_level \== SystemicRiskLevel.MODEL\_INSTITUTION:  
-            approval\_status \= GateApprovalStatus.DENIED  
-            conditions \= \["Requires redesign to reduce systemic risk"\]  
-        elif risk\_level \== SystemicRiskLevel.MODEL\_PLATFORM and is\_tier\_5:  
-            approval\_status \= GateApprovalStatus.CONDITIONAL  
-            conditions \= \["Requires enhanced monitoring", "Requires quarterly review", "Requires Board oversight"\]  
-        elif risk\_level in \[SystemicRiskLevel.MULTI\_MODEL, SystemicRiskLevel.SINGLE\_MODEL\]:  
-            approval\_status \= GateApprovalStatus.APPROVED  
-            conditions \= \[\]  
-        else:  
-            approval\_status \= GateApprovalStatus.CONDITIONAL  
-            conditions \= \["Requires additional assessment"\]  
-          
-        assessment \= SystemicRiskAssessment(  
-            assessment\_id=assessment\_id,  
-            assessment\_date=datetime.now().isoformat(),  
-            system\_id=system\_id,  
-            system\_name=system\_name,  
-            risk\_level=risk\_level,  
-            risk\_categories=risk\_categories,  
-            risk\_score=risk\_score,  
-            mitigation\_plan=mitigation\_plan,  
-            monitoring\_plan=monitoring\_plan,  
-            approval\_status=approval\_status,  
-            conditions=conditions,  
-            assessed\_by="system"  
-        )  
-          
-        self.assessments\[assessment\_id\] \= assessment  
-        return assessment  
-      
-    def register\_indicator(  
-        self,  
-        name: str,  
-        category: SystemicRiskCategory,  
-        threshold: float,  
-        current\_value: float  
-    ) \-\> SystemicRiskIndicator:  
-        """Register a systemic risk indicator"""  
-        indicator\_id \= f"SRI-{datetime.now().strftime('%Y%m%d')}-{len(self.indicators)+1:04d}"  
-          
-        indicator \= SystemicRiskIndicator(  
-            indicator\_id=indicator\_id,  
-            indicator\_name=name,  
-            category=category,  
-            threshold=threshold,  
-            current\_value=current\_value,  
-            status="Normal" if current\_value \< threshold else "Elevated",  
-            detected\_at=datetime.now().isoformat()  
-        )  
-          
-        self.indicators\[indicator\_id\] \= indicator  
-        return indicator  
-      
-    def check\_indicators(self) \-\> List\[Dict\]:  
-        """Check all indicators for alerts"""  
-        alerts \= \[\]  
-          
-        for indicator in self.indicators.values():  
-            if indicator.current\_value \>= indicator.threshold:  
-                alert \= {  
-                    "indicator\_id": indicator.indicator\_id,  
-                    "indicator\_name": indicator.indicator\_name,  
-                    "category": indicator.category.value,  
-                    "current\_value": indicator.current\_value,  
-                    "threshold": indicator.threshold,  
-                    "severity": "High" if indicator.current\_value \>= indicator.threshold \* 1.5 else "Medium",  
-                    "timestamp": datetime.now().isoformat()  
-                }  
-                alerts.append(alert)  
-                self.alerts.append(alert)  
-          
-        return alerts  
-      
-    def get\_assessment(self, assessment\_id: str) \-\> Optional\[SystemicRiskAssessment\]:  
-        """Get a systemic risk assessment"""  
-        return self.assessments.get(assessment\_id)  
-      
-    def get\_indicators\_by\_category(self, category: SystemicRiskCategory) \-\> List\[SystemicRiskIndicator\]:  
-        """Get indicators by category"""  
-        return \[i for i in self.indicators.values() if i.category \== category\]  
-      
-    def get\_high\_risk\_assessments(self) \-\> List\[SystemicRiskAssessment\]:  
-        """Get high-risk assessments"""  
-        return \[a for a in self.assessments.values()   
-                if a.risk\_level in \[SystemicRiskLevel.MODEL\_PLATFORM, SystemicRiskLevel.MODEL\_INSTITUTION\]\]  
-      
-    def get\_recent\_alerts(self, limit: int \= 10\) \-\> List\[Dict\]:  
-        """Get recent alerts"""  
-        return sorted(self.alerts, key=lambda x: x\['timestamp'\], reverse=True)\[:limit\]  
-      
-    def summary(self) \-\> Dict:  
-        """Get a summary of systemic risk status"""  
-        return {  
-            "total\_assessments": len(self.assessments),  
-            "high\_risk\_assessments": len(self.get\_high\_risk\_assessments()),  
-            "total\_indicators": len(self.indicators),  
-            "elevated\_indicators": len(\[i for i in self.indicators.values() if i.status \== "Elevated"\]),  
-            "recent\_alerts": len(self.get\_recent\_alerts()),  
-            "by\_risk\_level": {  
-                level.value: len(\[a for a in self.assessments.values() if a.risk\_level \== level\])  
-                for level in SystemicRiskLevel  
-            },  
-            "by\_category": {  
-                category.value: len(\[i for i in self.indicators.values() if i.category \== category\])  
-                for category in SystemicRiskCategory  
-            }  
-        }  
-      
-    def get\_tier\_gate\_decision(self, tier: int, risk\_level: SystemicRiskLevel) \-\> Dict:  
-        """Get the gate decision for a tier- risk level combination"""  
-        decisions \= {  
-            (4, SystemicRiskLevel.SINGLE\_MODEL): {"status": "APPROVED", "conditions": \[\]},  
-            (4, SystemicRiskLevel.MULTI\_MODEL): {"status": "APPROVED", "conditions": \["Requires monitoring"\]},  
-            (4, SystemicRiskLevel.MODEL\_PLATFORM): {"status": "CONDITIONAL", "conditions": \["Requires HAN review", "Requires mitigation plan"\]},  
-            (4, SystemicRiskLevel.MODEL\_INSTITUTION): {"status": "DENIED", "conditions": \["Not approved for Tier 4"\]},  
-            (5, SystemicRiskLevel.SINGLE\_MODEL): {"status": "CONDITIONAL", "conditions": \["Requires Board approval", "Requires enhanced monitoring"\]},  
-            (5, SystemicRiskLevel.MULTI\_MODEL): {"status": "CONDITIONAL", "conditions": \["Requires Board approval", "Requires external review"\]},  
-            (5, SystemicRiskLevel.MODEL\_PLATFORM): {"status": "CONDITIONAL", "conditions": \["Requires Board approval", "Requires external review", "Requires quarterly review"\]},  
-            (5, SystemicRiskLevel.MODEL\_INSTITUTION): {"status": "DENIED", "conditions": \["Not approved for Tier 5"\]}  
-        }  
-          
-        return decisions.get((tier, risk\_level), {"status": "DENIED", "conditions": \["Requires further assessment"\]})
+class SystemicRiskFramework:
+    """Systemic Risk Framework"""
+    
+    def __init__(self):
+        self.assessments: Dict[str, SystemicRiskAssessment] = {}
+        self.indicators: Dict[str, SystemicRiskIndicator] = {}
+        self.alerts: List[Dict] = []
+    
+    def assess_systemic_risk(
+        self,
+        system_id: str,
+        system_name: str,
+        risk_level: SystemicRiskLevel,
+        risk_categories: List[SystemicRiskCategory],
+        risk_score: float,
+        mitigation_plan: str,
+        monitoring_plan: str,
+        is_tier_5: bool = False
+    ) -> SystemicRiskAssessment:
+        """Assess systemic risk for a system"""
+        assessment_id = f"SRA-{datetime.now().strftime('%Y%m%d')}-{len(self.assessments)+1:04d}"
+        
+        # Determine approval status based on risk level and tier
+        if risk_level == SystemicRiskLevel.MODEL_INSTITUTION:
+            approval_status = GateApprovalStatus.DENIED
+            conditions = ["Requires redesign to reduce systemic risk"]
+        elif risk_level == SystemicRiskLevel.MODEL_PLATFORM and is_tier_5:
+            approval_status = GateApprovalStatus.CONDITIONAL
+            conditions = ["Requires enhanced monitoring", "Requires quarterly review", "Requires Board oversight"]
+        elif risk_level in [SystemicRiskLevel.MULTI_MODEL, SystemicRiskLevel.SINGLE_MODEL]:
+            approval_status = GateApprovalStatus.APPROVED
+            conditions = []
+        else:
+            approval_status = GateApprovalStatus.CONDITIONAL
+            conditions = ["Requires additional assessment"]
+        
+        assessment = SystemicRiskAssessment(
+            assessment_id=assessment_id,
+            assessment_date=datetime.now().isoformat(),
+            system_id=system_id,
+            system_name=system_name,
+            risk_level=risk_level,
+            risk_categories=risk_categories,
+            risk_score=risk_score,
+            mitigation_plan=mitigation_plan,
+            monitoring_plan=monitoring_plan,
+            approval_status=approval_status,
+            conditions=conditions,
+            assessed_by="system"
+        )
+        
+        self.assessments[assessment_id] = assessment
+        return assessment
+    
+    def register_indicator(
+        self,
+        name: str,
+        category: SystemicRiskCategory,
+        threshold: float,
+        current_value: float
+    ) -> SystemicRiskIndicator:
+        """Register a systemic risk indicator"""
+        indicator_id = f"SRI-{datetime.now().strftime('%Y%m%d')}-{len(self.indicators)+1:04d}"
+        
+        indicator = SystemicRiskIndicator(
+            indicator_id=indicator_id,
+            indicator_name=name,
+            category=category,
+            threshold=threshold,
+            current_value=current_value,
+            status="Normal" if current_value < threshold else "Elevated",
+            detected_at=datetime.now().isoformat()
+        )
+        
+        self.indicators[indicator_id] = indicator
+        return indicator
+    
+    def check_indicators(self) -> List[Dict]:
+        """Check all indicators for alerts"""
+        alerts = []
+        
+        for indicator in self.indicators.values():
+            if indicator.current_value >= indicator.threshold:
+                alert = {
+                    "indicator_id": indicator.indicator_id,
+                    "indicator_name": indicator.indicator_name,
+                    "category": indicator.category.value,
+                    "current_value": indicator.current_value,
+                    "threshold": indicator.threshold,
+                    "severity": "High" if indicator.current_value >= indicator.threshold * 1.5 else "Medium",
+                    "timestamp": datetime.now().isoformat()
+                }
+                alerts.append(alert)
+                self.alerts.append(alert)
+        
+        return alerts
+    
+    def get_assessment(self, assessment_id: str) -> Optional[SystemicRiskAssessment]:
+        """Get a systemic risk assessment"""
+        return self.assessments.get(assessment_id)
+    
+    def get_indicators_by_category(self, category: SystemicRiskCategory) -> List[SystemicRiskIndicator]:
+        """Get indicators by category"""
+        return [i for i in self.indicators.values() if i.category == category]
+    
+    def get_high_risk_assessments(self) -> List[SystemicRiskAssessment]:
+        """Get high-risk assessments"""
+        return [a for a in self.assessments.values() 
+                if a.risk_level in [SystemicRiskLevel.MODEL_PLATFORM, SystemicRiskLevel.MODEL_INSTITUTION]]
+    
+    def get_recent_alerts(self, limit: int = 10) -> List[Dict]:
+        """Get recent alerts"""
+        return sorted(self.alerts, key=lambda x: x['timestamp'], reverse=True)[:limit]
+    
+    def summary(self) -> Dict:
+        """Get a summary of systemic risk status"""
+        return {
+            "total_assessments": len(self.assessments),
+            "high_risk_assessments": len(self.get_high_risk_assessments()),
+            "total_indicators": len(self.indicators),
+            "elevated_indicators": len([i for i in self.indicators.values() if i.status == "Elevated"]),
+            "recent_alerts": len(self.get_recent_alerts()),
+            "by_risk_level": {
+                level.value: len([a for a in self.assessments.values() if a.risk_level == level])
+                for level in SystemicRiskLevel
+            },
+            "by_category": {
+                category.value: len([i for i in self.indicators.values() if i.category == category])
+                for category in SystemicRiskCategory
+            }
+        }
+    
+    def get_tier_gate_decision(self, tier: int, risk_level: SystemicRiskLevel) -> Dict:
+        """Get the gate decision for a tier- risk level combination"""
+        decisions = {
+            (4, SystemicRiskLevel.SINGLE_MODEL): {"status": "APPROVED", "conditions": []},
+            (4, SystemicRiskLevel.MULTI_MODEL): {"status": "APPROVED", "conditions": ["Requires monitoring"]},
+            (4, SystemicRiskLevel.MODEL_PLATFORM): {"status": "CONDITIONAL", "conditions": ["Requires HAN review", "Requires mitigation plan"]},
+            (4, SystemicRiskLevel.MODEL_INSTITUTION): {"status": "DENIED", "conditions": ["Not approved for Tier 4"]},
+            (5, SystemicRiskLevel.SINGLE_MODEL): {"status": "CONDITIONAL", "conditions": ["Requires Board approval", "Requires enhanced monitoring"]},
+            (5, SystemicRiskLevel.MULTI_MODEL): {"status": "CONDITIONAL", "conditions": ["Requires Board approval", "Requires external review"]},
+            (5, SystemicRiskLevel.MODEL_PLATFORM): {"status": "CONDITIONAL", "conditions": ["Requires Board approval", "Requires external review", "Requires quarterly review"]},
+            (5, SystemicRiskLevel.MODEL_INSTITUTION): {"status": "DENIED", "conditions": ["Not approved for Tier 5"]}
+        }
+        
+        return decisions.get((tier, risk_level), {"status": "DENIED", "conditions": ["Requires further assessment"]})
 ```
 
 ---
@@ -23537,13 +23553,14 @@ Automated Compliance Remediation ensures that:
 
 ### 2.3 Gap Detection Flow
 
+```
 Data Sources (AOBA, ABA, Trigger System, RGI-8, etc.)  
   │  
   ▼  
 Gap Detection Engine  
-  │  1\. Identify gaps  
-  │  2\. Classify by type  
-  │  3\. Assess severity  
+  │  1. Identify gaps  
+  │  2. Classify by type  
+  │  3. Assess severity  
   ▼  
 Gap Repository  
   │  Store gap records  
@@ -23556,6 +23573,7 @@ Remediation Engine
   ▼  
 Implementation  
   │  Track remediation
+```
 
 ---
 
@@ -23573,7 +23591,9 @@ Implementation
 
 ### 3.2 Prioritization Algorithm
 
+```
 Priority Score \= (Severity \* 0.4) \+ (Impact \* 0.3) \+ (Urgency \* 0.2) \+ (Effort \* 0.1)
+```
 
 | Priority Score | Priority Level | Action |
 | :---- | :---- | :---- |
@@ -23599,24 +23619,26 @@ Priority Score \= (Severity \* 0.4) \+ (Impact \* 0.3) \+ (Urgency \* 0.2) \+ (E
 
 ### 4.2 Recommendation Template
 
-Remediation Recommendation  
-ID: REC-2026-001  
-Type: Control Enhancement  
-Priority: High  
-Source: AOBA-001  
-Gap: Bias detected in agent output  
-Description: Agent F-DR-E-CN-T-SP-001 shows gender bias in draft outputs  
-Recommendation: Add AOBA bias detection to Role Specification  
-Steps:  
-  1\. Update Role Specification for F-DR-E-CN-T-SP-001  
-  2\. Add AOBA bias detection to Pre-Delivery Log Entry  
-  3\. Test with bias test suite  
-  4\. Deploy updated Role Specification  
-Estimated Effort: 2 days  
-Dependencies: None  
-Success Criteria: AOBA no longer flags gender bias  
-HAN Authorization Required: Yes  
-Assigned To: \[To be assigned\]
+```
+Remediation Recommendation
+ID: REC-2026-001
+Type: Control Enhancement
+Priority: High
+Source: AOBA-001
+Gap: Bias detected in agent output
+Description: Agent F-DR-E-CN-T-SP-001 shows gender bias in draft outputs
+Recommendation: Add AOBA bias detection to Role Specification
+Steps:
+  1. Update Role Specification for F-DR-E-CN-T-SP-001
+  2. Add AOBA bias detection to Pre-Delivery Log Entry
+  3. Test with bias test suite
+  4. Deploy updated Role Specification
+Estimated Effort: 2 days
+Dependencies: None
+Success Criteria: AOBA no longer flags gender bias
+HAN Authorization Required: Yes
+Assigned To: [To be assigned]
+```
 
 ### 4.3 Recommendation Generation
 
@@ -23672,404 +23694,404 @@ Assigned To: \[To be assigned\]
 ## SECTION 6: AUTOMATED COMPLIANCE REMEDIATION IMPLEMENTATION
 
 ```
-\# automated\_compliance\_remediation.py  
-"""  
-Automated Compliance Remediation — Complete Implementation  
+# automated_compliance_remediation.py
+"""
+Automated Compliance Remediation — Complete Implementation
 """
 
-from enum import Enum  
-from typing import List, Dict, Optional, Any  
-from dataclasses import dataclass, field  
-from datetime import datetime  
+from enum import Enum
+from typing import List, Dict, Optional, Any
+from dataclasses import dataclass, field
+from datetime import datetime
 import json
 
-class GapType(Enum):  
-    BIAS \= "Bias Gap"  
-    OVERSIGHT \= "Oversight Gap"  
-    DRIFT \= "Drift Gap"  
-    CONTROL \= "Control Gap"  
-    FRAMEWORK \= "Framework Gap"  
-    EVIDENCE \= "Evidence Gap"  
-    PERFORMANCE \= "Performance Gap"
+class GapType(Enum):
+    BIAS = "Bias Gap"
+    OVERSIGHT = "Oversight Gap"
+    DRIFT = "Drift Gap"
+    CONTROL = "Control Gap"
+    FRAMEWORK = "Framework Gap"
+    EVIDENCE = "Evidence Gap"
+    PERFORMANCE = "Performance Gap"
 
-class Severity(Enum):  
-    CRITICAL \= "Critical"  
-    HIGH \= "High"  
-    MEDIUM \= "Medium"  
-    LOW \= "Low"
+class Severity(Enum):
+    CRITICAL = "Critical"
+    HIGH = "High"
+    MEDIUM = "Medium"
+    LOW = "Low"
 
-class RemediationType(Enum):  
-    CONTROL\_ENHANCEMENT \= "Control Enhancement"  
-    POLICY\_UPDATE \= "Policy Update"  
-    PROCESS\_CHANGE \= "Process Change"  
-    TECHNICAL\_FIX \= "Technical Fix"  
-    TRAINING \= "Training"  
-    FRAMEWORK\_UPDATE \= "Framework Update"
+class RemediationType(Enum):
+    CONTROL_ENHANCEMENT = "Control Enhancement"
+    POLICY_UPDATE = "Policy Update"
+    PROCESS_CHANGE = "Process Change"
+    TECHNICAL_FIX = "Technical Fix"
+    TRAINING = "Training"
+    FRAMEWORK_UPDATE = "Framework Update"
 
-class RemediationStatus(Enum):  
-    IDENTIFIED \= "Identified"  
-    PRIORITIZED \= "Prioritized"  
-    RECOMMENDED \= "Recommended"  
-    APPROVED \= "Approved"  
-    IN\_PROGRESS \= "In Progress"  
-    COMPLETED \= "Completed"  
-    VERIFIED \= "Verified"  
-    CLOSED \= "Closed"
+class RemediationStatus(Enum):
+    IDENTIFIED = "Identified"
+    PRIORITIZED = "Prioritized"
+    RECOMMENDED = "Recommended"
+    APPROVED = "Approved"
+    IN_PROGRESS = "In Progress"
+    COMPLETED = "Completed"
+    VERIFIED = "Verified"
+    CLOSED = "Closed"
 
-@dataclass  
-class Gap:  
-    """A compliance gap"""  
-    gap\_id: str  
-    gap\_type: GapType  
-    severity: Severity  
-    description: str  
-    source: str  
-    timestamp: str  
-    details: Dict\[str, Any\]
+@dataclass
+class Gap:
+    """A compliance gap"""
+    gap_id: str
+    gap_type: GapType
+    severity: Severity
+    description: str
+    source: str
+    timestamp: str
+    details: Dict[str, Any]
 
-@dataclass  
-class RemediationRecommendation:  
-    """A remediation recommendation"""  
-    remediation\_id: str  
-    gap\_id: str  
-    recommendation\_type: RemediationType  
-    priority: Severity  
-    status: RemediationStatus  
-    description: str  
-    steps: List\[str\]  
-    assigned\_to: Optional\[str\]  
-    created\_date: str  
-    approved\_date: Optional\[str\]  
-    completed\_date: Optional\[str\]  
-    verified\_date: Optional\[str\]  
-    effort: str  
-    dependencies: List\[str\]  
-    success\_criteria: str
+@dataclass
+class RemediationRecommendation:
+    """A remediation recommendation"""
+    remediation_id: str
+    gap_id: str
+    recommendation_type: RemediationType
+    priority: Severity
+    status: RemediationStatus
+    description: str
+    steps: List[str]
+    assigned_to: Optional[str]
+    created_date: str
+    approved_date: Optional[str]
+    completed_date: Optional[str]
+    verified_date: Optional[str]
+    effort: str
+    dependencies: List[str]
+    success_criteria: str
 
-class AutomatedComplianceRemediation:  
-    """Automated Compliance Remediation Framework"""  
-      
-    def \_\_init\_\_(self, mcr, crosswalk, evidence\_streaming):  
-        self.mcr \= mcr  
-        self.crosswalk \= crosswalk  
-        self.evidence\_streaming \= evidence\_streaming  
-        self.gaps: List\[Gap\] \= \[\]  
-        self.remediations: Dict\[str, RemediationRecommendation\] \= {}  
-        self.pattern\_library \= self.\_build\_pattern\_library()  
-      
-    def \_build\_pattern\_library(self) \-\> Dict:  
-        """Build remediation pattern library"""  
-        return {  
-            "Bias Gap": {  
-                "recommendation\_type": RemediationType.CONTROL\_ENHANCEMENT,  
-                "template": "Add {control} to {component} to address bias in {domain}",  
-                "steps": \[  
-                    "Identify affected component",  
-                    "Add bias detection to Role Specification",  
-                    "Update Pre-Delivery Log Entry with bias check",  
-                    "Test with bias test suite",  
-                    "Deploy updated configuration"  
-                \],  
-                "success\_criteria": "AOBA no longer flags bias in affected domain"  
-            },  
-            "Oversight Gap": {  
-                "recommendation\_type": RemediationType.TRAINING,  
-                "template": "Provide {training} training to {role} to address oversight gap",  
-                "steps": \[  
-                    "Identify affected role",  
-                    "Design training program",  
-                    "Deliver training",  
-                    "Assess competency",  
-                    "Monitor oversight behavior"  
-                \],  
-                "success\_criteria": "ABA no longer flags oversight pattern"  
-            },  
-            "Drift Gap": {  
-                "recommendation\_type": RemediationType.TECHNICAL\_FIX,  
-                "template": "Update {component} drift thresholds for {domain}",  
-                "steps": \[  
-                    "Analyze drift pattern",  
-                    "Update drift thresholds",  
-                    "Test with drift test suite",  
-                    "Deploy updated thresholds",  
-                    "Monitor for recurrence"  
-                \],  
-                "success\_criteria": "RGI-8 no longer detects drift in affected domain"  
-            },  
-            "Control Gap": {  
-                "recommendation\_type": RemediationType.CONTROL\_ENHANCEMENT,  
-                "template": "Add control {control\_id} to {framework} compliance",  
-                "steps": \[  
-                    "Define control requirements",  
-                    "Implement control in MCR",  
-                    "Map to framework",  
-                    "Add evidence generation",  
-                    "Deploy and verify"  
-                \],  
-                "success\_criteria": "Control {control\_id} is operational and mapped"  
-            },  
-            "Framework Gap": {  
-                "recommendation\_type": RemediationType.FRAMEWORK\_UPDATE,  
-                "template": "Add {framework} mapping to {controls}",  
-                "steps": \[  
-                    "Analyze framework requirements",  
-                    "Map controls to requirements",  
-                    "Update regulatory overlay",  
-                    "Add evidence requirements",  
-                    "Deploy updated overlay"  
-                \],  
-                "success\_criteria": "Framework {framework} has complete coverage"  
-            }  
-        }  
-      
-    def detect\_gap(  
-        self,  
-        gap\_type: GapType,  
-        severity: Severity,  
-        description: str,  
-        source: str,  
-        details: Dict\[str, Any\]  
-    ) \-\> Gap:  
-        """Detect and record a compliance gap"""  
-        gap\_id \= f"GAP-{datetime.now().strftime('%Y%m%d')}-{len(self.gaps)+1:04d}"  
-          
-        gap \= Gap(  
-            gap\_id=gap\_id,  
-            gap\_type=gap\_type,  
-            severity=severity,  
-            description=description,  
-            source=source,  
-            timestamp=datetime.now().isoformat(),  
-            details=details  
-        )  
-          
-        self.gaps.append(gap)  
-          
-        \# Automatically generate remediation  
-        self.\_generate\_remediation(gap)  
-          
-        return gap  
-      
-    def \_generate\_remediation(self, gap: Gap) \-\> RemediationRecommendation:  
-        """Generate a remediation recommendation for a gap"""  
-        \# Get pattern for gap type  
-        pattern \= self.pattern\_library.get(gap.gap\_type.value)  
-        if not pattern:  
-            \# Default pattern  
-            pattern \= {  
-                "recommendation\_type": RemediationType.CONTROL\_ENHANCEMENT,  
-                "template": "Remediate {gap\_type} in {source}",  
-                "steps": \["Identify root cause", "Develop remediation plan", "Implement", "Verify"\],  
-                "success\_criteria": "Gap {gap\_id} is closed"  
-            }  
-          
-        \# Generate description  
-        description \= pattern\["template"\].format(  
-            gap\_type=gap.gap\_type.value,  
-            source=gap.source,  
-            control\_id=gap.details.get("control\_id", "unknown"),  
-            component=gap.details.get("component", "unknown"),  
-            domain=gap.details.get("domain", "unknown"),  
-            framework=gap.details.get("framework", "unknown"),  
-            training=gap.details.get("training", "compliance"),  
-            role=gap.details.get("role", "HAN"),  
-            controls=gap.details.get("controls", "affected controls")  
-        )  
-          
-        \# Calculate priority  
-        priority \= self.\_calculate\_priority(gap)  
-          
-        remediation\_id \= f"REC-{datetime.now().strftime('%Y%m%d')}-{len(self.remediations)+1:04d}"  
-          
-        remediation \= RemediationRecommendation(  
-            remediation\_id=remediation\_id,  
-            gap\_id=gap.gap\_id,  
-            recommendation\_type=pattern\["recommendation\_type"\],  
-            priority=priority,  
-            status=RemediationStatus.RECOMMENDED,  
-            description=description,  
-            steps=pattern\["steps"\],  
-            assigned\_to=None,  
-            created\_date=datetime.now().isoformat(),  
-            approved\_date=None,  
-            completed\_date=None,  
-            verified\_date=None,  
-            effort=self.\_estimate\_effort(gap, pattern),  
-            dependencies=\[\],  
-            success\_criteria=pattern\["success\_criteria"\].format(  
-                control\_id=gap.details.get("control\_id", "unknown"),  
-                framework=gap.details.get("framework", "unknown"),  
-                gap\_id=gap.gap\_id  
-            )  
-        )  
-          
-        self.remediations\[remediation\_id\] \= remediation  
-        return remediation  
-      
-    def \_calculate\_priority(self, gap: Gap) \-\> Severity:  
-        """Calculate priority based on gap severity and impact"""  
-        \# In production, use algorithm  
-        \# For now, use gap severity  
-        return gap.severity  
-      
-    def \_estimate\_effort(self, gap: Gap, pattern: Dict) \-\> str:  
-        """Estimate effort required"""  
-        \# In production, use more sophisticated estimation  
-        if gap.severity \== Severity.CRITICAL:  
-            return "8 hours"  
-        elif gap.severity \== Severity.HIGH:  
-            return "2 days"  
-        elif gap.severity \== Severity.MEDIUM:  
-            return "1 week"  
-        else:  
-            return "2 weeks"  
-      
-    def approve\_remediation(self, remediation\_id: str) \-\> RemediationRecommendation:  
-        """Approve a remediation recommendation"""  
-        remediation \= self.remediations.get(remediation\_id)  
-        if not remediation:  
-            raise ValueError(f"Remediation {remediation\_id} not found")  
-          
-        remediation.status \= RemediationStatus.APPROVED  
-        remediation.approved\_date \= datetime.now().isoformat()  
-          
-        return remediation  
-      
-    def start\_remediation(self, remediation\_id: str, assigned\_to: str) \-\> RemediationRecommendation:  
-        """Start remediation"""  
-        remediation \= self.remediations.get(remediation\_id)  
-        if not remediation:  
-            raise ValueError(f"Remediation {remediation\_id} not found")  
-          
-        remediation.status \= RemediationStatus.IN\_PROGRESS  
-        remediation.assigned\_to \= assigned\_to  
-          
-        return remediation  
-      
-    def complete\_remediation(  
-        self,  
-        remediation\_id: str,  
-        verification\_result: bool  
-    ) \-\> RemediationRecommendation:  
-        """Complete and verify remediation"""  
-        remediation \= self.remediations.get(remediation\_id)  
-        if not remediation:  
-            raise ValueError(f"Remediation {remediation\_id} not found")  
-          
-        if verification\_result:  
-            remediation.status \= RemediationStatus.VERIFIED  
-            remediation.verified\_date \= datetime.now().isoformat()  
-        else:  
-            remediation.status \= RemediationStatus.COMPLETED  
-          
-        remediation.completed\_date \= datetime.now().isoformat()  
-          
-        \# If verified, feed back into learning  
-        if verification\_result:  
-            self.\_integrate\_learning(remediation)  
-          
-        return remediation  
-      
-    def \_integrate\_learning(self, remediation: RemediationRecommendation):  
-        """Integrate remediation into learning (Ac-N5)"""  
-        \# In production, feed into Ac-N5  
-        pass  
-      
-    def close\_remediation(self, remediation\_id: str) \-\> RemediationRecommendation:  
-        """Close a remediation"""  
-        remediation \= self.remediations.get(remediation\_id)  
-        if not remediation:  
-            raise ValueError(f"Remediation {remediation\_id} not found")  
-          
-        remediation.status \= RemediationStatus.CLOSED  
-          
-        return remediation  
-      
-    def get\_remediation(self, remediation\_id: str) \-\> Optional\[RemediationRecommendation\]:  
-        """Get a remediation by ID"""  
-        return self.remediations.get(remediation\_id)  
-      
-    def get\_gaps(self, status: Optional\[RemediationStatus\] \= None) \-\> List\[Gap\]:  
-        """Get gaps"""  
-        gaps \= self.gaps  
-        if status:  
-            \# Map gap to remediation status if needed  
-            pass  
-        return gaps  
-      
-    def get\_remediations(  
-        self,  
-        status: Optional\[RemediationStatus\] \= None,  
-        priority: Optional\[Severity\] \= None  
-    ) \-\> List\[RemediationRecommendation\]:  
-        """Get remediations by status and/or priority"""  
-        remediations \= list(self.remediations.values())  
-          
-        if status:  
-            remediations \= \[r for r in remediations if r.status \== status\]  
-        if priority:  
-            remediations \= \[r for r in remediations if r.priority \== priority\]  
-          
-        return remediations  
-      
-    def get\_high\_priority\_remediations(self) \-\> List\[RemediationRecommendation\]:  
-        """Get critical and high priority remediations"""  
-        return \[r for r in self.remediations.values()   
-                if r.priority in \[Severity.CRITICAL, Severity.HIGH\]\]  
-      
-    def get\_pending\_approval(self) \-\> List\[RemediationRecommendation\]:  
-        """Get remediations pending approval"""  
-        return \[r for r in self.remediations.values()   
-                if r.status \== RemediationStatus.RECOMMENDED\]  
-      
-    def summary(self) \-\> Dict:  
-        """Get a summary of compliance remediation status"""  
-        return {  
-            "total\_gaps": len(self.gaps),  
-            "total\_remediations": len(self.remediations),  
-            "by\_severity": {  
-                severity.value: len(\[g for g in self.gaps if g.severity \== severity\])  
-                for severity in Severity  
-            },  
-            "by\_status": {  
-                status.value: len(\[r for r in self.remediations.values() if r.status \== status\])  
-                for status in RemediationStatus  
-            },  
-            "high\_priority\_open": len(\[r for r in self.remediations.values()  
-                                      if r.priority in \[Severity.CRITICAL, Severity.HIGH\]  
-                                      and r.status not in \[RemediationStatus.COMPLETED,  
-                                                           RemediationStatus.VERIFIED,  
-                                                           RemediationStatus.CLOSED\]\]),  
-            "pending\_approval": len(self.get\_pending\_approval()),  
-            "completed\_last\_30\_days": len(\[r for r in self.remediations.values()  
-                                          if r.completed\_date and  
-                                          (datetime.now() \- datetime.fromisoformat(r.completed\_date)).days \< 30\])  
-        }  
-      
-    def generate\_remediation\_report(self) \-\> Dict:  
-        """Generate a remediation status report"""  
-        return {  
-            "report\_date": datetime.now().isoformat(),  
-            "summary": self.summary(),  
-            "high\_priority": \[  
-                {  
-                    "remediation\_id": r.remediation\_id,  
-                    "description": r.description,  
-                    "priority": r.priority.value,  
-                    "status": r.status.value,  
-                    "assigned\_to": r.assigned\_to  
-                }  
-                for r in self.get\_high\_priority\_remediations()  
-            \],  
-            "pending\_approval": \[  
-                {  
-                    "remediation\_id": r.remediation\_id,  
-                    "description": r.description,  
-                    "priority": r.priority.value,  
-                    "created\_date": r.created\_date  
-                }  
-                for r in self.get\_pending\_approval()  
-            \]  
+class AutomatedComplianceRemediation:
+    """Automated Compliance Remediation Framework"""
+    
+    def __init__(self, mcr, crosswalk, evidence_streaming):
+        self.mcr = mcr
+        self.crosswalk = crosswalk
+        self.evidence_streaming = evidence_streaming
+        self.gaps: List[Gap] = []
+        self.remediations: Dict[str, RemediationRecommendation] = {}
+        self.pattern_library = self._build_pattern_library()
+    
+    def _build_pattern_library(self) -> Dict:
+        """Build remediation pattern library"""
+        return {
+            "Bias Gap": {
+                "recommendation_type": RemediationType.CONTROL_ENHANCEMENT,
+                "template": "Add {control} to {component} to address bias in {domain}",
+                "steps": [
+                    "Identify affected component",
+                    "Add bias detection to Role Specification",
+                    "Update Pre-Delivery Log Entry with bias check",
+                    "Test with bias test suite",
+                    "Deploy updated configuration"
+                ],
+                "success_criteria": "AOBA no longer flags bias in affected domain"
+            },
+            "Oversight Gap": {
+                "recommendation_type": RemediationType.TRAINING,
+                "template": "Provide {training} training to {role} to address oversight gap",
+                "steps": [
+                    "Identify affected role",
+                    "Design training program",
+                    "Deliver training",
+                    "Assess competency",
+                    "Monitor oversight behavior"
+                ],
+                "success_criteria": "ABA no longer flags oversight pattern"
+            },
+            "Drift Gap": {
+                "recommendation_type": RemediationType.TECHNICAL_FIX,
+                "template": "Update {component} drift thresholds for {domain}",
+                "steps": [
+                    "Analyze drift pattern",
+                    "Update drift thresholds",
+                    "Test with drift test suite",
+                    "Deploy updated thresholds",
+                    "Monitor for recurrence"
+                ],
+                "success_criteria": "RGI-8 no longer detects drift in affected domain"
+            },
+            "Control Gap": {
+                "recommendation_type": RemediationType.CONTROL_ENHANCEMENT,
+                "template": "Add control {control_id} to {framework} compliance",
+                "steps": [
+                    "Define control requirements",
+                    "Implement control in MCR",
+                    "Map to framework",
+                    "Add evidence generation",
+                    "Deploy and verify"
+                ],
+                "success_criteria": "Control {control_id} is operational and mapped"
+            },
+            "Framework Gap": {
+                "recommendation_type": RemediationType.FRAMEWORK_UPDATE,
+                "template": "Add {framework} mapping to {controls}",
+                "steps": [
+                    "Analyze framework requirements",
+                    "Map controls to requirements",
+                    "Update regulatory overlay",
+                    "Add evidence requirements",
+                    "Deploy updated overlay"
+                ],
+                "success_criteria": "Framework {framework} has complete coverage"
+            }
+        }
+    
+    def detect_gap(
+        self,
+        gap_type: GapType,
+        severity: Severity,
+        description: str,
+        source: str,
+        details: Dict[str, Any]
+    ) -> Gap:
+        """Detect and record a compliance gap"""
+        gap_id = f"GAP-{datetime.now().strftime('%Y%m%d')}-{len(self.gaps)+1:04d}"
+        
+        gap = Gap(
+            gap_id=gap_id,
+            gap_type=gap_type,
+            severity=severity,
+            description=description,
+            source=source,
+            timestamp=datetime.now().isoformat(),
+            details=details
+        )
+        
+        self.gaps.append(gap)
+        
+        # Automatically generate remediation
+        self._generate_remediation(gap)
+        
+        return gap
+    
+    def _generate_remediation(self, gap: Gap) -> RemediationRecommendation:
+        """Generate a remediation recommendation for a gap"""
+        # Get pattern for gap type
+        pattern = self.pattern_library.get(gap.gap_type.value)
+        if not pattern:
+            # Default pattern
+            pattern = {
+                "recommendation_type": RemediationType.CONTROL_ENHANCEMENT,
+                "template": "Remediate {gap_type} in {source}",
+                "steps": ["Identify root cause", "Develop remediation plan", "Implement", "Verify"],
+                "success_criteria": "Gap {gap_id} is closed"
+            }
+        
+        # Generate description
+        description = pattern["template"].format(
+            gap_type=gap.gap_type.value,
+            source=gap.source,
+            control_id=gap.details.get("control_id", "unknown"),
+            component=gap.details.get("component", "unknown"),
+            domain=gap.details.get("domain", "unknown"),
+            framework=gap.details.get("framework", "unknown"),
+            training=gap.details.get("training", "compliance"),
+            role=gap.details.get("role", "HAN"),
+            controls=gap.details.get("controls", "affected controls")
+        )
+        
+        # Calculate priority
+        priority = self._calculate_priority(gap)
+        
+        remediation_id = f"REC-{datetime.now().strftime('%Y%m%d')}-{len(self.remediations)+1:04d}"
+        
+        remediation = RemediationRecommendation(
+            remediation_id=remediation_id,
+            gap_id=gap.gap_id,
+            recommendation_type=pattern["recommendation_type"],
+            priority=priority,
+            status=RemediationStatus.RECOMMENDED,
+            description=description,
+            steps=pattern["steps"],
+            assigned_to=None,
+            created_date=datetime.now().isoformat(),
+            approved_date=None,
+            completed_date=None,
+            verified_date=None,
+            effort=self._estimate_effort(gap, pattern),
+            dependencies=[],
+            success_criteria=pattern["success_criteria"].format(
+                control_id=gap.details.get("control_id", "unknown"),
+                framework=gap.details.get("framework", "unknown"),
+                gap_id=gap.gap_id
+            )
+        )
+        
+        self.remediations[remediation_id] = remediation
+        return remediation
+    
+    def _calculate_priority(self, gap: Gap) -> Severity:
+        """Calculate priority based on gap severity and impact"""
+        # In production, use algorithm
+        # For now, use gap severity
+        return gap.severity
+    
+    def _estimate_effort(self, gap: Gap, pattern: Dict) -> str:
+        """Estimate effort required"""
+        # In production, use more sophisticated estimation
+        if gap.severity == Severity.CRITICAL:
+            return "8 hours"
+        elif gap.severity == Severity.HIGH:
+            return "2 days"
+        elif gap.severity == Severity.MEDIUM:
+            return "1 week"
+        else:
+            return "2 weeks"
+    
+    def approve_remediation(self, remediation_id: str) -> RemediationRecommendation:
+        """Approve a remediation recommendation"""
+        remediation = self.remediations.get(remediation_id)
+        if not remediation:
+            raise ValueError(f"Remediation {remediation_id} not found")
+        
+        remediation.status = RemediationStatus.APPROVED
+        remediation.approved_date = datetime.now().isoformat()
+        
+        return remediation
+    
+    def start_remediation(self, remediation_id: str, assigned_to: str) -> RemediationRecommendation:
+        """Start remediation"""
+        remediation = self.remediations.get(remediation_id)
+        if not remediation:
+            raise ValueError(f"Remediation {remediation_id} not found")
+        
+        remediation.status = RemediationStatus.IN_PROGRESS
+        remediation.assigned_to = assigned_to
+        
+        return remediation
+    
+    def complete_remediation(
+        self,
+        remediation_id: str,
+        verification_result: bool
+    ) -> RemediationRecommendation:
+        """Complete and verify remediation"""
+        remediation = self.remediations.get(remediation_id)
+        if not remediation:
+            raise ValueError(f"Remediation {remediation_id} not found")
+        
+        if verification_result:
+            remediation.status = RemediationStatus.VERIFIED
+            remediation.verified_date = datetime.now().isoformat()
+        else:
+            remediation.status = RemediationStatus.COMPLETED
+        
+        remediation.completed_date = datetime.now().isoformat()
+        
+        # If verified, feed back into learning
+        if verification_result:
+            self._integrate_learning(remediation)
+        
+        return remediation
+    
+    def _integrate_learning(self, remediation: RemediationRecommendation):
+        """Integrate remediation into learning (Ac-N5)"""
+        # In production, feed into Ac-N5
+        pass
+    
+    def close_remediation(self, remediation_id: str) -> RemediationRecommendation:
+        """Close a remediation"""
+        remediation = self.remediations.get(remediation_id)
+        if not remediation:
+            raise ValueError(f"Remediation {remediation_id} not found")
+        
+        remediation.status = RemediationStatus.CLOSED
+        
+        return remediation
+    
+    def get_remediation(self, remediation_id: str) -> Optional[RemediationRecommendation]:
+        """Get a remediation by ID"""
+        return self.remediations.get(remediation_id)
+    
+    def get_gaps(self, status: Optional[RemediationStatus] = None) -> List[Gap]:
+        """Get gaps"""
+        gaps = self.gaps
+        if status:
+            # Map gap to remediation status if needed
+            pass
+        return gaps
+    
+    def get_remediations(
+        self,
+        status: Optional[RemediationStatus] = None,
+        priority: Optional[Severity] = None
+    ) -> List[RemediationRecommendation]:
+        """Get remediations by status and/or priority"""
+        remediations = list(self.remediations.values())
+        
+        if status:
+            remediations = [r for r in remediations if r.status == status]
+        if priority:
+            remediations = [r for r in remediations if r.priority == priority]
+        
+        return remediations
+    
+    def get_high_priority_remediations(self) -> List[RemediationRecommendation]:
+        """Get critical and high priority remediations"""
+        return [r for r in self.remediations.values() 
+                if r.priority in [Severity.CRITICAL, Severity.HIGH]]
+    
+    def get_pending_approval(self) -> List[RemediationRecommendation]:
+        """Get remediations pending approval"""
+        return [r for r in self.remediations.values() 
+                if r.status == RemediationStatus.RECOMMENDED]
+    
+    def summary(self) -> Dict:
+        """Get a summary of compliance remediation status"""
+        return {
+            "total_gaps": len(self.gaps),
+            "total_remediations": len(self.remediations),
+            "by_severity": {
+                severity.value: len([g for g in self.gaps if g.severity == severity])
+                for severity in Severity
+            },
+            "by_status": {
+                status.value: len([r for r in self.remediations.values() if r.status == status])
+                for status in RemediationStatus
+            },
+            "high_priority_open": len([r for r in self.remediations.values()
+                                      if r.priority in [Severity.CRITICAL, Severity.HIGH]
+                                      and r.status not in [RemediationStatus.COMPLETED,
+                                                           RemediationStatus.VERIFIED,
+                                                           RemediationStatus.CLOSED]]),
+            "pending_approval": len(self.get_pending_approval()),
+            "completed_last_30_days": len([r for r in self.remediations.values()
+                                          if r.completed_date and
+                                          (datetime.now() - datetime.fromisoformat(r.completed_date)).days < 30])
+        }
+    
+    def generate_remediation_report(self) -> Dict:
+        """Generate a remediation status report"""
+        return {
+            "report_date": datetime.now().isoformat(),
+            "summary": self.summary(),
+            "high_priority": [
+                {
+                    "remediation_id": r.remediation_id,
+                    "description": r.description,
+                    "priority": r.priority.value,
+                    "status": r.status.value,
+                    "assigned_to": r.assigned_to
+                }
+                for r in self.get_high_priority_remediations()
+            ],
+            "pending_approval": [
+                {
+                    "remediation_id": r.remediation_id,
+                    "description": r.description,
+                    "priority": r.priority.value,
+                    "created_date": r.created_date
+                }
+                for r in self.get_pending_approval()
+            ]
         }
 ```
 
@@ -24277,348 +24299,348 @@ The AI OSI Integration ensures that:
 ## SECTION 4: AI OSI INTEGRATION IMPLEMENTATION
 
 ```
-\# ai\_osi\_integration.py  
-"""  
-AI OSI Integration — Complete Implementation  
+# ai_osi_integration.py
+"""
+AI OSI Integration — Complete Implementation
 """
 
-from enum import Enum  
-from typing import List, Dict, Optional  
-from dataclasses import dataclass, field  
+from enum import Enum
+from typing import List, Dict, Optional
+from dataclasses import dataclass, field
 from datetime import datetime
 
-class AIOSILayer(Enum):  
-    APPLICATION \= 7  
-    PRESENTATION \= 6  
-    SESSION \= 5  
-    TRANSPORT \= 4  
-    NETWORK \= 3  
-    DATA\_LINK \= 2  
-    PHYSICAL \= 1
+class AIOSILayer(Enum):
+    APPLICATION = 7
+    PRESENTATION = 6
+    SESSION = 5
+    TRANSPORT = 4
+    NETWORK = 3
+    DATA_LINK = 2
+    PHYSICAL = 1
 
-class ArtifactType(Enum):  
-    ITP \= "Intent Trace Protocol"  
-    DRR \= "Decision Rationale Record"  
-    GDS \= "Governance Decision Snapshot"  
-    OAM \= "Outcome Attribution Map"  
-    ILE \= "Institutional Legibility Envelope"
+class ArtifactType(Enum):
+    ITP = "Intent Trace Protocol"
+    DRR = "Decision Rationale Record"
+    GDS = "Governance Decision Snapshot"
+    OAM = "Outcome Attribution Map"
+    ILE = "Institutional Legibility Envelope"
 
-@dataclass  
-class ITP:  
-    """Intent Trace Protocol — Captures the intent behind a decision"""  
-    intent\_id: str  
-    decision\_id: str  
-    intent\_statement: str  
-    plan\_reference: Optional\[str\]  
-    timestamp: str  
-    author: str  
-      
-    def to\_dict(self) \-\> Dict:  
-        return {  
-            "intent\_id": self.intent\_id,  
-            "decision\_id": self.decision\_id,  
-            "intent\_statement": self.intent\_statement,  
-            "plan\_reference": self.plan\_reference,  
-            "timestamp": self.timestamp,  
-            "author": self.author  
+@dataclass
+class ITP:
+    """Intent Trace Protocol — Captures the intent behind a decision"""
+    intent_id: str
+    decision_id: str
+    intent_statement: str
+    plan_reference: Optional[str]
+    timestamp: str
+    author: str
+    
+    def to_dict(self) -> Dict:
+        return {
+            "intent_id": self.intent_id,
+            "decision_id": self.decision_id,
+            "intent_statement": self.intent_statement,
+            "plan_reference": self.plan_reference,
+            "timestamp": self.timestamp,
+            "author": self.author
         }
 
-@dataclass  
-class DRR:  
-    """Decision Rationale Record — Records the rationale for a decision"""  
-    record\_id: str  
-    decision\_id: str  
-    rationale\_statement: str  
-    framework\_source: List\[str\]  
-    alternatives\_considered: List\[str\]  
-    confidence\_level: float  
-    timestamp: str  
-      
-    def to\_dict(self) \-\> Dict:  
-        return {  
-            "record\_id": self.record\_id,  
-            "decision\_id": self.decision\_id,  
-            "rationale\_statement": self.rationale\_statement,  
-            "framework\_source": self.framework\_source,  
-            "alternatives\_considered": self.alternatives\_considered,  
-            "confidence\_level": self.confidence\_level,  
-            "timestamp": self.timestamp  
+@dataclass
+class DRR:
+    """Decision Rationale Record — Records the rationale for a decision"""
+    record_id: str
+    decision_id: str
+    rationale_statement: str
+    framework_source: List[str]
+    alternatives_considered: List[str]
+    confidence_level: float
+    timestamp: str
+    
+    def to_dict(self) -> Dict:
+        return {
+            "record_id": self.record_id,
+            "decision_id": self.decision_id,
+            "rationale_statement": self.rationale_statement,
+            "framework_source": self.framework_source,
+            "alternatives_considered": self.alternatives_considered,
+            "confidence_level": self.confidence_level,
+            "timestamp": self.timestamp
         }
 
-@dataclass  
-class GDS:  
-    """Governance Decision Snapshot — Captures governance state at decision time"""  
-    snapshot\_id: str  
-    decision\_id: str  
-    governance\_state: str  
-    active\_constraints: List\[Dict\]  
-    active\_delegations: List\[Dict\]  
-    trust\_tier: int  
-    timestamp: str  
-      
-    def to\_dict(self) \-\> Dict:  
-        return {  
-            "snapshot\_id": self.snapshot\_id,  
-            "decision\_id": self.decision\_id,  
-            "governance\_state": self.governance\_state,  
-            "active\_constraints": self.active\_constraints,  
-            "active\_delegations": self.active\_delegations,  
-            "trust\_tier": self.trust\_tier,  
-            "timestamp": self.timestamp  
+@dataclass
+class GDS:
+    """Governance Decision Snapshot — Captures governance state at decision time"""
+    snapshot_id: str
+    decision_id: str
+    governance_state: str
+    active_constraints: List[Dict]
+    active_delegations: List[Dict]
+    trust_tier: int
+    timestamp: str
+    
+    def to_dict(self) -> Dict:
+        return {
+            "snapshot_id": self.snapshot_id,
+            "decision_id": self.decision_id,
+            "governance_state": self.governance_state,
+            "active_constraints": self.active_constraints,
+            "active_delegations": self.active_delegations,
+            "trust_tier": self.trust_tier,
+            "timestamp": self.timestamp
         }
 
-@dataclass  
-class OAM:  
-    """Outcome Attribution Map — Maps outcomes to decisions and actors"""  
-    map\_id: str  
-    decision\_id: str  
-    outcome: str  
-    attribution: str  
-    attribution\_chain: List\[str\]  
-    timestamp: str  
-      
-    def to\_dict(self) \-\> Dict:  
-        return {  
-            "map\_id": self.map\_id,  
-            "decision\_id": self.decision\_id,  
-            "outcome": self.outcome,  
-            "attribution": self.attribution,  
-            "attribution\_chain": self.attribution\_chain,  
-            "timestamp": self.timestamp  
+@dataclass
+class OAM:
+    """Outcome Attribution Map — Maps outcomes to decisions and actors"""
+    map_id: str
+    decision_id: str
+    outcome: str
+    attribution: str
+    attribution_chain: List[str]
+    timestamp: str
+    
+    def to_dict(self) -> Dict:
+        return {
+            "map_id": self.map_id,
+            "decision_id": self.decision_id,
+            "outcome": self.outcome,
+            "attribution": self.attribution,
+            "attribution_chain": self.attribution_chain,
+            "timestamp": self.timestamp
         }
 
-@dataclass  
-class ILE:  
-    """Institutional Legibility Envelope — Packages evidence for external review"""  
-    envelope\_id: str  
-    decision\_ids: List\[str\]  
-    evidence\_summary: str  
-    attestation: Dict  
-    timestamp: str  
-    external\_format: str  
-      
-    def to\_dict(self) \-\> Dict:  
-        return {  
-            "envelope\_id": self.envelope\_id,  
-            "decision\_ids": self.decision\_ids,  
-            "evidence\_summary": self.evidence\_summary,  
-            "attestation": self.attestation,  
-            "timestamp": self.timestamp,  
-            "external\_format": self.external\_format  
+@dataclass
+class ILE:
+    """Institutional Legibility Envelope — Packages evidence for external review"""
+    envelope_id: str
+    decision_ids: List[str]
+    evidence_summary: str
+    attestation: Dict
+    timestamp: str
+    external_format: str
+    
+    def to_dict(self) -> Dict:
+        return {
+            "envelope_id": self.envelope_id,
+            "decision_ids": self.decision_ids,
+            "evidence_summary": self.evidence_summary,
+            "attestation": self.attestation,
+            "timestamp": self.timestamp,
+            "external_format": self.external_format
         }
 
-class AIOSIIntegration:  
-    """AI OSI Integration — Maps AIGIS to AI OSI Stack"""  
-      
-    def \_\_init\_\_(self):  
-        self.itps: List\[ITP\] \= \[\]  
-        self.drrs: List\[DRR\] \= \[\]  
-        self.gdss: List\[GDS\] \= \[\]  
-        self.oams: List\[OAM\] \= \[\]  
-        self.iles: List\[ILE\] \= \[\]  
-      
-    def create\_itp(  
-        self,  
-        decision\_id: str,  
-        intent\_statement: str,  
-        author: str,  
-        plan\_reference: Optional\[str\] \= None  
-    ) \-\> ITP:  
-        """Create an Intent Trace Protocol artifact"""  
-        intent\_id \= f"ITP-{datetime.now().strftime('%Y%m%d')}-{len(self.itps)+1:04d}"  
-          
-        itp \= ITP(  
-            intent\_id=intent\_id,  
-            decision\_id=decision\_id,  
-            intent\_statement=intent\_statement,  
-            plan\_reference=plan\_reference,  
-            timestamp=datetime.now().isoformat(),  
-            author=author  
-        )  
-          
-        self.itps.append(itp)  
-        return itp  
-      
-    def create\_drr(  
-        self,  
-        decision\_id: str,  
-        rationale\_statement: str,  
-        framework\_source: List\[str\],  
-        alternatives\_considered: List\[str\],  
-        confidence\_level: float  
-    ) \-\> DRR:  
-        """Create a Decision Rationale Record"""  
-        record\_id \= f"DRR-{datetime.now().strftime('%Y%m%d')}-{len(self.drrs)+1:04d}"  
-          
-        drr \= DRR(  
-            record\_id=record\_id,  
-            decision\_id=decision\_id,  
-            rationale\_statement=rationale\_statement,  
-            framework\_source=framework\_source,  
-            alternatives\_considered=alternatives\_considered,  
-            confidence\_level=confidence\_level,  
-            timestamp=datetime.now().isoformat()  
-        )  
-          
-        self.drrs.append(drr)  
-        return drr  
-      
-    def create\_gds(  
-        self,  
-        decision\_id: str,  
-        governance\_state: str,  
-        active\_constraints: List\[Dict\],  
-        active\_delegations: List\[Dict\],  
-        trust\_tier: int  
-    ) \-\> GDS:  
-        """Create a Governance Decision Snapshot"""  
-        snapshot\_id \= f"GDS-{datetime.now().strftime('%Y%m%d')}-{len(self.gdss)+1:04d}"  
-          
-        gds \= GDS(  
-            snapshot\_id=snapshot\_id,  
-            decision\_id=decision\_id,  
-            governance\_state=governance\_state,  
-            active\_constraints=active\_constraints,  
-            active\_delegations=active\_delegations,  
-            trust\_tier=trust\_tier,  
-            timestamp=datetime.now().isoformat()  
-        )  
-          
-        self.gdss.append(gds)  
-        return gds  
-      
-    def create\_oam(  
-        self,  
-        decision\_id: str,  
-        outcome: str,  
-        attribution: str,  
-        attribution\_chain: List\[str\]  
-    ) \-\> OAM:  
-        """Create an Outcome Attribution Map"""  
-        map\_id \= f"OAM-{datetime.now().strftime('%Y%m%d')}-{len(self.oams)+1:04d}"  
-          
-        oam \= OAM(  
-            map\_id=map\_id,  
-            decision\_id=decision\_id,  
-            outcome=outcome,  
-            attribution=attribution,  
-            attribution\_chain=attribution\_chain,  
-            timestamp=datetime.now().isoformat()  
-        )  
-          
-        self.oams.append(oam)  
-        return oam  
-      
-    def create\_ile(  
-        self,  
-        decision\_ids: List\[str\],  
-        evidence\_summary: str,  
-        attestation: Dict,  
-        external\_format: str \= "PDF"  
-    ) \-\> ILE:  
-        """Create an Institutional Legibility Envelope"""  
-        envelope\_id \= f"ILE-{datetime.now().strftime('%Y%m%d')}-{len(self.iles)+1:04d}"  
-          
-        ile \= ILE(  
-            envelope\_id=envelope\_id,  
-            decision\_ids=decision\_ids,  
-            evidence\_summary=evidence\_summary,  
-            attestation=attestation,  
-            timestamp=datetime.now().isoformat(),  
-            external\_format=external\_format  
-        )  
-          
-        self.iles.append(ile)  
-        return ile  
-      
-    def map\_layer(self, aica\_layer: str) \-\> Optional\[AIOSILayer\]:  
-        """Map an AICA-5 layer to an AI OSI layer"""  
-        mapping \= {  
-            "Cognitive": AIOSILayer.DATA\_LINK,  
-            "Execution": AIOSILayer.NETWORK,  
-            "Authority": AIOSILayer.SESSION,  
-            "Continuity": AIOSILayer.SESSION,  
-            "Accountability": AIOSILayer.APPLICATION  
-        }  
-        return mapping.get(aica\_layer)  
-      
-    def map\_node(self, aica\_node: str) \-\> Dict:  
-        """Map an AICA-5 node to AI OSI function"""  
-        mapping \= {  
-            \# Cognitive Layer → Data Link  
-            "C-N1": {"layer": "Data Link", "function": "Intelligence Sourcing"},  
-            "C-N2": {"layer": "Data Link", "function": "Inference Architecture"},  
-            "C-N3": {"layer": "Data Link", "function": "Signal Validation"},  
-            "C-N4": {"layer": "Data Link", "function": "Output Calibration"},  
-            "C-N5": {"layer": "Data Link", "function": "Knowledge Boundary"},  
-            \# Execution Layer → Network  
-            "E-N1": {"layer": "Network", "function": "Task Decomposition"},  
-            "E-N2": {"layer": "Network", "function": "Pipeline Orchestration"},  
-            "E-N3": {"layer": "Network", "function": "Concurrency Governance"},  
-            "E-N4": {"layer": "Network", "function": "Monitoring Loops"},  
-            "E-N5": {"layer": "Network", "function": "Exception Handling"},  
-            \# Authority Layer → Session  
-            "A-N1": {"layer": "Session", "function": "Trigger Rights"},  
-            "A-N2": {"layer": "Session", "function": "Binding Thresholds"},  
-            "A-N3": {"layer": "Session", "function": "Override Protocols"},  
-            "A-N4": {"layer": "Session", "function": "Escalation Paths"},  
-            "A-N5": {"layer": "Session", "function": "Delegation Boundaries"},  
-            \# Continuity Layer → Session  
-            "Co-N1": {"layer": "Session", "function": "State Establishment"},  
-            "Co-N2": {"layer": "Session", "function": "Drift Detection"},  
-            "Co-N3": {"layer": "Session", "function": "Approval Expiry"},  
-            "Co-N4": {"layer": "Session", "function": "Handoff Integrity"},  
-            "Co-N5": {"layer": "Session", "function": "Context Restoration"},  
-            \# Accountability Layer → Application  
-            "Ac-N1": {"layer": "Application", "function": "Decision Lineage"},  
-            "Ac-N2": {"layer": "Application", "function": "Responsibility Attribution"},  
-            "Ac-N3": {"layer": "Application", "function": "Outcome Validation"},  
-            "Ac-N4": {"layer": "Application", "function": "Rollback Pathways"},  
-            "Ac-N5": {"layer": "Application", "function": "Learning Integration"}  
-        }  
-        return mapping.get(aica\_node, {})  
-      
-    def get\_artifact\_for\_node(self, aica\_node: str) \-\> Optional\[ArtifactType\]:  
-        """Get the AI OSI artifact type for an AICA-5 node"""  
-        mapping \= {  
-            "C-N1": ArtifactType.ITP,  
-            "C-N2": ArtifactType.DRR,  
-            "A-N1": ArtifactType.GDS,  
-            "Ac-N1": ArtifactType.DRR,  
-            "Ac-N2": ArtifactType.OAM,  
-            "Ac-N3": ArtifactType.OAM,  
-            "E-N4": ArtifactType.ITP,  
-            "Co-N2": ArtifactType.DRR  
-        }  
-        return mapping.get(aica\_node)  
-      
-    def get\_artifacts\_for\_decision(self, decision\_id: str) \-\> Dict:  
-        """Get all AI OSI artifacts for a decision"""  
-        return {  
-            "itp": \[itp.to\_dict() for itp in self.itps if itp.decision\_id \== decision\_id\],  
-            "drr": \[drr.to\_dict() for drr in self.drrs if drr.decision\_id \== decision\_id\],  
-            "gds": \[gds.to\_dict() for gds in self.gdss if gds.decision\_id \== decision\_id\],  
-            "oam": \[oam.to\_dict() for oam in self.oams if oam.decision\_id \== decision\_id\]  
-        }  
-      
-    def get\_ile(self, envelope\_id: str) \-\> Optional\[ILE\]:  
-        """Get an Institutional Legibility Envelope"""  
-        for ile in self.iles:  
-            if ile.envelope\_id \== envelope\_id:  
-                return ile  
-        return None  
-      
-    def summary(self) \-\> Dict:  
-        """Get a summary of AI OSI integration"""  
-        return {  
-            "total\_itps": len(self.itps),  
-            "total\_drrs": len(self.drrs),  
-            "total\_gdss": len(self.gdss),  
-            "total\_oams": len(self.oams),  
-            "total\_iles": len(self.iles),  
-            "layers\_mapped": {  
-                layer.value: layer.name for layer in AIOSILayer  
-            }  
+class AIOSIIntegration:
+    """AI OSI Integration — Maps AIGIS to AI OSI Stack"""
+    
+    def __init__(self):
+        self.itps: List[ITP] = []
+        self.drrs: List[DRR] = []
+        self.gdss: List[GDS] = []
+        self.oams: List[OAM] = []
+        self.iles: List[ILE] = []
+    
+    def create_itp(
+        self,
+        decision_id: str,
+        intent_statement: str,
+        author: str,
+        plan_reference: Optional[str] = None
+    ) -> ITP:
+        """Create an Intent Trace Protocol artifact"""
+        intent_id = f"ITP-{datetime.now().strftime('%Y%m%d')}-{len(self.itps)+1:04d}"
+        
+        itp = ITP(
+            intent_id=intent_id,
+            decision_id=decision_id,
+            intent_statement=intent_statement,
+            plan_reference=plan_reference,
+            timestamp=datetime.now().isoformat(),
+            author=author
+        )
+        
+        self.itps.append(itp)
+        return itp
+    
+    def create_drr(
+        self,
+        decision_id: str,
+        rationale_statement: str,
+        framework_source: List[str],
+        alternatives_considered: List[str],
+        confidence_level: float
+    ) -> DRR:
+        """Create a Decision Rationale Record"""
+        record_id = f"DRR-{datetime.now().strftime('%Y%m%d')}-{len(self.drrs)+1:04d}"
+        
+        drr = DRR(
+            record_id=record_id,
+            decision_id=decision_id,
+            rationale_statement=rationale_statement,
+            framework_source=framework_source,
+            alternatives_considered=alternatives_considered,
+            confidence_level=confidence_level,
+            timestamp=datetime.now().isoformat()
+        )
+        
+        self.drrs.append(drr)
+        return drr
+    
+    def create_gds(
+        self,
+        decision_id: str,
+        governance_state: str,
+        active_constraints: List[Dict],
+        active_delegations: List[Dict],
+        trust_tier: int
+    ) -> GDS:
+        """Create a Governance Decision Snapshot"""
+        snapshot_id = f"GDS-{datetime.now().strftime('%Y%m%d')}-{len(self.gdss)+1:04d}"
+        
+        gds = GDS(
+            snapshot_id=snapshot_id,
+            decision_id=decision_id,
+            governance_state=governance_state,
+            active_constraints=active_constraints,
+            active_delegations=active_delegations,
+            trust_tier=trust_tier,
+            timestamp=datetime.now().isoformat()
+        )
+        
+        self.gdss.append(gds)
+        return gds
+    
+    def create_oam(
+        self,
+        decision_id: str,
+        outcome: str,
+        attribution: str,
+        attribution_chain: List[str]
+    ) -> OAM:
+        """Create an Outcome Attribution Map"""
+        map_id = f"OAM-{datetime.now().strftime('%Y%m%d')}-{len(self.oams)+1:04d}"
+        
+        oam = OAM(
+            map_id=map_id,
+            decision_id=decision_id,
+            outcome=outcome,
+            attribution=attribution,
+            attribution_chain=attribution_chain,
+            timestamp=datetime.now().isoformat()
+        )
+        
+        self.oams.append(oam)
+        return oam
+    
+    def create_ile(
+        self,
+        decision_ids: List[str],
+        evidence_summary: str,
+        attestation: Dict,
+        external_format: str = "PDF"
+    ) -> ILE:
+        """Create an Institutional Legibility Envelope"""
+        envelope_id = f"ILE-{datetime.now().strftime('%Y%m%d')}-{len(self.iles)+1:04d}"
+        
+        ile = ILE(
+            envelope_id=envelope_id,
+            decision_ids=decision_ids,
+            evidence_summary=evidence_summary,
+            attestation=attestation,
+            timestamp=datetime.now().isoformat(),
+            external_format=external_format
+        )
+        
+        self.iles.append(ile)
+        return ile
+    
+    def map_layer(self, aica_layer: str) -> Optional[AIOSILayer]:
+        """Map an AICA-5 layer to an AI OSI layer"""
+        mapping = {
+            "Cognitive": AIOSILayer.DATA_LINK,
+            "Execution": AIOSILayer.NETWORK,
+            "Authority": AIOSILayer.SESSION,
+            "Continuity": AIOSILayer.SESSION,
+            "Accountability": AIOSILayer.APPLICATION
+        }
+        return mapping.get(aica_layer)
+    
+    def map_node(self, aica_node: str) -> Dict:
+        """Map an AICA-5 node to AI OSI function"""
+        mapping = {
+            # Cognitive Layer → Data Link
+            "C-N1": {"layer": "Data Link", "function": "Intelligence Sourcing"},
+            "C-N2": {"layer": "Data Link", "function": "Inference Architecture"},
+            "C-N3": {"layer": "Data Link", "function": "Signal Validation"},
+            "C-N4": {"layer": "Data Link", "function": "Output Calibration"},
+            "C-N5": {"layer": "Data Link", "function": "Knowledge Boundary"},
+            # Execution Layer → Network
+            "E-N1": {"layer": "Network", "function": "Task Decomposition"},
+            "E-N2": {"layer": "Network", "function": "Pipeline Orchestration"},
+            "E-N3": {"layer": "Network", "function": "Concurrency Governance"},
+            "E-N4": {"layer": "Network", "function": "Monitoring Loops"},
+            "E-N5": {"layer": "Network", "function": "Exception Handling"},
+            # Authority Layer → Session
+            "A-N1": {"layer": "Session", "function": "Trigger Rights"},
+            "A-N2": {"layer": "Session", "function": "Binding Thresholds"},
+            "A-N3": {"layer": "Session", "function": "Override Protocols"},
+            "A-N4": {"layer": "Session", "function": "Escalation Paths"},
+            "A-N5": {"layer": "Session", "function": "Delegation Boundaries"},
+            # Continuity Layer → Session
+            "Co-N1": {"layer": "Session", "function": "State Establishment"},
+            "Co-N2": {"layer": "Session", "function": "Drift Detection"},
+            "Co-N3": {"layer": "Session", "function": "Approval Expiry"},
+            "Co-N4": {"layer": "Session", "function": "Handoff Integrity"},
+            "Co-N5": {"layer": "Session", "function": "Context Restoration"},
+            # Accountability Layer → Application
+            "Ac-N1": {"layer": "Application", "function": "Decision Lineage"},
+            "Ac-N2": {"layer": "Application", "function": "Responsibility Attribution"},
+            "Ac-N3": {"layer": "Application", "function": "Outcome Validation"},
+            "Ac-N4": {"layer": "Application", "function": "Rollback Pathways"},
+            "Ac-N5": {"layer": "Application", "function": "Learning Integration"}
+        }
+        return mapping.get(aica_node, {})
+    
+    def get_artifact_for_node(self, aica_node: str) -> Optional[ArtifactType]:
+        """Get the AI OSI artifact type for an AICA-5 node"""
+        mapping = {
+            "C-N1": ArtifactType.ITP,
+            "C-N2": ArtifactType.DRR,
+            "A-N1": ArtifactType.GDS,
+            "Ac-N1": ArtifactType.DRR,
+            "Ac-N2": ArtifactType.OAM,
+            "Ac-N3": ArtifactType.OAM,
+            "E-N4": ArtifactType.ITP,
+            "Co-N2": ArtifactType.DRR
+        }
+        return mapping.get(aica_node)
+    
+    def get_artifacts_for_decision(self, decision_id: str) -> Dict:
+        """Get all AI OSI artifacts for a decision"""
+        return {
+            "itp": [itp.to_dict() for itp in self.itps if itp.decision_id == decision_id],
+            "drr": [drr.to_dict() for drr in self.drrs if drr.decision_id == decision_id],
+            "gds": [gds.to_dict() for gds in self.gdss if gds.decision_id == decision_id],
+            "oam": [oam.to_dict() for oam in self.oams if oam.decision_id == decision_id]
+        }
+    
+    def get_ile(self, envelope_id: str) -> Optional[ILE]:
+        """Get an Institutional Legibility Envelope"""
+        for ile in self.iles:
+            if ile.envelope_id == envelope_id:
+                return ile
+        return None
+    
+    def summary(self) -> Dict:
+        """Get a summary of AI OSI integration"""
+        return {
+            "total_itps": len(self.itps),
+            "total_drrs": len(self.drrs),
+            "total_gdss": len(self.gdss),
+            "total_oams": len(self.oams),
+            "total_iles": len(self.iles),
+            "layers_mapped": {
+                layer.value: layer.name for layer in AIOSILayer
+            }
         }
 ```
 
@@ -24720,13 +24742,14 @@ Real-time Evidence Streaming ensures that:
 ## SECTION 2: STREAMING ARCHITECTURE
 
 ### 2.1 Architecture Overview
+
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐  
 │                    REAL-TIME EVIDENCE STREAMING                             │  
 ├─────────────────────────────────────────────────────────────────────────────┤  
 │                                                                             │  
 │  ┌─────────────────────────────────────────────────────────────────────────┐│  
-│  │                    1\. EVIDENCE GENERATORS                               ││  
+│  │                    1\. EVIDENCE GENERATORS                              ││  
 │  │  • IMP Object Capture (continuous)                                      ││  
 │  │  • ADTEP Pre-Delivery Log Entry (pre-action)                            ││  
 │  │  • AICA-5 Measurement Framework (continuous)                            ││  
@@ -24745,7 +24768,7 @@ Real-time Evidence Streaming ensures that:
 │                                      │                                      │  
 │                                      ▼                                      │  
 │  ┌─────────────────────────────────────────────────────────────────────────┐│  
-│  │                    3\. STREAMING OUTPUTS                                 ││  
+│  │                    3\. STREAMING OUTPUTS                                ││  
 │  │  • Streaming API (SSE / WebSocket)                                      ││  
 │  │  • Real-time dashboard                                                  ││  
 │  │  • Real-time alerts                                                     ││  
@@ -24850,376 +24873,376 @@ Stream Output
 ## SECTION 5: STREAMING IMPLEMENTATION
 
 ```
-\# realtime\_evidence\_streaming.py  
-"""  
-Real-time Evidence Streaming — Complete Implementation  
+# realtime_evidence_streaming.py
+"""
+Real-time Evidence Streaming — Complete Implementation
 """
 
-from enum import Enum  
-from typing import List, Dict, Optional, Any  
-from dataclasses import dataclass, field  
-from datetime import datetime  
-import json  
-import hashlib  
-import asyncio  
+from enum import Enum
+from typing import List, Dict, Optional, Any
+from dataclasses import dataclass, field
+from datetime import datetime
+import json
+import hashlib
+import asyncio
 from collections import deque
 
-class EvidenceType(Enum):  
-    DRO \= "DRO"  
-    GAO \= "GAO"  
-    OEO \= "OEO"  
-    XOO \= "XOO"  
-    PRE\_DELIVERY \= "PreDelivery"  
-    DRIFT \= "Drift"  
-    BIAS \= "Bias"
+class EvidenceType(Enum):
+    DRO = "DRO"
+    GAO = "GAO"
+    OEO = "OEO"
+    XOO = "XOO"
+    PRE_DELIVERY = "PreDelivery"
+    DRIFT = "Drift"
+    BIAS = "Bias"
 
-class ComplianceStatus(Enum):  
-    COMPLIANT \= "Compliant"  
-    NON\_COMPLIANT \= "Non-Compliant"  
-    PARTIAL \= "Partial"  
-    PENDING \= "Pending"
+class ComplianceStatus(Enum):
+    COMPLIANT = "Compliant"
+    NON_COMPLIANT = "Non-Compliant"
+    PARTIAL = "Partial"
+    PENDING = "Pending"
 
-class AlertSeverity(Enum):  
-    INFO \= "Info"  
-    LOW \= "Low"  
-    MEDIUM \= "Medium"  
-    HIGH \= "High"  
-    CRITICAL \= "Critical"
+class AlertSeverity(Enum):
+    INFO = "Info"
+    LOW = "Low"
+    MEDIUM = "Medium"
+    HIGH = "High"
+    CRITICAL = "Critical"
 
-@dataclass  
-class EvidenceStream:  
-    """A real-time evidence stream entry"""  
-    stream\_id: str  
-    timestamp: str  
-    evidence\_type: EvidenceType  
-    control\_id: str  
-    framework: Optional\[str\]  
-    compliance\_status: ComplianceStatus  
-    raw\_evidence: Dict\[str, Any\]  
-    mapped\_evidence: Dict\[str, Any\]  
-    gaps: List\[Dict\]  
+@dataclass
+class EvidenceStream:
+    """A real-time evidence stream entry"""
+    stream_id: str
+    timestamp: str
+    evidence_type: EvidenceType
+    control_id: str
+    framework: Optional[str]
+    compliance_status: ComplianceStatus
+    raw_evidence: Dict[str, Any]
+    mapped_evidence: Dict[str, Any]
+    gaps: List[Dict]
     hash: str
 
-@dataclass  
-class ComplianceAlert:  
-    """A real-time compliance alert"""  
-    alert\_id: str  
-    timestamp: str  
-    alert\_type: str  
-    severity: AlertSeverity  
-    description: str  
-    evidence\_reference: str  
-    control\_id: str  
-    framework: Optional\[str\]  
-    resolution: Optional\[str\] \= None
+@dataclass
+class ComplianceAlert:
+    """A real-time compliance alert"""
+    alert_id: str
+    timestamp: str
+    alert_type: str
+    severity: AlertSeverity
+    description: str
+    evidence_reference: str
+    control_id: str
+    framework: Optional[str]
+    resolution: Optional[str] = None
 
-class RealtimeEvidenceStreaming:  
-    """Real-time Evidence Streaming Framework"""  
-      
-    def \_\_init\_\_(self, imp\_store, mcr, crosswalk):  
-        self.imp \= imp\_store  
-        self.mcr \= mcr  
-        self.crosswalk \= crosswalk  
-        self.stream\_buffer \= deque(maxlen=10000)  \# Last 10,000 stream entries  
-        self.alerts \= deque(maxlen=1000)  \# Last 1,000 alerts  
-        self.subscribers \= \[\]  \# Active subscribers (for streaming API)  
-        self.evidence\_count \= 0  
-      
-    def process\_evidence(  
-        self,  
-        evidence\_type: EvidenceType,  
-        raw\_evidence: Dict\[str, Any\],  
-        source: str \= "system"  
-    ) \-\> EvidenceStream:  
-        """  
-        Process evidence in real-time.  
-          
-        Args:  
-            evidence\_type: Type of evidence  
-            raw\_evidence: Raw evidence data  
-            source: Source of evidence  
-          
-        Returns:  
-            EvidenceStream: Processed evidence stream entry  
-        """  
-        self.evidence\_count \+= 1  
-          
-        \# Step 1: Map evidence to MCR control  
-        control\_id, mapped\_evidence \= self.\_map\_to\_control(raw\_evidence)  
-          
-        \# Step 2: Map control to framework  
-        framework \= self.\_map\_to\_framework(control\_id)  
-          
-        \# Step 3: Verify compliance  
-        compliance\_status, gaps \= self.\_verify\_compliance(  
-            control\_id, framework, mapped\_evidence  
-        )  
-          
-        \# Step 4: Generate stream entry  
-        stream\_id \= f"STREAM-{datetime.now().strftime('%Y%m%d%H%M%S')}-{self.evidence\_count:06d}"  
-          
-        stream \= EvidenceStream(  
-            stream\_id=stream\_id,  
-            timestamp=datetime.now().isoformat(),  
-            evidence\_type=evidence\_type,  
-            control\_id=control\_id,  
-            framework=framework,  
-            compliance\_status=compliance\_status,  
-            raw\_evidence=raw\_evidence,  
-            mapped\_evidence=mapped\_evidence,  
-            gaps=gaps,  
-            hash=self.\_compute\_hash(stream\_id, raw\_evidence, control\_id)  
-        )  
-          
-        \# Step 5: Add to stream buffer  
-        self.stream\_buffer.append(stream)  
-          
-        \# Step 6: Generate alerts if gaps found  
-        if gaps:  
-            self.\_generate\_alerts(stream)  
-          
-        \# Step 7: Notify subscribers  
-        self.\_notify\_subscribers(stream)  
-          
-        return stream  
-      
-    def \_map\_to\_control(self, raw\_evidence: Dict\[str, Any\]) \-\> tuple:  
-        """Map evidence to an MCR control"""  
-        \# In production, this would perform actual mapping  
-        \# For example, based on evidence type, source, etc.  
-          
-        \# Simple mapping based on evidence type  
-        mapping \= {  
-            "DRO": "AICA-5-CN-021",  \# Decision Lineage  
-            "GAO": "IMP-003",          \# Governance Artifact  
-            "OEO": "AICA-5-CN-023",    \# Outcome Validation  
-            "XOO": "IMP-006",          \# Exception/Override  
-            "PreDelivery": "ADTEP-003", \# Pre-Delivery Log  
-            "Drift": "AICA-5-CN-017",   \# Drift Detection  
-            "Bias": "AOBA-001"          \# Bias Audit  
-        }  
-          
-        evidence\_type \= raw\_evidence.get("evidence\_type", "UNKNOWN")  
-        control\_id \= mapping.get(evidence\_type, "UNKNOWN")  
-          
-        return control\_id, {  
-            "original": raw\_evidence,  
-            "mapped\_to": control\_id,  
-            "timestamp": datetime.now().isoformat()  
-        }  
-      
-    def \_map\_to\_framework(self, control\_id: str) \-\> Optional\[str\]:  
-        """Map a control to a regulatory framework"""  
-        \# In production, use crosswalk engine  
-        mappings \= self.crosswalk.map\_component\_to\_framework(control\_id, "eu\_ai\_act")  
-        if mappings:  
-            return "eu\_ai\_act"  
-          
-        \# Check other frameworks  
-        for framework in \["nist\_ai\_rmf", "iso\_42001", "pfrs\_s1\_s2"\]:  
-            mappings \= self.crosswalk.map\_component\_to\_framework(control\_id, framework)  
-            if mappings:  
-                return framework  
-          
-        return None  
-      
-    def \_verify\_compliance(  
-        self,  
-        control\_id: str,  
-        framework: Optional\[str\],  
-        mapped\_evidence: Dict\[str, Any\]  
-    ) \-\> tuple:  
-        """Verify compliance against control and framework"""  
-        gaps \= \[\]  
-          
-        \# Check if control exists  
-        control \= self.mcr.get\_control(control\_id)  
-        if not control:  
-            gaps.append({  
-                "gap\_type": "Control Gap",  
-                "description": f"Control {control\_id} not found in MCR",  
-                "severity": AlertSeverity.HIGH  
-            })  
-            return ComplianceStatus.NON\_COMPLIANT, gaps  
-          
-        \# Check if framework mapping exists  
-        if framework:  
-            mappings \= self.crosswalk.map\_component\_to\_framework(control\_id, framework)  
-            if not mappings:  
-                gaps.append({  
-                    "gap\_type": "Framework Gap",  
-                    "description": f"No mapping from {control\_id} to {framework}",  
-                    "severity": AlertSeverity.MEDIUM  
-                })  
-          
-        \# Check evidence completeness  
-        required\_fields \= self.\_get\_required\_fields(control\_id)  
-        missing\_fields \= \[f for f in required\_fields if f not in mapped\_evidence\]  
-        if missing\_fields:  
-            gaps.append({  
-                "gap\_type": "Missing Evidence",  
-                "description": f"Missing fields: {', '.join(missing\_fields)}",  
-                "severity": AlertSeverity.MEDIUM  
-            })  
-          
-        \# Determine compliance status  
-        if not gaps:  
-            return ComplianceStatus.COMPLIANT, \[\]  
-        elif any(g\["severity"\] \== AlertSeverity.HIGH for g in gaps):  
-            return ComplianceStatus.NON\_COMPLIANT, gaps  
-        else:  
-            return ComplianceStatus.PARTIAL, gaps  
-      
-    def \_get\_required\_fields(self, control\_id: str) \-\> List\[str\]:  
-        """Get required fields for a control"""  
-        \# In production, define required fields per control  
-        return \["timestamp", "agent\_id", "action\_type"\]  
-      
-    def \_compute\_hash(self, stream\_id: str, evidence: Dict, control\_id: str) \-\> str:  
-        """Compute a hash for the evidence stream entry"""  
-        data \= {  
-            "stream\_id": stream\_id,  
-            "evidence": evidence,  
-            "control\_id": control\_id,  
-            "timestamp": datetime.now().isoformat()  
-        }  
-        return hashlib.sha256(json.dumps(data, sort\_keys=True).encode()).hexdigest()  
-      
-    def \_generate\_alerts(self, stream: EvidenceStream):  
-        """Generate alerts for gaps"""  
-        for gap in stream.gaps:  
-            alert \= ComplianceAlert(  
-                alert\_id=f"ALERT-{datetime.now().strftime('%Y%m%d%H%M%S')}-{len(self.alerts)+1:06d}",  
-                timestamp=datetime.now().isoformat(),  
-                alert\_type=gap\["gap\_type"\],  
-                severity=gap\["severity"\],  
-                description=gap\["description"\],  
-                evidence\_reference=stream.stream\_id,  
-                control\_id=stream.control\_id,  
-                framework=stream.framework  
-            )  
-            self.alerts.append(alert)  
-      
-    def \_notify\_subscribers(self, stream: EvidenceStream):  
-        """Notify subscribers of new evidence"""  
-        \# In production, this would use SSE/WebSocket  
-        \# For now, just add to buffer  
-        pass  
-      
-    def get\_stream(self, limit: int \= 100\) \-\> List\[EvidenceStream\]:  
-        """Get recent evidence streams"""  
-        return list(self.stream\_buffer)\[-limit:\]  
-      
-    def get\_alerts(  
-        self,  
-        severity: Optional\[AlertSeverity\] \= None,  
-        limit: int \= 100  
-    ) \-\> List\[ComplianceAlert\]:  
-        """Get recent alerts"""  
-        alerts \= list(self.alerts)\[-limit:\]  
-        if severity:  
-            alerts \= \[a for a in alerts if a.severity \== severity\]  
-        return alerts  
-      
-    def get\_compliance\_summary(self) \-\> Dict:  
-        """Get real-time compliance summary"""  
-        recent \= list(self.stream\_buffer)\[-1000:\]  \# Last 1000 entries  
-          
-        if not recent:  
-            return {  
-                "total\_evidence": 0,  
-                "compliance\_rate": 0,  
-                "gaps": 0,  
-                "alerts": 0  
-            }  
-          
-        compliant \= len(\[s for s in recent if s.compliance\_status \== ComplianceStatus.COMPLIANT\])  
-        total \= len(recent)  
-        gaps \= len(\[s for s in recent if s.gaps\])  
-          
-        return {  
-            "total\_evidence": total,  
-            "compliance\_rate": (compliant / total) \* 100 if total \> 0 else 0,  
-            "gaps": gaps,  
-            "alerts": len(self.alerts),  
-            "by\_framework": self.\_get\_framework\_summary(recent),  
-            "by\_control": self.\_get\_control\_summary(recent)  
-        }  
-      
-    def \_get\_framework\_summary(self, entries: List\[EvidenceStream\]) \-\> Dict:  
-        """Get summary by framework"""  
-        summary \= {}  
-        for entry in entries:  
-            framework \= entry.framework or "Unmapped"  
-            if framework not in summary:  
-                summary\[framework\] \= {  
-                    "total": 0,  
-                    "compliant": 0,  
-                    "gaps": 0  
-                }  
-            summary\[framework\]\["total"\] \+= 1  
-            if entry.compliance\_status \== ComplianceStatus.COMPLIANT:  
-                summary\[framework\]\["compliant"\] \+= 1  
-            if entry.gaps:  
-                summary\[framework\]\["gaps"\] \+= 1  
-        return summary  
-      
-    def \_get\_control\_summary(self, entries: List\[EvidenceStream\]) \-\> Dict:  
-        """Get summary by control"""  
-        summary \= {}  
-        for entry in entries:  
-            control\_id \= entry.control\_id  
-            if control\_id not in summary:  
-                summary\[control\_id\] \= {  
-                    "total": 0,  
-                    "compliant": 0,  
-                    "gaps": 0  
-                }  
-            summary\[control\_id\]\["total"\] \+= 1  
-            if entry.compliance\_status \== ComplianceStatus.COMPLIANT:  
-                summary\[control\_id\]\["compliant"\] \+= 1  
-            if entry.gaps:  
-                summary\[control\_id\]\["gaps"\] \+= 1  
-        return summary  
-      
-    def get\_gap\_analysis(self) \-\> Dict:  
-        """Get real-time gap analysis"""  
-        gaps\_by\_type \= {}  
-        for alert in self.alerts:  
-            if alert.alert\_type not in gaps\_by\_type:  
-                gaps\_by\_type\[alert.alert\_type\] \= {  
-                    "count": 0,  
-                    "severity": alert.severity.value,  
-                    "examples": \[\]  
-                }  
-            gaps\_by\_type\[alert.alert\_type\]\["count"\] \+= 1  
-            if len(gaps\_by\_type\[alert.alert\_type\]\["examples"\]) \< 3:  
-                gaps\_by\_type\[alert.alert\_type\]\["examples"\].append(alert.description)  
-          
-        return {  
-            "total\_gaps": len(self.alerts),  
-            "by\_type": gaps\_by\_type,  
-            "critical\_gaps": len(\[a for a in self.alerts if a.severity \== AlertSeverity.CRITICAL\])  
-        }  
-      
-    def create\_streaming\_endpoint(self) \-\> Dict:  
-        """  
-        Create a streaming endpoint for real-time evidence consumption.  
-        Returns endpoint configuration.  
-        """  
-        return {  
-            "endpoint": "/api/v1/evidence/stream",  
-            "protocol": "SSE",  
-            "format": "json",  
-            "filters": \["control\_id", "framework", "compliance\_status"\],  
-            "sample": {  
-                "stream\_id": "STREAM-20260901120000-000001",  
-                "timestamp": "2026-09-01T12:00:00Z",  
-                "evidence\_type": "DRO",  
-                "control\_id": "AICA-5-CN-021",  
-                "framework": "eu\_ai\_act",  
-                "compliance\_status": "Compliant"  
-            }  
+class RealtimeEvidenceStreaming:
+    """Real-time Evidence Streaming Framework"""
+    
+    def __init__(self, imp_store, mcr, crosswalk):
+        self.imp = imp_store
+        self.mcr = mcr
+        self.crosswalk = crosswalk
+        self.stream_buffer = deque(maxlen=10000)  # Last 10,000 stream entries
+        self.alerts = deque(maxlen=1000)  # Last 1,000 alerts
+        self.subscribers = []  # Active subscribers (for streaming API)
+        self.evidence_count = 0
+    
+    def process_evidence(
+        self,
+        evidence_type: EvidenceType,
+        raw_evidence: Dict[str, Any],
+        source: str = "system"
+    ) -> EvidenceStream:
+        """
+        Process evidence in real-time.
+        
+        Args:
+            evidence_type: Type of evidence
+            raw_evidence: Raw evidence data
+            source: Source of evidence
+        
+        Returns:
+            EvidenceStream: Processed evidence stream entry
+        """
+        self.evidence_count += 1
+        
+        # Step 1: Map evidence to MCR control
+        control_id, mapped_evidence = self._map_to_control(raw_evidence)
+        
+        # Step 2: Map control to framework
+        framework = self._map_to_framework(control_id)
+        
+        # Step 3: Verify compliance
+        compliance_status, gaps = self._verify_compliance(
+            control_id, framework, mapped_evidence
+        )
+        
+        # Step 4: Generate stream entry
+        stream_id = f"STREAM-{datetime.now().strftime('%Y%m%d%H%M%S')}-{self.evidence_count:06d}"
+        
+        stream = EvidenceStream(
+            stream_id=stream_id,
+            timestamp=datetime.now().isoformat(),
+            evidence_type=evidence_type,
+            control_id=control_id,
+            framework=framework,
+            compliance_status=compliance_status,
+            raw_evidence=raw_evidence,
+            mapped_evidence=mapped_evidence,
+            gaps=gaps,
+            hash=self._compute_hash(stream_id, raw_evidence, control_id)
+        )
+        
+        # Step 5: Add to stream buffer
+        self.stream_buffer.append(stream)
+        
+        # Step 6: Generate alerts if gaps found
+        if gaps:
+            self._generate_alerts(stream)
+        
+        # Step 7: Notify subscribers
+        self._notify_subscribers(stream)
+        
+        return stream
+    
+    def _map_to_control(self, raw_evidence: Dict[str, Any]) -> tuple:
+        """Map evidence to an MCR control"""
+        # In production, this would perform actual mapping
+        # For example, based on evidence type, source, etc.
+        
+        # Simple mapping based on evidence type
+        mapping = {
+            "DRO": "AICA-5-CN-021",  # Decision Lineage
+            "GAO": "IMP-003",          # Governance Artifact
+            "OEO": "AICA-5-CN-023",    # Outcome Validation
+            "XOO": "IMP-006",          # Exception/Override
+            "PreDelivery": "ADTEP-003", # Pre-Delivery Log
+            "Drift": "AICA-5-CN-017",   # Drift Detection
+            "Bias": "AOBA-001"          # Bias Audit
+        }
+        
+        evidence_type = raw_evidence.get("evidence_type", "UNKNOWN")
+        control_id = mapping.get(evidence_type, "UNKNOWN")
+        
+        return control_id, {
+            "original": raw_evidence,
+            "mapped_to": control_id,
+            "timestamp": datetime.now().isoformat()
+        }
+    
+    def _map_to_framework(self, control_id: str) -> Optional[str]:
+        """Map a control to a regulatory framework"""
+        # In production, use crosswalk engine
+        mappings = self.crosswalk.map_component_to_framework(control_id, "eu_ai_act")
+        if mappings:
+            return "eu_ai_act"
+        
+        # Check other frameworks
+        for framework in ["nist_ai_rmf", "iso_42001", "pfrs_s1_s2"]:
+            mappings = self.crosswalk.map_component_to_framework(control_id, framework)
+            if mappings:
+                return framework
+        
+        return None
+    
+    def _verify_compliance(
+        self,
+        control_id: str,
+        framework: Optional[str],
+        mapped_evidence: Dict[str, Any]
+    ) -> tuple:
+        """Verify compliance against control and framework"""
+        gaps = []
+        
+        # Check if control exists
+        control = self.mcr.get_control(control_id)
+        if not control:
+            gaps.append({
+                "gap_type": "Control Gap",
+                "description": f"Control {control_id} not found in MCR",
+                "severity": AlertSeverity.HIGH
+            })
+            return ComplianceStatus.NON_COMPLIANT, gaps
+        
+        # Check if framework mapping exists
+        if framework:
+            mappings = self.crosswalk.map_component_to_framework(control_id, framework)
+            if not mappings:
+                gaps.append({
+                    "gap_type": "Framework Gap",
+                    "description": f"No mapping from {control_id} to {framework}",
+                    "severity": AlertSeverity.MEDIUM
+                })
+        
+        # Check evidence completeness
+        required_fields = self._get_required_fields(control_id)
+        missing_fields = [f for f in required_fields if f not in mapped_evidence]
+        if missing_fields:
+            gaps.append({
+                "gap_type": "Missing Evidence",
+                "description": f"Missing fields: {', '.join(missing_fields)}",
+                "severity": AlertSeverity.MEDIUM
+            })
+        
+        # Determine compliance status
+        if not gaps:
+            return ComplianceStatus.COMPLIANT, []
+        elif any(g["severity"] == AlertSeverity.HIGH for g in gaps):
+            return ComplianceStatus.NON_COMPLIANT, gaps
+        else:
+            return ComplianceStatus.PARTIAL, gaps
+    
+    def _get_required_fields(self, control_id: str) -> List[str]:
+        """Get required fields for a control"""
+        # In production, define required fields per control
+        return ["timestamp", "agent_id", "action_type"]
+    
+    def _compute_hash(self, stream_id: str, evidence: Dict, control_id: str) -> str:
+        """Compute a hash for the evidence stream entry"""
+        data = {
+            "stream_id": stream_id,
+            "evidence": evidence,
+            "control_id": control_id,
+            "timestamp": datetime.now().isoformat()
+        }
+        return hashlib.sha256(json.dumps(data, sort_keys=True).encode()).hexdigest()
+    
+    def _generate_alerts(self, stream: EvidenceStream):
+        """Generate alerts for gaps"""
+        for gap in stream.gaps:
+            alert = ComplianceAlert(
+                alert_id=f"ALERT-{datetime.now().strftime('%Y%m%d%H%M%S')}-{len(self.alerts)+1:06d}",
+                timestamp=datetime.now().isoformat(),
+                alert_type=gap["gap_type"],
+                severity=gap["severity"],
+                description=gap["description"],
+                evidence_reference=stream.stream_id,
+                control_id=stream.control_id,
+                framework=stream.framework
+            )
+            self.alerts.append(alert)
+    
+    def _notify_subscribers(self, stream: EvidenceStream):
+        """Notify subscribers of new evidence"""
+        # In production, this would use SSE/WebSocket
+        # For now, just add to buffer
+        pass
+    
+    def get_stream(self, limit: int = 100) -> List[EvidenceStream]:
+        """Get recent evidence streams"""
+        return list(self.stream_buffer)[-limit:]
+    
+    def get_alerts(
+        self,
+        severity: Optional[AlertSeverity] = None,
+        limit: int = 100
+    ) -> List[ComplianceAlert]:
+        """Get recent alerts"""
+        alerts = list(self.alerts)[-limit:]
+        if severity:
+            alerts = [a for a in alerts if a.severity == severity]
+        return alerts
+    
+    def get_compliance_summary(self) -> Dict:
+        """Get real-time compliance summary"""
+        recent = list(self.stream_buffer)[-1000:]  # Last 1000 entries
+        
+        if not recent:
+            return {
+                "total_evidence": 0,
+                "compliance_rate": 0,
+                "gaps": 0,
+                "alerts": 0
+            }
+        
+        compliant = len([s for s in recent if s.compliance_status == ComplianceStatus.COMPLIANT])
+        total = len(recent)
+        gaps = len([s for s in recent if s.gaps])
+        
+        return {
+            "total_evidence": total,
+            "compliance_rate": (compliant / total) * 100 if total > 0 else 0,
+            "gaps": gaps,
+            "alerts": len(self.alerts),
+            "by_framework": self._get_framework_summary(recent),
+            "by_control": self._get_control_summary(recent)
+        }
+    
+    def _get_framework_summary(self, entries: List[EvidenceStream]) -> Dict:
+        """Get summary by framework"""
+        summary = {}
+        for entry in entries:
+            framework = entry.framework or "Unmapped"
+            if framework not in summary:
+                summary[framework] = {
+                    "total": 0,
+                    "compliant": 0,
+                    "gaps": 0
+                }
+            summary[framework]["total"] += 1
+            if entry.compliance_status == ComplianceStatus.COMPLIANT:
+                summary[framework]["compliant"] += 1
+            if entry.gaps:
+                summary[framework]["gaps"] += 1
+        return summary
+    
+    def _get_control_summary(self, entries: List[EvidenceStream]) -> Dict:
+        """Get summary by control"""
+        summary = {}
+        for entry in entries:
+            control_id = entry.control_id
+            if control_id not in summary:
+                summary[control_id] = {
+                    "total": 0,
+                    "compliant": 0,
+                    "gaps": 0
+                }
+            summary[control_id]["total"] += 1
+            if entry.compliance_status == ComplianceStatus.COMPLIANT:
+                summary[control_id]["compliant"] += 1
+            if entry.gaps:
+                summary[control_id]["gaps"] += 1
+        return summary
+    
+    def get_gap_analysis(self) -> Dict:
+        """Get real-time gap analysis"""
+        gaps_by_type = {}
+        for alert in self.alerts:
+            if alert.alert_type not in gaps_by_type:
+                gaps_by_type[alert.alert_type] = {
+                    "count": 0,
+                    "severity": alert.severity.value,
+                    "examples": []
+                }
+            gaps_by_type[alert.alert_type]["count"] += 1
+            if len(gaps_by_type[alert.alert_type]["examples"]) < 3:
+                gaps_by_type[alert.alert_type]["examples"].append(alert.description)
+        
+        return {
+            "total_gaps": len(self.alerts),
+            "by_type": gaps_by_type,
+            "critical_gaps": len([a for a in self.alerts if a.severity == AlertSeverity.CRITICAL])
+        }
+    
+    def create_streaming_endpoint(self) -> Dict:
+        """
+        Create a streaming endpoint for real-time evidence consumption.
+        Returns endpoint configuration.
+        """
+        return {
+            "endpoint": "/api/v1/evidence/stream",
+            "protocol": "SSE",
+            "format": "json",
+            "filters": ["control_id", "framework", "compliance_status"],
+            "sample": {
+                "stream_id": "STREAM-20260901120000-000001",
+                "timestamp": "2026-09-01T12:00:00Z",
+                "evidence_type": "DRO",
+                "control_id": "AICA-5-CN-021",
+                "framework": "eu_ai_act",
+                "compliance_status": "Compliant"
+            }
         }
 ```
 
@@ -25240,26 +25263,26 @@ class RealtimeEvidenceStreaming:
 ### 6.2 Streaming Format
 
 ```
-event: evidence  
-data: {  
-  "stream\_id": "STREAM-20260901120000-000001",  
-  "timestamp": "2026-09-01T12:00:00Z",  
-  "evidence\_type": "DRO",  
-  "control\_id": "AICA-5-CN-021",  
-  "framework": "eu\_ai\_act",  
-  "compliance\_status": "Compliant",  
-  "raw\_evidence": {...},  
-  "gaps": \[\]  
+event: evidence
+data: {
+  "stream_id": "STREAM-20260901120000-000001",
+  "timestamp": "2026-09-01T12:00:00Z",
+  "evidence_type": "DRO",
+  "control_id": "AICA-5-CN-021",
+  "framework": "eu_ai_act",
+  "compliance_status": "Compliant",
+  "raw_evidence": {...},
+  "gaps": []
 }
 
-event: alert  
-data: {  
-  "alert\_id": "ALERT-20260901120000-000001",  
-  "timestamp": "2026-09-01T12:00:00Z",  
-  "alert\_type": "Missing Evidence",  
-  "severity": "High",  
-  "description": "Evidence expected but not found for control AICA-5-CN-011",  
-  "control\_id": "AICA-5-CN-011"  
+event: alert
+data: {
+  "alert_id": "ALERT-20260901120000-000001",
+  "timestamp": "2026-09-01T12:00:00Z",
+  "alert_type": "Missing Evidence",
+  "severity": "High",
+  "description": "Evidence expected but not found for control AICA-5-CN-011",
+  "control_id": "AICA-5-CN-011"
 }
 ```
 ---
@@ -25678,349 +25701,349 @@ Each framework overlay defines the mapping from MCR controls to framework requir
 ## SECTION 6: MCR API
 
 ```
-\# master\_control\_registry.py  
-"""  
-Master Control Registry — Complete Implementation  
-"""  
-from enum import Enum  
-from typing import List, Dict, Optional  
-from dataclasses import dataclass, field  
-from datetime import datetime  
-class Framework(Enum):  
-    EU\_AI\_ACT \= "eu\_ai\_act"  
-    NIST\_AI\_RMF \= "nist\_ai\_rmf"  
-    OECD \= "oecd"  
-    ISO\_42001 \= "iso\_42001"  
-    PFRS\_S1\_S2 \= "pfrs\_s1\_s2"  
-    BSP\_STARS \= "bsp\_stars"  
-    DICT\_CSC \= "dict\_csc"  
-    NPC \= "npc"  
-class ControlSource(Enum):  
-    AICA\_5 \= "AICA-5"  
-    ADTEP \= "ADTEP"  
-    RGI\_8 \= "RGI-8"  
-    CAD\_7 \= "CAD-7"  
-    ICC\_8 \= "ICC-8"  
-    IMP \= "IMP"  
-    HOF \= "HOF"  
-    EAF \= "EAF"  
-    CEF \= "CEF"  
-class ControlCategory(Enum):  
-    CONSTITUTIONAL \= "Constitutional"  
-    GOVERNANCE \= "Governance"  
-    TECHNICAL \= "Technical"  
-    OPERATIONAL \= "Operational"  
-    MEMORY \= "Memory"  
-@dataclass  
-class Control:  
-    """A single control in the Master Control Registry"""  
-    control\_id: str  
-    name: str  
-    description: str  
-    source: ControlSource  
-    source\_reference: str  
-    category: ControlCategory  
-    layer: Optional\[str\] \= None  
-    mappings: Dict\[str, List\[str\]\] \= field(default\_factory=dict)  
-    status: str \= "Active"  
-    version: str \= "v1.0"  
-    effective\_date: str \= field(default\_factory=lambda: datetime.now().isoformat())  
-    last\_updated: str \= field(default\_factory=lambda: datetime.now().isoformat())  
-@dataclass  
-class FrameworkOverlay:  
-    """A regulatory framework overlay"""  
-    framework\_id: str  
-    name: str  
-    version: str  
-    effective\_date: str  
-    requirements: Dict\[str, List\[str\]\]  \# clause → control\_ids  
-class MasterControlRegistry:  
-    """Single source of truth for all AIGIS controls"""  
-      
-    def \_\_init\_\_(self):  
-        self.controls: Dict\[str, Control\] \= {}  
-        self.frameworks: Dict\[str, FrameworkOverlay\] \= {}  
-        self.\_build\_controls()  
-        self.\_build\_frameworks()  
-      
-    def \_build\_controls(self):  
-        """Build all 109 controls from AIGIS stack"""  
-        \# AICA-5 Control Nodes (25)  
-        aica\_nodes \= {  
-            "AICA-5-CN-001": ("Intelligence Sourcing", "C-N1", "Cognitive"),  
-            "AICA-5-CN-002": ("Inference Architecture", "C-N2", "Cognitive"),  
-            "AICA-5-CN-003": ("Signal Validation", "C-N3", "Cognitive"),  
-            "AICA-5-CN-004": ("Output Calibration", "C-N4", "Cognitive"),  
-            "AICA-5-CN-005": ("Knowledge Boundary Management", "C-N5", "Cognitive"),  
-            "AICA-5-CN-006": ("Task Decomposition", "E-N1", "Execution"),  
-            "AICA-5-CN-007": ("Pipeline Orchestration", "E-N2", "Execution"),  
-            "AICA-5-CN-008": ("Concurrency Governance", "E-N3", "Execution"),  
-            "AICA-5-CN-009": ("Monitoring Loops", "E-N4", "Execution"),  
-            "AICA-5-CN-010": ("Exception Handling", "E-N5", "Execution"),  
-            "AICA-5-CN-011": ("Trigger Rights", "A-N1", "Authority"),  
-            "AICA-5-CN-012": ("Binding Thresholds", "A-N2", "Authority"),  
-            "AICA-5-CN-013": ("Override Protocols", "A-N3", "Authority"),  
-            "AICA-5-CN-014": ("Escalation Paths", "A-N4", "Authority"),  
-            "AICA-5-CN-015": ("Delegation Boundaries", "A-N5", "Authority"),  
-            "AICA-5-CN-016": ("State Establishment", "Co-N1", "Continuity"),  
-            "AICA-5-CN-017": ("Drift Detection", "Co-N2", "Continuity"),  
-            "AICA-5-CN-018": ("Approval Expiry", "Co-N3", "Continuity"),  
-            "AICA-5-CN-019": ("Handoff Integrity", "Co-N4", "Continuity"),  
-            "AICA-5-CN-020": ("Context Restoration", "Co-N5", "Continuity"),  
-            "AICA-5-CN-021": ("Decision Lineage", "Ac-N1", "Accountability"),  
-            "AICA-5-CN-022": ("Responsibility Attribution", "Ac-N2", "Accountability"),  
-            "AICA-5-CN-023": ("Outcome Validation", "Ac-N3", "Accountability"),  
-            "AICA-5-CN-024": ("Rollback Pathways", "Ac-N4", "Accountability"),  
-            "AICA-5-CN-025": ("Learning Integration", "Ac-N5", "Accountability"),  
-        }  
-        for control\_id, (name, ref, layer) in aica\_nodes.items():  
-            self.controls\[control\_id\] \= Control(  
-                control\_id=control\_id,  
-                name=name,  
-                description=f"AICA-5 {ref} — {name}",  
-                source=ControlSource.AICA\_5,  
-                source\_reference=ref,  
-                category=ControlCategory.GOVERNANCE if layer in \["Cognitive", "Authority", "Continuity"\] else ControlCategory.TECHNICAL,  
-                layer=layer  
-            )  
-          
-        \# ADTEP Components (7)  
-        adtep \= {  
-            "ADTEP-001": ("Role Specification Schema", "Component 1"),  
-            "ADTEP-002": ("Session Initialization Checklist", "Component 2"),  
-            "ADTEP-003": ("Pre-Delivery Log Entry", "Component 3"),  
-            "ADTEP-004": ("Escalation Flag", "Component 4"),  
-            "ADTEP-005": ("Constitutional Suspension", "Component 5"),  
-            "ADTEP-006": ("Constitutional Refresh", "Component 6"),  
-            "ADTEP-007": ("I9 Hard-Coded Block", "Component 7"),  
-        }  
-        for control\_id, (name, ref) in adtep.items():  
-            self.controls\[control\_id\] \= Control(  
-                control\_id=control\_id,  
-                name=name,  
-                description=f"ADTEP {ref} — {name}",  
-                source=ControlSource.ADTEP,  
-                source\_reference=ref,  
-                category=ControlCategory.TECHNICAL  
-            )  
-          
-        \# ICC-8 Invariants (9)  
-        icc8 \= {  
-            "ICC-8-I1": ("Accountability Invariance", "I1"),  
-            "ICC-8-I2": ("Authority-Responsibility Separation", "I2"),  
-            "ICC-8-I3": ("Auditability Invariance", "I3"),  
-            "ICC-8-I4": ("Control Invariance", "I4"),  
-            "ICC-8-I5": ("Structural Compliance", "I5"),  
-            "ICC-8-I6": ("Transparency Gradient", "I6"),  
-            "ICC-8-I7": ("Continuity and Succession", "I7"),  
-            "ICC-8-I8": ("External Legibility", "I8"),  
-            "ICC-8-I9": ("Catastrophic Risk", "I9"),  
-        }  
-        for control\_id, (name, ref) in icc8.items():  
-            self.controls\[control\_id\] \= Control(  
-                control\_id=control\_id,  
-                name=name,  
-                description=f"ICC-8 {ref} — {name}",  
-                source=ControlSource.ICC\_8,  
-                source\_reference=ref,  
-                category=ControlCategory.CONSTITUTIONAL  
-            )  
-          
-        \# RGI-8 Components (8)  
-        rgi8 \= {  
-            "RGI-8-001": ("Declaration Binding", "Component 1"),  
-            "RGI-8-002": ("Gate/Steer Execution Mode", "Component 2"),  
-            "RGI-8-003": ("Fidelity-to-Declaration Trace", "Component 3"),  
-            "RGI-8-004": ("Drift Detection", "Component 4"),  
-            "RGI-8-005": ("Constraint Supremacy", "Component 5"),  
-            "RGI-8-006": ("Adaptation Firewall", "Component 6"),  
-            "RGI-8-007": ("Fail-Safe Reversion", "Component 7"),  
-            "RGI-8-008": ("Steer Observability Premium", "Component 8"),  
-        }  
-        for control\_id, (name, ref) in rgi8.items():  
-            self.controls\[control\_id\] \= Control(  
-                control\_id=control\_id,  
-                name=name,  
-                description=f"RGI-8 {ref} — {name}",  
-                source=ControlSource.RGI\_8,  
-                source\_reference=ref,  
-                category=ControlCategory.TECHNICAL  
-            )  
-          
-        \# CAD-7 Components (7)  
-        cad7 \= {  
-            "CAD-7-001": ("Coalition Trigger Definition", "Component 1"),  
-            "CAD-7-002": ("Principal Declaration", "Component 2"),  
-            "CAD-7-003": ("Composability Boundary", "Component 3"),  
-            "CAD-7-004": ("Dissolution/Reconstitution", "Component 4"),  
-            "CAD-7-005": ("Lightweight Compilation", "Component 5"),  
-            "CAD-7-006": ("Cross-Entity Coalition Clause", "Component 6"),  
-            "CAD-7-007": ("Reconstructability", "Component 7"),  
-        }  
-        for control\_id, (name, ref) in cad7.items():  
-            self.controls\[control\_id\] \= Control(  
-                control\_id=control\_id,  
-                name=name,  
-                description=f"CAD-7 {ref} — {name}",  
-                source=ControlSource.CAD\_7,  
-                source\_reference=ref,  
-                category=ControlCategory.GOVERNANCE  
-            )  
-          
-        \# IMP Object Types (6)  
-        imp \= {  
-            "IMP-001": ("Engagement Context Object", "ECO"),  
-            "IMP-002": ("Decision Record Object", "DRO"),  
-            "IMP-003": ("Governance Artifact Object", "GAO"),  
-            "IMP-004": ("Constraint Record Object", "CRO"),  
-            "IMP-005": ("Outcome Evidence Object", "OEO"),  
-            "IMP-006": ("Exception/Override Object", "XOO"),  
-        }  
-        for control\_id, (name, ref) in imp.items():  
-            self.controls\[control\_id\] \= Control(  
-                control\_id=control\_id,  
-                name=name,  
-                description=f"IMP {ref} — {name}",  
-                source=ControlSource.IMP,  
-                source\_reference=ref,  
-                category=ControlCategory.MEMORY  
-            )  
-          
-        \# Add mappings (simplified — full mappings in Section 4\)  
-        self.\_add\_mappings()  
-      
-    def \_add\_mappings(self):  
-        """Add regulatory mappings for all controls"""  
-        \# EU AI Act mappings  
-        eu\_ai\_mappings \= {  
-            "AICA-5-CN-011": \["Art. 14"\],  
-            "AICA-5-CN-012": \["Art. 9"\],  
-            "AICA-5-CN-013": \["Art. 14"\],  
-            "AICA-5-CN-014": \["Art. 14"\],  
-            "AICA-5-CN-017": \["Art. 9"\],  
-            "AICA-5-CN-021": \["Art. 12"\],  
-            "AICA-5-CN-023": \["Art. 9"\],  
-            "ICC-8-I1": \["Art. 14"\],  
-            "ICC-8-I3": \["Art. 12"\],  
-            "ICC-8-I6": \["Art. 13"\],  
-            "ICC-8-I8": \["Art. 13", "Art. 69"\],  
-            "ICC-8-I9": \["Art. 7", "Art. 9"\],  
-            "ADTEP-007": \["Art. 7", "Art. 9"\],  
-            "HOF-H1": \["Art. 14"\],  
-            "HOF-H3": \["Art. 14"\],  
-        }  
-        for control\_id, clauses in eu\_ai\_mappings.items():  
-            if control\_id in self.controls:  
-                self.controls\[control\_id\].mappings\["eu\_ai\_act"\] \= clauses  
-          
-        \# NIST AI RMF mappings  
-        nist\_mappings \= {  
-            "AICA-5-CN-011": \["Govern"\],  
-            "AICA-5-CN-012": \["Map"\],  
-            "AICA-5-CN-013": \["Manage"\],  
-            "AICA-5-CN-014": \["Manage"\],  
-            "AICA-5-CN-017": \["Measure"\],  
-            "AICA-5-CN-021": \["Measure"\],  
-            "AICA-5-CN-023": \["Measure"\],  
-            "ICC-8-I1": \["Govern"\],  
-            "ICC-8-I3": \["Measure"\],  
-            "ICC-8-I5": \["Map"\],  
-            "ICC-8-I6": \["Govern"\],  
-            "ICC-8-I8": \["Govern"\],  
-            "ICC-8-I9": \["Manage"\],  
-            "HOF-H1": \["Govern"\],  
-            "HOF-H3": \["Govern"\],  
-        }  
-        for control\_id, functions in nist\_mappings.items():  
-            if control\_id in self.controls:  
-                self.controls\[control\_id\].mappings\["nist\_ai\_rmf"\] \= functions  
-      
-    def \_build\_frameworks(self):  
-        """Build regulatory framework overlays"""  
-        frameworks \= {  
-            "eu\_ai\_act": ("EU Artificial Intelligence Act", "v1.0 (2024)", "2024-08-01"),  
-            "nist\_ai\_rmf": ("NIST AI Risk Management Framework", "v1.0", "2023-01-26"),  
-            "oecd": ("OECD AI Principles", "v1.0", "2019-05-21"),  
-            "iso\_42001": ("ISO/IEC 42001 AI Management System", "v1.0", "2023-12-18"),  
-            "pfrs\_s1\_s2": ("Philippine PFRS S1/S2 Sustainability Reporting", "v1.0", "2026-01-08"),  
-            "bsp\_stars": ("BSP STARS AI Governance", "v1.0", "TBD"),  
-            "dict\_csc": ("DICT-CSC JMC 003 AI in Government", "v1.0", "TBD"),  
-            "npc": ("NPC Advisory 2024-04 AI and Data Privacy", "v1.0", "2024-01-01"),  
-        }  
-        for framework\_id, (name, version, date) in frameworks.items():  
-            self.frameworks\[framework\_id\] \= FrameworkOverlay(  
-                framework\_id=framework\_id,  
-                name=name,  
-                version=version,  
-                effective\_date=date,  
-                requirements={}  
-            )  
-      
-    def get\_control(self, control\_id: str) \-\> Optional\[Control\]:  
-        """Get a control by ID"""  
-        return self.controls.get(control\_id)  
-      
-    def get\_controls\_by\_source(self, source: ControlSource) \-\> List\[Control\]:  
-        """Get all controls from a source"""  
-        return \[c for c in self.controls.values() if c.source \== source\]  
-      
-    def get\_controls\_by\_category(self, category: ControlCategory) \-\> List\[Control\]:  
-        """Get all controls in a category"""  
-        return \[c for c in self.controls.values() if c.category \== category\]  
-      
-    def get\_mapping(self, control\_id: str, framework: str) \-\> List\[str\]:  
-        """Get mapping for a control to a framework"""  
-        control \= self.controls.get(control\_id)  
-        if not control:  
-            return \[\]  
-        return control.mappings.get(framework, \[\])  
-      
-    def get\_controls\_for\_framework(self, framework: str) \-\> List\[Control\]:  
-        """Get all controls mapped to a framework"""  
-        return \[c for c in self.controls.values() if framework in c.mappings\]  
-      
-    def get\_gap\_analysis(self, framework: str) \-\> Dict:  
-        """Analyze coverage gaps for a framework"""  
-        covered \= self.get\_controls\_for\_framework(framework)  
-        total \= len(self.controls)  
-        uncovered \= \[c for c in self.controls.values() if framework not in c.mappings\]  
-        return {  
-            "framework": framework,  
-            "total\_controls": total,  
-            "covered": len(covered),  
-            "uncovered": len(uncovered),  
-            "coverage\_pct": (len(covered) / total) \* 100,  
-            "uncovered\_controls": \[c.control\_id for c in uncovered\]  
-        }  
-      
-    def export\_registry(self, format: str \= "json") \-\> str:  
-        """Export the registry in requested format"""  
-        if format \== "json":  
-            import json  
-            return json.dumps({  
-                "controls": {cid: {  
-                    "name": c.name,  
-                    "source": c.source.value,  
-                    "source\_reference": c.source\_reference,  
-                    "category": c.category.value,  
-                    "mappings": c.mappings,  
-                    "status": c.status  
-                } for cid, c in self.controls.items()},  
-                "frameworks": {fid: {  
-                    "name": f.name,  
-                    "version": f.version  
-                } for fid, f in self.frameworks.items()}  
-            }, indent=2)  
-        return ""  
-      
-    def summary(self) \-\> Dict:  
-        """Get a summary of the registry"""  
-        return {  
-            "total\_controls": len(self.controls),  
-            "by\_source": {s.value: len(self.get\_controls\_by\_source(s)) for s in ControlSource},  
-            "by\_category": {c.value: len(self.get\_controls\_by\_category(c)) for c in ControlCategory},  
-            "frameworks": list(self.frameworks.keys()),  
-            "last\_updated": datetime.now().isoformat()  
+# master_control_registry.py
+"""
+Master Control Registry — Complete Implementation
+"""
+from enum import Enum
+from typing import List, Dict, Optional
+from dataclasses import dataclass, field
+from datetime import datetime
+class Framework(Enum):
+    EU_AI_ACT = "eu_ai_act"
+    NIST_AI_RMF = "nist_ai_rmf"
+    OECD = "oecd"
+    ISO_42001 = "iso_42001"
+    PFRS_S1_S2 = "pfrs_s1_s2"
+    BSP_STARS = "bsp_stars"
+    DICT_CSC = "dict_csc"
+    NPC = "npc"
+class ControlSource(Enum):
+    AICA_5 = "AICA-5"
+    ADTEP = "ADTEP"
+    RGI_8 = "RGI-8"
+    CAD_7 = "CAD-7"
+    ICC_8 = "ICC-8"
+    IMP = "IMP"
+    HOF = "HOF"
+    EAF = "EAF"
+    CEF = "CEF"
+class ControlCategory(Enum):
+    CONSTITUTIONAL = "Constitutional"
+    GOVERNANCE = "Governance"
+    TECHNICAL = "Technical"
+    OPERATIONAL = "Operational"
+    MEMORY = "Memory"
+@dataclass
+class Control:
+    """A single control in the Master Control Registry"""
+    control_id: str
+    name: str
+    description: str
+    source: ControlSource
+    source_reference: str
+    category: ControlCategory
+    layer: Optional[str] = None
+    mappings: Dict[str, List[str]] = field(default_factory=dict)
+    status: str = "Active"
+    version: str = "v1.0"
+    effective_date: str = field(default_factory=lambda: datetime.now().isoformat())
+    last_updated: str = field(default_factory=lambda: datetime.now().isoformat())
+@dataclass
+class FrameworkOverlay:
+    """A regulatory framework overlay"""
+    framework_id: str
+    name: str
+    version: str
+    effective_date: str
+    requirements: Dict[str, List[str]]  # clause → control_ids
+class MasterControlRegistry:
+    """Single source of truth for all AIGIS controls"""
+    
+    def __init__(self):
+        self.controls: Dict[str, Control] = {}
+        self.frameworks: Dict[str, FrameworkOverlay] = {}
+        self._build_controls()
+        self._build_frameworks()
+    
+    def _build_controls(self):
+        """Build all 109 controls from AIGIS stack"""
+        # AICA-5 Control Nodes (25)
+        aica_nodes = {
+            "AICA-5-CN-001": ("Intelligence Sourcing", "C-N1", "Cognitive"),
+            "AICA-5-CN-002": ("Inference Architecture", "C-N2", "Cognitive"),
+            "AICA-5-CN-003": ("Signal Validation", "C-N3", "Cognitive"),
+            "AICA-5-CN-004": ("Output Calibration", "C-N4", "Cognitive"),
+            "AICA-5-CN-005": ("Knowledge Boundary Management", "C-N5", "Cognitive"),
+            "AICA-5-CN-006": ("Task Decomposition", "E-N1", "Execution"),
+            "AICA-5-CN-007": ("Pipeline Orchestration", "E-N2", "Execution"),
+            "AICA-5-CN-008": ("Concurrency Governance", "E-N3", "Execution"),
+            "AICA-5-CN-009": ("Monitoring Loops", "E-N4", "Execution"),
+            "AICA-5-CN-010": ("Exception Handling", "E-N5", "Execution"),
+            "AICA-5-CN-011": ("Trigger Rights", "A-N1", "Authority"),
+            "AICA-5-CN-012": ("Binding Thresholds", "A-N2", "Authority"),
+            "AICA-5-CN-013": ("Override Protocols", "A-N3", "Authority"),
+            "AICA-5-CN-014": ("Escalation Paths", "A-N4", "Authority"),
+            "AICA-5-CN-015": ("Delegation Boundaries", "A-N5", "Authority"),
+            "AICA-5-CN-016": ("State Establishment", "Co-N1", "Continuity"),
+            "AICA-5-CN-017": ("Drift Detection", "Co-N2", "Continuity"),
+            "AICA-5-CN-018": ("Approval Expiry", "Co-N3", "Continuity"),
+            "AICA-5-CN-019": ("Handoff Integrity", "Co-N4", "Continuity"),
+            "AICA-5-CN-020": ("Context Restoration", "Co-N5", "Continuity"),
+            "AICA-5-CN-021": ("Decision Lineage", "Ac-N1", "Accountability"),
+            "AICA-5-CN-022": ("Responsibility Attribution", "Ac-N2", "Accountability"),
+            "AICA-5-CN-023": ("Outcome Validation", "Ac-N3", "Accountability"),
+            "AICA-5-CN-024": ("Rollback Pathways", "Ac-N4", "Accountability"),
+            "AICA-5-CN-025": ("Learning Integration", "Ac-N5", "Accountability"),
+        }
+        for control_id, (name, ref, layer) in aica_nodes.items():
+            self.controls[control_id] = Control(
+                control_id=control_id,
+                name=name,
+                description=f"AICA-5 {ref} — {name}",
+                source=ControlSource.AICA_5,
+                source_reference=ref,
+                category=ControlCategory.GOVERNANCE if layer in ["Cognitive", "Authority", "Continuity"] else ControlCategory.TECHNICAL,
+                layer=layer
+            )
+        
+        # ADTEP Components (7)
+        adtep = {
+            "ADTEP-001": ("Role Specification Schema", "Component 1"),
+            "ADTEP-002": ("Session Initialization Checklist", "Component 2"),
+            "ADTEP-003": ("Pre-Delivery Log Entry", "Component 3"),
+            "ADTEP-004": ("Escalation Flag", "Component 4"),
+            "ADTEP-005": ("Constitutional Suspension", "Component 5"),
+            "ADTEP-006": ("Constitutional Refresh", "Component 6"),
+            "ADTEP-007": ("I9 Hard-Coded Block", "Component 7"),
+        }
+        for control_id, (name, ref) in adtep.items():
+            self.controls[control_id] = Control(
+                control_id=control_id,
+                name=name,
+                description=f"ADTEP {ref} — {name}",
+                source=ControlSource.ADTEP,
+                source_reference=ref,
+                category=ControlCategory.TECHNICAL
+            )
+        
+        # ICC-8 Invariants (9)
+        icc8 = {
+            "ICC-8-I1": ("Accountability Invariance", "I1"),
+            "ICC-8-I2": ("Authority-Responsibility Separation", "I2"),
+            "ICC-8-I3": ("Auditability Invariance", "I3"),
+            "ICC-8-I4": ("Control Invariance", "I4"),
+            "ICC-8-I5": ("Structural Compliance", "I5"),
+            "ICC-8-I6": ("Transparency Gradient", "I6"),
+            "ICC-8-I7": ("Continuity and Succession", "I7"),
+            "ICC-8-I8": ("External Legibility", "I8"),
+            "ICC-8-I9": ("Catastrophic Risk", "I9"),
+        }
+        for control_id, (name, ref) in icc8.items():
+            self.controls[control_id] = Control(
+                control_id=control_id,
+                name=name,
+                description=f"ICC-8 {ref} — {name}",
+                source=ControlSource.ICC_8,
+                source_reference=ref,
+                category=ControlCategory.CONSTITUTIONAL
+            )
+        
+        # RGI-8 Components (8)
+        rgi8 = {
+            "RGI-8-001": ("Declaration Binding", "Component 1"),
+            "RGI-8-002": ("Gate/Steer Execution Mode", "Component 2"),
+            "RGI-8-003": ("Fidelity-to-Declaration Trace", "Component 3"),
+            "RGI-8-004": ("Drift Detection", "Component 4"),
+            "RGI-8-005": ("Constraint Supremacy", "Component 5"),
+            "RGI-8-006": ("Adaptation Firewall", "Component 6"),
+            "RGI-8-007": ("Fail-Safe Reversion", "Component 7"),
+            "RGI-8-008": ("Steer Observability Premium", "Component 8"),
+        }
+        for control_id, (name, ref) in rgi8.items():
+            self.controls[control_id] = Control(
+                control_id=control_id,
+                name=name,
+                description=f"RGI-8 {ref} — {name}",
+                source=ControlSource.RGI_8,
+                source_reference=ref,
+                category=ControlCategory.TECHNICAL
+            )
+        
+        # CAD-7 Components (7)
+        cad7 = {
+            "CAD-7-001": ("Coalition Trigger Definition", "Component 1"),
+            "CAD-7-002": ("Principal Declaration", "Component 2"),
+            "CAD-7-003": ("Composability Boundary", "Component 3"),
+            "CAD-7-004": ("Dissolution/Reconstitution", "Component 4"),
+            "CAD-7-005": ("Lightweight Compilation", "Component 5"),
+            "CAD-7-006": ("Cross-Entity Coalition Clause", "Component 6"),
+            "CAD-7-007": ("Reconstructability", "Component 7"),
+        }
+        for control_id, (name, ref) in cad7.items():
+            self.controls[control_id] = Control(
+                control_id=control_id,
+                name=name,
+                description=f"CAD-7 {ref} — {name}",
+                source=ControlSource.CAD_7,
+                source_reference=ref,
+                category=ControlCategory.GOVERNANCE
+            )
+        
+        # IMP Object Types (6)
+        imp = {
+            "IMP-001": ("Engagement Context Object", "ECO"),
+            "IMP-002": ("Decision Record Object", "DRO"),
+            "IMP-003": ("Governance Artifact Object", "GAO"),
+            "IMP-004": ("Constraint Record Object", "CRO"),
+            "IMP-005": ("Outcome Evidence Object", "OEO"),
+            "IMP-006": ("Exception/Override Object", "XOO"),
+        }
+        for control_id, (name, ref) in imp.items():
+            self.controls[control_id] = Control(
+                control_id=control_id,
+                name=name,
+                description=f"IMP {ref} — {name}",
+                source=ControlSource.IMP,
+                source_reference=ref,
+                category=ControlCategory.MEMORY
+            )
+        
+        # Add mappings (simplified — full mappings in Section 4)
+        self._add_mappings()
+    
+    def _add_mappings(self):
+        """Add regulatory mappings for all controls"""
+        # EU AI Act mappings
+        eu_ai_mappings = {
+            "AICA-5-CN-011": ["Art. 14"],
+            "AICA-5-CN-012": ["Art. 9"],
+            "AICA-5-CN-013": ["Art. 14"],
+            "AICA-5-CN-014": ["Art. 14"],
+            "AICA-5-CN-017": ["Art. 9"],
+            "AICA-5-CN-021": ["Art. 12"],
+            "AICA-5-CN-023": ["Art. 9"],
+            "ICC-8-I1": ["Art. 14"],
+            "ICC-8-I3": ["Art. 12"],
+            "ICC-8-I6": ["Art. 13"],
+            "ICC-8-I8": ["Art. 13", "Art. 69"],
+            "ICC-8-I9": ["Art. 7", "Art. 9"],
+            "ADTEP-007": ["Art. 7", "Art. 9"],
+            "HOF-H1": ["Art. 14"],
+            "HOF-H3": ["Art. 14"],
+        }
+        for control_id, clauses in eu_ai_mappings.items():
+            if control_id in self.controls:
+                self.controls[control_id].mappings["eu_ai_act"] = clauses
+        
+        # NIST AI RMF mappings
+        nist_mappings = {
+            "AICA-5-CN-011": ["Govern"],
+            "AICA-5-CN-012": ["Map"],
+            "AICA-5-CN-013": ["Manage"],
+            "AICA-5-CN-014": ["Manage"],
+            "AICA-5-CN-017": ["Measure"],
+            "AICA-5-CN-021": ["Measure"],
+            "AICA-5-CN-023": ["Measure"],
+            "ICC-8-I1": ["Govern"],
+            "ICC-8-I3": ["Measure"],
+            "ICC-8-I5": ["Map"],
+            "ICC-8-I6": ["Govern"],
+            "ICC-8-I8": ["Govern"],
+            "ICC-8-I9": ["Manage"],
+            "HOF-H1": ["Govern"],
+            "HOF-H3": ["Govern"],
+        }
+        for control_id, functions in nist_mappings.items():
+            if control_id in self.controls:
+                self.controls[control_id].mappings["nist_ai_rmf"] = functions
+    
+    def _build_frameworks(self):
+        """Build regulatory framework overlays"""
+        frameworks = {
+            "eu_ai_act": ("EU Artificial Intelligence Act", "v1.0 (2024)", "2024-08-01"),
+            "nist_ai_rmf": ("NIST AI Risk Management Framework", "v1.0", "2023-01-26"),
+            "oecd": ("OECD AI Principles", "v1.0", "2019-05-21"),
+            "iso_42001": ("ISO/IEC 42001 AI Management System", "v1.0", "2023-12-18"),
+            "pfrs_s1_s2": ("Philippine PFRS S1/S2 Sustainability Reporting", "v1.0", "2026-01-08"),
+            "bsp_stars": ("BSP STARS AI Governance", "v1.0", "TBD"),
+            "dict_csc": ("DICT-CSC JMC 003 AI in Government", "v1.0", "TBD"),
+            "npc": ("NPC Advisory 2024-04 AI and Data Privacy", "v1.0", "2024-01-01"),
+        }
+        for framework_id, (name, version, date) in frameworks.items():
+            self.frameworks[framework_id] = FrameworkOverlay(
+                framework_id=framework_id,
+                name=name,
+                version=version,
+                effective_date=date,
+                requirements={}
+            )
+    
+    def get_control(self, control_id: str) -> Optional[Control]:
+        """Get a control by ID"""
+        return self.controls.get(control_id)
+    
+    def get_controls_by_source(self, source: ControlSource) -> List[Control]:
+        """Get all controls from a source"""
+        return [c for c in self.controls.values() if c.source == source]
+    
+    def get_controls_by_category(self, category: ControlCategory) -> List[Control]:
+        """Get all controls in a category"""
+        return [c for c in self.controls.values() if c.category == category]
+    
+    def get_mapping(self, control_id: str, framework: str) -> List[str]:
+        """Get mapping for a control to a framework"""
+        control = self.controls.get(control_id)
+        if not control:
+            return []
+        return control.mappings.get(framework, [])
+    
+    def get_controls_for_framework(self, framework: str) -> List[Control]:
+        """Get all controls mapped to a framework"""
+        return [c for c in self.controls.values() if framework in c.mappings]
+    
+    def get_gap_analysis(self, framework: str) -> Dict:
+        """Analyze coverage gaps for a framework"""
+        covered = self.get_controls_for_framework(framework)
+        total = len(self.controls)
+        uncovered = [c for c in self.controls.values() if framework not in c.mappings]
+        return {
+            "framework": framework,
+            "total_controls": total,
+            "covered": len(covered),
+            "uncovered": len(uncovered),
+            "coverage_pct": (len(covered) / total) * 100,
+            "uncovered_controls": [c.control_id for c in uncovered]
+        }
+    
+    def export_registry(self, format: str = "json") -> str:
+        """Export the registry in requested format"""
+        if format == "json":
+            import json
+            return json.dumps({
+                "controls": {cid: {
+                    "name": c.name,
+                    "source": c.source.value,
+                    "source_reference": c.source_reference,
+                    "category": c.category.value,
+                    "mappings": c.mappings,
+                    "status": c.status
+                } for cid, c in self.controls.items()},
+                "frameworks": {fid: {
+                    "name": f.name,
+                    "version": f.version
+                } for fid, f in self.frameworks.items()}
+            }, indent=2)
+        return ""
+    
+    def summary(self) -> Dict:
+        """Get a summary of the registry"""
+        return {
+            "total_controls": len(self.controls),
+            "by_source": {s.value: len(self.get_controls_by_source(s)) for s in ControlSource},
+            "by_category": {c.value: len(self.get_controls_by_category(c)) for c in ControlCategory},
+            "frameworks": list(self.frameworks.keys()),
+            "last_updated": datetime.now().isoformat()
         }
 ```
 
@@ -26177,37 +26200,37 @@ The Audit Evidence Engine ensures that:
 ### 3.1 Generation Flow
 
 ```
-User Request (framework, controls, date range)  
-  │  
-  ▼  
-Control Resolution  
-  │  1\. Resolve controls to IMP object types  
-  │  2\. Identify required evidence per control  
-  ▼  
-IMP Query  
-  │  1\. Query IMP database for relevant objects  
-  │  2\. Filter by date range and control references  
-  ▼  
-Evidence Extraction  
-  │  1\. Extract object data  
-  │  2\. Extract provenance chains  
-  │  3\. Calculate hashes  
-  ▼  
-Evidence Packaging  
-  │  1\. Structure evidence items  
-  │  2\. Generate packet metadata  
-  │  3\. Calculate packet hash  
-  ▼  
-Attestation  
-  │  1\. Generate attestation statement  
-  │  2\. Add HAN signature  
-  ▼  
-Final Packet  
-  │  1\. Complete packet assembly  
-  │  2\. Store in IMP  
-  ▼  
-Export  
-  │  1\. Export in requested format (JSON, PDF, HTML)
+User Request (framework, controls, date range)
+  │
+  ▼
+Control Resolution
+  │  1. Resolve controls to IMP object types
+  │  2. Identify required evidence per control
+  ▼
+IMP Query
+  │  1. Query IMP database for relevant objects
+  │  2. Filter by date range and control references
+  ▼
+Evidence Extraction
+  │  1. Extract object data
+  │  2. Extract provenance chains
+  │  3. Calculate hashes
+  ▼
+Evidence Packaging
+  │  1. Structure evidence items
+  │  2. Generate packet metadata
+  │  3. Calculate packet hash
+  ▼
+Attestation
+  │  1. Generate attestation statement
+  │  2. Add HAN signature
+  ▼
+Final Packet
+  │  1. Complete packet assembly
+  │  2. Store in IMP
+  ▼
+Export
+  │  1. Export in requested format (JSON, PDF, HTML)
 ```
 
 ### 3.2 Evidence Types
@@ -26226,545 +26249,545 @@ Export
 ## SECTION 4: AUDIT EVIDENCE ENGINE IMPLEMENTATION
 
 ```
-\# audit\_evidence\_engine.py  
-"""  
-Audit Evidence Engine — Complete Implementation  
+# audit_evidence_engine.py
+"""
+Audit Evidence Engine — Complete Implementation
 """
 
-import json  
-import hashlib  
-from datetime import datetime  
-from typing import List, Dict, Optional, Any  
-from dataclasses import dataclass, field  
+import json
+import hashlib
+from datetime import datetime
+from typing import List, Dict, Optional, Any
+from dataclasses import dataclass, field
 from enum import Enum
 
-from master\_control\_registry import MasterControlRegistry  
-from compliance\_crosswalk\_engine import ComplianceCrosswalkEngine, Confidence
+from master_control_registry import MasterControlRegistry
+from compliance_crosswalk_engine import ComplianceCrosswalkEngine, Confidence
 
-class EvidenceStatus(Enum):  
-    DRAFT \= "Draft"  
-    GENERATED \= "Generated"  
-    ATTESTED \= "Attested"  
-    SUBMITTED \= "Submitted"
+class EvidenceStatus(Enum):
+    DRAFT = "Draft"
+    GENERATED = "Generated"
+    ATTESTED = "Attested"
+    SUBMITTED = "Submitted"
 
-@dataclass  
-class Provenance:  
-    """Provenance chain for an evidence item"""  
-    origin: str  \# AI / Human / Hybrid  
-    model\_ref: Optional\[str\] \= None  
-    human\_actor\_ref: Optional\[str\] \= None  
-    framework\_source: List\[str\] \= field(default\_factory=list)  
-    justification\_trace: str \= ""  
-    timestamp: str \= field(default\_factory=lambda: datetime.now().isoformat())
+@dataclass
+class Provenance:
+    """Provenance chain for an evidence item"""
+    origin: str  # AI / Human / Hybrid
+    model_ref: Optional[str] = None
+    human_actor_ref: Optional[str] = None
+    framework_source: List[str] = field(default_factory=list)
+    justification_trace: str = ""
+    timestamp: str = field(default_factory=lambda: datetime.now().isoformat())
 
-@dataclass  
-class EvidenceItem:  
-    """A single evidence item"""  
-    evidence\_id: str  
-    control\_id: str  
-    object\_type: str  
-    object\_id: str  
-    object\_data: Dict\[str, Any\]  
-    provenance: Provenance  
-    timestamp: str  
-    hash: str  
-    integrity\_verified: bool
+@dataclass
+class EvidenceItem:
+    """A single evidence item"""
+    evidence_id: str
+    control_id: str
+    object_type: str
+    object_id: str
+    object_data: Dict[str, Any]
+    provenance: Provenance
+    timestamp: str
+    hash: str
+    integrity_verified: bool
 
-@dataclass  
-class Attestation:  
-    """HAN attestation for an evidence packet"""  
-    attested\_by: str  
-    attested\_at: str  
-    statement: str  
+@dataclass
+class Attestation:
+    """HAN attestation for an evidence packet"""
+    attested_by: str
+    attested_at: str
+    statement: str
     signature: str
 
-@dataclass  
-class EvidencePacket:  
-    """Complete evidence packet"""  
-    packet\_id: str  
-    framework: str  
-    generated\_at: str  
-    generated\_by: str  
-    controls\_covered: List\[str\]  
-    evidence\_items: List\[EvidenceItem\]  
-    attestation: Optional\[Attestation\] \= None  
-    packet\_hash: str \= ""  
-    status: EvidenceStatus \= EvidenceStatus.DRAFT
+@dataclass
+class EvidencePacket:
+    """Complete evidence packet"""
+    packet_id: str
+    framework: str
+    generated_at: str
+    generated_by: str
+    controls_covered: List[str]
+    evidence_items: List[EvidenceItem]
+    attestation: Optional[Attestation] = None
+    packet_hash: str = ""
+    status: EvidenceStatus = EvidenceStatus.DRAFT
 
-class AuditEvidenceEngine:  
-    """  
-    Automated evidence packaging system for AIGIS compliance.  
-      
-    Extracts evidence from IMP objects and packages them into   
-    structured, auditable evidence packets for regulatory frameworks.  
-    """  
-      
-    def \_\_init\_\_(self, imp\_store, registry: MasterControlRegistry, crosswalk: ComplianceCrosswalkEngine):  
-        """  
-        Initialize the Audit Evidence Engine.  
-          
-        Args:  
-            imp\_store: IMP storage instance  
-            registry: MasterControlRegistry instance  
-            crosswalk: ComplianceCrosswalkEngine instance  
-        """  
-        self.imp \= imp\_store  
-        self.registry \= registry  
-        self.crosswalk \= crosswalk  
-        self.packets: Dict\[str, EvidencePacket\] \= {}  
-        self.packet\_counter \= 0  
-      
-    def generate\_evidence\_packet(  
-        self,  
-        framework: str,  
-        eco\_id: str,  
-        controls: Optional\[List\[str\]\] \= None,  
-        date\_range: Optional\[Dict\[str, str\]\] \= None,  
-        generated\_by: str \= "system"  
-    ) \-\> EvidencePacket:  
-        """  
-        Generate an evidence packet for a framework.  
-          
-        Args:  
-            framework: Regulatory framework identifier  
-            eco\_id: Engagement context ID  
-            controls: Optional specific controls to cover (defaults to all mapped)  
-            date\_range: Optional date range for evidence filtering  
-            generated\_by: Generator identifier  
-          
-        Returns:  
-            EvidencePacket: Complete evidence packet  
-        """  
-        \# Resolve controls  
-        if controls is None:  
-            controls \= self.\_resolve\_controls\_for\_framework(framework)  
-          
-        \# Get evidence items  
-        evidence\_items \= \[\]  
-        for control\_id in controls:  
-            items \= self.\_extract\_evidence\_for\_control(  
-                control\_id=control\_id,  
-                eco\_id=eco\_id,  
-                date\_range=date\_range  
-            )  
-            evidence\_items.extend(items)  
-          
-        \# Generate packet ID  
-        self.packet\_counter \+= 1  
-        packet\_id \= f"EVP-{framework}-{datetime.now().strftime('%Y%m%d%H%M%S')}-{self.packet\_counter:04d}"  
-          
-        \# Create packet  
-        packet \= EvidencePacket(  
-            packet\_id=packet\_id,  
-            framework=framework,  
-            generated\_at=datetime.now().isoformat(),  
-            generated\_by=generated\_by,  
-            controls\_covered=controls,  
-            evidence\_items=evidence\_items,  
-            status=EvidenceStatus.GENERATED  
-        )  
-          
-        \# Calculate packet hash  
-        packet.packet\_hash \= self.\_calculate\_packet\_hash(packet)  
-          
-        \# Store packet  
-        self.packets\[packet\_id\] \= packet  
-          
-        return packet  
-      
-    def \_resolve\_controls\_for\_framework(self, framework: str) \-\> List\[str\]:  
-        """Resolve which controls are needed for a framework"""  
-        \# Get from crosswalk engine  
-        mappings \= self.crosswalk.map\_framework\_to\_components(framework)  
-        controls \= set()  
-        for mapping in mappings:  
-            if mapping.confidence in \[Confidence.DIRECT, Confidence.INDIRECT\]:  
-                controls.add(mapping.control\_id)  
-        return sorted(list(controls))  
-      
-    def \_extract\_evidence\_for\_control(  
-        self,  
-        control\_id: str,  
-        eco\_id: str,  
-        date\_range: Optional\[Dict\[str, str\]\] \= None  
-    ) \-\> List\[EvidenceItem\]:  
-        """  
-        Extract evidence items for a specific control.  
-          
-        Args:  
-            control\_id: MCR control ID  
-            eco\_id: Engagement context ID  
-            date\_range: Optional date range for evidence filtering  
-          
-        Returns:  
-            List of evidence items  
-        """  
-        evidence\_items \= \[\]  
-          
-        \# Get the control from registry  
-        control \= self.registry.get\_control(control\_id)  
-        if not control:  
-            return evidence\_items  
-          
-        \# Determine which IMP object types to query based on control source  
-        object\_types \= self.\_get\_object\_types\_for\_source(control.source)  
-          
-        for object\_type in object\_types:  
-            objects \= self.\_query\_imp\_objects(  
-                object\_type=object\_type,  
-                eco\_id=eco\_id,  
-                control\_id=control\_id,  
-                date\_range=date\_range  
-            )  
-              
-            for obj in objects:  
-                evidence\_item \= self.\_create\_evidence\_item(  
-                    control\_id=control\_id,  
-                    object\_type=object\_type,  
-                    object\_data=obj,  
-                    provenance=self.\_extract\_provenance(obj)  
-                )  
-                evidence\_items.append(evidence\_item)  
-          
-        return evidence\_items  
-      
-    def \_get\_object\_types\_for\_source(self, source) \-\> List\[str\]:  
-        """Map control source to IMP object types"""  
-        mapping \= {  
-            "AICA-5": \["DRO", "GAO", "OEO"\],  
-            "ADTEP": \["XOO", "DRO"\],  
-            "RGI-8": \["DRO", "OEO"\],  
-            "CAD-7": \["DRO", "CRO"\],  
-            "ICC-8": \["CRO", "GAO"\],  
-            "IMP": \["ECO", "DRO", "GAO", "CRO", "OEO", "XOO"\],  
-            "HOF": \["DRO", "GAO"\],  
-            "EAF": \["ECO", "CRO"\],  
-            "CEF": \["ECO", "GAO"\]  
-        }  
-        return mapping.get(source.value, \[\])  
-      
-    def \_query\_imp\_objects(  
-        self,  
-        object\_type: str,  
-        eco\_id: str,  
-        control\_id: str,  
-        date\_range: Optional\[Dict\[str, str\]\] \= None  
-    ) \-\> List\[Dict\[str, Any\]\]:  
-        """  
-        Query IMP for relevant objects.  
-          
-        Args:  
-            object\_type: IMP object type  
-            eco\_id: Engagement context ID  
-            control\_id: Control ID for filtering  
-            date\_range: Optional date range  
-          
-        Returns:  
-            List of object data  
-        """  
-        \# Simulated query \- in production, query IMP database  
-        \# This is a placeholder implementation  
-        objects \= \[\]  
-          
-        \# In production, this would be a SQL query:  
-        \# SELECT json\_data FROM {object\_type.lower()}   
-        \# WHERE eco\_id \= ? AND json\_data LIKE ?  
-        \# AND timestamp BETWEEN ? AND ?  
-          
-        return objects  
-      
-    def \_create\_evidence\_item(  
-        self,  
-        control\_id: str,  
-        object\_type: str,  
-        object\_data: Dict\[str, Any\],  
-        provenance: Provenance  
-    ) \-\> EvidenceItem:  
-        """Create an evidence item from object data"""  
-        object\_id \= object\_data.get(f"{object\_type.lower()}\_id", "unknown")  
-          
-        \# Calculate hash of the object data  
-        object\_json \= json.dumps(object\_data, sort\_keys=True)  
-        object\_hash \= hashlib.sha256(object\_json.encode()).hexdigest()  
-          
-        return EvidenceItem(  
-            evidence\_id=f"EVID-{object\_type}-{object\_id\[:8\]}",  
-            control\_id=control\_id,  
-            object\_type=object\_type,  
-            object\_id=object\_id,  
-            object\_data=object\_data,  
-            provenance=provenance,  
-            timestamp=datetime.now().isoformat(),  
-            hash=object\_hash,  
-            integrity\_verified=True  
-        )  
-      
-    def \_extract\_provenance(self, obj: Dict\[str, Any\]) \-\> Provenance:  
-        """Extract provenance from object data"""  
-        return Provenance(  
-            origin=obj.get("decision\_origin", "unknown"),  
-            model\_ref=obj.get("ai\_model\_ref"),  
-            human\_actor\_ref=obj.get("human\_actor\_ref"),  
-            framework\_source=obj.get("framework\_source", \[\]),  
-            justification\_trace=obj.get("justification\_trace", "")  
-        )  
-      
-    def \_calculate\_packet\_hash(self, packet: EvidencePacket) \-\> str:  
-        """Calculate SHA-256 hash of the entire packet"""  
-        packet\_data \= {  
-            "packet\_id": packet.packet\_id,  
-            "framework": packet.framework,  
-            "generated\_at": packet.generated\_at,  
-            "controls\_covered": packet.controls\_covered,  
-            "evidence\_count": len(packet.evidence\_items)  
-        }  
-        packet\_json \= json.dumps(packet\_data, sort\_keys=True)  
-        return hashlib.sha256(packet\_json.encode()).hexdigest()  
-      
-    def attest\_packet(self, packet\_id: str, han\_name: str, signature: str) \-\> EvidencePacket:  
-        """  
-        Attest an evidence packet with HAN signature.  
-          
-        Args:  
-            packet\_id: ID of the packet to attest  
-            han\_name: HAN name  
-            signature: HAN signature  
-          
-        Returns:  
-            Attested evidence packet  
-        """  
-        packet \= self.packets.get(packet\_id)  
-        if not packet:  
-            raise ValueError(f"Packet {packet\_id} not found")  
-          
-        packet.attestation \= Attestation(  
-            attested\_by=han\_name,  
-            attested\_at=datetime.now().isoformat(),  
-            statement=self.\_generate\_attestation\_statement(packet),  
-            signature=signature  
-        )  
-        packet.status \= EvidenceStatus.ATTESTED  
-          
-        return packet  
-      
-    def \_generate\_attestation\_statement(self, packet: EvidencePacket) \-\> str:  
-        """Generate attestation statement"""  
-        return (  
-            f"I, {packet.attestation.attested\_by if packet.attestation else 'HAN'}, "  
-            f"attest that the evidence in this packet ({packet.packet\_id}) "  
-            f"accurately reflects the governance state for {packet.framework} "  
-            f"compliance. I understand that false attestation constitutes an "  
-            f"Ac-N2 responsibility attribution violation."  
-        )  
-      
-    def export\_packet(  
-        self,  
-        packet\_id: str,  
-        format: str \= "json",  
-        include\_attestation: bool \= True  
-    ) \-\> str:  
-        """  
-        Export evidence packet in requested format.  
-          
-        Args:  
-            packet\_id: ID of the packet to export  
-            format: Export format (json, pdf, html)  
-            include\_attestation: Whether to include attestation  
-          
-        Returns:  
-            Exported packet as string  
-        """  
-        packet \= self.packets.get(packet\_id)  
-        if not packet:  
-            raise ValueError(f"Packet {packet\_id} not found")  
-          
-        if format \== "json":  
-            return self.\_export\_json(packet, include\_attestation)  
-        elif format \== "html":  
-            return self.\_export\_html(packet, include\_attestation)  
-        elif format \== "pdf":  
-            \# In production, would generate PDF  
-            return self.\_export\_json(packet, include\_attestation)  
-        else:  
-            raise ValueError(f"Unsupported format: {format}")  
-      
-    def \_export\_json(self, packet: EvidencePacket, include\_attestation: bool) \-\> str:  
-        """Export packet as JSON"""  
-        export\_data \= {  
-            "packet\_id": packet.packet\_id,  
-            "framework": packet.framework,  
-            "generated\_at": packet.generated\_at,  
-            "generated\_by": packet.generated\_by,  
-            "controls\_covered": packet.controls\_covered,  
-            "packet\_hash": packet.packet\_hash,  
-            "status": packet.status.value,  
-            "evidence\_items": \[\]  
-        }  
-          
-        if include\_attestation and packet.attestation:  
-            export\_data\["attestation"\] \= {  
-                "attested\_by": packet.attestation.attested\_by,  
-                "attested\_at": packet.attestation.attested\_at,  
-                "statement": packet.attestation.statement,  
-                "signature": packet.attestation.signature  
-            }  
-          
-        for item in packet.evidence\_items:  
-            export\_data\["evidence\_items"\].append({  
-                "evidence\_id": item.evidence\_id,  
-                "control\_id": item.control\_id,  
-                "object\_type": item.object\_type,  
-                "object\_id": item.object\_id,  
-                "timestamp": item.timestamp,  
-                "hash": item.hash,  
-                "integrity\_verified": item.integrity\_verified,  
-                "provenance": {  
-                    "origin": item.provenance.origin,  
-                    "model\_ref": item.provenance.model\_ref,  
-                    "human\_actor\_ref": item.provenance.human\_actor\_ref,  
-                    "framework\_source": item.provenance.framework\_source,  
-                    "justification\_trace": item.provenance.justification\_trace  
-                },  
-                "object\_data": item.object\_data  
-            })  
-          
-        return json.dumps(export\_data, indent=2, default=str)  
-      
-    def \_export\_html(self, packet: EvidencePacket, include\_attestation: bool) \-\> str:  
-        """Export packet as HTML"""  
-        html \= f"""  
-        \<\!DOCTYPE html\>  
-        \<html\>  
-        \<head\>  
-            \<title\>Evidence Packet: {packet.packet\_id}\</title\>  
-            \<style\>  
-                body {{ font-family: Arial, sans-serif; margin: 40px; }}  
-                h1 {{ color: \#1a1a2e; border-bottom: 2px solid \#1a1a2e; }}  
-                .metadata {{ background: \#f5f5f5; padding: 15px; border-radius: 5px; }}  
-                .control {{ background: \#e8f4f8; padding: 10px; margin: 10px 0; border-left: 4px solid \#2c7a9e; }}  
-                .evidence {{ background: \#f9f9f9; padding: 10px; margin: 10px 0; border: 1px solid \#ddd; border-radius: 3px; }}  
-                .attestation {{ background: \#fff3cd; padding: 15px; margin: 20px 0; border: 1px solid \#ffc107; border-radius: 5px; }}  
-                .hash {{ font-family: monospace; word-break: break-all; }}  
-            \</style\>  
-        \</head\>  
-        \<body\>  
-            \<h1\>Audit Evidence Packet\</h1\>  
-            \<div class="metadata"\>  
-                \<p\>\<strong\>Packet ID:\</strong\> {packet.packet\_id}\</p\>  
-                \<p\>\<strong\>Framework:\</strong\> {packet.framework}\</p\>  
-                \<p\>\<strong\>Generated:\</strong\> {packet.generated\_at}\</p\>  
-                \<p\>\<strong\>Status:\</strong\> {packet.status.value}\</p\>  
-                \<p\>\<strong\>Controls Covered:\</strong\> {', '.join(packet.controls\_covered)}\</p\>  
-                \<p\>\<strong\>Packet Hash:\</strong\> \<span class="hash"\>{packet.packet\_hash}\</span\>\</p\>  
-            \</div\>  
-        """  
-          
-        html \+= "\<h2\>Evidence Items\</h2\>"  
-        for item in packet.evidence\_items:  
-            html \+= f"""  
-            \<div class="evidence"\>  
-                \<p\>\<strong\>Evidence ID:\</strong\> {item.evidence\_id}\</p\>  
-                \<p\>\<strong\>Control ID:\</strong\> {item.control\_id}\</p\>  
-                \<p\>\<strong\>Object Type:\</strong\> {item.object\_type}\</p\>  
-                \<p\>\<strong\>Object ID:\</strong\> {item.object\_id}\</p\>  
-                \<p\>\<strong\>Timestamp:\</strong\> {item.timestamp}\</p\>  
-                \<p\>\<strong\>Hash:\</strong\> \<span class="hash"\>{item.hash}\</span\>\</p\>  
-                \<p\>\<strong\>Provenance:\</strong\> {item.provenance.origin}\</p\>  
-                \<p\>\<strong\>Integrity Verified:\</strong\> {item.integrity\_verified}\</p\>  
-            \</div\>  
-            """  
-          
-        if include\_attestation and packet.attestation:  
-            html \+= f"""  
-            \<div class="attestation"\>  
-                \<h2\>HAN Attestation\</h2\>  
-                \<p\>\<strong\>Attested By:\</strong\> {packet.attestation.attested\_by}\</p\>  
-                \<p\>\<strong\>Attested At:\</strong\> {packet.attestation.attested\_at}\</p\>  
-                \<p\>\<strong\>Statement:\</strong\> {packet.attestation.statement}\</p\>  
-                \<p\>\<strong\>Signature:\</strong\> \<span class="hash"\>{packet.attestation.signature}\</span\>\</p\>  
-            \</div\>  
-            """  
-          
-        html \+= """  
-        \</body\>  
-        \</html\>  
-        """  
-        return html  
-      
-    def get\_packet(self, packet\_id: str) \-\> Optional\[EvidencePacket\]:  
-        """Get an evidence packet by ID"""  
-        return self.packets.get(packet\_id)  
-      
-    def list\_packets(self, framework: Optional\[str\] \= None) \-\> List\[Dict\]:  
-        """List all packets, optionally filtered by framework"""  
-        packets \= self.packets.values()  
-        if framework:  
-            packets \= \[p for p in packets if p.framework \== framework\]  
-          
-        return \[{  
-            "packet\_id": p.packet\_id,  
-            "framework": p.framework,  
-            "generated\_at": p.generated\_at,  
-            "controls\_covered": len(p.controls\_covered),  
-            "evidence\_items": len(p.evidence\_items),  
-            "status": p.status.value  
-        } for p in packets\]  
-      
-    def verify\_packet\_integrity(self, packet\_id: str) \-\> Dict:  
-        """  
-        Verify the integrity of an evidence packet.  
-          
-        Args:  
-            packet\_id: ID of the packet to verify  
-          
-        Returns:  
-            Verification result  
-        """  
-        packet \= self.packets.get(packet\_id)  
-        if not packet:  
-            return {"verified": False, "reason": f"Packet {packet\_id} not found"}  
-          
-        \# Recalculate packet hash  
-        current\_hash \= self.\_calculate\_packet\_hash(packet)  
-          
-        \# Verify evidence item hashes  
-        all\_items\_verified \= all(item.integrity\_verified for item in packet.evidence\_items)  
-          
-        return {  
-            "verified": current\_hash \== packet.packet\_hash and all\_items\_verified,  
-            "packet\_hash\_match": current\_hash \== packet.packet\_hash,  
-            "all\_items\_verified": all\_items\_verified,  
-            "packet\_id": packet\_id,  
-            "status": packet.status.value  
-        }  
-      
-    def get\_evidence\_summary\_for\_framework(self, framework: str) \-\> Dict:  
-        """  
-        Get a summary of available evidence for a framework.  
-          
-        Args:  
-            framework: Regulatory framework identifier  
-          
-        Returns:  
-            Evidence summary  
-        """  
-        controls \= self.\_resolve\_controls\_for\_framework(framework)  
-        summary \= {  
-            "framework": framework,  
-            "total\_controls": len(controls),  
-            "controls\_with\_evidence": 0,  
-            "evidence\_by\_control": {}  
-        }  
-          
-        for control\_id in controls:  
-            \# Query would check if evidence exists  
-            \# For now, assume all have evidence  
-            summary\["controls\_with\_evidence"\] \= len(controls)  
-            summary\["evidence\_by\_control"\]\[control\_id\] \= {  
-                "available": True,  
-                "count": 1  
-            }  
-          
+class AuditEvidenceEngine:
+    """
+    Automated evidence packaging system for AIGIS compliance.
+    
+    Extracts evidence from IMP objects and packages them into 
+    structured, auditable evidence packets for regulatory frameworks.
+    """
+    
+    def __init__(self, imp_store, registry: MasterControlRegistry, crosswalk: ComplianceCrosswalkEngine):
+        """
+        Initialize the Audit Evidence Engine.
+        
+        Args:
+            imp_store: IMP storage instance
+            registry: MasterControlRegistry instance
+            crosswalk: ComplianceCrosswalkEngine instance
+        """
+        self.imp = imp_store
+        self.registry = registry
+        self.crosswalk = crosswalk
+        self.packets: Dict[str, EvidencePacket] = {}
+        self.packet_counter = 0
+    
+    def generate_evidence_packet(
+        self,
+        framework: str,
+        eco_id: str,
+        controls: Optional[List[str]] = None,
+        date_range: Optional[Dict[str, str]] = None,
+        generated_by: str = "system"
+    ) -> EvidencePacket:
+        """
+        Generate an evidence packet for a framework.
+        
+        Args:
+            framework: Regulatory framework identifier
+            eco_id: Engagement context ID
+            controls: Optional specific controls to cover (defaults to all mapped)
+            date_range: Optional date range for evidence filtering
+            generated_by: Generator identifier
+        
+        Returns:
+            EvidencePacket: Complete evidence packet
+        """
+        # Resolve controls
+        if controls is None:
+            controls = self._resolve_controls_for_framework(framework)
+        
+        # Get evidence items
+        evidence_items = []
+        for control_id in controls:
+            items = self._extract_evidence_for_control(
+                control_id=control_id,
+                eco_id=eco_id,
+                date_range=date_range
+            )
+            evidence_items.extend(items)
+        
+        # Generate packet ID
+        self.packet_counter += 1
+        packet_id = f"EVP-{framework}-{datetime.now().strftime('%Y%m%d%H%M%S')}-{self.packet_counter:04d}"
+        
+        # Create packet
+        packet = EvidencePacket(
+            packet_id=packet_id,
+            framework=framework,
+            generated_at=datetime.now().isoformat(),
+            generated_by=generated_by,
+            controls_covered=controls,
+            evidence_items=evidence_items,
+            status=EvidenceStatus.GENERATED
+        )
+        
+        # Calculate packet hash
+        packet.packet_hash = self._calculate_packet_hash(packet)
+        
+        # Store packet
+        self.packets[packet_id] = packet
+        
+        return packet
+    
+    def _resolve_controls_for_framework(self, framework: str) -> List[str]:
+        """Resolve which controls are needed for a framework"""
+        # Get from crosswalk engine
+        mappings = self.crosswalk.map_framework_to_components(framework)
+        controls = set()
+        for mapping in mappings:
+            if mapping.confidence in [Confidence.DIRECT, Confidence.INDIRECT]:
+                controls.add(mapping.control_id)
+        return sorted(list(controls))
+    
+    def _extract_evidence_for_control(
+        self,
+        control_id: str,
+        eco_id: str,
+        date_range: Optional[Dict[str, str]] = None
+    ) -> List[EvidenceItem]:
+        """
+        Extract evidence items for a specific control.
+        
+        Args:
+            control_id: MCR control ID
+            eco_id: Engagement context ID
+            date_range: Optional date range for evidence filtering
+        
+        Returns:
+            List of evidence items
+        """
+        evidence_items = []
+        
+        # Get the control from registry
+        control = self.registry.get_control(control_id)
+        if not control:
+            return evidence_items
+        
+        # Determine which IMP object types to query based on control source
+        object_types = self._get_object_types_for_source(control.source)
+        
+        for object_type in object_types:
+            objects = self._query_imp_objects(
+                object_type=object_type,
+                eco_id=eco_id,
+                control_id=control_id,
+                date_range=date_range
+            )
+            
+            for obj in objects:
+                evidence_item = self._create_evidence_item(
+                    control_id=control_id,
+                    object_type=object_type,
+                    object_data=obj,
+                    provenance=self._extract_provenance(obj)
+                )
+                evidence_items.append(evidence_item)
+        
+        return evidence_items
+    
+    def _get_object_types_for_source(self, source) -> List[str]:
+        """Map control source to IMP object types"""
+        mapping = {
+            "AICA-5": ["DRO", "GAO", "OEO"],
+            "ADTEP": ["XOO", "DRO"],
+            "RGI-8": ["DRO", "OEO"],
+            "CAD-7": ["DRO", "CRO"],
+            "ICC-8": ["CRO", "GAO"],
+            "IMP": ["ECO", "DRO", "GAO", "CRO", "OEO", "XOO"],
+            "HOF": ["DRO", "GAO"],
+            "EAF": ["ECO", "CRO"],
+            "CEF": ["ECO", "GAO"]
+        }
+        return mapping.get(source.value, [])
+    
+    def _query_imp_objects(
+        self,
+        object_type: str,
+        eco_id: str,
+        control_id: str,
+        date_range: Optional[Dict[str, str]] = None
+    ) -> List[Dict[str, Any]]:
+        """
+        Query IMP for relevant objects.
+        
+        Args:
+            object_type: IMP object type
+            eco_id: Engagement context ID
+            control_id: Control ID for filtering
+            date_range: Optional date range
+        
+        Returns:
+            List of object data
+        """
+        # Simulated query - in production, query IMP database
+        # This is a placeholder implementation
+        objects = []
+        
+        # In production, this would be a SQL query:
+        # SELECT json_data FROM {object_type.lower()} 
+        # WHERE eco_id = ? AND json_data LIKE ?
+        # AND timestamp BETWEEN ? AND ?
+        
+        return objects
+    
+    def _create_evidence_item(
+        self,
+        control_id: str,
+        object_type: str,
+        object_data: Dict[str, Any],
+        provenance: Provenance
+    ) -> EvidenceItem:
+        """Create an evidence item from object data"""
+        object_id = object_data.get(f"{object_type.lower()}_id", "unknown")
+        
+        # Calculate hash of the object data
+        object_json = json.dumps(object_data, sort_keys=True)
+        object_hash = hashlib.sha256(object_json.encode()).hexdigest()
+        
+        return EvidenceItem(
+            evidence_id=f"EVID-{object_type}-{object_id[:8]}",
+            control_id=control_id,
+            object_type=object_type,
+            object_id=object_id,
+            object_data=object_data,
+            provenance=provenance,
+            timestamp=datetime.now().isoformat(),
+            hash=object_hash,
+            integrity_verified=True
+        )
+    
+    def _extract_provenance(self, obj: Dict[str, Any]) -> Provenance:
+        """Extract provenance from object data"""
+        return Provenance(
+            origin=obj.get("decision_origin", "unknown"),
+            model_ref=obj.get("ai_model_ref"),
+            human_actor_ref=obj.get("human_actor_ref"),
+            framework_source=obj.get("framework_source", []),
+            justification_trace=obj.get("justification_trace", "")
+        )
+    
+    def _calculate_packet_hash(self, packet: EvidencePacket) -> str:
+        """Calculate SHA-256 hash of the entire packet"""
+        packet_data = {
+            "packet_id": packet.packet_id,
+            "framework": packet.framework,
+            "generated_at": packet.generated_at,
+            "controls_covered": packet.controls_covered,
+            "evidence_count": len(packet.evidence_items)
+        }
+        packet_json = json.dumps(packet_data, sort_keys=True)
+        return hashlib.sha256(packet_json.encode()).hexdigest()
+    
+    def attest_packet(self, packet_id: str, han_name: str, signature: str) -> EvidencePacket:
+        """
+        Attest an evidence packet with HAN signature.
+        
+        Args:
+            packet_id: ID of the packet to attest
+            han_name: HAN name
+            signature: HAN signature
+        
+        Returns:
+            Attested evidence packet
+        """
+        packet = self.packets.get(packet_id)
+        if not packet:
+            raise ValueError(f"Packet {packet_id} not found")
+        
+        packet.attestation = Attestation(
+            attested_by=han_name,
+            attested_at=datetime.now().isoformat(),
+            statement=self._generate_attestation_statement(packet),
+            signature=signature
+        )
+        packet.status = EvidenceStatus.ATTESTED
+        
+        return packet
+    
+    def _generate_attestation_statement(self, packet: EvidencePacket) -> str:
+        """Generate attestation statement"""
+        return (
+            f"I, {packet.attestation.attested_by if packet.attestation else 'HAN'}, "
+            f"attest that the evidence in this packet ({packet.packet_id}) "
+            f"accurately reflects the governance state for {packet.framework} "
+            f"compliance. I understand that false attestation constitutes an "
+            f"Ac-N2 responsibility attribution violation."
+        )
+    
+    def export_packet(
+        self,
+        packet_id: str,
+        format: str = "json",
+        include_attestation: bool = True
+    ) -> str:
+        """
+        Export evidence packet in requested format.
+        
+        Args:
+            packet_id: ID of the packet to export
+            format: Export format (json, pdf, html)
+            include_attestation: Whether to include attestation
+        
+        Returns:
+            Exported packet as string
+        """
+        packet = self.packets.get(packet_id)
+        if not packet:
+            raise ValueError(f"Packet {packet_id} not found")
+        
+        if format == "json":
+            return self._export_json(packet, include_attestation)
+        elif format == "html":
+            return self._export_html(packet, include_attestation)
+        elif format == "pdf":
+            # In production, would generate PDF
+            return self._export_json(packet, include_attestation)
+        else:
+            raise ValueError(f"Unsupported format: {format}")
+    
+    def _export_json(self, packet: EvidencePacket, include_attestation: bool) -> str:
+        """Export packet as JSON"""
+        export_data = {
+            "packet_id": packet.packet_id,
+            "framework": packet.framework,
+            "generated_at": packet.generated_at,
+            "generated_by": packet.generated_by,
+            "controls_covered": packet.controls_covered,
+            "packet_hash": packet.packet_hash,
+            "status": packet.status.value,
+            "evidence_items": []
+        }
+        
+        if include_attestation and packet.attestation:
+            export_data["attestation"] = {
+                "attested_by": packet.attestation.attested_by,
+                "attested_at": packet.attestation.attested_at,
+                "statement": packet.attestation.statement,
+                "signature": packet.attestation.signature
+            }
+        
+        for item in packet.evidence_items:
+            export_data["evidence_items"].append({
+                "evidence_id": item.evidence_id,
+                "control_id": item.control_id,
+                "object_type": item.object_type,
+                "object_id": item.object_id,
+                "timestamp": item.timestamp,
+                "hash": item.hash,
+                "integrity_verified": item.integrity_verified,
+                "provenance": {
+                    "origin": item.provenance.origin,
+                    "model_ref": item.provenance.model_ref,
+                    "human_actor_ref": item.provenance.human_actor_ref,
+                    "framework_source": item.provenance.framework_source,
+                    "justification_trace": item.provenance.justification_trace
+                },
+                "object_data": item.object_data
+            })
+        
+        return json.dumps(export_data, indent=2, default=str)
+    
+    def _export_html(self, packet: EvidencePacket, include_attestation: bool) -> str:
+        """Export packet as HTML"""
+        html = f"""
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Evidence Packet: {packet.packet_id}</title>
+            <style>
+                body {{ font-family: Arial, sans-serif; margin: 40px; }}
+                h1 {{ color: #1a1a2e; border-bottom: 2px solid #1a1a2e; }}
+                .metadata {{ background: #f5f5f5; padding: 15px; border-radius: 5px; }}
+                .control {{ background: #e8f4f8; padding: 10px; margin: 10px 0; border-left: 4px solid #2c7a9e; }}
+                .evidence {{ background: #f9f9f9; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 3px; }}
+                .attestation {{ background: #fff3cd; padding: 15px; margin: 20px 0; border: 1px solid #ffc107; border-radius: 5px; }}
+                .hash {{ font-family: monospace; word-break: break-all; }}
+            </style>
+        </head>
+        <body>
+            <h1>Audit Evidence Packet</h1>
+            <div class="metadata">
+                <p><strong>Packet ID:</strong> {packet.packet_id}</p>
+                <p><strong>Framework:</strong> {packet.framework}</p>
+                <p><strong>Generated:</strong> {packet.generated_at}</p>
+                <p><strong>Status:</strong> {packet.status.value}</p>
+                <p><strong>Controls Covered:</strong> {', '.join(packet.controls_covered)}</p>
+                <p><strong>Packet Hash:</strong> <span class="hash">{packet.packet_hash}</span></p>
+            </div>
+        """
+        
+        html += "<h2>Evidence Items</h2>"
+        for item in packet.evidence_items:
+            html += f"""
+            <div class="evidence">
+                <p><strong>Evidence ID:</strong> {item.evidence_id}</p>
+                <p><strong>Control ID:</strong> {item.control_id}</p>
+                <p><strong>Object Type:</strong> {item.object_type}</p>
+                <p><strong>Object ID:</strong> {item.object_id}</p>
+                <p><strong>Timestamp:</strong> {item.timestamp}</p>
+                <p><strong>Hash:</strong> <span class="hash">{item.hash}</span></p>
+                <p><strong>Provenance:</strong> {item.provenance.origin}</p>
+                <p><strong>Integrity Verified:</strong> {item.integrity_verified}</p>
+            </div>
+            """
+        
+        if include_attestation and packet.attestation:
+            html += f"""
+            <div class="attestation">
+                <h2>HAN Attestation</h2>
+                <p><strong>Attested By:</strong> {packet.attestation.attested_by}</p>
+                <p><strong>Attested At:</strong> {packet.attestation.attested_at}</p>
+                <p><strong>Statement:</strong> {packet.attestation.statement}</p>
+                <p><strong>Signature:</strong> <span class="hash">{packet.attestation.signature}</span></p>
+            </div>
+            """
+        
+        html += """
+        </body>
+        </html>
+        """
+        return html
+    
+    def get_packet(self, packet_id: str) -> Optional[EvidencePacket]:
+        """Get an evidence packet by ID"""
+        return self.packets.get(packet_id)
+    
+    def list_packets(self, framework: Optional[str] = None) -> List[Dict]:
+        """List all packets, optionally filtered by framework"""
+        packets = self.packets.values()
+        if framework:
+            packets = [p for p in packets if p.framework == framework]
+        
+        return [{
+            "packet_id": p.packet_id,
+            "framework": p.framework,
+            "generated_at": p.generated_at,
+            "controls_covered": len(p.controls_covered),
+            "evidence_items": len(p.evidence_items),
+            "status": p.status.value
+        } for p in packets]
+    
+    def verify_packet_integrity(self, packet_id: str) -> Dict:
+        """
+        Verify the integrity of an evidence packet.
+        
+        Args:
+            packet_id: ID of the packet to verify
+        
+        Returns:
+            Verification result
+        """
+        packet = self.packets.get(packet_id)
+        if not packet:
+            return {"verified": False, "reason": f"Packet {packet_id} not found"}
+        
+        # Recalculate packet hash
+        current_hash = self._calculate_packet_hash(packet)
+        
+        # Verify evidence item hashes
+        all_items_verified = all(item.integrity_verified for item in packet.evidence_items)
+        
+        return {
+            "verified": current_hash == packet.packet_hash and all_items_verified,
+            "packet_hash_match": current_hash == packet.packet_hash,
+            "all_items_verified": all_items_verified,
+            "packet_id": packet_id,
+            "status": packet.status.value
+        }
+    
+    def get_evidence_summary_for_framework(self, framework: str) -> Dict:
+        """
+        Get a summary of available evidence for a framework.
+        
+        Args:
+            framework: Regulatory framework identifier
+        
+        Returns:
+            Evidence summary
+        """
+        controls = self._resolve_controls_for_framework(framework)
+        summary = {
+            "framework": framework,
+            "total_controls": len(controls),
+            "controls_with_evidence": 0,
+            "evidence_by_control": {}
+        }
+        
+        for control_id in controls:
+            # Query would check if evidence exists
+            # For now, assume all have evidence
+            summary["controls_with_evidence"] = len(controls)
+            summary["evidence_by_control"][control_id] = {
+                "available": True,
+                "count": 1
+            }
+        
         return summary
 ```
 
@@ -26775,63 +26798,69 @@ class AuditEvidenceEngine:
 ### 5.1 Basic Usage
 
 ```
-\# Initialize the Audit Evidence Engine  
-from master\_control\_registry import MasterControlRegistry  
-from compliance\_crosswalk\_engine import ComplianceCrosswalkEngine
+# Initialize the Audit Evidence Engine
+from master_control_registry import MasterControlRegistry
+from compliance_crosswalk_engine import ComplianceCrosswalkEngine
 
-mcr \= MasterControlRegistry()  
-crosswalk \= ComplianceCrosswalkEngine(registry=mcr)  
-aee \= AuditEvidenceEngine(imp\_store, mcr, crosswalk)
+mcr = MasterControlRegistry()
+crosswalk = ComplianceCrosswalkEngine(registry=mcr)
+aee = AuditEvidenceEngine(imp_store, mcr, crosswalk)
 
-\# Generate an evidence packet for EU AI Act  
-packet \= aee.generate\_evidence\_packet(  
-    framework="eu\_ai\_act",  
-    eco\_id="ECO-2026-0a26cb",  
-    generated\_by="system"  
+# Generate an evidence packet for EU AI Act
+packet = aee.generate_evidence_packet(
+    framework="eu_ai_act",
+    eco_id="ECO-2026-0a26cb",
+    generated_by="system"
 )
 
-print(f"Generated packet: {packet.packet\_id}")  
-print(f"Controls covered: {len(packet.controls\_covered)}")  
-print(f"Evidence items: {len(packet.evidence\_items)}")
+print(f"Generated packet: {packet.packet_id}")
+print(f"Controls covered: {len(packet.controls_covered)}")
+print(f"Evidence items: {len(packet.evidence_items)}")
 
-\# Attest the packet  
-attested \= aee.attest\_packet(  
-    packet\_id=packet.packet\_id,  
-    han\_name="Terrylan\_Manalansan",  
-    signature="signature\_here"  
+# Attest the packet
+attested = aee.attest_packet(
+    packet_id=packet.packet_id,
+    han_name="Terrylan_Manalansan",
+    signature="signature_here"
 )
 
-\# Export as JSON  
-json\_output \= aee.export\_packet(packet.packet\_id, format="json")  
-print(json\_output)
+# Export as JSON
+json_output = aee.export_packet(packet.packet_id, format="json")
+print(json_output)
 ```
 
 ### 5.2 Framework Evidence Summary
 
-\# Get evidence summary for NIST AI RMF  
-summary \= aee.get\_evidence\_summary\_for\_framework("nist\_ai\_rmf")  
-print(f"Framework: {summary\['framework'\]}")  
-print(f"Total controls: {summary\['total\_controls'\]}")  
-print(f"Controls with evidence: {summary\['controls\_with\_evidence'\]}")
+```
+# Get evidence summary for NIST AI RMF
+summary = aee.get_evidence_summary_for_framework("nist_ai_rmf")
+print(f"Framework: {summary['framework']}")
+print(f"Total controls: {summary['total_controls']}")
+print(f"Controls with evidence: {summary['controls_with_evidence']}")
+```
 
 ### 5.3 Packet Verification
 
-\# Verify packet integrity  
-result \= aee.verify\_packet\_integrity(packet.packet\_id)  
-print(f"Packet verified: {result\['verified'\]}")  
-print(f"Hash match: {result\['packet\_hash\_match'\]}")  
-print(f"All items verified: {result\['all\_items\_verified'\]}")
+```
+# Verify packet integrity
+result = aee.verify_packet_integrity(packet.packet_id)
+print(f"Packet verified: {result['verified']}")
+print(f"Hash match: {result['packet_hash_match']}")
+print(f"All items verified: {result['all_items_verified']}")
+```
 
 ### 5.4 List Packets
 
-\# List all packets  
-packets \= aee.list\_packets()  
-for p in packets:  
-    print(f"{p\['packet\_id'\]}: {p\['framework'\]} ({p\['status'\]})")
+```
+# List all packets
+packets = aee.list_packets()
+for p in packets:
+    print(f"{p['packet_id']}: {p['framework']} ({p['status']})")
 
-\# List EU AI Act packets  
-eu\_packets \= aee.list\_packets(framework="eu\_ai\_act")  
-print(f"EU AI Act packets: {len(eu\_packets)}")
+# List EU AI Act packets
+eu_packets = aee.list_packets(framework="eu_ai_act")
+print(f"EU AI Act packets: {len(eu_packets)}")
+```
 
 ---
 
@@ -27151,433 +27180,435 @@ The Compliance Crosswalk Engine ensures that:
 
 ## SECTION 4: CROSSWALK ENGINE API
 
-\# compliance\_crosswalk\_engine.py  
-"""  
-Compliance Crosswalk Engine — Complete Implementation  
+```
+# compliance_crosswalk_engine.py
+"""
+Compliance Crosswalk Engine — Complete Implementation
 """
 
-from enum import Enum  
-from typing import List, Dict, Optional, Set  
-from dataclasses import dataclass, field  
+from enum import Enum
+from typing import List, Dict, Optional, Set
+from dataclasses import dataclass, field
 from datetime import datetime
 
-class Confidence(Enum):  
-    DIRECT \= "Direct"  
-    INDIRECT \= "Indirect"  
-    PARTIAL \= "Partial"
+class Confidence(Enum):
+    DIRECT = "Direct"
+    INDIRECT = "Indirect"
+    PARTIAL = "Partial"
 
-class CoverageType(Enum):  
-    FULL \= "Full"  
-    PARTIAL \= "Partial"  
-    INTERPRETIVE \= "Interpretive"
+class CoverageType(Enum):
+    FULL = "Full"
+    PARTIAL = "Partial"
+    INTERPRETIVE = "Interpretive"
 
-@dataclass  
-class CrosswalkMapping:  
-    """A single control-to-clause mapping"""  
-    mapping\_id: str  
-    control\_id: str  
-    framework: str  
-    clause: str  
-    clause\_description: str  
-    confidence: Confidence  
-    coverage\_type: CoverageType  
-    evidence\_required: bool \= True  
-    last\_verified: str \= field(default\_factory=lambda: datetime.now().isoformat())  
-    verified\_by: str \= "system"
+@dataclass
+class CrosswalkMapping:
+    """A single control-to-clause mapping"""
+    mapping_id: str
+    control_id: str
+    framework: str
+    clause: str
+    clause_description: str
+    confidence: Confidence
+    coverage_type: CoverageType
+    evidence_required: bool = True
+    last_verified: str = field(default_factory=lambda: datetime.now().isoformat())
+    verified_by: str = "system"
 
-@dataclass  
-class GapAnalysis:  
-    """Gap analysis results for a framework"""  
-    framework: str  
-    total\_requirements: int  
-    covered: int  
-    partial: int  
-    uncovered: int  
-    coverage\_pct: float  
-    uncovered\_requirements: List\[str\]  
-    partial\_requirements: List\[str\]
+@dataclass
+class GapAnalysis:
+    """Gap analysis results for a framework"""
+    framework: str
+    total_requirements: int
+    covered: int
+    partial: int
+    uncovered: int
+    coverage_pct: float
+    uncovered_requirements: List[str]
+    partial_requirements: List[str]
 
-@dataclass  
-class RegulatoryDiff:  
-    """Diff between current coverage and new regulatory requirements"""  
-    framework: str  
-    new\_requirements: List\[str\]  
-    already\_covered: List\[str\]  
-    partially\_covered: List\[str\]  
-    not\_covered: List\[str\]  
-    requires\_extension: bool
+@dataclass
+class RegulatoryDiff:
+    """Diff between current coverage and new regulatory requirements"""
+    framework: str
+    new_requirements: List[str]
+    already_covered: List[str]
+    partially_covered: List[str]
+    not_covered: List[str]
+    requires_extension: bool
 
-class ComplianceCrosswalkEngine:  
-    """Interactive crosswalk tool for component ↔ clause mapping"""  
-      
-    def \_\_init\_\_(self, registry=None):  
-        """  
-        Initialize the crosswalk engine.  
-          
-        Args:  
-            registry: MasterControlRegistry instance (optional, will create default)  
-        """  
-        self.registry \= registry  
-        self.mappings: List\[CrosswalkMapping\] \= \[\]  
-        self.\_build\_mappings()  
-      
-    def \_build\_mappings(self):  
-        """Build all mappings from registry and hardcoded crosswalk"""  
-          
-        \# EU AI Act mappings (sample)  
-        eu\_mappings \= \[  
-            ("ICC-8-I1", "Art. 14", "Human oversight — accountability"),  
-            ("ICC-8-I2", "Art. 14", "Human oversight — authority separation"),  
-            ("ICC-8-I3", "Art. 12", "Record-keeping"),  
-            ("ICC-8-I6", "Art. 13", "Transparency"),  
-            ("ICC-8-I8", "Art. 13, Art. 69", "Transparency, codes of conduct"),  
-            ("ICC-8-I9", "Art. 7, Art. 9", "High-risk, risk management"),  
-            ("AICA-5-CN-011", "Art. 14", "Human oversight — trigger rights"),  
-            ("AICA-5-CN-012", "Art. 9", "Risk management — binding thresholds"),  
-            ("AICA-5-CN-013", "Art. 14", "Human oversight — override"),  
-            ("AICA-5-CN-014", "Art. 14", "Human oversight — escalation"),  
-            ("AICA-5-CN-017", "Art. 9", "Risk management — drift detection"),  
-            ("AICA-5-CN-021", "Art. 12", "Record-keeping — decision lineage"),  
-            ("AICA-5-CN-023", "Art. 9", "Risk management — outcome validation"),  
-            ("ADTEP-001", "Art. 14", "Human oversight — role specification"),  
-            ("ADTEP-003", "Art. 12", "Record-keeping — pre-delivery log"),  
-            ("ADTEP-004", "Art. 14", "Human oversight — escalation flag"),  
-            ("ADTEP-005", "Art. 14", "Human oversight — suspension"),  
-            ("ADTEP-007", "Art. 7, Art. 9", "High-risk, risk management — catastrophic"),  
-            ("RGI-8-001", "Art. 9", "Risk management — declaration binding"),  
-            ("RGI-8-002", "Art. 14", "Human oversight — gate/steer"),  
-            ("RGI-8-003", "Art. 12", "Record-keeping — fidelity trace"),  
-            ("RGI-8-004", "Art. 9", "Risk management — drift detection"),  
-            ("RGI-8-005", "Art. 14", "Human oversight — constraint supremacy"),  
-            ("HOF-H1", "Art. 14", "Human oversight — single HAN"),  
-            ("HOF-H3", "Art. 14", "Human oversight — authorization authority"),  
-            ("CAD-7-001", "Art. 14", "Human oversight — coalition trigger"),  
-            ("CAD-7-002", "Art. 14", "Human oversight — principal declaration"),  
-            ("IMP-001", "Art. 12", "Record-keeping — engagement context"),  
-            ("IMP-002", "Art. 12", "Record-keeping — decision records"),  
-            ("IMP-005", "Art. 9", "Risk management — outcome evidence"),  
-        \]  
-          
-        for control\_id, clause, desc in eu\_mappings:  
-            self.mappings.append(CrosswalkMapping(  
-                mapping\_id=f"MAP-EU-{len(self.mappings)+1:04d}",  
-                control\_id=control\_id,  
-                framework="eu\_ai\_act",  
-                clause=clause,  
-                clause\_description=desc,  
-                confidence=Confidence.DIRECT,  
-                coverage\_type=CoverageType.FULL  
-            ))  
-          
-        \# NIST AI RMF mappings (sample)  
-        nist\_mappings \= \[  
-            ("ICC-8-I1", "Govern", "Accountability"),  
-            ("ICC-8-I3", "Measure", "Auditability"),  
-            ("ICC-8-I4", "Manage", "Control"),  
-            ("ICC-8-I5", "Map", "Structural Compliance"),  
-            ("ICC-8-I6", "Govern", "Transparency"),  
-            ("ICC-8-I8", "Govern", "External Legibility"),  
-            ("AICA-5-CN-011", "Govern", "Trigger Rights"),  
-            ("AICA-5-CN-012", "Map", "Binding Thresholds"),  
-            ("AICA-5-CN-013", "Manage", "Override Protocols"),  
-            ("AICA-5-CN-017", "Measure", "Drift Detection"),  
-            ("AICA-5-CN-021", "Measure", "Decision Lineage"),  
-            ("ADTEP-001", "Govern", "Role Specification"),  
-            ("ADTEP-003", "Measure", "Pre-Delivery Log"),  
-            ("ADTEP-004", "Manage", "Escalation Flag"),  
-            ("RGI-8-001", "Map", "Declaration Binding"),  
-            ("RGI-8-002", "Govern", "Gate/Steer"),  
-            ("RGI-8-003", "Measure", "Fidelity Trace"),  
-            ("HOF-H1", "Govern", "Single HAN"),  
-            ("CAD-7-001", "Govern", "Coalition Trigger"),  
-            ("IMP-001", "Measure", "Engagement Context"),  
-            ("IMP-002", "Measure", "Decision Records"),  
-        \]  
-          
-        for control\_id, clause, desc in nist\_mappings:  
-            self.mappings.append(CrosswalkMapping(  
-                mapping\_id=f"MAP-NIST-{len(self.mappings)+1:04d}",  
-                control\_id=control\_id,  
-                framework="nist\_ai\_rmf",  
-                clause=clause,  
-                clause\_description=desc,  
-                confidence=Confidence.DIRECT,  
-                coverage\_type=CoverageType.FULL  
-            ))  
-          
-        \# ISO/IEC 42001 mappings (sample)  
-        iso\_mappings \= \[  
-            ("ICC-8-I1", "Clause 5.3", "Organizational roles — accountability"),  
-            ("ICC-8-I2", "Clause 5.3", "Organizational roles — authority separation"),  
-            ("ICC-8-I5", "Clause 6.1", "Risk management — structural compliance"),  
-            ("ICC-8-I6", "Clause 7.5", "Information — transparency"),  
-            ("ICC-8-I9", "Clause 8.5", "Resilience — catastrophic risk"),  
-            ("AICA-5-CN-011", "Clause 8.4", "Operations — trigger rights"),  
-            ("AICA-5-CN-012", "Clause 6.1", "Risk management — binding thresholds"),  
-            ("AICA-5-CN-013", "Clause 8.4", "Operations — override"),  
-            ("AICA-5-CN-017", "Clause 9.1", "Monitoring — drift detection"),  
-            ("AICA-5-CN-021", "Clause 9.1", "Monitoring — decision lineage"),  
-            ("ADTEP-001", "Clause 8.4", "Operations — role specification"),  
-            ("ADTEP-004", "Clause 8.4", "Operations — escalation flag"),  
-            ("HOF-H1", "Clause 5.3", "Organizational roles — single HAN"),  
-            ("CAD-7-001", "Clause 8.4", "Operations — coalition trigger"),  
-            ("IMP-001", "Clause 9.1", "Monitoring — engagement context"),  
-            ("IMP-002", "Clause 9.1", "Monitoring — decision records"),  
-        \]  
-          
-        for control\_id, clause, desc in iso\_mappings:  
-            self.mappings.append(CrosswalkMapping(  
-                mapping\_id=f"MAP-ISO-{len(self.mappings)+1:04d}",  
-                control\_id=control\_id,  
-                framework="iso\_42001",  
-                clause=clause,  
-                clause\_description=desc,  
-                confidence=Confidence.DIRECT,  
-                coverage\_type=CoverageType.FULL  
-            ))  
-          
-        \# Philippine PFRS S1/S2 mappings  
-        pfrs\_mappings \= \[  
-            ("ICC-8-I1", "Governance", "Accountability"),  
-            ("ICC-8-I2", "Governance", "Authority-Responsibility"),  
-            ("ICC-8-I3", "Audit", "Record-keeping"),  
-            ("ICC-8-I6", "Transparency", "Disclosure"),  
-            ("AICA-5-CN-011", "Governance", "Trigger rights"),  
-            ("AICA-5-CN-017", "Risk Management", "Drift detection"),  
-            ("AICA-5-CN-021", "Metrics", "Decision lineage"),  
-            ("HOF-H1", "Governance", "Single HAN"),  
-            ("IMP-001", "Audit", "Engagement context"),  
-            ("IMP-002", "Audit", "Decision records"),  
-            ("IMP-005", "Audit", "Outcome evidence"),  
-        \]  
-          
-        for control\_id, clause, desc in pfrs\_mappings:  
-            self.mappings.append(CrosswalkMapping(  
-                mapping\_id=f"MAP-PFRS-{len(self.mappings)+1:04d}",  
-                control\_id=control\_id,  
-                framework="pfrs\_s1\_s2",  
-                clause=clause,  
-                clause\_description=desc,  
-                confidence=Confidence.DIRECT,  
-                coverage\_type=CoverageType.FULL  
-            ))  
-      
-    def map\_component\_to\_framework(self, component: str, framework: str) \-\> List\[CrosswalkMapping\]:  
-        """  
-        Map a component to regulatory clauses.  
-          
-        Args:  
-            component: Control ID (e.g., "AICA-5-CN-011")  
-            framework: Framework identifier (e.g., "eu\_ai\_act")  
-          
-        Returns:  
-            List of mappings for the component to the framework  
-        """  
-        return \[m for m in self.mappings   
-                if m.control\_id \== component and m.framework \== framework\]  
-      
-    def map\_framework\_to\_components(self, framework: str, clause: str \= None) \-\> List\[CrosswalkMapping\]:  
-        """  
-        Map a regulatory clause to AIGIS components.  
-          
-        Args:  
-            framework: Framework identifier  
-            clause: Optional specific clause to filter  
-          
-        Returns:  
-            List of mappings for the framework  
-        """  
-        results \= \[m for m in self.mappings if m.framework \== framework\]  
-        if clause:  
-            results \= \[m for m in results if m.clause \== clause\]  
-        return results  
-      
-    def map\_control\_to\_all\_frameworks(self, component: str) \-\> Dict\[str, List\[CrosswalkMapping\]\]:  
-        """  
-        Map a component to all regulatory frameworks.  
-          
-        Args:  
-            component: Control ID  
-          
-        Returns:  
-            Dictionary of framework → list of mappings  
-        """  
-        result \= {}  
-        for mapping in self.mappings:  
-            if mapping.control\_id \== component:  
-                if mapping.framework not in result:  
-                    result\[mapping.framework\] \= \[\]  
-                result\[mapping.framework\].append(mapping)  
-        return result  
-      
-    def get\_gap\_analysis(self, framework: str, requirements: List\[str\] \= None) \-\> GapAnalysis:  
-        """  
-        Analyze coverage gaps for a framework.  
-          
-        Args:  
-            framework: Framework identifier  
-            requirements: Optional list of requirements to check  
-          
-        Returns:  
-            GapAnalysis object with coverage metrics  
-        """  
-        \# Get all requirements for the framework  
-        if requirements is None:  
-            \# Use known requirements from crosswalk  
-            reqs \= set()  
-            for m in self.mappings:  
-                if m.framework \== framework:  
-                    reqs.add(m.clause)  
-            requirements \= list(reqs)  
-          
-        \# Determine coverage  
-        covered \= \[\]  
-        partial \= \[\]  
-        uncovered \= \[\]  
-          
-        for req in requirements:  
-            mappings \= \[m for m in self.mappings   
-                       if m.framework \== framework and m.clause \== req\]  
-            if not mappings:  
-                uncovered.append(req)  
-            elif any(m.coverage\_type \== CoverageType.PARTIAL for m in mappings):  
-                partial.append(req)  
-            else:  
-                covered.append(req)  
-          
-        total \= len(requirements)  
-        covered\_count \= len(covered)  
-          
-        return GapAnalysis(  
-            framework=framework,  
-            total\_requirements=total,  
-            covered=covered\_count,  
-            partial=len(partial),  
-            uncovered=len(uncovered),  
-            coverage\_pct=(covered\_count / total) \* 100 if total \> 0 else 0,  
-            uncovered\_requirements=uncovered,  
-            partial\_requirements=partial  
-        )  
-      
-    def detect\_regulatory\_diff(self, framework: str, new\_requirements: List\[str\]) \-\> RegulatoryDiff:  
-        """  
-        Detect diff between current coverage and new requirements.  
-          
-        Args:  
-            framework: Framework identifier  
-            new\_requirements: List of new regulatory requirements  
-          
-        Returns:  
-            RegulatoryDiff object with coverage analysis  
-        """  
-        already\_covered \= \[\]  
-        partially\_covered \= \[\]  
-        not\_covered \= \[\]  
-          
-        for req in new\_requirements:  
-            mappings \= \[m for m in self.mappings   
-                       if m.framework \== framework and m.clause \== req\]  
-            if not mappings:  
-                not\_covered.append(req)  
-            elif any(m.coverage\_type \== CoverageType.PARTIAL for m in mappings):  
-                partially\_covered.append(req)  
-            else:  
-                already\_covered.append(req)  
-          
-        return RegulatoryDiff(  
-            framework=framework,  
-            new\_requirements=new\_requirements,  
-            already\_covered=already\_covered,  
-            partially\_covered=partially\_covered,  
-            not\_covered=not\_covered,  
-            requires\_extension=bool(not\_covered or partially\_covered)  
-        )  
-      
-    def get\_coverage\_summary(self, framework: str) \-\> Dict:  
-        """  
-        Get a summary of coverage for a framework.  
-          
-        Args:  
-            framework: Framework identifier  
-          
-        Returns:  
-            Summary dictionary  
-        """  
-        mappings \= \[m for m in self.mappings if m.framework \== framework\]  
-        controls \= set(m.control\_id for m in mappings)  
-        clauses \= set(m.clause for m in mappings)  
-          
-        return {  
-            "framework": framework,  
-            "total\_mappings": len(mappings),  
-            "unique\_controls": len(controls),  
-            "unique\_clauses": len(clauses),  
-            "controls": sorted(list(controls)),  
-            "clauses": sorted(list(clauses))  
-        }  
-      
-    def get\_component\_coverage\_report(self, component: str) \-\> Dict:  
-        """  
-        Get a coverage report for a specific component.  
-          
-        Args:  
-            component: Control ID  
-          
-        Returns:  
-            Coverage report dictionary  
-        """  
-        mappings \= \[m for m in self.mappings if m.control\_id \== component\]  
-        frameworks \= set(m.framework for m in mappings)  
-          
-        return {  
-            "component": component,  
-            "total\_mappings": len(mappings),  
-            "frameworks\_covered": sorted(list(frameworks)),  
-            "mappings\_by\_framework": {  
-                fw: \[{"clause": m.clause, "description": m.clause\_description,   
-                      "confidence": m.confidence.value}  
-                     for m in mappings if m.framework \== fw\]  
-                for fw in frameworks  
-            }  
-        }  
-      
-    def export\_crosswalk(self, framework: str \= None, format: str \= "json") \-\> str:  
-        """  
-        Export the crosswalk in requested format.  
-          
-        Args:  
-            framework: Optional framework filter  
-            format: Export format (json, csv)  
-          
-        Returns:  
-            Exported data as string  
-        """  
-        mappings \= self.mappings  
-        if framework:  
-            mappings \= \[m for m in mappings if m.framework \== framework\]  
-          
-        if format \== "json":  
-            import json  
-            return json.dumps({  
-                "mappings": \[{  
-                    "mapping\_id": m.mapping\_id,  
-                    "control\_id": m.control\_id,  
-                    "framework": m.framework,  
-                    "clause": m.clause,  
-                    "clause\_description": m.clause\_description,  
-                    "confidence": m.confidence.value,  
-                    "coverage\_type": m.coverage\_type.value,  
-                    "evidence\_required": m.evidence\_required  
-                } for m in mappings\]  
-            }, indent=2)  
-          
-        elif format \== "csv":  
-            lines \= \["mapping\_id,control\_id,framework,clause,clause\_description,confidence,coverage\_type,evidence\_required"\]  
-            for m in mappings:  
-                lines.append(f"{m.mapping\_id},{m.control\_id},{m.framework},{m.clause},{m.clause\_description},{m.confidence.value},{m.coverage\_type.value},{m.evidence\_required}")  
-            return "\\n".join(lines)  
-          
+class ComplianceCrosswalkEngine:
+    """Interactive crosswalk tool for component ↔ clause mapping"""
+    
+    def __init__(self, registry=None):
+        """
+        Initialize the crosswalk engine.
+        
+        Args:
+            registry: MasterControlRegistry instance (optional, will create default)
+        """
+        self.registry = registry
+        self.mappings: List[CrosswalkMapping] = []
+        self._build_mappings()
+    
+    def _build_mappings(self):
+        """Build all mappings from registry and hardcoded crosswalk"""
+        
+        # EU AI Act mappings (sample)
+        eu_mappings = [
+            ("ICC-8-I1", "Art. 14", "Human oversight — accountability"),
+            ("ICC-8-I2", "Art. 14", "Human oversight — authority separation"),
+            ("ICC-8-I3", "Art. 12", "Record-keeping"),
+            ("ICC-8-I6", "Art. 13", "Transparency"),
+            ("ICC-8-I8", "Art. 13, Art. 69", "Transparency, codes of conduct"),
+            ("ICC-8-I9", "Art. 7, Art. 9", "High-risk, risk management"),
+            ("AICA-5-CN-011", "Art. 14", "Human oversight — trigger rights"),
+            ("AICA-5-CN-012", "Art. 9", "Risk management — binding thresholds"),
+            ("AICA-5-CN-013", "Art. 14", "Human oversight — override"),
+            ("AICA-5-CN-014", "Art. 14", "Human oversight — escalation"),
+            ("AICA-5-CN-017", "Art. 9", "Risk management — drift detection"),
+            ("AICA-5-CN-021", "Art. 12", "Record-keeping — decision lineage"),
+            ("AICA-5-CN-023", "Art. 9", "Risk management — outcome validation"),
+            ("ADTEP-001", "Art. 14", "Human oversight — role specification"),
+            ("ADTEP-003", "Art. 12", "Record-keeping — pre-delivery log"),
+            ("ADTEP-004", "Art. 14", "Human oversight — escalation flag"),
+            ("ADTEP-005", "Art. 14", "Human oversight — suspension"),
+            ("ADTEP-007", "Art. 7, Art. 9", "High-risk, risk management — catastrophic"),
+            ("RGI-8-001", "Art. 9", "Risk management — declaration binding"),
+            ("RGI-8-002", "Art. 14", "Human oversight — gate/steer"),
+            ("RGI-8-003", "Art. 12", "Record-keeping — fidelity trace"),
+            ("RGI-8-004", "Art. 9", "Risk management — drift detection"),
+            ("RGI-8-005", "Art. 14", "Human oversight — constraint supremacy"),
+            ("HOF-H1", "Art. 14", "Human oversight — single HAN"),
+            ("HOF-H3", "Art. 14", "Human oversight — authorization authority"),
+            ("CAD-7-001", "Art. 14", "Human oversight — coalition trigger"),
+            ("CAD-7-002", "Art. 14", "Human oversight — principal declaration"),
+            ("IMP-001", "Art. 12", "Record-keeping — engagement context"),
+            ("IMP-002", "Art. 12", "Record-keeping — decision records"),
+            ("IMP-005", "Art. 9", "Risk management — outcome evidence"),
+        ]
+        
+        for control_id, clause, desc in eu_mappings:
+            self.mappings.append(CrosswalkMapping(
+                mapping_id=f"MAP-EU-{len(self.mappings)+1:04d}",
+                control_id=control_id,
+                framework="eu_ai_act",
+                clause=clause,
+                clause_description=desc,
+                confidence=Confidence.DIRECT,
+                coverage_type=CoverageType.FULL
+            ))
+        
+        # NIST AI RMF mappings (sample)
+        nist_mappings = [
+            ("ICC-8-I1", "Govern", "Accountability"),
+            ("ICC-8-I3", "Measure", "Auditability"),
+            ("ICC-8-I4", "Manage", "Control"),
+            ("ICC-8-I5", "Map", "Structural Compliance"),
+            ("ICC-8-I6", "Govern", "Transparency"),
+            ("ICC-8-I8", "Govern", "External Legibility"),
+            ("AICA-5-CN-011", "Govern", "Trigger Rights"),
+            ("AICA-5-CN-012", "Map", "Binding Thresholds"),
+            ("AICA-5-CN-013", "Manage", "Override Protocols"),
+            ("AICA-5-CN-017", "Measure", "Drift Detection"),
+            ("AICA-5-CN-021", "Measure", "Decision Lineage"),
+            ("ADTEP-001", "Govern", "Role Specification"),
+            ("ADTEP-003", "Measure", "Pre-Delivery Log"),
+            ("ADTEP-004", "Manage", "Escalation Flag"),
+            ("RGI-8-001", "Map", "Declaration Binding"),
+            ("RGI-8-002", "Govern", "Gate/Steer"),
+            ("RGI-8-003", "Measure", "Fidelity Trace"),
+            ("HOF-H1", "Govern", "Single HAN"),
+            ("CAD-7-001", "Govern", "Coalition Trigger"),
+            ("IMP-001", "Measure", "Engagement Context"),
+            ("IMP-002", "Measure", "Decision Records"),
+        ]
+        
+        for control_id, clause, desc in nist_mappings:
+            self.mappings.append(CrosswalkMapping(
+                mapping_id=f"MAP-NIST-{len(self.mappings)+1:04d}",
+                control_id=control_id,
+                framework="nist_ai_rmf",
+                clause=clause,
+                clause_description=desc,
+                confidence=Confidence.DIRECT,
+                coverage_type=CoverageType.FULL
+            ))
+        
+        # ISO/IEC 42001 mappings (sample)
+        iso_mappings = [
+            ("ICC-8-I1", "Clause 5.3", "Organizational roles — accountability"),
+            ("ICC-8-I2", "Clause 5.3", "Organizational roles — authority separation"),
+            ("ICC-8-I5", "Clause 6.1", "Risk management — structural compliance"),
+            ("ICC-8-I6", "Clause 7.5", "Information — transparency"),
+            ("ICC-8-I9", "Clause 8.5", "Resilience — catastrophic risk"),
+            ("AICA-5-CN-011", "Clause 8.4", "Operations — trigger rights"),
+            ("AICA-5-CN-012", "Clause 6.1", "Risk management — binding thresholds"),
+            ("AICA-5-CN-013", "Clause 8.4", "Operations — override"),
+            ("AICA-5-CN-017", "Clause 9.1", "Monitoring — drift detection"),
+            ("AICA-5-CN-021", "Clause 9.1", "Monitoring — decision lineage"),
+            ("ADTEP-001", "Clause 8.4", "Operations — role specification"),
+            ("ADTEP-004", "Clause 8.4", "Operations — escalation flag"),
+            ("HOF-H1", "Clause 5.3", "Organizational roles — single HAN"),
+            ("CAD-7-001", "Clause 8.4", "Operations — coalition trigger"),
+            ("IMP-001", "Clause 9.1", "Monitoring — engagement context"),
+            ("IMP-002", "Clause 9.1", "Monitoring — decision records"),
+        ]
+        
+        for control_id, clause, desc in iso_mappings:
+            self.mappings.append(CrosswalkMapping(
+                mapping_id=f"MAP-ISO-{len(self.mappings)+1:04d}",
+                control_id=control_id,
+                framework="iso_42001",
+                clause=clause,
+                clause_description=desc,
+                confidence=Confidence.DIRECT,
+                coverage_type=CoverageType.FULL
+            ))
+        
+        # Philippine PFRS S1/S2 mappings
+        pfrs_mappings = [
+            ("ICC-8-I1", "Governance", "Accountability"),
+            ("ICC-8-I2", "Governance", "Authority-Responsibility"),
+            ("ICC-8-I3", "Audit", "Record-keeping"),
+            ("ICC-8-I6", "Transparency", "Disclosure"),
+            ("AICA-5-CN-011", "Governance", "Trigger rights"),
+            ("AICA-5-CN-017", "Risk Management", "Drift detection"),
+            ("AICA-5-CN-021", "Metrics", "Decision lineage"),
+            ("HOF-H1", "Governance", "Single HAN"),
+            ("IMP-001", "Audit", "Engagement context"),
+            ("IMP-002", "Audit", "Decision records"),
+            ("IMP-005", "Audit", "Outcome evidence"),
+        ]
+        
+        for control_id, clause, desc in pfrs_mappings:
+            self.mappings.append(CrosswalkMapping(
+                mapping_id=f"MAP-PFRS-{len(self.mappings)+1:04d}",
+                control_id=control_id,
+                framework="pfrs_s1_s2",
+                clause=clause,
+                clause_description=desc,
+                confidence=Confidence.DIRECT,
+                coverage_type=CoverageType.FULL
+            ))
+    
+    def map_component_to_framework(self, component: str, framework: str) -> List[CrosswalkMapping]:
+        """
+        Map a component to regulatory clauses.
+        
+        Args:
+            component: Control ID (e.g., "AICA-5-CN-011")
+            framework: Framework identifier (e.g., "eu_ai_act")
+        
+        Returns:
+            List of mappings for the component to the framework
+        """
+        return [m for m in self.mappings 
+                if m.control_id == component and m.framework == framework]
+    
+    def map_framework_to_components(self, framework: str, clause: str = None) -> List[CrosswalkMapping]:
+        """
+        Map a regulatory clause to AIGIS components.
+        
+        Args:
+            framework: Framework identifier
+            clause: Optional specific clause to filter
+        
+        Returns:
+            List of mappings for the framework
+        """
+        results = [m for m in self.mappings if m.framework == framework]
+        if clause:
+            results = [m for m in results if m.clause == clause]
+        return results
+    
+    def map_control_to_all_frameworks(self, component: str) -> Dict[str, List[CrosswalkMapping]]:
+        """
+        Map a component to all regulatory frameworks.
+        
+        Args:
+            component: Control ID
+        
+        Returns:
+            Dictionary of framework → list of mappings
+        """
+        result = {}
+        for mapping in self.mappings:
+            if mapping.control_id == component:
+                if mapping.framework not in result:
+                    result[mapping.framework] = []
+                result[mapping.framework].append(mapping)
+        return result
+    
+    def get_gap_analysis(self, framework: str, requirements: List[str] = None) -> GapAnalysis:
+        """
+        Analyze coverage gaps for a framework.
+        
+        Args:
+            framework: Framework identifier
+            requirements: Optional list of requirements to check
+        
+        Returns:
+            GapAnalysis object with coverage metrics
+        """
+        # Get all requirements for the framework
+        if requirements is None:
+            # Use known requirements from crosswalk
+            reqs = set()
+            for m in self.mappings:
+                if m.framework == framework:
+                    reqs.add(m.clause)
+            requirements = list(reqs)
+        
+        # Determine coverage
+        covered = []
+        partial = []
+        uncovered = []
+        
+        for req in requirements:
+            mappings = [m for m in self.mappings 
+                       if m.framework == framework and m.clause == req]
+            if not mappings:
+                uncovered.append(req)
+            elif any(m.coverage_type == CoverageType.PARTIAL for m in mappings):
+                partial.append(req)
+            else:
+                covered.append(req)
+        
+        total = len(requirements)
+        covered_count = len(covered)
+        
+        return GapAnalysis(
+            framework=framework,
+            total_requirements=total,
+            covered=covered_count,
+            partial=len(partial),
+            uncovered=len(uncovered),
+            coverage_pct=(covered_count / total) * 100 if total > 0 else 0,
+            uncovered_requirements=uncovered,
+            partial_requirements=partial
+        )
+    
+    def detect_regulatory_diff(self, framework: str, new_requirements: List[str]) -> RegulatoryDiff:
+        """
+        Detect diff between current coverage and new requirements.
+        
+        Args:
+            framework: Framework identifier
+            new_requirements: List of new regulatory requirements
+        
+        Returns:
+            RegulatoryDiff object with coverage analysis
+        """
+        already_covered = []
+        partially_covered = []
+        not_covered = []
+        
+        for req in new_requirements:
+            mappings = [m for m in self.mappings 
+                       if m.framework == framework and m.clause == req]
+            if not mappings:
+                not_covered.append(req)
+            elif any(m.coverage_type == CoverageType.PARTIAL for m in mappings):
+                partially_covered.append(req)
+            else:
+                already_covered.append(req)
+        
+        return RegulatoryDiff(
+            framework=framework,
+            new_requirements=new_requirements,
+            already_covered=already_covered,
+            partially_covered=partially_covered,
+            not_covered=not_covered,
+            requires_extension=bool(not_covered or partially_covered)
+        )
+    
+    def get_coverage_summary(self, framework: str) -> Dict:
+        """
+        Get a summary of coverage for a framework.
+        
+        Args:
+            framework: Framework identifier
+        
+        Returns:
+            Summary dictionary
+        """
+        mappings = [m for m in self.mappings if m.framework == framework]
+        controls = set(m.control_id for m in mappings)
+        clauses = set(m.clause for m in mappings)
+        
+        return {
+            "framework": framework,
+            "total_mappings": len(mappings),
+            "unique_controls": len(controls),
+            "unique_clauses": len(clauses),
+            "controls": sorted(list(controls)),
+            "clauses": sorted(list(clauses))
+        }
+    
+    def get_component_coverage_report(self, component: str) -> Dict:
+        """
+        Get a coverage report for a specific component.
+        
+        Args:
+            component: Control ID
+        
+        Returns:
+            Coverage report dictionary
+        """
+        mappings = [m for m in self.mappings if m.control_id == component]
+        frameworks = set(m.framework for m in mappings)
+        
+        return {
+            "component": component,
+            "total_mappings": len(mappings),
+            "frameworks_covered": sorted(list(frameworks)),
+            "mappings_by_framework": {
+                fw: [{"clause": m.clause, "description": m.clause_description, 
+                      "confidence": m.confidence.value}
+                     for m in mappings if m.framework == fw]
+                for fw in frameworks
+            }
+        }
+    
+    def export_crosswalk(self, framework: str = None, format: str = "json") -> str:
+        """
+        Export the crosswalk in requested format.
+        
+        Args:
+            framework: Optional framework filter
+            format: Export format (json, csv)
+        
+        Returns:
+            Exported data as string
+        """
+        mappings = self.mappings
+        if framework:
+            mappings = [m for m in mappings if m.framework == framework]
+        
+        if format == "json":
+            import json
+            return json.dumps({
+                "mappings": [{
+                    "mapping_id": m.mapping_id,
+                    "control_id": m.control_id,
+                    "framework": m.framework,
+                    "clause": m.clause,
+                    "clause_description": m.clause_description,
+                    "confidence": m.confidence.value,
+                    "coverage_type": m.coverage_type.value,
+                    "evidence_required": m.evidence_required
+                } for m in mappings]
+            }, indent=2)
+        
+        elif format == "csv":
+            lines = ["mapping_id,control_id,framework,clause,clause_description,confidence,coverage_type,evidence_required"]
+            for m in mappings:
+                lines.append(f"{m.mapping_id},{m.control_id},{m.framework},{m.clause},{m.clause_description},{m.confidence.value},{m.coverage_type.value},{m.evidence_required}")
+            return "\n".join(lines)
+        
         return ""
+```
 
 ---
 
@@ -27585,75 +27616,87 @@ class ComplianceCrosswalkEngine:
 
 ### 5.1 Basic Usage
 
-\# Initialize the crosswalk engine  
-crosswalk \= ComplianceCrosswalkEngine()
+```
+# Initialize the crosswalk engine
+crosswalk = ComplianceCrosswalkEngine()
 
-\# Map a component to EU AI Act  
-mappings \= crosswalk.map\_component\_to\_framework("AICA-5-CN-011", "eu\_ai\_act")  
-for m in mappings:  
-    print(f"{m.control\_id} → {m.clause}: {m.clause\_description}")  
-\# Output: AICA-5-CN-011 → Art. 14: Human oversight — trigger rights
+# Map a component to EU AI Act
+mappings = crosswalk.map_component_to_framework("AICA-5-CN-011", "eu_ai_act")
+for m in mappings:
+    print(f"{m.control_id} → {m.clause}: {m.clause_description}")
+# Output: AICA-5-CN-011 → Art. 14: Human oversight — trigger rights
 
-\# Map a framework to components  
-mappings \= crosswalk.map\_framework\_to\_components("eu\_ai\_act", "Art. 14")  
-print(f"Controls mapped to Art. 14: {len(mappings)}")  
-\# Output: Controls mapped to Art. 14: 15
+# Map a framework to components
+mappings = crosswalk.map_framework_to_components("eu_ai_act", "Art. 14")
+print(f"Controls mapped to Art. 14: {len(mappings)}")
+# Output: Controls mapped to Art. 14: 15
 
-\# Get gap analysis  
-gap \= crosswalk.get\_gap\_analysis("eu\_ai\_act")  
-print(f"Coverage: {gap.coverage\_pct}%")  
-print(f"Uncovered: {gap.uncovered\_requirements}")
+# Get gap analysis
+gap = crosswalk.get_gap_analysis("eu_ai_act")
+print(f"Coverage: {gap.coverage_pct}%")
+print(f"Uncovered: {gap.uncovered_requirements}")
+```
 
 ### 5.2 Component Coverage Report
 
-\# Get coverage for a specific control  
-report \= crosswalk.get\_component\_coverage\_report("ICC-8-I1")  
-print(f"Component: {report\['component'\]}")  
-print(f"Frameworks covered: {report\['frameworks\_covered'\]}")  
-for fw, mappings in report\['mappings\_by\_framework'\].items():  
-    print(f"  {fw}:")  
-    for m in mappings:  
-        print(f"    {m\['clause'\]} — {m\['description'\]}")
+```
+print(f"Uncovered: {gap.uncovered_requirements}")
+5.2 Component Coverage Report
+# Get coverage for a specific control
+report = crosswalk.get_component_coverage_report("ICC-8-I1")
+print(f"Component: {report['component']}")
+print(f"Frameworks covered: {report['frameworks_covered']}")
+for fw, mappings in report['mappings_by_framework'].items():
+    print(f"  {fw}:")
+    for m in mappings:
+        print(f"    {m['clause']} — {m['description']}")
+```
 
 ### 5.3 Regulatory Diff Detection
 
-\# New EU AI Act requirements (hypothetical)  
-new\_reqs \= \[  
-    "Art. 10",  \# Data governance (new)  
-    "Art. 14",  \# Already covered  
-    "Art. 15",  \# Accuracy (new)  
-\]
+```
+# New EU AI Act requirements (hypothetical)
+new_reqs = [
+    "Art. 10",  # Data governance (new)
+    "Art. 14",  # Already covered
+    "Art. 15",  # Accuracy (new)
+]
 
-diff \= crosswalk.detect\_regulatory\_diff("eu\_ai\_act", new\_reqs)  
-print(f"Already covered: {diff.already\_covered}")  
-print(f"Partially covered: {diff.partially\_covered}")  
-print(f"Not covered: {diff.not\_covered}")  
-print(f"Requires extension: {diff.requires\_extension}")
+diff = crosswalk.detect_regulatory_diff("eu_ai_act", new_reqs)
+print(f"Already covered: {diff.already_covered}")
+print(f"Partially covered: {diff.partially_covered}")
+print(f"Not covered: {diff.not_covered}")
+print(f"Requires extension: {diff.requires_extension}")
+```
 
 ### 5.4 Coverage Summary
 
-\# Get coverage summary  
-summary \= crosswalk.get\_coverage\_summary("eu\_ai\_act")  
-print(f"Total mappings: {summary\['total\_mappings'\]}")  
-print(f"Unique controls: {summary\['unique\_controls'\]}")  
-print(f"Unique clauses: {summary\['unique\_clauses'\]}")  
-print(f"Controls: {summary\['controls'\]}")
+```
+# Get coverage summary
+summary = crosswalk.get_coverage_summary("eu_ai_act")
+print(f"Total mappings: {summary['total_mappings']}")
+print(f"Unique controls: {summary['unique_controls']}")
+print(f"Unique clauses: {summary['unique_clauses']}")
+print(f"Controls: {summary['controls']}")
+```
 
 ---
 
 ## SECTION 6: CROSSWALK AND MCR INTEGRATION
 
-\# Integration with MasterControlRegistry  
-from master\_control\_registry import MasterControlRegistry, ControlSource
+```
+# Integration with MasterControlRegistry
+from master_control_registry import MasterControlRegistry, ControlSource
 
-mcr \= MasterControlRegistry()  
-crosswalk \= ComplianceCrosswalkEngine(registry=mcr)
+mcr = MasterControlRegistry()
+crosswalk = ComplianceCrosswalkEngine(registry=mcr)
 
-\# Get all controls from a source  
-controls \= mcr.get\_controls\_by\_source(ControlSource.AICA\_5)  
-for control in controls\[:5\]:  
-    mappings \= crosswalk.map\_component\_to\_framework(control.control\_id, "eu\_ai\_act")  
-    print(f"{control.control\_id}: {len(mappings)} EU AI Act mappings")
+# Get all controls from a source
+controls = mcr.get_controls_by_source(ControlSource.AICA_5)
+for control in controls[:5]:
+    mappings = crosswalk.map_component_to_framework(control.control_id, "eu_ai_act")
+    print(f"{control.control_id}: {len(mappings)} EU AI Act mappings")
+```
 
 ---
 
@@ -27729,7 +27772,7 @@ The Compliance Engine API/UI ensures that:
 
 ### 2.1 Base URL
 
-https://api.aigis-compliance.com/v1
+`https://api.aigis-compliance.com/v1`
 
 ### 2.2 Authentication
 
@@ -27791,82 +27834,99 @@ https://api.aigis-compliance.com/v1
 
 HTTP
 
-GET /mcr/controls?source=AICA-5\&category=Governance  
-Authorization: Bearer {api\_key}
+```
+GET /mcr/controls?source=AICA-5&category=Governance
+Authorization: Bearer {api_key}
+```
 
 ---
 
 JSON
 
-{  
-  "controls": \[  
-    {  
-      "control\_id": "AICA-5-CN-011",  
-      "name": "Trigger Rights",  
-      "source": "AICA-5",  
-      "source\_reference": "A-N1",  
-      "category": "Governance",  
-      "mappings": {  
-        "eu\_ai\_act": \["Art. 14"\],  
-        "nist\_ai\_rmf": \["Govern"\]  
-      }  
-    }  
-  \],  
-  "total": 1,  
-  "page": 1,  
-  "limit": 20  
+```
+{
+  "controls": [
+    {
+      "control_id": "AICA-5-CN-011",
+      "name": "Trigger Rights",
+      "source": "AICA-5",
+      "source_reference": "A-N1",
+      "category": "Governance",
+      "mappings": {
+        "eu_ai_act": ["Art. 14"],
+        "nist_ai_rmf": ["Govern"]
+      }
+    }
+  ],
+  "total": 1,
+  "page": 1,
+  "limit": 20
 }
+```
 
 #### Generate Evidence Packet
 
 HTTP  
-POST /evidence/generate  
-Authorization: Bearer {api\_key}  
+
+```
+POST /evidence/generate
+Authorization: Bearer {api_key}
 Content-Type: application/json
+```
 
 ---
 
 JSON  
-{  
-  "framework": "eu\_ai\_act",  
-  "eco\_id": "ECO-2026-0a26cb",  
-  "controls": \["AICA-5-CN-011", "AICA-5-CN-014", "HOF-H1"\],  
-  "date\_range": {  
-    "start": "2026-01-01",  
-    "end": "2026-12-31"  
-  }  
-}  
+```
+{
+  "framework": "eu_ai_act",
+  "eco_id": "ECO-2026-0a26cb",
+  "controls": ["AICA-5-CN-011", "AICA-5-CN-014", "HOF-H1"],
+  "date_range": {
+    "start": "2026-01-01",
+    "end": "2026-12-31"
+  }
+}
+```
+
 ---
 
-{  
-  "packet\_id": "EVP-eu\_ai\_act-20260901120000-0001",  
-  "framework": "eu\_ai\_act",  
-  "generated\_at": "2026-09-01T12:00:00Z",  
-  "controls\_covered": 3,  
-  "evidence\_items": 12,  
-  "packet\_hash": "a1b2c3d4e5f6...",  
-  "status": "Generated"  
+```
+{
+  "packet_id": "EVP-eu_ai_act-20260901120000-0001",
+  "framework": "eu_ai_act",
+  "generated_at": "2026-09-01T12:00:00Z",
+  "controls_covered": 3,
+  "evidence_items": 12,
+  "packet_hash": "a1b2c3d4e5f6...",
+  "status": "Generated"
 }
+```
 
 #### Get Gap Analysis
 
 HTTP  
-GET /crosswalk/gap/eu\_ai\_act  
-Authorization: Bearer {api\_key}
+
+```
+GET /crosswalk/gap/eu_ai_act
+Authorization: Bearer {api_key}
+```
 
 ---
 
 JSON  
-{  
-  "framework": "eu\_ai\_act",  
-  "total\_requirements": 113,  
-  "covered": 111,  
-  "partial": 2,  
-  "uncovered": 0,  
-  "coverage\_pct": 98.2,  
-  "partial\_requirements": \["Art. 10", "Art. 15"\],  
-  "uncovered\_requirements": \[\]  
+```
+{
+  "framework": "eu_ai_act",
+  "total_requirements": 113,
+  "covered": 111,
+  "partial": 2,
+  "uncovered": 0,
+  "coverage_pct": 98.2,
+  "partial_requirements": ["Art. 10", "Art. 15"],
+  "uncovered_requirements": []
 }
+```
 
 ---
 
@@ -27874,66 +27934,69 @@ JSON
 
 ### 3.1 UI Structure
 
-┌─────────────────────────────────────────────────────────────────────────────┐  
-│  🛡️ AIGIS Compliance Engine                                                 │  
-│  Dashboard  │  Controls  │  Crosswalk  │  Overlays  │  Evidence  │  Reports │  
-├─────────────────────────────────────────────────────────────────────────────┤  
-│                                                                             │  
-│  ┌─────────────────────────────────────────────────────────────────────────┐│  
-│  │                    Dashboard                                            ││  
-│  │                                                                         ││  
-│  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐ ││  
-│  │  │ Total        │  │ EU AI Act    │  │ NIST AI RMF  │  │ Philippines  │ ││  
-│  │  │ Controls: 109│  │ Coverage: 98%│  │ Coverage:100%│  │ Coverage:100%│ ││  
-│  │  └──────────────┘  └──────────────┘  └──────────────┘  └──────────────┘ ││  
-│  │                                                                         ││  
-│  │  ┌─────────────────────────────────────────────────────────────────────┐││  
-│  │  │                    Coverage by Framework                            │││  
-│  │  │  ██████████████████████████████████████████████████████████████████ │││  
-│  │  │  EU AI Act    ████████████████████████████████████████████ 98%      │││  
-│  │  │  NIST AI RMF  ██████████████████████████████████████████████ 100%   │││  
-│  │  │  ISO 42001    ██████████████████████████████████████████████ 100%   │││  
-│  │  │  Philippines  ██████████████████████████████████████████████ 100%   │││  
-│  │  └─────────────────────────────────────────────────────────────────────┘││  
-│  └─────────────────────────────────────────────────────────────────────────┘│  
-│                                                                             │  
-│  ┌─────────────────────────────────────────────────────────────────────────┐│  
-│  │                    Controls Browser                                     ││  
-│  │                                                                         ││  
-│  │  🔍 Search controls...                                                  ││  
-│  │  \[Source: All ▼\] \[Category: All ▼\] \[Framework: All ▼\]                   ││  
-│  │                                                                         ││  
-│  │  ┌─────────────────────────────────────────────────────────────────────┐││  
-│  │  │ ✓ AICA-5-CN-011  Trigger Rights              Governance  EU AI Act  │││  
-│  │  │   Art. 14 · NIST: Govern · ISO 8.4                                   │││  
-│  │  ├──────────────────────────────────────────────────────────────────────┤││  
-│  │  │ ✓ AICA-5-CN-012  Binding Thresholds           Governance  EU AI Act │││  
-│  │  │   Art. 9 · NIST: Map · ISO 6.1                                      │││  
-│  │  ├─────────────────────────────────────────────────────────────────────┤││  
-│  │  │ ✓ AICA-5-CN-013  Override Protocols           Technical   EU AI Act │││  
-│  │  │   Art. 14 · NIST: Manage · ISO 8.4                                  │││  
-│  │  └─────────────────────────────────────────────────────────────────────┘││  
-│  └─────────────────────────────────────────────────────────────────────────┘│  
-│                                                                             │  
-│  ┌─────────────────────────────────────────────────────────────────────────┐│  
-│  │                    Evidence Generator                                   ││  
-│  │                                                                         ││  
-│  │  Framework: \[EU AI Act ▼\]                                               ││  
-│  │  Engagement: \[ECO-2026-0a26cb ▼\]                                        ││  
-│  │  Controls: \[All mapped controls ▼\]                                      ││  
-│  │  Date Range: \[2026-01-01\] to \[2026-12-31\]                               ││  
-│  │  \[Generate Evidence Packet\]                                             ││  
-│  │                                                                         ││  
-│  │  Last Generated: 2026-09-01 12:00:00                                    ││  
-│  │  Packet: EVP-eu\_ai\_act-20260901120000-0001                              ││  
-│  │  \[Download JSON\] \[Download HTML\] \[Attest\] \[Verify\]                      ││  
-│  └─────────────────────────────────────────────────────────────────────────┘│  
-│                                                                             │  
-│  ┌─────────────────────────────────────────────────────────────────────────┐│  
-│  │                    Reports                                              ││  
-│  │  \[Compliance Report\] \[Gap Analysis\] \[Evidence Summary\] \[Audit Trail\]    ││  
-│  └─────────────────────────────────────────────────────────────────────────┘│  
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  🛡️ AIGIS Compliance Engine                                                 │
+│  Dashboard  │  Controls  │  Crosswalk  │  Overlays  │  Evidence  │  Reports │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌─────────────────────────────────────────────────────────────────────────┐│
+│  │                    Dashboard                                            ││
+│  │                                                                         ││
+│  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐ ││
+│  │  │ Total        │  │ EU AI Act    │  │ NIST AI RMF  │  │ Philippines  │ ││
+│  │  │ Controls: 109│  │ Coverage: 98%│  │ Coverage:100%│  │ Coverage:100%│ ││
+│  │  └──────────────┘  └──────────────┘  └──────────────┘  └──────────────┘ ││
+│  │                                                                         ││
+│  │  ┌─────────────────────────────────────────────────────────────────────┐││
+│  │  │                    Coverage by Framework                            │││
+│  │  │  ██████████████████████████████████████████████████████████████████ │││
+│  │  │  EU AI Act    ████████████████████████████████████████████ 98%      │││
+│  │  │  NIST AI RMF  ██████████████████████████████████████████████ 100%   │││
+│  │  │  ISO 42001    ██████████████████████████████████████████████ 100%   │││
+│  │  │  Philippines  ██████████████████████████████████████████████ 100%   │││
+│  │  └─────────────────────────────────────────────────────────────────────┘││
+│  └─────────────────────────────────────────────────────────────────────────┘│
+│                                                                             │
+│  ┌─────────────────────────────────────────────────────────────────────────┐│
+│  │                    Controls Browser                                     ││
+│  │                                                                         ││
+│  │  🔍 Search controls...                                                  ││
+│  │  [Source: All ▼] [Category: All ▼] [Framework: All ▼]                   ││
+│  │                                                                         ││
+│  │  ┌─────────────────────────────────────────────────────────────────────┐││
+│  │  │ ✓ AICA-5-CN-011  Trigger Rights              Governance  EU AI Act  │││
+│  │  │   Art. 14 · NIST: Govern · ISO 8.4                                  │││
+│  │  ├─────────────────────────────────────────────────────────────────────┤││
+│  │  │ ✓ AICA-5-CN-012  Binding Thresholds           Governance  EU AI Act │││
+│  │  │   Art. 9 · NIST: Map · ISO 6.1                                      │││
+│  │  ├─────────────────────────────────────────────────────────────────────┤││
+│  │  │ ✓ AICA-5-CN-013  Override Protocols           Technical   EU AI Act │││
+│  │  │   Art. 14 · NIST: Manage · ISO 8.4                                  │││
+│  │  └─────────────────────────────────────────────────────────────────────┘││
+│  └─────────────────────────────────────────────────────────────────────────┘│
+│                                                                             │
+│  ┌─────────────────────────────────────────────────────────────────────────┐│
+│  │                    Evidence Generator                                   ││
+│  │                                                                         ││
+│  │  Framework: [EU AI Act ▼]                                               ││
+│  │  Engagement: [ECO-2026-0a26cb ▼]                                        ││
+│  │  Controls: [All mapped controls ▼]                                      ││
+│  │  Date Range: [2026-01-01] to [2026-12-31]                               ││
+│  │  [Generate Evidence Packet]                                             ││
+│  │                                                                         ││
+│  │  Last Generated: 2026-09-01 12:00:00                                    ││
+│  │  Packet: EVP-eu_ai_act-20260901120000-0001                              ││
+│  │  [Download JSON] [Download HTML] [Attest] [Verify]                      ││
+│  └─────────────────────────────────────────────────────────────────────────┘│
+│                                                                             │
+│  ┌─────────────────────────────────────────────────────────────────────────┐│
+│  │                    Reports                                              ││
+│  │  [Compliance Report] [Gap Analysis] [Evidence Summary] [Audit Trail]    ││
+│  └─────────────────────────────────────────────────────────────────────────┘│
 └─────────────────────────────────────────────────────────────────────────────┘
+```
+
 
 ### 3.2 UI Pages
 
@@ -27950,413 +28013,415 @@ JSON
 
 ## SECTION 4: API IMPLEMENTATION
 
-\# compliance\_api.py  
-"""  
-Compliance Engine API — Flask Implementation  
+```
+# compliance_api.py
+"""
+Compliance Engine API — Flask Implementation
 """
 
-from flask import Flask, request, jsonify, send\_file  
-from flask\_cors import CORS  
-from datetime import datetime  
-import json  
+from flask import Flask, request, jsonify, send_file
+from flask_cors import CORS
+from datetime import datetime
+import json
 import os
 
-from master\_control\_registry import MasterControlRegistry  
-from compliance\_crosswalk\_engine import ComplianceCrosswalkEngine  
-from eu\_ai\_act\_overlay import EUAIOverlay, EUAIArticle  
-from nist\_ai\_rmf\_overlay import NISTAIRMFOverlay, NISTCategory  
-from philippines\_overlay import PhilippinesOverlay, PhilippinesFramework  
-from audit\_evidence\_engine import AuditEvidenceEngine
+from master_control_registry import MasterControlRegistry
+from compliance_crosswalk_engine import ComplianceCrosswalkEngine
+from eu_ai_act_overlay import EUAIOverlay, EUAIArticle
+from nist_ai_rmf_overlay import NISTAIRMFOverlay, NISTCategory
+from philippines_overlay import PhilippinesOverlay, PhilippinesFramework
+from audit_evidence_engine import AuditEvidenceEngine
 
-app \= Flask(\_\_name\_\_)  
+app = Flask(__name__)
 CORS(app)
 
-\# Initialize components  
-mcr \= MasterControlRegistry()  
-crosswalk \= ComplianceCrosswalkEngine(registry=mcr)  
-eu\_ai \= EUAIOverlay()  
-nist \= NISTAIRMFOverlay()  
-ph \= PhilippinesOverlay()  
-aee \= AuditEvidenceEngine(None, mcr, crosswalk)  \# imp\_store would be injected
+# Initialize components
+mcr = MasterControlRegistry()
+crosswalk = ComplianceCrosswalkEngine(registry=mcr)
+eu_ai = EUAIOverlay()
+nist = NISTAIRMFOverlay()
+ph = PhilippinesOverlay()
+aee = AuditEvidenceEngine(None, mcr, crosswalk)  # imp_store would be injected
 
-\# \===== MCR Endpoints \=====
+# ===== MCR Endpoints =====
 
-@app.route('/api/v1/mcr/controls', methods=\['GET'\])  
-def get\_controls():  
-    """Get all MCR controls with optional filters"""  
-    source \= request.args.get('source')  
-    category \= request.args.get('category')  
-      
-    controls \= list(mcr.controls.values())  
-      
-    if source:  
-        controls \= \[c for c in controls if c.source.value \== source\]  
-    if category:  
-        controls \= \[c for c in controls if c.category.value \== category\]  
-      
-    return jsonify({  
-        "controls": \[{  
-            "control\_id": c.control\_id,  
-            "name": c.name,  
-            "source": c.source.value,  
-            "source\_reference": c.source\_reference,  
-            "category": c.category.value,  
-            "layer": c.layer,  
-            "mappings": c.mappings,  
-            "status": c.status  
-        } for c in controls\],  
-        "total": len(controls)  
+@app.route('/api/v1/mcr/controls', methods=['GET'])
+def get_controls():
+    """Get all MCR controls with optional filters"""
+    source = request.args.get('source')
+    category = request.args.get('category')
+    
+    controls = list(mcr.controls.values())
+    
+    if source:
+        controls = [c for c in controls if c.source.value == source]
+    if category:
+        controls = [c for c in controls if c.category.value == category]
+    
+    return jsonify({
+        "controls": [{
+            "control_id": c.control_id,
+            "name": c.name,
+            "source": c.source.value,
+            "source_reference": c.source_reference,
+            "category": c.category.value,
+            "layer": c.layer,
+            "mappings": c.mappings,
+            "status": c.status
+        } for c in controls],
+        "total": len(controls)
     })
 
-@app.route('/api/v1/mcr/controls/\<control\_id\>', methods=\['GET'\])  
-def get\_control(control\_id):  
-    """Get a specific control"""  
-    control \= mcr.get\_control(control\_id)  
-    if not control:  
-        return jsonify({"error": "Control not found"}), 404  
-      
-    return jsonify({  
-        "control\_id": control.control\_id,  
-        "name": control.name,  
-        "description": control.description,  
-        "source": control.source.value,  
-        "source\_reference": control.source\_reference,  
-        "category": control.category.value,  
-        "layer": control.layer,  
-        "mappings": control.mappings,  
-        "status": control.status,  
-        "version": control.version  
+@app.route('/api/v1/mcr/controls/<control_id>', methods=['GET'])
+def get_control(control_id):
+    """Get a specific control"""
+    control = mcr.get_control(control_id)
+    if not control:
+        return jsonify({"error": "Control not found"}), 404
+    
+    return jsonify({
+        "control_id": control.control_id,
+        "name": control.name,
+        "description": control.description,
+        "source": control.source.value,
+        "source_reference": control.source_reference,
+        "category": control.category.value,
+        "layer": control.layer,
+        "mappings": control.mappings,
+        "status": control.status,
+        "version": control.version
     })
 
-@app.route('/api/v1/mcr/frameworks', methods=\['GET'\])  
-def get\_frameworks():  
-    """Get all frameworks"""  
-    return jsonify({  
-        "frameworks": list(mcr.frameworks.keys())  
+@app.route('/api/v1/mcr/frameworks', methods=['GET'])
+def get_frameworks():
+    """Get all frameworks"""
+    return jsonify({
+        "frameworks": list(mcr.frameworks.keys())
     })
 
-\# \===== Crosswalk Endpoints \=====
+# ===== Crosswalk Endpoints =====
 
-@app.route('/api/v1/crosswalk/control/\<control\_id\>/framework/\<framework\>', methods=\['GET'\])  
-def map\_control\_to\_framework(control\_id, framework):  
-    """Map a control to a framework"""  
-    mappings \= crosswalk.map\_component\_to\_framework(control\_id, framework)  
-    return jsonify({  
-        "control\_id": control\_id,  
-        "framework": framework,  
-        "mappings": \[{  
-            "clause": m.clause,  
-            "description": m.clause\_description,  
-            "confidence": m.confidence.value,  
-            "coverage\_type": m.coverage\_type.value  
-        } for m in mappings\]  
+@app.route('/api/v1/crosswalk/control/<control_id>/framework/<framework>', methods=['GET'])
+def map_control_to_framework(control_id, framework):
+    """Map a control to a framework"""
+    mappings = crosswalk.map_component_to_framework(control_id, framework)
+    return jsonify({
+        "control_id": control_id,
+        "framework": framework,
+        "mappings": [{
+            "clause": m.clause,
+            "description": m.clause_description,
+            "confidence": m.confidence.value,
+            "coverage_type": m.coverage_type.value
+        } for m in mappings]
     })
 
-@app.route('/api/v1/crosswalk/framework/\<framework\>', methods=\['GET'\])  
-def map\_framework\_to\_controls(framework):  
-    """Map a framework to controls"""  
-    clause \= request.args.get('clause')  
-    mappings \= crosswalk.map\_framework\_to\_components(framework, clause)  
-    return jsonify({  
-        "framework": framework,  
-        "mappings": \[{  
-            "control\_id": m.control\_id,  
-            "clause": m.clause,  
-            "description": m.clause\_description,  
-            "confidence": m.confidence.value  
-        } for m in mappings\]  
+@app.route('/api/v1/crosswalk/framework/<framework>', methods=['GET'])
+def map_framework_to_controls(framework):
+    """Map a framework to controls"""
+    clause = request.args.get('clause')
+    mappings = crosswalk.map_framework_to_components(framework, clause)
+    return jsonify({
+        "framework": framework,
+        "mappings": [{
+            "control_id": m.control_id,
+            "clause": m.clause,
+            "description": m.clause_description,
+            "confidence": m.confidence.value
+        } for m in mappings]
     })
 
-@app.route('/api/v1/crosswalk/gap/\<framework\>', methods=\['GET'\])  
-def get\_gap\_analysis(framework):  
-    """Get gap analysis for a framework"""  
-    gap \= crosswalk.get\_gap\_analysis(framework)  
-    return jsonify({  
-        "framework": gap.framework,  
-        "total\_requirements": gap.total\_requirements,  
-        "covered": gap.covered,  
-        "partial": gap.partial,  
-        "uncovered": gap.uncovered,  
-        "coverage\_pct": gap.coverage\_pct,  
-        "uncovered\_requirements": gap.uncovered\_requirements,  
-        "partial\_requirements": gap.partial\_requirements  
+@app.route('/api/v1/crosswalk/gap/<framework>', methods=['GET'])
+def get_gap_analysis(framework):
+    """Get gap analysis for a framework"""
+    gap = crosswalk.get_gap_analysis(framework)
+    return jsonify({
+        "framework": gap.framework,
+        "total_requirements": gap.total_requirements,
+        "covered": gap.covered,
+        "partial": gap.partial,
+        "uncovered": gap.uncovered,
+        "coverage_pct": gap.coverage_pct,
+        "uncovered_requirements": gap.uncovered_requirements,
+        "partial_requirements": gap.partial_requirements
     })
 
-\# \===== Evidence Endpoints \=====
+# ===== Evidence Endpoints =====
 
-@app.route('/api/v1/evidence/generate', methods=\['POST'\])  
-def generate\_evidence\_packet():  
-    """Generate an evidence packet"""  
-    data \= request.json  
-    framework \= data.get('framework')  
-    eco\_id \= data.get('eco\_id')  
-    controls \= data.get('controls')  
-    date\_range \= data.get('date\_range')  
-      
-    if not framework:  
-        return jsonify({"error": "framework required"}), 400  
-      
-    packet \= aee.generate\_evidence\_packet(  
-        framework=framework,  
-        eco\_id=eco\_id or "ECO-DEFAULT",  
-        controls=controls,  
-        date\_range=date\_range,  
-        generated\_by="api"  
-    )  
-      
-    return jsonify({  
-        "packet\_id": packet.packet\_id,  
-        "framework": packet.framework,  
-        "generated\_at": packet.generated\_at,  
-        "controls\_covered": len(packet.controls\_covered),  
-        "evidence\_items": len(packet.evidence\_items),  
-        "packet\_hash": packet.packet\_hash,  
-        "status": packet.status.value  
+@app.route('/api/v1/evidence/generate', methods=['POST'])
+def generate_evidence_packet():
+    """Generate an evidence packet"""
+    data = request.json
+    framework = data.get('framework')
+    eco_id = data.get('eco_id')
+    controls = data.get('controls')
+    date_range = data.get('date_range')
+    
+    if not framework:
+        return jsonify({"error": "framework required"}), 400
+    
+    packet = aee.generate_evidence_packet(
+        framework=framework,
+        eco_id=eco_id or "ECO-DEFAULT",
+        controls=controls,
+        date_range=date_range,
+        generated_by="api"
+    )
+    
+    return jsonify({
+        "packet_id": packet.packet_id,
+        "framework": packet.framework,
+        "generated_at": packet.generated_at,
+        "controls_covered": len(packet.controls_covered),
+        "evidence_items": len(packet.evidence_items),
+        "packet_hash": packet.packet_hash,
+        "status": packet.status.value
     })
 
-@app.route('/api/v1/evidence/packets', methods=\['GET'\])  
-def list\_evidence\_packets():  
-    """List evidence packets"""  
-    framework \= request.args.get('framework')  
-    packets \= aee.list\_packets(framework)  
-    return jsonify({  
-        "packets": packets,  
-        "total": len(packets)  
+@app.route('/api/v1/evidence/packets', methods=['GET'])
+def list_evidence_packets():
+    """List evidence packets"""
+    framework = request.args.get('framework')
+    packets = aee.list_packets(framework)
+    return jsonify({
+        "packets": packets,
+        "total": len(packets)
     })
 
-@app.route('/api/v1/evidence/packets/\<packet\_id\>', methods=\['GET'\])  
-def get\_evidence\_packet(packet\_id):  
-    """Get an evidence packet"""  
-    packet \= aee.get\_packet(packet\_id)  
-    if not packet:  
-        return jsonify({"error": "Packet not found"}), 404  
-      
-    return jsonify({  
-        "packet\_id": packet.packet\_id,  
-        "framework": packet.framework,  
-        "generated\_at": packet.generated\_at,  
-        "controls\_covered": packet.controls\_covered,  
-        "evidence\_items": len(packet.evidence\_items),  
-        "packet\_hash": packet.packet\_hash,  
-        "status": packet.status.value,  
-        "attestation": {  
-            "attested\_by": packet.attestation.attested\_by if packet.attestation else None,  
-            "attested\_at": packet.attestation.attested\_at if packet.attestation else None,  
-            "statement": packet.attestation.statement if packet.attestation else None  
-        } if packet.attestation else None  
+@app.route('/api/v1/evidence/packets/<packet_id>', methods=['GET'])
+def get_evidence_packet(packet_id):
+    """Get an evidence packet"""
+    packet = aee.get_packet(packet_id)
+    if not packet:
+        return jsonify({"error": "Packet not found"}), 404
+    
+    return jsonify({
+        "packet_id": packet.packet_id,
+        "framework": packet.framework,
+        "generated_at": packet.generated_at,
+        "controls_covered": packet.controls_covered,
+        "evidence_items": len(packet.evidence_items),
+        "packet_hash": packet.packet_hash,
+        "status": packet.status.value,
+        "attestation": {
+            "attested_by": packet.attestation.attested_by if packet.attestation else None,
+            "attested_at": packet.attestation.attested_at if packet.attestation else None,
+            "statement": packet.attestation.statement if packet.attestation else None
+        } if packet.attestation else None
     })
 
-@app.route('/api/v1/evidence/packets/\<packet\_id\>/attest', methods=\['POST'\])  
-def attest\_evidence\_packet(packet\_id):  
-    """Attest an evidence packet"""  
-    data \= request.json  
-    han\_name \= data.get('han\_name', 'Terrylan\_Manalansan')  
-    signature \= data.get('signature', 'signature\_here')  
-      
-    try:  
-        packet \= aee.attest\_packet(packet\_id, han\_name, signature)  
-        return jsonify({  
-            "packet\_id": packet.packet\_id,  
-            "status": packet.status.value,  
-            "attested\_by": packet.attestation.attested\_by,  
-            "attested\_at": packet.attestation.attested\_at  
-        })  
-    except ValueError as e:  
+@app.route('/api/v1/evidence/packets/<packet_id>/attest', methods=['POST'])
+def attest_evidence_packet(packet_id):
+    """Attest an evidence packet"""
+    data = request.json
+    han_name = data.get('han_name', 'Terrylan_Manalansan')
+    signature = data.get('signature', 'signature_here')
+    
+    try:
+        packet = aee.attest_packet(packet_id, han_name, signature)
+        return jsonify({
+            "packet_id": packet.packet_id,
+            "status": packet.status.value,
+            "attested_by": packet.attestation.attested_by,
+            "attested_at": packet.attestation.attested_at
+        })
+    except ValueError as e:
         return jsonify({"error": str(e)}), 404
 
-@app.route('/api/v1/evidence/packets/\<packet\_id\>/verify', methods=\['GET'\])  
-def verify\_evidence\_packet(packet\_id):  
-    """Verify packet integrity"""  
-    result \= aee.verify\_packet\_integrity(packet\_id)  
+@app.route('/api/v1/evidence/packets/<packet_id>/verify', methods=['GET'])
+def verify_evidence_packet(packet_id):
+    """Verify packet integrity"""
+    result = aee.verify_packet_integrity(packet_id)
     return jsonify(result)
 
-@app.route('/api/v1/evidence/packets/\<packet\_id\>/export', methods=\['GET'\])  
-def export\_evidence\_packet(packet\_id):  
-    """Export evidence packet"""  
-    format \= request.args.get('format', 'json')  
-    include\_attestation \= request.args.get('include\_attestation', 'true').lower() \== 'true'  
-      
-    try:  
-        content \= aee.export\_packet(packet\_id, format, include\_attestation)  
-        return jsonify({  
-            "packet\_id": packet\_id,  
-            "format": format,  
-            "content": content  
-        })  
-    except ValueError as e:  
+@app.route('/api/v1/evidence/packets/<packet_id>/export', methods=['GET'])
+def export_evidence_packet(packet_id):
+    """Export evidence packet"""
+    format = request.args.get('format', 'json')
+    include_attestation = request.args.get('include_attestation', 'true').lower() == 'true'
+    
+    try:
+        content = aee.export_packet(packet_id, format, include_attestation)
+        return jsonify({
+            "packet_id": packet_id,
+            "format": format,
+            "content": content
+        })
+    except ValueError as e:
         return jsonify({"error": str(e)}), 404
 
-\# \===== Overlay Endpoints \=====
+# ===== Overlay Endpoints =====
 
-@app.route('/api/v1/overlay/eu-ai-act/mapping/\<article\>', methods=\['GET'\])  
-def get\_eu\_ai\_mapping(article):  
-    """Get EU AI Act mapping for an article"""  
-    try:  
-        article\_enum \= EUAIArticle(article)  
-        mapping \= eu\_ai.get\_mapping(article\_enum)  
-        if not mapping:  
-            return jsonify({"error": "Article not found"}), 404  
-          
-        return jsonify({  
-            "article": mapping.article.value,  
-            "title": mapping.title,  
-            "description": mapping.description,  
-            "mcr\_control\_ids": mapping.mcr\_control\_ids,  
-            "coverage": mapping.coverage,  
-            "evidence\_required": mapping.evidence\_required,  
-            "evidence\_type": mapping.evidence\_type  
-        })  
-    except ValueError:  
+@app.route('/api/v1/overlay/eu-ai-act/mapping/<article>', methods=['GET'])
+def get_eu_ai_mapping(article):
+    """Get EU AI Act mapping for an article"""
+    try:
+        article_enum = EUAIArticle(article)
+        mapping = eu_ai.get_mapping(article_enum)
+        if not mapping:
+            return jsonify({"error": "Article not found"}), 404
+        
+        return jsonify({
+            "article": mapping.article.value,
+            "title": mapping.title,
+            "description": mapping.description,
+            "mcr_control_ids": mapping.mcr_control_ids,
+            "coverage": mapping.coverage,
+            "evidence_required": mapping.evidence_required,
+            "evidence_type": mapping.evidence_type
+        })
+    except ValueError:
         return jsonify({"error": "Invalid article"}), 400
 
-@app.route('/api/v1/overlay/eu-ai-act/gap', methods=\['GET'\])  
-def get\_eu\_ai\_gap():  
-    """Get EU AI Act gap analysis"""  
-    gap \= eu\_ai.get\_gap\_analysis()  
+@app.route('/api/v1/overlay/eu-ai-act/gap', methods=['GET'])
+def get_eu_ai_gap():
+    """Get EU AI Act gap analysis"""
+    gap = eu_ai.get_gap_analysis()
     return jsonify(gap)
 
-@app.route('/api/v1/overlay/nist-rmf/mapping/\<category\>', methods=\['GET'\])  
-def get\_nist\_mapping(category):  
-    """Get NIST mapping for a category"""  
-    try:  
-        category\_enum \= NISTCategory(category)  
-        mapping \= nist.get\_mapping(category\_enum)  
-        if not mapping:  
-            return jsonify({"error": "Category not found"}), 404  
-          
-        return jsonify({  
-            "category": mapping.category.value,  
-            "function": mapping.function.value,  
-            "title": mapping.title,  
-            "description": mapping.description,  
-            "mcr\_control\_ids": mapping.mcr\_control\_ids,  
-            "coverage": mapping.coverage,  
-            "evidence\_required": mapping.evidence\_required,  
-            "evidence\_type": mapping.evidence\_type  
-        })  
-    except ValueError:  
+@app.route('/api/v1/overlay/nist-rmf/mapping/<category>', methods=['GET'])
+def get_nist_mapping(category):
+    """Get NIST mapping for a category"""
+    try:
+        category_enum = NISTCategory(category)
+        mapping = nist.get_mapping(category_enum)
+        if not mapping:
+            return jsonify({"error": "Category not found"}), 404
+        
+        return jsonify({
+            "category": mapping.category.value,
+            "function": mapping.function.value,
+            "title": mapping.title,
+            "description": mapping.description,
+            "mcr_control_ids": mapping.mcr_control_ids,
+            "coverage": mapping.coverage,
+            "evidence_required": mapping.evidence_required,
+            "evidence_type": mapping.evidence_type
+        })
+    except ValueError:
         return jsonify({"error": "Invalid category"}), 400
 
-@app.route('/api/v1/overlay/nist-rmf/gap', methods=\['GET'\])  
-def get\_nist\_gap():  
-    """Get NIST gap analysis"""  
-    gap \= nist.get\_gap\_analysis()  
+@app.route('/api/v1/overlay/nist-rmf/gap', methods=['GET'])
+def get_nist_gap():
+    """Get NIST gap analysis"""
+    gap = nist.get_gap_analysis()
     return jsonify(gap)
 
-@app.route('/api/v1/overlay/philippines/mapping/\<framework\>', methods=\['GET'\])  
-def get\_philippines\_mapping(framework):  
-    """Get Philippines mapping for a framework"""  
-    try:  
-        framework\_enum \= PhilippinesFramework(framework)  
-        mappings \= ph.get\_mappings\_for\_framework(framework\_enum)  
-        return jsonify({  
-            "framework": framework,  
-            "mappings": \[{  
-                "requirement\_id": m.requirement\_id,  
-                "requirement\_title": m.requirement\_title,  
-                "description": m.description,  
-                "mcr\_control\_ids": m.mcr\_control\_ids,  
-                "coverage": m.coverage,  
-                "evidence\_required": m.evidence\_required,  
-                "evidence\_type": m.evidence\_type  
-            } for m in mappings\]  
-        })  
-    except ValueError:  
+@app.route('/api/v1/overlay/philippines/mapping/<framework>', methods=['GET'])
+def get_philippines_mapping(framework):
+    """Get Philippines mapping for a framework"""
+    try:
+        framework_enum = PhilippinesFramework(framework)
+        mappings = ph.get_mappings_for_framework(framework_enum)
+        return jsonify({
+            "framework": framework,
+            "mappings": [{
+                "requirement_id": m.requirement_id,
+                "requirement_title": m.requirement_title,
+                "description": m.description,
+                "mcr_control_ids": m.mcr_control_ids,
+                "coverage": m.coverage,
+                "evidence_required": m.evidence_required,
+                "evidence_type": m.evidence_type
+            } for m in mappings]
+        })
+    except ValueError:
         return jsonify({"error": "Invalid framework"}), 400
 
-@app.route('/api/v1/overlay/philippines/gap', methods=\['GET'\])  
-def get\_philippines\_gap():  
-    """Get Philippines gap analysis"""  
-    gap \= ph.get\_gap\_analysis()  
+@app.route('/api/v1/overlay/philippines/gap', methods=['GET'])
+def get_philippines_gap():
+    """Get Philippines gap analysis"""
+    gap = ph.get_gap_analysis()
     return jsonify(gap)
 
-\# \===== CLI \=====
+# ===== CLI =====
 
-\# cli.py  
-"""  
-Compliance Engine CLI  
+# cli.py
+"""
+Compliance Engine CLI
 """
 
-import argparse  
-import json  
-import sys  
+import argparse
+import json
+import sys
 from datetime import datetime
 
-def main():  
-    parser \= argparse.ArgumentParser(description='AIGIS Compliance Engine CLI')  
-    subparsers \= parser.add\_subparsers(dest='command', help='Command to execute')  
-      
-    \# Controls commands  
-    controls\_parser \= subparsers.add\_parser('controls', help='Manage MCR controls')  
-    controls\_parser.add\_argument('--list', action='store\_true', help='List controls')  
-    controls\_parser.add\_argument('--get', help='Get a specific control')  
-    controls\_parser.add\_argument('--source', help='Filter by source')  
-    controls\_parser.add\_argument('--category', help='Filter by category')  
-      
-    \# Crosswalk commands  
-    crosswalk\_parser \= subparsers.add\_parser('crosswalk', help='Manage crosswalk')  
-    crosswalk\_parser.add\_argument('--control', help='Control ID')  
-    crosswalk\_parser.add\_argument('--framework', help='Framework ID')  
-    crosswalk\_parser.add\_argument('--map', action='store\_true', help='Map control to framework')  
-    crosswalk\_parser.add\_argument('--gap', action='store\_true', help='Get gap analysis')  
-      
-    \# Evidence commands  
-    evidence\_parser \= subparsers.add\_parser('evidence', help='Manage evidence packets')  
-    evidence\_parser.add\_argument('--generate', action='store\_true', help='Generate evidence packet')  
-    evidence\_parser.add\_argument('--framework', help='Framework for evidence')  
-    evidence\_parser.add\_argument('--eco-id', help='Engagement context ID')  
-    evidence\_parser.add\_argument('--list', action='store\_true', help='List packets')  
-    evidence\_parser.add\_argument('--get', help='Get a specific packet')  
-    evidence\_parser.add\_argument('--attest', help='Attest a packet')  
-    evidence\_parser.add\_argument('--verify', help='Verify a packet')  
-    evidence\_parser.add\_argument('--export', help='Export a packet')  
-    evidence\_parser.add\_argument('--format', default='json', help='Export format')  
-      
-    \# Overlay commands  
-    overlay\_parser \= subparsers.add\_parser('overlay', help='Manage regulatory overlays')  
-    overlay\_parser.add\_argument('--framework', help='Framework ID')  
-    overlay\_parser.add\_argument('--show', action='store\_true', help='Show overlay')  
-    overlay\_parser.add\_argument('--gap', action='store\_true', help='Get gap analysis')  
-      
-    args \= parser.parse\_args()  
-      
-    if args.command \== 'controls':  
-        if args.list:  
-            \# API call to get controls  
-            pass  
-        elif args.get:  
-            \# API call to get a specific control  
-            pass  
-      
-    elif args.command \== 'crosswalk':  
-        if args.map:  
-            \# API call to map control to framework  
-            pass  
-        elif args.gap:  
-            \# API call to get gap analysis  
-            pass  
-      
-    elif args.command \== 'evidence':  
-        if args.generate:  
-            \# API call to generate evidence packet  
-            pass  
-        elif args.list:  
-            \# API call to list packets  
-            pass  
-      
-    elif args.command \== 'overlay':  
-        if args.show:  
-            \# API call to show overlay  
-            pass  
-        elif args.gap:  
-            \# API call to get gap analysis  
-            pass  
-      
-    else:  
-        parser.print\_help()
+def main():
+    parser = argparse.ArgumentParser(description='AIGIS Compliance Engine CLI')
+    subparsers = parser.add_subparsers(dest='command', help='Command to execute')
+    
+    # Controls commands
+    controls_parser = subparsers.add_parser('controls', help='Manage MCR controls')
+    controls_parser.add_argument('--list', action='store_true', help='List controls')
+    controls_parser.add_argument('--get', help='Get a specific control')
+    controls_parser.add_argument('--source', help='Filter by source')
+    controls_parser.add_argument('--category', help='Filter by category')
+    
+    # Crosswalk commands
+    crosswalk_parser = subparsers.add_parser('crosswalk', help='Manage crosswalk')
+    crosswalk_parser.add_argument('--control', help='Control ID')
+    crosswalk_parser.add_argument('--framework', help='Framework ID')
+    crosswalk_parser.add_argument('--map', action='store_true', help='Map control to framework')
+    crosswalk_parser.add_argument('--gap', action='store_true', help='Get gap analysis')
+    
+    # Evidence commands
+    evidence_parser = subparsers.add_parser('evidence', help='Manage evidence packets')
+    evidence_parser.add_argument('--generate', action='store_true', help='Generate evidence packet')
+    evidence_parser.add_argument('--framework', help='Framework for evidence')
+    evidence_parser.add_argument('--eco-id', help='Engagement context ID')
+    evidence_parser.add_argument('--list', action='store_true', help='List packets')
+    evidence_parser.add_argument('--get', help='Get a specific packet')
+    evidence_parser.add_argument('--attest', help='Attest a packet')
+    evidence_parser.add_argument('--verify', help='Verify a packet')
+    evidence_parser.add_argument('--export', help='Export a packet')
+    evidence_parser.add_argument('--format', default='json', help='Export format')
+    
+    # Overlay commands
+    overlay_parser = subparsers.add_parser('overlay', help='Manage regulatory overlays')
+    overlay_parser.add_argument('--framework', help='Framework ID')
+    overlay_parser.add_argument('--show', action='store_true', help='Show overlay')
+    overlay_parser.add_argument('--gap', action='store_true', help='Get gap analysis')
+    
+    args = parser.parse_args()
+    
+    if args.command == 'controls':
+        if args.list:
+            # API call to get controls
+            pass
+        elif args.get:
+            # API call to get a specific control
+            pass
+    
+    elif args.command == 'crosswalk':
+        if args.map:
+            # API call to map control to framework
+            pass
+        elif args.gap:
+            # API call to get gap analysis
+            pass
+    
+    elif args.command == 'evidence':
+        if args.generate:
+            # API call to generate evidence packet
+            pass
+        elif args.list:
+            # API call to list packets
+            pass
+    
+    elif args.command == 'overlay':
+        if args.show:
+            # API call to show overlay
+            pass
+        elif args.gap:
+            # API call to get gap analysis
+            pass
+    
+    else:
+        parser.print_help()
 
-if \_\_name\_\_ \== '\_\_main\_\_':  
+if __name__ == '__main__':
     main()
+```
 
 ---
 
@@ -28364,57 +28429,61 @@ if \_\_name\_\_ \== '\_\_main\_\_':
 
 ### 5.1 API Usage
 
-\# Get all controls  
-curl \-H "Authorization: Bearer {api\_key}" \\  
+```
+# Get all controls
+curl -H "Authorization: Bearer {api_key}" \
   https://api.aigis-compliance.com/v1/mcr/controls
 
-\# Get a specific control  
-curl \-H "Authorization: Bearer {api\_key}" \\  
+# Get a specific control
+curl -H "Authorization: Bearer {api_key}" \
   https://api.aigis-compliance.com/v1/mcr/controls/AICA-5-CN-011
 
-\# Map control to framework  
-curl \-H "Authorization: Bearer {api\_key}" \\  
-  https://api.aigis-compliance.com/v1/crosswalk/control/AICA-5-CN-011/framework/eu\_ai\_act
+# Map control to framework
+curl -H "Authorization: Bearer {api_key}" \
+  https://api.aigis-compliance.com/v1/crosswalk/control/AICA-5-CN-011/framework/eu_ai_act
 
-\# Get gap analysis  
-curl \-H "Authorization: Bearer {api\_key}" \\  
-  https://api.aigis-compliance.com/v1/crosswalk/gap/eu\_ai\_act
+# Get gap analysis
+curl -H "Authorization: Bearer {api_key}" \
+  https://api.aigis-compliance.com/v1/crosswalk/gap/eu_ai_act
 
-\# Generate evidence packet  
-curl \-X POST \-H "Authorization: Bearer {api\_key}" \\  
-  \-H "Content-Type: application/json" \\  
-  \-d '{"framework": "eu\_ai\_act", "eco\_id": "ECO-2026-0a26cb"}' \\  
+# Generate evidence packet
+curl -X POST -H "Authorization: Bearer {api_key}" \
+  -H "Content-Type: application/json" \
+  -d '{"framework": "eu_ai_act", "eco_id": "ECO-2026-0a26cb"}' \
   https://api.aigis-compliance.com/v1/evidence/generate
 
-\# Get evidence packet  
-curl \-H "Authorization: Bearer {api\_key}" \\  
-  https://api.aigis-compliance.com/v1/evidence/packets/EVP-eu\_ai\_act-20260901120000-0001
+# Get evidence packet
+curl -H "Authorization: Bearer {api_key}" \
+  https://api.aigis-compliance.com/v1/evidence/packets/EVP-eu_ai_act-20260901120000-0001
+```
 
 ### 5.2 CLI Usage
 
-\# List controls  
-python cli.py controls \--list \--source AICA-5 \--category Governance
+```
+# List controls
+python cli.py controls --list --source AICA-5 --category Governance
 
-\# Get a control  
-python cli.py controls \--get AICA-5-CN-011
+# Get a control
+python cli.py controls --get AICA-5-CN-011
 
-\# Map control to framework  
-python cli.py crosswalk \--map \--control AICA-5-CN-011 \--framework eu\_ai\_act
+# Map control to framework
+python cli.py crosswalk --map --control AICA-5-CN-011 --framework eu_ai_act
 
-\# Get gap analysis  
-python cli.py crosswalk \--gap \--framework eu\_ai\_act
+# Get gap analysis
+python cli.py crosswalk --gap --framework eu_ai_act
 
-\# Generate evidence packet  
-python cli.py evidence \--generate \--framework eu\_ai\_act \--eco-id ECO-2026-0a26cb
+# Generate evidence packet
+python cli.py evidence --generate --framework eu_ai_act --eco-id ECO-2026-0a26cb
 
-\# List evidence packets  
-python cli.py evidence \--list
+# List evidence packets
+python cli.py evidence --list
 
-\# Attest a packet  
-python cli.py evidence \--attest EVP-eu\_ai\_act-20260901120000-0001
+# Attest a packet
+python cli.py evidence --attest EVP-eu_ai_act-20260901120000-0001
 
-\# Export a packet  
-python cli.py evidence \--export EVP-eu\_ai\_act-20260901120000-0001 \--format json
+# Export a packet
+python cli.py evidence --export EVP-eu_ai_act-20260901120000-0001 --format json
+```
 
 ---
 
@@ -28532,697 +28601,700 @@ The Compliance Dashboard ensures that:
 
 ## SECTION 3: DASHBOARD IMPLEMENTATION
 
-\<\!-- compliance\_dashboard.html \--\>  
-\<\!DOCTYPE html\>  
-\<html lang="en"\>  
-\<head\>  
-    \<meta charset="UTF-8"\>  
-    \<meta name="viewport" content="width=device-width, initial-scale=1.0"\>  
-    \<title\>AIGIS Compliance Dashboard\</title\>  
-    \<script src="https://cdn.jsdelivr.net/npm/chart.js"\>\</script\>  
-    \<style\>  
-        /\* \===== Global Styles \===== \*/  
-        \* { margin: 0; padding: 0; box-sizing: border-box; }  
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: \#f4f6f9; color: \#1a1a2e; }  
-          
-        /\* \===== Header \===== \*/  
-        .header { background: \#1a1a2e; color: white; padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; }  
-        .header h1 { font-size: 20px; font-weight: 600; }  
-        .header h1 span { color: \#6c63ff; }  
-        .header-right { display: flex; align-items: center; gap: 16px; }  
-        .status-badge { background: \#2ecc71; color: white; padding: 4px 12px; border-radius: 12px; font-size: 12px; }  
-        .last-updated { font-size: 12px; color: \#aaa; }  
-          
-        /\* \===== Layout \===== \*/  
-        .container { max-width: 1400px; margin: 0 auto; padding: 24px; }  
-        .grid { display: grid; gap: 24px; }  
-        .grid-4 { grid-template-columns: repeat(4, 1fr); }  
-        .grid-2 { grid-template-columns: repeat(2, 1fr); }  
-        .grid-3 { grid-template-columns: repeat(3, 1fr); }  
-          
-        /\* \===== Cards \===== \*/  
-        .card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }  
-        .card h3 { font-size: 14px; color: \#666; margin-bottom: 8px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }  
-        .card .value { font-size: 32px; font-weight: 700; color: \#1a1a2e; }  
-        .card .sub { font-size: 14px; color: \#888; margin-top: 4px; }  
-        .card .trend-up { color: \#2ecc71; }  
-        .card .trend-down { color: \#e74c3c; }  
-        .card .trend-neutral { color: \#f39c12; }  
-          
-        /\* \===== Status Colors \===== \*/  
-        .status-green { color: \#2ecc71; }  
-        .status-yellow { color: \#f39c12; }  
-        .status-red { color: \#e74c3c; }  
-        .bg-green { background: \#2ecc71; }  
-        .bg-yellow { background: \#f39c12; }  
-        .bg-red { background: \#e74c3c; }  
-        .bg-blue { background: \#6c63ff; }  
-          
-        /\* \===== Tables \===== \*/  
-        .table { width: 100%; border-collapse: collapse; }  
-        .table th { text-align: left; padding: 10px 12px; border-bottom: 2px solid \#eee; font-weight: 600; font-size: 12px; text-transform: uppercase; color: \#666; }  
-        .table td { padding: 10px 12px; border-bottom: 1px solid \#f0f0f0; font-size: 14px; }  
-        .table tr:hover { background: \#f8f9fa; }  
-          
-        /\* \===== Badges \===== \*/  
-        .badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 11px; font-weight: 500; }  
-        .badge-green { background: \#d5f5e3; color: \#1a7a3a; }  
-        .badge-yellow { background: \#fdebd0; color: \#a04000; }  
-        .badge-red { background: \#fadbd8; color: \#922b21; }  
-        .badge-blue { background: \#d6eaf8; color: \#1a5276; }  
-        .badge-gray { background: \#eaecee; color: \#5d6d7e; }  
-          
-        /\* \===== Progress Bars \===== \*/  
-        .progress { height: 8px; background: \#e9ecef; border-radius: 4px; overflow: hidden; margin-top: 6px; }  
-        .progress-bar { height: 100%; border-radius: 4px; transition: width 0.6s ease; }  
-        .progress-bar-green { background: \#2ecc71; }  
-        .progress-bar-yellow { background: \#f39c12; }  
-        .progress-bar-red { background: \#e74c3c; }  
-        .progress-bar-blue { background: \#6c63ff; }  
-          
-        /\* \===== Chart Containers \===== \*/  
-        .chart-container { position: relative; height: 200px; }  
-        .chart-container-sm { height: 120px; }  
-          
-        /\* \===== Responsive \===== \*/  
-        @media (max-width: 1024px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }  
-        @media (max-width: 768px) { .grid-4 { grid-template-columns: 1fr; } .grid-2 { grid-template-columns: 1fr; } .grid-3 { grid-template-columns: 1fr; } }  
-          
-        /\* \===== Tabs \===== \*/  
-        .tabs { display: flex; gap: 4px; background: \#f0f0f0; border-radius: 8px; padding: 4px; margin-bottom: 20px; }  
-        .tab { padding: 8px 20px; border-radius: 6px; cursor: pointer; border: none; background: transparent; font-size: 13px; font-weight: 500; color: \#666; transition: all 0.2s; }  
-        .tab:hover { background: rgba(255,255,255,0.5); }  
-        .tab.active { background: white; color: \#1a1a2e; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }  
-        .tab-content { display: none; }  
-        .tab-content.active { display: block; }  
-    \</style\>  
-\</head\>  
-\<body\>  
-    \<\!-- \===== HEADER \===== \--\>  
-    \<header class="header"\>  
-        \<h1\>🛡️ AIGIS \<span\>Compliance Dashboard\</span\>\</h1\>  
-        \<div class="header-right"\>  
-            \<span class="status-badge"\>● All Systems Operational\</span\>  
-            \<span class="last-updated"\>Last updated: \<span id="lastUpdated"\>2026-09-01 12:00:00 UTC\</span\>\</span\>  
-            \<button onclick="refreshData()" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;padding:6px 14px;border-radius:6px;cursor:pointer;"\>↻ Refresh\</button\>  
-        \</div\>  
-    \</header\>
+```
+<!-- compliance_dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIGIS Compliance Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* ===== Global Styles ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f6f9; color: #1a1a2e; }
+        
+        /* ===== Header ===== */
+        .header { background: #1a1a2e; color: white; padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; }
+        .header h1 { font-size: 20px; font-weight: 600; }
+        .header h1 span { color: #6c63ff; }
+        .header-right { display: flex; align-items: center; gap: 16px; }
+        .status-badge { background: #2ecc71; color: white; padding: 4px 12px; border-radius: 12px; font-size: 12px; }
+        .last-updated { font-size: 12px; color: #aaa; }
+        
+        /* ===== Layout ===== */
+        .container { max-width: 1400px; margin: 0 auto; padding: 24px; }
+        .grid { display: grid; gap: 24px; }
+        .grid-4 { grid-template-columns: repeat(4, 1fr); }
+        .grid-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        
+        /* ===== Cards ===== */
+        .card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .card h3 { font-size: 14px; color: #666; margin-bottom: 8px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+        .card .value { font-size: 32px; font-weight: 700; color: #1a1a2e; }
+        .card .sub { font-size: 14px; color: #888; margin-top: 4px; }
+        .card .trend-up { color: #2ecc71; }
+        .card .trend-down { color: #e74c3c; }
+        .card .trend-neutral { color: #f39c12; }
+        
+        /* ===== Status Colors ===== */
+        .status-green { color: #2ecc71; }
+        .status-yellow { color: #f39c12; }
+        .status-red { color: #e74c3c; }
+        .bg-green { background: #2ecc71; }
+        .bg-yellow { background: #f39c12; }
+        .bg-red { background: #e74c3c; }
+        .bg-blue { background: #6c63ff; }
+        
+        /* ===== Tables ===== */
+        .table { width: 100%; border-collapse: collapse; }
+        .table th { text-align: left; padding: 10px 12px; border-bottom: 2px solid #eee; font-weight: 600; font-size: 12px; text-transform: uppercase; color: #666; }
+        .table td { padding: 10px 12px; border-bottom: 1px solid #f0f0f0; font-size: 14px; }
+        .table tr:hover { background: #f8f9fa; }
+        
+        /* ===== Badges ===== */
+        .badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 11px; font-weight: 500; }
+        .badge-green { background: #d5f5e3; color: #1a7a3a; }
+        .badge-yellow { background: #fdebd0; color: #a04000; }
+        .badge-red { background: #fadbd8; color: #922b21; }
+        .badge-blue { background: #d6eaf8; color: #1a5276; }
+        .badge-gray { background: #eaecee; color: #5d6d7e; }
+        
+        /* ===== Progress Bars ===== */
+        .progress { height: 8px; background: #e9ecef; border-radius: 4px; overflow: hidden; margin-top: 6px; }
+        .progress-bar { height: 100%; border-radius: 4px; transition: width 0.6s ease; }
+        .progress-bar-green { background: #2ecc71; }
+        .progress-bar-yellow { background: #f39c12; }
+        .progress-bar-red { background: #e74c3c; }
+        .progress-bar-blue { background: #6c63ff; }
+        
+        /* ===== Chart Containers ===== */
+        .chart-container { position: relative; height: 200px; }
+        .chart-container-sm { height: 120px; }
+        
+        /* ===== Responsive ===== */
+        @media (max-width: 1024px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .grid-4 { grid-template-columns: 1fr; } .grid-2 { grid-template-columns: 1fr; } .grid-3 { grid-template-columns: 1fr; } }
+        
+        /* ===== Tabs ===== */
+        .tabs { display: flex; gap: 4px; background: #f0f0f0; border-radius: 8px; padding: 4px; margin-bottom: 20px; }
+        .tab { padding: 8px 20px; border-radius: 6px; cursor: pointer; border: none; background: transparent; font-size: 13px; font-weight: 500; color: #666; transition: all 0.2s; }
+        .tab:hover { background: rgba(255,255,255,0.5); }
+        .tab.active { background: white; color: #1a1a2e; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+    </style>
+</head>
+<body>
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+        <h1>🛡️ AIGIS <span>Compliance Dashboard</span></h1>
+        <div class="header-right">
+            <span class="status-badge">● All Systems Operational</span>
+            <span class="last-updated">Last updated: <span id="lastUpdated">2026-09-01 12:00:00 UTC</span></span>
+            <button onclick="refreshData()" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:white;padding:6px 14px;border-radius:6px;cursor:pointer;">↻ Refresh</button>
+        </div>
+    </header>
 
-    \<\!-- \===== MAIN CONTENT \===== \--\>  
-    \<div class="container"\>  
-        \<\!-- \===== TABS \===== \--\>  
-        \<div class="tabs"\>  
-            \<button class="tab active" data-tab="overview"\>Overview\</button\>  
-            \<button class="tab" data-tab="frameworks"\>Frameworks\</button\>  
-            \<button class="tab" data-tab="gaps"\>Gaps\</button\>  
-            \<button class="tab" data-tab="evidence"\>Evidence\</button\>  
-            \<button class="tab" data-tab="controls"\>Controls\</button\>  
-            \<button class="tab" data-tab="reports"\>Reports\</button\>  
-        \</div\>
+    <!-- ===== MAIN CONTENT ===== -->
+    <div class="container">
+        <!-- ===== TABS ===== -->
+        <div class="tabs">
+            <button class="tab active" data-tab="overview">Overview</button>
+            <button class="tab" data-tab="frameworks">Frameworks</button>
+            <button class="tab" data-tab="gaps">Gaps</button>
+            <button class="tab" data-tab="evidence">Evidence</button>
+            <button class="tab" data-tab="controls">Controls</button>
+            <button class="tab" data-tab="reports">Reports</button>
+        </div>
 
-        \<\!-- \===== TAB: OVERVIEW \===== \--\>  
-        \<div id="tab-overview" class="tab-content active"\>  
-            \<\!-- KPI Cards \--\>  
-            \<div class="grid grid-4" style="margin-bottom: 24px;"\>  
-                \<div class="card"\>  
-                    \<h3\>Overall Compliance Score\</h3\>  
-                    \<div class="value" style="color: \#2ecc71;"\>98.5%\</div\>  
-                    \<div class="sub"\>⬆ 1.2% from last quarter\</div\>  
-                    \<div class="progress"\>\<div class="progress-bar progress-bar-green" style="width:98.5%"\>\</div\>\</div\>  
-                \</div\>  
-                \<div class="card"\>  
-                    \<h3\>Frameworks Covered\</h3\>  
-                    \<div class="value"\>8 / 8\</div\>  
-                    \<div class="sub"\>100% coverage\</div\>  
-                    \<div class="progress"\>\<div class="progress-bar progress-bar-green" style="width:100%"\>\</div\>\</div\>  
-                \</div\>  
-                \<div class="card"\>  
-                    \<h3\>Controls\</h3\>  
-                    \<div class="value"\>109\</div\>  
-                    \<div class="sub"\>All controls registered\</div\>  
-                    \<div class="progress"\>\<div class="progress-bar progress-bar-green" style="width:100%"\>\</div\>\</div\>  
-                \</div\>  
-                \<div class="card"\>  
-                    \<h3\>Evidence Packets\</h3\>  
-                    \<div class="value"\>24\</div\>  
-                    \<div class="sub"\>⬆ 6 in last 30 days\</div\>  
-                    \<div class="progress"\>\<div class="progress-bar progress-bar-blue" style="width:75%"\>\</div\>\</div\>  
-                \</div\>  
-            \</div\>
+        <!-- ===== TAB: OVERVIEW ===== -->
+        <div id="tab-overview" class="tab-content active">
+            <!-- KPI Cards -->
+            <div class="grid grid-4" style="margin-bottom: 24px;">
+                <div class="card">
+                    <h3>Overall Compliance Score</h3>
+                    <div class="value" style="color: #2ecc71;">98.5%</div>
+                    <div class="sub">⬆ 1.2% from last quarter</div>
+                    <div class="progress"><div class="progress-bar progress-bar-green" style="width:98.5%"></div></div>
+                </div>
+                <div class="card">
+                    <h3>Frameworks Covered</h3>
+                    <div class="value">8 / 8</div>
+                    <div class="sub">100% coverage</div>
+                    <div class="progress"><div class="progress-bar progress-bar-green" style="width:100%"></div></div>
+                </div>
+                <div class="card">
+                    <h3>Controls</h3>
+                    <div class="value">109</div>
+                    <div class="sub">All controls registered</div>
+                    <div class="progress"><div class="progress-bar progress-bar-green" style="width:100%"></div></div>
+                </div>
+                <div class="card">
+                    <h3>Evidence Packets</h3>
+                    <div class="value">24</div>
+                    <div class="sub">⬆ 6 in last 30 days</div>
+                    <div class="progress"><div class="progress-bar progress-bar-blue" style="width:75%"></div></div>
+                </div>
+            </div>
 
-            \<\!-- Charts Row \--\>  
-            \<div class="grid grid-2" style="margin-bottom: 24px;"\>  
-                \<div class="card"\>  
-                    \<h3\>Coverage by Framework\</h3\>  
-                    \<div class="chart-container"\>  
-                        \<canvas id="coverageChart"\>\</canvas\>  
-                    \</div\>  
-                \</div\>  
-                \<div class="card"\>  
-                    \<h3\>Evidence Packet Status\</h3\>  
-                    \<div class="chart-container"\>  
-                        \<canvas id="evidenceChart"\>\</canvas\>  
-                    \</div\>  
-                \</div\>  
-            \</div\>
+            <!-- Charts Row -->
+            <div class="grid grid-2" style="margin-bottom: 24px;">
+                <div class="card">
+                    <h3>Coverage by Framework</h3>
+                    <div class="chart-container">
+                        <canvas id="coverageChart"></canvas>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Evidence Packet Status</h3>
+                    <div class="chart-container">
+                        <canvas id="evidenceChart"></canvas>
+                    </div>
+                </div>
+            </div>
 
-            \<\!-- Recent Activity \--\>  
-            \<div class="card"\>  
-                \<h3\>Recent Activity\</h3\>  
-                \<table class="table"\>  
-                    \<thead\>  
-                        \<tr\>  
-                            \<th\>Time\</th\>  
-                            \<th\>Event\</th\>  
-                            \<th\>User\</th\>  
-                            \<th\>Status\</th\>  
-                        \</tr\>  
-                    \</thead\>  
-                    \<tbody id="recentActivity"\>  
-                        \<tr\>  
-                            \<td\>2026-09-01 11:45:00\</td\>  
-                            \<td\>Evidence Packet Generated\</td\>  
-                            \<td\>system\</td\>  
-                            \<td\>\<span class="badge badge-green"\>Success\</span\>\</td\>  
-                        \</tr\>  
-                        \<tr\>  
-                            \<td\>2026-09-01 10:30:00\</td\>  
-                            \<td\>Control Mapped: AICA-5-CN-011 → EU AI Act Art. 14\</td\>  
-                            \<td\>admin\</td\>  
-                            \<td\>\<span class="badge badge-green"\>Success\</span\>\</td\>  
-                        \</tr\>  
-                        \<tr\>  
-                            \<td\>2026-09-01 09:15:00\</td\>  
-                            \<td\>Gap Analysis Completed: EU AI Act\</td\>  
-                            \<td\>system\</td\>  
-                            \<td\>\<span class="badge badge-green"\>Success\</span\>\</td\>  
-                        \</tr\>  
-                        \<tr\>  
-                            \<td\>2026-08-31 16:00:00\</td\>  
-                            \<td\>Evidence Packet Attested\</td\>  
-                            \<td\>Terrylan\_Manalansan\</td\>  
-                            \<td\>\<span class="badge badge-green"\>Success\</span\>\</td\>  
-                        \</tr\>  
-                        \<tr\>  
-                            \<td\>2026-08-31 14:20:00\</td\>  
-                            \<td\>Philippines Overlay Updated: PFRS S1/S2\</td\>  
-                            \<td\>admin\</td\>  
-                            \<td\>\<span class="badge badge-yellow"\>Updated\</span\>\</td\>  
-                        \</tr\>  
-                    \</tbody\>  
-                \</table\>  
-            \</div\>  
-        \</div\>
+            <!-- Recent Activity -->
+            <div class="card">
+                <h3>Recent Activity</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Event</th>
+                            <th>User</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recentActivity">
+                        <tr>
+                            <td>2026-09-01 11:45:00</td>
+                            <td>Evidence Packet Generated</td>
+                            <td>system</td>
+                            <td><span class="badge badge-green">Success</span></td>
+                        </tr>
+                        <tr>
+                            <td>2026-09-01 10:30:00</td>
+                            <td>Control Mapped: AICA-5-CN-011 → EU AI Act Art. 14</td>
+                            <td>admin</td>
+                            <td><span class="badge badge-green">Success</span></td>
+                        </tr>
+                        <tr>
+                            <td>2026-09-01 09:15:00</td>
+                            <td>Gap Analysis Completed: EU AI Act</td>
+                            <td>system</td>
+                            <td><span class="badge badge-green">Success</span></td>
+                        </tr>
+                        <tr>
+                            <td>2026-08-31 16:00:00</td>
+                            <td>Evidence Packet Attested</td>
+                            <td>Terrylan_Manalansan</td>
+                            <td><span class="badge badge-green">Success</span></td>
+                        </tr>
+                        <tr>
+                            <td>2026-08-31 14:20:00</td>
+                            <td>Philippines Overlay Updated: PFRS S1/S2</td>
+                            <td>admin</td>
+                            <td><span class="badge badge-yellow">Updated</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-        \<\!-- \===== TAB: FRAMEWORKS \===== \--\>  
-        \<div id="tab-frameworks" class="tab-content"\>  
-            \<div class="grid grid-2"\>  
-                \<div class="card"\>  
-                    \<h3\>EU AI Act\</h3\>  
-                    \<div class="value" style="font-size:24px;"\>98.2%\</div\>  
-                    \<div class="sub"\>111/113 articles covered\</div\>  
-                    \<div class="progress"\>\<div class="progress-bar progress-bar-green" style="width:98.2%"\>\</div\>\</div\>  
-                    \<table class="table" style="margin-top:12px;"\>  
-                        \<tr\>\<td\>Full Coverage\</td\>\<td\>111\</td\>\<td\>\<span class="badge badge-green"\>✓\</span\>\</td\>\</tr\>  
-                        \<tr\>\<td\>Partial Coverage\</td\>\<td\>2\</td\>\<td\>\<span class="badge badge-yellow"\>⚠\</span\>\</td\>\</tr\>  
-                        \<tr\>\<td\>Uncovered\</td\>\<td\>0\</td\>\<td\>\<span class="badge badge-green"\>✓\</span\>\</td\>\</tr\>  
-                    \</table\>  
-                    \<div style="margin-top:12px;"\>  
-                        \<span class="badge badge-yellow"\>Art. 10: Data Governance\</span\>  
-                        \<span class="badge badge-yellow"\>Art. 15: Accuracy\</span\>  
-                    \</div\>  
-                \</div\>  
-                \<div class="card"\>  
-                    \<h3\>NIST AI RMF\</h3\>  
-                    \<div class="value" style="font-size:24px;"\>100%\</div\>  
-                    \<div class="sub"\>16/16 subcategories covered\</div\>  
-                    \<div class="progress"\>\<div class="progress-bar progress-bar-green" style="width:100%"\>\</div\>\</div\>  
-                    \<table class="table" style="margin-top:12px;"\>  
-                        \<tr\>\<td\>Full Coverage\</td\>\<td\>16\</td\>\<td\>\<span class="badge badge-green"\>✓\</span\>\</td\>\</tr\>  
-                        \<tr\>\<td\>Partial Coverage\</td\>\<td\>0\</td\>\<td\>\<span class="badge badge-green"\>✓\</span\>\</td\>\</tr\>  
-                        \<tr\>\<td\>Uncovered\</td\>\<td\>0\</td\>\<td\>\<span class="badge badge-green"\>✓\</span\>\</td\>\</tr\>  
-                    \</table\>  
-                    \<div style="margin-top:12px;"\>  
-                        \<span class="badge badge-green"\>All functions covered\</span\>  
-                    \</div\>  
-                \</div\>  
-                \<div class="card"\>  
-                    \<h3\>ISO/IEC 42001\</h3\>  
-                    \<div class="value" style="font-size:24px;"\>100%\</div\>  
-                    \<div class="sub"\>All clauses covered\</div\>  
-                    \<div class="progress"\>\<div class="progress-bar progress-bar-green" style="width:100%"\>\</div\>\</div\>  
-                    \<table class="table" style="margin-top:12px;"\>  
-                        \<tr\>\<td\>Full Coverage\</td\>\<td\>All\</td\>\<td\>\<span class="badge badge-green"\>✓\</span\>\</td\>\</tr\>  
-                    \</table\>  
-                \</div\>  
-                \<div class="card"\>  
-                    \<h3\>Philippines\</h3\>  
-                    \<div class="value" style="font-size:24px;"\>100%\</div\>  
-                    \<div class="sub"\>30/30 requirements covered\</div\>  
-                    \<div class="progress"\>\<div class="progress-bar progress-bar-green" style="width:100%"\>\</div\>\</div\>  
-                    \<table class="table" style="margin-top:12px;"\>  
-                        \<tr\>\<td\>PFRS S1/S2\</td\>\<td\>12\</td\>\<td\>\<span class="badge badge-green"\>✓\</span\>\</td\>\</tr\>  
-                        \<tr\>\<td\>BSP STARS\</td\>\<td\>8\</td\>\<td\>\<span class="badge badge-green"\>✓\</span\>\</td\>\</tr\>  
-                        \<tr\>\<td\>DICT-CSC JMC 003\</td\>\<td\>5\</td\>\<td\>\<span class="badge badge-green"\>✓\</span\>\</td\>\</tr\>  
-                        \<tr\>\<td\>NPC Advisory\</td\>\<td\>5\</td\>\<td\>\<span class="badge badge-green"\>✓\</span\>\</td\>\</tr\>  
-                    \</table\>  
-                \</div\>  
-            \</div\>  
-        \</div\>
+        <!-- ===== TAB: FRAMEWORKS ===== -->
+        <div id="tab-frameworks" class="tab-content">
+            <div class="grid grid-2">
+                <div class="card">
+                    <h3>EU AI Act</h3>
+                    <div class="value" style="font-size:24px;">98.2%</div>
+                    <div class="sub">111/113 articles covered</div>
+                    <div class="progress"><div class="progress-bar progress-bar-green" style="width:98.2%"></div></div>
+                    <table class="table" style="margin-top:12px;">
+                        <tr><td>Full Coverage</td><td>111</td><td><span class="badge badge-green">✓</span></td></tr>
+                        <tr><td>Partial Coverage</td><td>2</td><td><span class="badge badge-yellow">⚠</span></td></tr>
+                        <tr><td>Uncovered</td><td>0</td><td><span class="badge badge-green">✓</span></td></tr>
+                    </table>
+                    <div style="margin-top:12px;">
+                        <span class="badge badge-yellow">Art. 10: Data Governance</span>
+                        <span class="badge badge-yellow">Art. 15: Accuracy</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>NIST AI RMF</h3>
+                    <div class="value" style="font-size:24px;">100%</div>
+                    <div class="sub">16/16 subcategories covered</div>
+                    <div class="progress"><div class="progress-bar progress-bar-green" style="width:100%"></div></div>
+                    <table class="table" style="margin-top:12px;">
+                        <tr><td>Full Coverage</td><td>16</td><td><span class="badge badge-green">✓</span></td></tr>
+                        <tr><td>Partial Coverage</td><td>0</td><td><span class="badge badge-green">✓</span></td></tr>
+                        <tr><td>Uncovered</td><td>0</td><td><span class="badge badge-green">✓</span></td></tr>
+                    </table>
+                    <div style="margin-top:12px;">
+                        <span class="badge badge-green">All functions covered</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>ISO/IEC 42001</h3>
+                    <div class="value" style="font-size:24px;">100%</div>
+                    <div class="sub">All clauses covered</div>
+                    <div class="progress"><div class="progress-bar progress-bar-green" style="width:100%"></div></div>
+                    <table class="table" style="margin-top:12px;">
+                        <tr><td>Full Coverage</td><td>All</td><td><span class="badge badge-green">✓</span></td></tr>
+                    </table>
+                </div>
+                <div class="card">
+                    <h3>Philippines</h3>
+                    <div class="value" style="font-size:24px;">100%</div>
+                    <div class="sub">30/30 requirements covered</div>
+                    <div class="progress"><div class="progress-bar progress-bar-green" style="width:100%"></div></div>
+                    <table class="table" style="margin-top:12px;">
+                        <tr><td>PFRS S1/S2</td><td>12</td><td><span class="badge badge-green">✓</span></td></tr>
+                        <tr><td>BSP STARS</td><td>8</td><td><span class="badge badge-green">✓</span></td></tr>
+                        <tr><td>DICT-CSC JMC 003</td><td>5</td><td><span class="badge badge-green">✓</span></td></tr>
+                        <tr><td>NPC Advisory</td><td>5</td><td><span class="badge badge-green">✓</span></td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
 
-        \<\!-- \===== TAB: GAPS \===== \--\>  
-        \<div id="tab-gaps" class="tab-content"\>  
-            \<div class="card"\>  
-                \<h3\>Gap Summary\</h3\>  
-                \<table class="table"\>  
-                    \<thead\>  
-                        \<tr\>  
-                            \<th\>Framework\</th\>  
-                            \<th\>Requirement\</th\>  
-                            \<th\>Type\</th\>  
-                            \<th\>Severity\</th\>  
-                            \<th\>Status\</th\>  
-                            \<th\>Action\</th\>  
-                        \</tr\>  
-                    \</thead\>  
-                    \<tbody\>  
-                        \<tr\>  
-                            \<td\>EU AI Act\</td\>  
-                            \<td\>Art. 10 — Data Governance\</td\>  
-                            \<td\>Partial\</td\>  
-                            \<td\>\<span class="badge badge-yellow"\>Medium\</span\>\</td\>  
-                            \<td\>\<span class="badge badge-yellow"\>In Progress\</span\>\</td\>  
-                            \<td\>Add data governance control\</td\>  
-                        \</tr\>  
-                        \<tr\>  
-                            \<td\>EU AI Act\</td\>  
-                            \<td\>Art. 15 — Accuracy\</td\>  
-                            \<td\>Partial\</td\>  
-                            \<td\>\<span class="badge badge-yellow"\>Medium\</span\>\</td\>  
-                            \<td\>\<span class="badge badge-yellow"\>In Progress\</span\>\</td\>  
-                            \<td\>Add accuracy metrics control\</td\>  
-                        \</tr\>  
-                    \</tbody\>  
-                \</table\>  
-            \</div\>  
-        \</div\>
+        <!-- ===== TAB: GAPS ===== -->
+        <div id="tab-gaps" class="tab-content">
+            <div class="card">
+                <h3>Gap Summary</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Framework</th>
+                            <th>Requirement</th>
+                            <th>Type</th>
+                            <th>Severity</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>EU AI Act</td>
+                            <td>Art. 10 — Data Governance</td>
+                            <td>Partial</td>
+                            <td><span class="badge badge-yellow">Medium</span></td>
+                            <td><span class="badge badge-yellow">In Progress</span></td>
+                            <td>Add data governance control</td>
+                        </tr>
+                        <tr>
+                            <td>EU AI Act</td>
+                            <td>Art. 15 — Accuracy</td>
+                            <td>Partial</td>
+                            <td><span class="badge badge-yellow">Medium</span></td>
+                            <td><span class="badge badge-yellow">In Progress</span></td>
+                            <td>Add accuracy metrics control</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-        \<\!-- \===== TAB: EVIDENCE \===== \--\>  
-        \<div id="tab-evidence" class="tab-content"\>  
-            \<div class="card"\>  
-                \<h3\>Evidence Packets\</h3\>  
-                \<table class="table"\>  
-                    \<thead\>  
-                        \<tr\>  
-                            \<th\>Packet ID\</th\>  
-                            \<th\>Framework\</th\>  
-                            \<th\>Generated\</th\>  
-                            \<th\>Controls\</th\>  
-                            \<th\>Status\</th\>  
-                            \<th\>Actions\</th\>  
-                        \</tr\>  
-                    \</thead\>  
-                    \<tbody\>  
-                        \<tr\>  
-                            \<td\>EVP-eu\_ai\_act-20260901\</td\>  
-                            \<td\>EU AI Act\</td\>  
-                            \<td\>2026-09-01 12:00\</td\>  
-                            \<td\>30\</td\>  
-                            \<td\>\<span class="badge badge-green"\>Attested\</span\>\</td\>  
-                            \<td\>  
-                                \<button class="badge badge-blue" style="border:none;cursor:pointer;"\>View\</button\>  
-                                \<button class="badge badge-blue" style="border:none;cursor:pointer;"\>Export\</button\>  
-                            \</td\>  
-                        \</tr\>  
-                        \<tr\>  
-                            \<td\>EVP-nist\_ai\_rmf-20260830\</td\>  
-                            \<td\>NIST AI RMF\</td\>  
-                            \<td\>2026-08-30 14:00\</td\>  
-                            \<td\>20\</td\>  
-                            \<td\>\<span class="badge badge-green"\>Attested\</span\>\</td\>  
-                            \<td\>  
-                                \<button class="badge badge-blue" style="border:none;cursor:pointer;"\>View\</button\>  
-                                \<button class="badge badge-blue" style="border:none;cursor:pointer;"\>Export\</button\>  
-                            \</td\>  
-                        \</tr\>  
-                        \<tr\>  
-                            \<td\>EVP-philippines-20260828\</td\>  
-                            \<td\>Philippines\</td\>  
-                            \<td\>2026-08-28 10:00\</td\>  
-                            \<td\>25\</td\>  
-                            \<td\>\<span class="badge badge-yellow"\>Generated\</span\>\</td\>  
-                            \<td\>  
-                                \<button class="badge badge-blue" style="border:none;cursor:pointer;"\>View\</button\>  
-                                \<button class="badge badge-green" style="border:none;cursor:pointer;"\>Attest\</button\>  
-                            \</td\>  
-                        \</tr\>  
-                    \</tbody\>  
-                \</table\>  
-            \</div\>  
-        \</div\>
+        <!-- ===== TAB: EVIDENCE ===== -->
+        <div id="tab-evidence" class="tab-content">
+            <div class="card">
+                <h3>Evidence Packets</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Packet ID</th>
+                            <th>Framework</th>
+                            <th>Generated</th>
+                            <th>Controls</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>EVP-eu_ai_act-20260901</td>
+                            <td>EU AI Act</td>
+                            <td>2026-09-01 12:00</td>
+                            <td>30</td>
+                            <td><span class="badge badge-green">Attested</span></td>
+                            <td>
+                                <button class="badge badge-blue" style="border:none;cursor:pointer;">View</button>
+                                <button class="badge badge-blue" style="border:none;cursor:pointer;">Export</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>EVP-nist_ai_rmf-20260830</td>
+                            <td>NIST AI RMF</td>
+                            <td>2026-08-30 14:00</td>
+                            <td>20</td>
+                            <td><span class="badge badge-green">Attested</span></td>
+                            <td>
+                                <button class="badge badge-blue" style="border:none;cursor:pointer;">View</button>
+                                <button class="badge badge-blue" style="border:none;cursor:pointer;">Export</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>EVP-philippines-20260828</td>
+                            <td>Philippines</td>
+                            <td>2026-08-28 10:00</td>
+                            <td>25</td>
+                            <td><span class="badge badge-yellow">Generated</span></td>
+                            <td>
+                                <button class="badge badge-blue" style="border:none;cursor:pointer;">View</button>
+                                <button class="badge badge-green" style="border:none;cursor:pointer;">Attest</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-        \<\!-- \===== TAB: CONTROLS \===== \--\>  
-        \<div id="tab-controls" class="tab-content"\>  
-            \<div class="card"\>  
-                \<div style="display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap;"\>  
-                    \<input type="text" placeholder="Search controls..." style="flex:1;padding:8px 14px;border:1px solid \#ddd;border-radius:6px;min-width:200px;"\>  
-                    \<select style="padding:8px 14px;border:1px solid \#ddd;border-radius:6px;"\>  
-                        \<option\>All Sources\</option\>  
-                        \<option\>AICA-5\</option\>  
-                        \<option\>ADTEP\</option\>  
-                        \<option\>RGI-8\</option\>  
-                        \<option\>CAD-7\</option\>  
-                        \<option\>ICC-8\</option\>  
-                        \<option\>IMP\</option\>  
-                    \</select\>  
-                    \<select style="padding:8px 14px;border:1px solid \#ddd;border-radius:6px;"\>  
-                        \<option\>All Categories\</option\>  
-                        \<option\>Constitutional\</option\>  
-                        \<option\>Governance\</option\>  
-                        \<option\>Technical\</option\>  
-                        \<option\>Operational\</option\>  
-                        \<option\>Memory\</option\>  
-                    \</select\>  
-                    \<select style="padding:8px 14px;border:1px solid \#ddd;border-radius:6px;"\>  
-                        \<option\>All Frameworks\</option\>  
-                        \<option\>EU AI Act\</option\>  
-                        \<option\>NIST AI RMF\</option\>  
-                        \<option\>ISO 42001\</option\>  
-                        \<option\>Philippines\</option\>  
-                    \</select\>  
-                    \<button style="padding:8px 20px;background:\#6c63ff;color:white;border:none;border-radius:6px;cursor:pointer;"\>Apply\</button\>  
-                \</div\>  
-                \<table class="table"\>  
-                    \<thead\>  
-                        \<tr\>  
-                            \<th\>Control ID\</th\>  
-                            \<th\>Name\</th\>  
-                            \<th\>Source\</th\>  
-                            \<th\>Category\</th\>  
-                            \<th\>Mappings\</th\>  
-                            \<th\>Status\</th\>  
-                        \</tr\>  
-                    \</thead\>  
-                    \<tbody id="controlsTable"\>  
-                        \<tr\>  
-                            \<td\>AICA-5-CN-011\</td\>  
-                            \<td\>Trigger Rights\</td\>  
-                            \<td\>AICA-5\</td\>  
-                            \<td\>Governance\</td\>  
-                            \<td\>EU AI Act, NIST, ISO\</td\>  
-                            \<td\>\<span class="badge badge-green"\>Active\</span\>\</td\>  
-                        \</tr\>  
-                        \<tr\>  
-                            \<td\>AICA-5-CN-012\</td\>  
-                            \<td\>Binding Thresholds\</td\>  
-                            \<td\>AICA-5\</td\>  
-                            \<td\>Governance\</td\>  
-                            \<td\>EU AI Act, NIST, ISO\</td\>  
-                            \<td\>\<span class="badge badge-green"\>Active\</span\>\</td\>  
-                        \</tr\>  
-                        \<tr\>  
-                            \<td\>ICC-8-I9\</td\>  
-                            \<td\>Catastrophic Risk\</td\>  
-                            \<td\>ICC-8\</td\>  
-                            \<td\>Constitutional\</td\>  
-                            \<td\>EU AI Act, NIST, ISO\</td\>  
-                            \<td\>\<span class="badge badge-green"\>Active\</span\>\</td\>  
-                        \</tr\>  
-                    \</tbody\>  
-                \</table\>  
-            \</div\>  
-        \</div\>
+        <!-- ===== TAB: CONTROLS ===== -->
+        <div id="tab-controls" class="tab-content">
+            <div class="card">
+                <div style="display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap;">
+                    <input type="text" placeholder="Search controls..." style="flex:1;padding:8px 14px;border:1px solid #ddd;border-radius:6px;min-width:200px;">
+                    <select style="padding:8px 14px;border:1px solid #ddd;border-radius:6px;">
+                        <option>All Sources</option>
+                        <option>AICA-5</option>
+                        <option>ADTEP</option>
+                        <option>RGI-8</option>
+                        <option>CAD-7</option>
+                        <option>ICC-8</option>
+                        <option>IMP</option>
+                    </select>
+                    <select style="padding:8px 14px;border:1px solid #ddd;border-radius:6px;">
+                        <option>All Categories</option>
+                        <option>Constitutional</option>
+                        <option>Governance</option>
+                        <option>Technical</option>
+                        <option>Operational</option>
+                        <option>Memory</option>
+                    </select>
+                    <select style="padding:8px 14px;border:1px solid #ddd;border-radius:6px;">
+                        <option>All Frameworks</option>
+                        <option>EU AI Act</option>
+                        <option>NIST AI RMF</option>
+                        <option>ISO 42001</option>
+                        <option>Philippines</option>
+                    </select>
+                    <button style="padding:8px 20px;background:#6c63ff;color:white;border:none;border-radius:6px;cursor:pointer;">Apply</button>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Control ID</th>
+                            <th>Name</th>
+                            <th>Source</th>
+                            <th>Category</th>
+                            <th>Mappings</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="controlsTable">
+                        <tr>
+                            <td>AICA-5-CN-011</td>
+                            <td>Trigger Rights</td>
+                            <td>AICA-5</td>
+                            <td>Governance</td>
+                            <td>EU AI Act, NIST, ISO</td>
+                            <td><span class="badge badge-green">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td>AICA-5-CN-012</td>
+                            <td>Binding Thresholds</td>
+                            <td>AICA-5</td>
+                            <td>Governance</td>
+                            <td>EU AI Act, NIST, ISO</td>
+                            <td><span class="badge badge-green">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td>ICC-8-I9</td>
+                            <td>Catastrophic Risk</td>
+                            <td>ICC-8</td>
+                            <td>Constitutional</td>
+                            <td>EU AI Act, NIST, ISO</td>
+                            <td><span class="badge badge-green">Active</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-        \<\!-- \===== TAB: REPORTS \===== \--\>  
-        \<div id="tab-reports" class="tab-content"\>  
-            \<div class="grid grid-2"\>  
-                \<div class="card"\>  
-                    \<h3\>Generate Report\</h3\>  
-                    \<div style="margin-top:12px;"\>  
-                        \<label style="display:block;margin-bottom:6px;font-weight:500;"\>Report Type\</label\>  
-                        \<select style="width:100%;padding:8px 14px;border:1px solid \#ddd;border-radius:6px;margin-bottom:12px;"\>  
-                            \<option\>Compliance Status Report\</option\>  
-                            \<option\>Gap Analysis Report\</option\>  
-                            \<option\>Evidence Summary Report\</option\>  
-                            \<option\>Audit Trail Report\</option\>  
-                            \<option\>Custom Report\</option\>  
-                        \</select\>  
-                        \<label style="display:block;margin-bottom:6px;font-weight:500;"\>Framework\</label\>  
-                        \<select style="width:100%;padding:8px 14px;border:1px solid \#ddd;border-radius:6px;margin-bottom:12px;"\>  
-                            \<option\>All Frameworks\</option\>  
-                            \<option\>EU AI Act\</option\>  
-                            \<option\>NIST AI RMF\</option\>  
-                            \<option\>ISO 42001\</option\>  
-                            \<option\>Philippines\</option\>  
-                        \</select\>  
-                        \<label style="display:block;margin-bottom:6px;font-weight:500;"\>Format\</label\>  
-                        \<select style="width:100%;padding:8px 14px;border:1px solid \#ddd;border-radius:6px;margin-bottom:12px;"\>  
-                            \<option\>PDF\</option\>  
-                            \<option\>HTML\</option\>  
-                            \<option\>JSON\</option\>  
-                            \<option\>CSV\</option\>  
-                        \</select\>  
-                        \<button style="width:100%;padding:10px;background:\#6c63ff;color:white;border:none;border-radius:6px;cursor:pointer;font-weight:500;"\>Generate Report\</button\>  
-                    \</div\>  
-                \</div\>  
-                \<div class="card"\>  
-                    \<h3\>Recent Reports\</h3\>  
-                    \<table class="table"\>  
-                        \<thead\>  
-                            \<tr\>  
-                                \<th\>Report\</th\>  
-                                \<th\>Generated\</th\>  
-                                \<th\>Actions\</th\>  
-                            \</tr\>  
-                        \</thead\>  
-                        \<tbody\>  
-                            \<tr\>  
-                                \<td\>Compliance Status Q3 2026\</td\>  
-                                \<td\>2026-09-01\</td\>  
-                                \<td\>\<button class="badge badge-blue" style="border:none;cursor:pointer;"\>Download\</button\>\</td\>  
-                            \</tr\>  
-                            \<tr\>  
-                                \<td\>EU AI Act Gap Analysis\</td\>  
-                                \<td\>2026-08-28\</td\>  
-                                \<td\>\<button class="badge badge-blue" style="border:none;cursor:pointer;"\>Download\</button\>\</td\>  
-                            \</tr\>  
-                            \<tr\>  
-                                \<td\>Evidence Summary \- Philippines\</td\>  
-                                \<td\>2026-08-25\</td\>  
-                                \<td\>\<button class="badge badge-blue" style="border:none;cursor:pointer;"\>Download\</button\>\</td\>  
-                            \</tr\>  
-                        \</tbody\>  
-                    \</table\>  
-                \</div\>  
-            \</div\>  
-        \</div\>  
-    \</div\>
+        <!-- ===== TAB: REPORTS ===== -->
+        <div id="tab-reports" class="tab-content">
+            <div class="grid grid-2">
+                <div class="card">
+                    <h3>Generate Report</h3>
+                    <div style="margin-top:12px;">
+                        <label style="display:block;margin-bottom:6px;font-weight:500;">Report Type</label>
+                        <select style="width:100%;padding:8px 14px;border:1px solid #ddd;border-radius:6px;margin-bottom:12px;">
+                            <option>Compliance Status Report</option>
+                            <option>Gap Analysis Report</option>
+                            <option>Evidence Summary Report</option>
+                            <option>Audit Trail Report</option>
+                            <option>Custom Report</option>
+                        </select>
+                        <label style="display:block;margin-bottom:6px;font-weight:500;">Framework</label>
+                        <select style="width:100%;padding:8px 14px;border:1px solid #ddd;border-radius:6px;margin-bottom:12px;">
+                            <option>All Frameworks</option>
+                            <option>EU AI Act</option>
+                            <option>NIST AI RMF</option>
+                            <option>ISO 42001</option>
+                            <option>Philippines</option>
+                        </select>
+                        <label style="display:block;margin-bottom:6px;font-weight:500;">Format</label>
+                        <select style="width:100%;padding:8px 14px;border:1px solid #ddd;border-radius:6px;margin-bottom:12px;">
+                            <option>PDF</option>
+                            <option>HTML</option>
+                            <option>JSON</option>
+                            <option>CSV</option>
+                        </select>
+                        <button style="width:100%;padding:10px;background:#6c63ff;color:white;border:none;border-radius:6px;cursor:pointer;font-weight:500;">Generate Report</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Recent Reports</h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Report</th>
+                                <th>Generated</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Compliance Status Q3 2026</td>
+                                <td>2026-09-01</td>
+                                <td><button class="badge badge-blue" style="border:none;cursor:pointer;">Download</button></td>
+                            </tr>
+                            <tr>
+                                <td>EU AI Act Gap Analysis</td>
+                                <td>2026-08-28</td>
+                                <td><button class="badge badge-blue" style="border:none;cursor:pointer;">Download</button></td>
+                            </tr>
+                            <tr>
+                                <td>Evidence Summary - Philippines</td>
+                                <td>2026-08-25</td>
+                                <td><button class="badge badge-blue" style="border:none;cursor:pointer;">Download</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    \<script\>  
-        // \===== Tab Navigation \=====  
-        document.querySelectorAll('.tab').forEach(tab \=\> {  
-            tab.addEventListener('click', function() {  
-                document.querySelectorAll('.tab').forEach(t \=\> t.classList.remove('active'));  
-                document.querySelectorAll('.tab-content').forEach(t \=\> t.classList.remove('active'));  
-                this.classList.add('active');  
-                document.getElementById('tab-' \+ this.dataset.tab).classList.add('active');  
-            });  
+    <script>
+        // ===== Tab Navigation =====
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                document.getElementById('tab-' + this.dataset.tab).classList.add('active');
+            });
         });
 
-        // \===== Coverage Chart \=====  
-        const ctx1 \= document.getElementById('coverageChart').getContext('2d');  
-        new Chart(ctx1, {  
-            type: 'bar',  
-            data: {  
-                labels: \['EU AI Act', 'NIST AI RMF', 'ISO 42001', 'PFRS S1/S2', 'BSP STARS', 'DICT-CSC', 'NPC'\],  
-                datasets: \[{  
-                    label: 'Coverage %',  
-                    data: \[98.2, 100, 100, 100, 100, 100, 100\],  
-                    backgroundColor: \['\#6c63ff', '\#2ecc71', '\#2ecc71', '\#2ecc71', '\#2ecc71', '\#2ecc71', '\#2ecc71'\],  
-                    borderRadius: 4  
-                }\]  
-            },  
-            options: {  
-                responsive: true,  
-                maintainAspectRatio: false,  
-                plugins: {  
-                    legend: { display: false }  
-                },  
-                scales: {  
-                    y: {  
-                        min: 90,  
-                        max: 100,  
-                        ticks: { callback: function(v) { return v \+ '%'; } }  
-                    }  
-                }  
-            }  
+        // ===== Coverage Chart =====
+        const ctx1 = document.getElementById('coverageChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ['EU AI Act', 'NIST AI RMF', 'ISO 42001', 'PFRS S1/S2', 'BSP STARS', 'DICT-CSC', 'NPC'],
+                datasets: [{
+                    label: 'Coverage %',
+                    data: [98.2, 100, 100, 100, 100, 100, 100],
+                    backgroundColor: ['#6c63ff', '#2ecc71', '#2ecc71', '#2ecc71', '#2ecc71', '#2ecc71', '#2ecc71'],
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        min: 90,
+                        max: 100,
+                        ticks: { callback: function(v) { return v + '%'; } }
+                    }
+                }
+            }
         });
 
-        // \===== Evidence Chart \=====  
-        const ctx2 \= document.getElementById('evidenceChart').getContext('2d');  
-        new Chart(ctx2, {  
-            type: 'doughnut',  
-            data: {  
-                labels: \['Attested', 'Generated', 'Draft'\],  
-                datasets: \[{  
-                    data: \[18, 4, 2\],  
-                    backgroundColor: \['\#2ecc71', '\#6c63ff', '\#f39c12'\],  
-                    borderWidth: 0  
-                }\]  
-            },  
-            options: {  
-                responsive: true,  
-                maintainAspectRatio: false,  
-                plugins: {  
-                    legend: {  
-                        position: 'bottom',  
-                        labels: { padding: 12 }  
-                    }  
-                }  
-            }  
+        // ===== Evidence Chart =====
+        const ctx2 = document.getElementById('evidenceChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'doughnut',
+            data: {
+                labels: ['Attested', 'Generated', 'Draft'],
+                datasets: [{
+                    data: [18, 4, 2],
+                    backgroundColor: ['#2ecc71', '#6c63ff', '#f39c12'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { padding: 12 }
+                    }
+                }
+            }
         });
 
-        // \===== Refresh Function \=====  
-        function refreshData() {  
-            document.getElementById('lastUpdated').textContent \= new Date().toISOString().replace('T', ' ').slice(0, 19\) \+ ' UTC';  
-            // In production: fetch live data from API  
-        }  
-    \</script\>  
-\</body\>  
-\</html\>
+        // ===== Refresh Function =====
+        function refreshData() {
+            document.getElementById('lastUpdated').textContent = new Date().toISOString().replace('T', ' ').slice(0, 19) + ' UTC';
+            // In production: fetch live data from API
+        }
+    </script>
+</body>
+</html>
+```
 
 ---
 
 ## SECTION 4: DASHBOARD API INTEGRATION
 
-\# dashboard\_api.py  
-"""  
-Compliance Dashboard API Endpoints  
+```
+# dashboard_api.py
+"""
+Compliance Dashboard API Endpoints
 """
 
-from flask import Flask, jsonify, request  
-from datetime import datetime, timedelta  
-from compliance\_crosswalk\_engine import ComplianceCrosswalkEngine  
-from audit\_evidence\_engine import AuditEvidenceEngine  
-from master\_control\_registry import MasterControlRegistry
+from flask import Flask, jsonify, request
+from datetime import datetime, timedelta
+from compliance_crosswalk_engine import ComplianceCrosswalkEngine
+from audit_evidence_engine import AuditEvidenceEngine
+from master_control_registry import MasterControlRegistry
 
-app \= Flask(\_\_name\_\_)
+app = Flask(__name__)
 
-\# Initialize components  
-mcr \= MasterControlRegistry()  
-crosswalk \= ComplianceCrosswalkEngine(registry=mcr)
+# Initialize components
+mcr = MasterControlRegistry()
+crosswalk = ComplianceCrosswalkEngine(registry=mcr)
 
-@app.route('/api/dashboard/summary', methods=\['GET'\])  
-def get\_dashboard\_summary():  
-    """Get dashboard summary data"""  
-    \# Calculate overall compliance score  
-    frameworks \= \['eu\_ai\_act', 'nist\_ai\_rmf', 'iso\_42001', 'pfrs\_s1\_s2', 'bsp\_stars', 'dict\_csc', 'npc'\]  
-    scores \= \[\]  
-    for fw in frameworks:  
-        gap \= crosswalk.get\_gap\_analysis(fw)  
-        scores.append(gap.coverage\_pct)  
-      
-    overall \= sum(scores) / len(scores)  
-      
-    return jsonify({  
-        "overall\_score": round(overall, 1),  
-        "frameworks\_covered": len(frameworks),  
-        "total\_controls": len(mcr.controls),  
-        "controls\_mapped": len(\[c for c in mcr.controls.values() if c.mappings\]),  
-        "evidence\_packets": 24,  
-        "pending\_actions": 2,  
-        "coverage\_by\_framework": {  
-            fw: crosswalk.get\_gap\_analysis(fw).coverage\_pct  
-            for fw in frameworks  
-        },  
-        "last\_updated": datetime.now().isoformat()  
+@app.route('/api/dashboard/summary', methods=['GET'])
+def get_dashboard_summary():
+    """Get dashboard summary data"""
+    # Calculate overall compliance score
+    frameworks = ['eu_ai_act', 'nist_ai_rmf', 'iso_42001', 'pfrs_s1_s2', 'bsp_stars', 'dict_csc', 'npc']
+    scores = []
+    for fw in frameworks:
+        gap = crosswalk.get_gap_analysis(fw)
+        scores.append(gap.coverage_pct)
+    
+    overall = sum(scores) / len(scores)
+    
+    return jsonify({
+        "overall_score": round(overall, 1),
+        "frameworks_covered": len(frameworks),
+        "total_controls": len(mcr.controls),
+        "controls_mapped": len([c for c in mcr.controls.values() if c.mappings]),
+        "evidence_packets": 24,
+        "pending_actions": 2,
+        "coverage_by_framework": {
+            fw: crosswalk.get_gap_analysis(fw).coverage_pct
+            for fw in frameworks
+        },
+        "last_updated": datetime.now().isoformat()
     })
 
-@app.route('/api/dashboard/frameworks', methods=\['GET'\])  
-def get\_framework\_summary():  
-    """Get framework coverage summary"""  
-    frameworks \= \['eu\_ai\_act', 'nist\_ai\_rmf', 'iso\_42001', 'pfrs\_s1\_s2', 'bsp\_stars', 'dict\_csc', 'npc'\]  
-    results \= \[\]  
-      
-    for fw in frameworks:  
-        gap \= crosswalk.get\_gap\_analysis(fw)  
-        results.append({  
-            "framework": fw,  
-            "coverage\_pct": gap.coverage\_pct,  
-            "covered": gap.covered,  
-            "partial": gap.partial,  
-            "uncovered": gap.uncovered,  
-            "total": gap.total\_requirements  
-        })  
-      
+@app.route('/api/dashboard/frameworks', methods=['GET'])
+def get_framework_summary():
+    """Get framework coverage summary"""
+    frameworks = ['eu_ai_act', 'nist_ai_rmf', 'iso_42001', 'pfrs_s1_s2', 'bsp_stars', 'dict_csc', 'npc']
+    results = []
+    
+    for fw in frameworks:
+        gap = crosswalk.get_gap_analysis(fw)
+        results.append({
+            "framework": fw,
+            "coverage_pct": gap.coverage_pct,
+            "covered": gap.covered,
+            "partial": gap.partial,
+            "uncovered": gap.uncovered,
+            "total": gap.total_requirements
+        })
+    
     return jsonify(results)
 
-@app.route('/api/dashboard/gaps', methods=\['GET'\])  
-def get\_gap\_summary():  
-    """Get gap summary"""  
-    \# In production: fetch from database  
-    return jsonify({  
-        "gaps": \[  
-            {  
-                "framework": "eu\_ai\_act",  
-                "requirement": "Art. 10 — Data Governance",  
-                "type": "Partial",  
-                "severity": "Medium",  
-                "status": "In Progress",  
-                "action": "Add data governance control"  
-            },  
-            {  
-                "framework": "eu\_ai\_act",  
-                "requirement": "Art. 15 — Accuracy",  
-                "type": "Partial",  
-                "severity": "Medium",  
-                "status": "In Progress",  
-                "action": "Add accuracy metrics control"  
-            }  
-        \]  
+@app.route('/api/dashboard/gaps', methods=['GET'])
+def get_gap_summary():
+    """Get gap summary"""
+    # In production: fetch from database
+    return jsonify({
+        "gaps": [
+            {
+                "framework": "eu_ai_act",
+                "requirement": "Art. 10 — Data Governance",
+                "type": "Partial",
+                "severity": "Medium",
+                "status": "In Progress",
+                "action": "Add data governance control"
+            },
+            {
+                "framework": "eu_ai_act",
+                "requirement": "Art. 15 — Accuracy",
+                "type": "Partial",
+                "severity": "Medium",
+                "status": "In Progress",
+                "action": "Add accuracy metrics control"
+            }
+        ]
     })
 
-@app.route('/api/dashboard/evidence', methods=\['GET'\])  
-def get\_evidence\_summary():  
-    """Get evidence packet summary"""  
-    \# In production: fetch from evidence engine  
-    return jsonify({  
-        "packets": \[  
-            {  
-                "id": "EVP-eu\_ai\_act-20260901",  
-                "framework": "EU AI Act",  
-                "generated": "2026-09-01 12:00",  
-                "controls": 30,  
-                "status": "Attested"  
-            },  
-            {  
-                "id": "EVP-nist\_ai\_rmf-20260830",  
-                "framework": "NIST AI RMF",  
-                "generated": "2026-08-30 14:00",  
-                "controls": 20,  
-                "status": "Attested"  
-            }  
-        \],  
-        "total": 24,  
-        "attested": 18,  
-        "generated": 4,  
-        "draft": 2  
+@app.route('/api/dashboard/evidence', methods=['GET'])
+def get_evidence_summary():
+    """Get evidence packet summary"""
+    # In production: fetch from evidence engine
+    return jsonify({
+        "packets": [
+            {
+                "id": "EVP-eu_ai_act-20260901",
+                "framework": "EU AI Act",
+                "generated": "2026-09-01 12:00",
+                "controls": 30,
+                "status": "Attested"
+            },
+            {
+                "id": "EVP-nist_ai_rmf-20260830",
+                "framework": "NIST AI RMF",
+                "generated": "2026-08-30 14:00",
+                "controls": 20,
+                "status": "Attested"
+            }
+        ],
+        "total": 24,
+        "attested": 18,
+        "generated": 4,
+        "draft": 2
     })
 
-@app.route('/api/dashboard/activity', methods=\['GET'\])  
-def get\_activity\_log():  
-    """Get recent activity"""  
-    \# In production: fetch from audit log  
-    return jsonify({  
-        "activities": \[  
-            {"time": "2026-09-01 11:45:00", "event": "Evidence Packet Generated", "user": "system", "status": "Success"},  
-            {"time": "2026-09-01 10:30:00", "event": "Control Mapped: AICA-5-CN-011 → EU AI Act Art. 14", "user": "admin", "status": "Success"},  
-            {"time": "2026-09-01 09:15:00", "event": "Gap Analysis Completed: EU AI Act", "user": "system", "status": "Success"},  
-            {"time": "2026-08-31 16:00:00", "event": "Evidence Packet Attested", "user": "Terrylan\_Manalansan", "status": "Success"},  
-            {"time": "2026-08-31 14:20:00", "event": "Philippines Overlay Updated: PFRS S1/S2", "user": "admin", "status": "Updated"}  
-        \]  
+@app.route('/api/dashboard/activity', methods=['GET'])
+def get_activity_log():
+    """Get recent activity"""
+    # In production: fetch from audit log
+    return jsonify({
+        "activities": [
+            {"time": "2026-09-01 11:45:00", "event": "Evidence Packet Generated", "user": "system", "status": "Success"},
+            {"time": "2026-09-01 10:30:00", "event": "Control Mapped: AICA-5-CN-011 → EU AI Act Art. 14", "user": "admin", "status": "Success"},
+            {"time": "2026-09-01 09:15:00", "event": "Gap Analysis Completed: EU AI Act", "user": "system", "status": "Success"},
+            {"time": "2026-08-31 16:00:00", "event": "Evidence Packet Attested", "user": "Terrylan_Manalansan", "status": "Success"},
+            {"time": "2026-08-31 14:20:00", "event": "Philippines Overlay Updated: PFRS S1/S2", "user": "admin", "status": "Updated"}
+        ]
     })
-
+```
 ---
 
 ## SECTION 5: DASHBOARD — KEY METRICS
@@ -29251,3 +29323,4 @@ def get\_activity\_log():
 ## The One-Sentence Summary
 
 > *"The Compliance Dashboard v1.0 provides real-time visibility into AIGIS compliance across all regulatory frameworks — with 6 tabs (Overview, Frameworks, Gaps, Evidence, Controls, Reports), KPI cards, coverage and evidence charts, gap tables, and report generation — transforming compliance data into actionable intelligence for executives, compliance officers, and auditors."*  
+
