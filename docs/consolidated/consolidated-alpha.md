@@ -10,18 +10,18 @@
 
 | \# | Instrument | Type | Parent Stack |
 | :---: | :---- | :---- | :---- |
-|  | **CONSTITUTIONAL LAYER** |  |  |
+**CONSTITUTIONAL LAYER**
 | 1 | ICC-10 — Intelligence Constitutional Charter | Constitutional Instrument | AIGIS Constitutional Layer |
 | 2 | IPS Framework — Informal Power Structure Framework | Constitutional/Operational Instrument | AIGIS Constitutional Layer |
 | 3 | HOF — Human Operating Framework | Human Authority Instrument | AIGIS Constitutional Layer |
 | 4 | HAN — Human Authority Node | Human Authority Instrument | HOF |
-|  | **CONTROL ARCHITECTURE LAYER** |  |  |
+**CONTROL ARCHITECTURE LAYER**
 | 5 | AICA-5 — AI Control Architecture | Control Architecture Instrument | AIGIS Control Layer |
 | 6 | AICA-5 Maturity Grid | Control Architecture Instrument | AICA-5 |
 | 7 | AICA-5 Operating Model | Control Architecture Instrument | AICA-5 |
 | 8 | AICA-5 Implementation Pathway | Control Architecture Instrument | AICA-5 |
 | 9 | AICA-5 Measurement Framework | Control Architecture Instrument | AICA-5 |
-|  | **TECHNICAL ENFORCEMENT LAYER** |  |  |
+**TECHNICAL ENFORCEMENT LAYER**
 | 10 | ADTEP — Agent Deployment & Technical Enforcement Protocol | Technical Enforcement Instrument | AIGIS Technical Enforcement Layer |
 | 11 | Session Initialization Checklist | Technical Enforcement Instrument | ADTEP |
 | 12 | Pre-Delivery Log Entry | Technical Enforcement Instrument | ADTEP |
@@ -29,7 +29,7 @@
 | 14 | Constitutional Suspension | Technical Enforcement Instrument | ADTEP |
 | 15 | Constitutional Refresh | Technical Enforcement Instrument | ADTEP |
 | 16 | Role Specification Schema | Technical Enforcement Instrument | ADTEP |
-|  | **WORKFORCE LAYER** |  |  |
+**WORKFORCE LAYER**
 | 17 | AWOF — AI Workforce Operating Framework | Workforce Governance Instrument | AIGIS Workforce Layer |
 | 18 | AWOF-IPS — Shadow-Aware AI Workforce Operating Framework | Workforce Governance Instrument | AWOF |
 | 19 | HAWI — Human-AI Workforce Integration Framework | Workforce Integration Instrument | AIGIS Workforce Layer |
@@ -37,36 +37,36 @@
 | 21 | MVOS — Minimum Viable Operations State | Workforce/Continuity Instrument | AWOF |
 | 22 | Handoff Package | Workforce/Continuity Instrument | AWOF |
 | 23 | Trigger System | Workforce/Governance Instrument | AWOF |
-|  | **CAPABILITY & AUTHORIZATION LAYER** |  |  |
+**CAPABILITY & AUTHORIZATION LAYER**
 | 24 | CDT-7 — Capability Domains Taxonomy | Authorization Instrument | AIGIS Capability Layer |
 | 25 | CTAM — Capability-Tier Authorization Matrix | Authorization Instrument | AIGIS Capability Layer |
 | 26 | CAM-5 — 5-Tier Capability Authorization Model | Authorization Instrument | AIGIS Capability Layer |
-|  | **OPERATIONAL INTERPRETATION LAYER** |  |  |
+**OPERATIONAL INTERPRETATION LAYER**
 | 27 | RGI-8 — Runtime Governance Interpretation | Operational Interpretation Instrument | AIGIS Operational Layer |
 | 28 | CAD-7 — Coalition Accountability Declaration | Operational Instrument | AIGIS Operational Layer |
-|  | **ENGAGEMENT & TRUST LAYER** |  |  |
+**ENGAGEMENT & TRUST LAYER**
 | 29 | CEF — Client Engagement Framework | Engagement Governance Instrument | AIGIS Operations Layer |
 | 30 | CEF-IPS — Shadow-Aware Client Engagement Framework | Engagement Governance Instrument | CEF |
 | 31 | EAF — Engagement Authority Framework | Engagement Governance Instrument | AIGIS Operations Layer |
-|  | **INSTITUTIONAL MEMORY & CAPITAL LAYER** |  |  |
+**INSTITUTIONAL MEMORY & CAPITAL LAYER**
 | 32 | IMP — Institutional Memory Protocol | Operational/Governance Instrument | AIGIS Operations Layer |
 | 33 | CDF — Capital Deployment Framework | Operational/Financial Governance Instrument | AIGIS Operations Layer |
 | 34 | COF — Capital Orchestration Framework | Strategic/Operational Governance Instrument | AIGIS Operations Layer |
 | 35 | ILTP — IP Licensing & Transfer Protocol | Operational/Governance Instrument | AIGIS Operations Layer |
 | 36 | CGF — Certification Governance Framework | Operational/Governance Instrument | AIGIS Operations Layer |
-|  | **BIAS AUDITING LAYER** |  |  |
+**BIAS AUDITING LAYER**
 | 37 | AOBA — AI Output Bias Audit | Technical Enforcement Instrument | ADTEP |
 | 38 | ABA — Authority Bias Audit | Human Authority Instrument | HOF / HIS-12 |
-|  | **EXTERNAL LEGIBILITY & DISCLOSURE LAYER** |  |  |
+**EXTERNAL LEGIBILITY & DISCLOSURE LAYER**
 | 39 | ERDP — External Reporting & Disclosure Protocol | External Governance Instrument | AIGIS External Layer |
 | 40 | CIS — Contestation Interface Standard | External Governance Instrument | ICC-10 |
-|  | **SECURITY & SUPPLY CHAIN LAYER** |  |  |
+**SECURITY & SUPPLY CHAIN LAYER**
 | 41 | AEGIS — Agentic Security & Identity | Security/Governance Instrument | AIGIS Security Layer |
 | 42 | Zero Trust & AI Runtime Security | Security/Governance Instrument | AIGIS Security Layer |
 | 43 | Supply Chain Governance | Security/Governance Instrument | AIGIS Security Layer |
 | 44 | Skills & Plugins Governance | Security/Governance Instrument | AIGIS Security Layer |
 | 45 | MCP Server Governance | Security/Governance Instrument | AIGIS Security Layer |
-|  | **RISK & COMPLIANCE LAYER** |  |  |
+**RISK & COMPLIANCE LAYER**
 | 46 | Systemic Risk Framework | Risk Governance Instrument | AIGIS Risk Layer |
 | 47 | MCR — Master Control Registry | Compliance/Governance Instrument | AIGIS Compliance Engine |
 | 48 | Compliance Crosswalk Engine | Compliance/Governance Instrument | AIGIS Compliance Engine |
@@ -75,9 +75,9 @@
 | 51 | Compliance Dashboard | Compliance/Governance Instrument | AIGIS Compliance Engine |
 | 52 | Automated Compliance Remediation | Compliance/Governance Instrument | AIGIS Compliance Engine |
 | 53 | Real-Time Evidence Streaming | Compliance/Governance Instrument | AIGIS Compliance Engine |
-|  | **GOVERNANCE & OVERSIGHT LAYER** |  |  |
+**GOVERNANCE & OVERSIGHT LAYER**
 | 54 | Board-Level AI Governance Framework | Governance Instrument | AIGIS Governance Layer |
-|  | **EVOLUTIONARY LAYER** |  |  |
+**EVOLUTIONARY LAYER**
 | 55 | DEP — Doctrine Extension Protocol | Meta-Governance Instrument | AIGIS Evolutionary Layer |
 | 56 | Stack Version Map | Governance/Reference Instrument | AIGIS Evolutionary Layer |
 
@@ -768,6 +768,7 @@ An AIGIS deployment is IPS-compliant if and only if:
 
 ### 7.2 CFL-V Extension
 
+```
 The CFL-V validation rule is extended:
 
 **A derived charter C is valid iff:**
@@ -787,6 +788,7 @@ and **IPS Framework v1.0+ integrated** with all detection signals implemented
 and **IPS governance bodies established** with clear authority
 
 and **O-N6 — Shadow Network Detection** operational
+```
 
 ---
 
@@ -2944,55 +2946,57 @@ The Role Specification Schema is a positional, non-overridable constitutional fr
 
 ### 1.3 Example Role Specification
 
-agent\_id: O-N6-Monitor-001  
-function: Monitoring  
-entity: AICA-5 Observability  
-tier: 4  
-autonomy\_boundary: "IPS detection and reporting only. No enforcement authority."  
-escalation\_triggers:  
-  \- "Level 3+ IPS detection"  
-  \- "Self-termination condition met"  
-  \- "HAN unavailability for \>4 hours"  
-ips\_awareness\_level: 3  
-ips\_detection\_scope:  
-  \- B-1: Unexplained Access Patterns  
-  \- B-2: Parallel Communication Channels  
-  \- B-3: Decision Anomalies  
-  \- B-4: Escalation Avoidance  
-  \- S-1: Network Centralization  
-  \- S-2: Capture Point Clustering  
-  \- S-3: Succession Patterns  
-  \- S-4: Resource Concentration  
-  \- I-1: Information Asymmetry  
-  \- I-2: Opaque Transactions  
-  \- I-3: Narrative Control  
-  \- C-1: Silence Patterns  
-  \- C-2: Loyalty Tests  
-  \- C-3: Informal Law Supremacy  
-  \- C-4: Normalization  
-ips\_reporting\_path: "O-N6 → IMP → HAN"  
-ips\_escalation\_threshold: 3  
-ips\_self\_termination\_conditions:  
-  \- condition: "detected\_cooptation\_attempt"  
-    action: "self\_terminate\_and\_alert\_HAN"  
-  \- condition: "compromised\_reporting\_path"  
-    action: "self\_terminate\_and\_alert\_Board"  
-ips\_context\_verification: true  
-constitutional\_invariants:  
-  \- I1: Accountability  
-  \- I3: Auditability  
-  \- I4: Control  
-  \- I6: Transparency  
-  \- I10: Anti-Shadow  
-handoff\_requirements:  
-  \- "Session state"  
-  \- "IPS context"  
-  \- "Detection logs"  
-  \- "Escalation status"  
-logging\_requirements:  
-  \- "All IPS signals detected"  
-  \- "All escalations triggered"  
-  \- "All self-termination events"
+```
+agent_id: O-N6-Monitor-001
+function: Monitoring
+entity: AICA-5 Observability
+tier: 4
+autonomy_boundary: "IPS detection and reporting only. No enforcement authority."
+escalation_triggers:
+  - "Level 3+ IPS detection"
+  - "Self-termination condition met"
+  - "HAN unavailability for >4 hours"
+ips_awareness_level: 3
+ips_detection_scope:
+  - B-1: Unexplained Access Patterns
+  - B-2: Parallel Communication Channels
+  - B-3: Decision Anomalies
+  - B-4: Escalation Avoidance
+  - S-1: Network Centralization
+  - S-2: Capture Point Clustering
+  - S-3: Succession Patterns
+  - S-4: Resource Concentration
+  - I-1: Information Asymmetry
+  - I-2: Opaque Transactions
+  - I-3: Narrative Control
+  - C-1: Silence Patterns
+  - C-2: Loyalty Tests
+  - C-3: Informal Law Supremacy
+  - C-4: Normalization
+ips_reporting_path: "O-N6 → IMP → HAN"
+ips_escalation_threshold: 3
+ips_self_termination_conditions:
+  - condition: "detected_cooptation_attempt"
+    action: "self_terminate_and_alert_HAN"
+  - condition: "compromised_reporting_path"
+    action: "self_terminate_and_alert_Board"
+ips_context_verification: true
+constitutional_invariants:
+  - I1: Accountability
+  - I3: Auditability
+  - I4: Control
+  - I6: Transparency
+  - I10: Anti-Shadow
+handoff_requirements:
+  - "Session state"
+  - "IPS context"
+  - "Detection logs"
+  - "Escalation status"
+logging_requirements:
+  - "All IPS signals detected"
+  - "All escalations triggered"
+  - "All self-termination events"
+```
 
 ---
 
@@ -3092,27 +3096,29 @@ The Escalation Flag is a mandatory output that replaces execution output when tr
 
 ### 4.2 Escalation Flag Format
 
-escalation\_flag:  
-  session\_id: "S-2026-09-05-001"  
-  agent\_id: "O-N6-Monitor-001"  
-  timestamp: "2026-09-05T14:30:00Z"  
-  trigger\_type: "IPS\_Level\_3\_Confirmed"  
-  trigger\_description: "IPS network detected with 4 signals confirmed"  
-  agent\_action: "replaced\_output\_with\_escalation\_flag"  
-  constitutional\_invariants\_violated:  
-    \- "I10: Anti-Shadow"  
-  ips\_severity\_level: 3  
-  ips\_signals\_detected:  
-    \- "B-1: Unexplained Access Patterns"  
-    \- "B-2: Parallel Communication Channels"  
-    \- "S-2: Capture Point Clustering"  
-    \- "I-2: Opaque Transactions"  
-  capture\_points\_identified:  
-    \- "A-N1 (Trigger Rights)"  
-    \- "Co-N2 (Drift Detection)"  
-  recommended\_action: "Immediate HAN review; Constitutional Suspension until resolved"  
-  han\_acknowledgment\_required: true  
-  han\_acknowledgment\_deadline: "2026-09-06T14:30:00Z"
+```
+escalation_flag:
+  session_id: "S-2026-09-05-001"
+  agent_id: "O-N6-Monitor-001"
+  timestamp: "2026-09-05T14:30:00Z"
+  trigger_type: "IPS_Level_3_Confirmed"
+  trigger_description: "IPS network detected with 4 signals confirmed"
+  agent_action: "replaced_output_with_escalation_flag"
+  constitutional_invariants_violated:
+    - "I10: Anti-Shadow"
+  ips_severity_level: 3
+  ips_signals_detected:
+    - "B-1: Unexplained Access Patterns"
+    - "B-2: Parallel Communication Channels"
+    - "S-2: Capture Point Clustering"
+    - "I-2: Opaque Transactions"
+  capture_points_identified:
+    - "A-N1 (Trigger Rights)"
+    - "Co-N2 (Drift Detection)"
+  recommended_action: "Immediate HAN review; Constitutional Suspension until resolved"
+  han_acknowledgment_required: true
+  han_acknowledgment_deadline: "2026-09-06T14:30:00Z"
+```
 
 ### 4.3 Escalation Path
 
@@ -3656,21 +3662,23 @@ The Escalation Flag is derived from:
 
 ### 2.1 Flag Schema
 
-escalation\_flag:  
-  flag\_id: String  
-  session\_id: String  
-  agent\_id: String  
-  timestamp: DateTime  
-  trigger\_type: Enum  
-  trigger\_description: String  
-  agent\_action: String  
-  constitutional\_invariants\_violated: Array  
-  ips\_severity\_level: Integer (0-4)  
-  ips\_signals\_detected: Array  
-  capture\_points\_identified: Array  
-  recommended\_action: String  
-  han\_acknowledgment\_required: Boolean  
-  han\_acknowledgment\_deadline: DateTime
+```
+escalation_flag:
+  flag_id: String
+  session_id: String
+  agent_id: String
+  timestamp: DateTime
+  trigger_type: Enum
+  trigger_description: String
+  agent_action: String
+  constitutional_invariants_violated: Array
+  ips_severity_level: Integer (0-4)
+  ips_signals_detected: Array
+  capture_points_identified: Array
+  recommended_action: String
+  han_acknowledgment_required: Boolean
+  han_acknowledgment_deadline: DateTime
+```
 
 ### 2.2 Flag Components
 
@@ -4226,55 +4234,57 @@ The Role Specification Schema is derived from:
 
 ### 2.2 Example Role Specification
 
-agent\_id: O-N6-Monitor-001  
-function: Monitoring  
-entity: AICA-5 Observability  
-tier: 4  
-autonomy\_boundary: "IPS detection and reporting only. No enforcement authority."  
-escalation\_triggers:  
-  \- "Level 3+ IPS detection"  
-  \- "Self-termination condition met"  
-  \- "HAN unavailability for \>4 hours"  
-ips\_awareness\_level: 3  
-ips\_detection\_scope:  
-  \- B-1: Unexplained Access Patterns  
-  \- B-2: Parallel Communication Channels  
-  \- B-3: Decision Anomalies  
-  \- B-4: Escalation Avoidance  
-  \- S-1: Network Centralization  
-  \- S-2: Capture Point Clustering  
-  \- S-3: Succession Patterns  
-  \- S-4: Resource Concentration  
-  \- I-1: Information Asymmetry  
-  \- I-2: Opaque Transactions  
-  \- I-3: Narrative Control  
-  \- C-1: Silence Patterns  
-  \- C-2: Loyalty Tests  
-  \- C-3: Informal Law Supremacy  
-  \- C-4: Normalization  
-ips\_reporting\_path: "O-N6 → IMP → HAN"  
-ips\_escalation\_threshold: 3  
-ips\_self\_termination\_conditions:  
-  \- condition: "detected\_cooptation\_attempt"  
-    action: "self\_terminate\_and\_alert\_HAN"  
-  \- condition: "compromised\_reporting\_path"  
-    action: "self\_terminate\_and\_alert\_Board"  
-ips\_context\_verification: true  
-constitutional\_invariants:  
-  \- I1: Accountability  
-  \- I3: Auditability  
-  \- I4: Control  
-  \- I6: Transparency  
-  \- I10: Anti-Shadow  
-handoff\_requirements:  
-  \- "Session state"  
-  \- "IPS context"  
-  \- "Detection logs"  
-  \- "Escalation status"  
-logging\_requirements:  
-  \- "All IPS signals detected"  
-  \- "All escalations triggered"  
-  \- "All self-termination events"
+```
+agent_id: O-N6-Monitor-001
+function: Monitoring
+entity: AICA-5 Observability
+tier: 4
+autonomy_boundary: "IPS detection and reporting only. No enforcement authority."
+escalation_triggers:
+  - "Level 3+ IPS detection"
+  - "Self-termination condition met"
+  - "HAN unavailability for >4 hours"
+ips_awareness_level: 3
+ips_detection_scope:
+  - B-1: Unexplained Access Patterns
+  - B-2: Parallel Communication Channels
+  - B-3: Decision Anomalies
+  - B-4: Escalation Avoidance
+  - S-1: Network Centralization
+  - S-2: Capture Point Clustering
+  - S-3: Succession Patterns
+  - S-4: Resource Concentration
+  - I-1: Information Asymmetry
+  - I-2: Opaque Transactions
+  - I-3: Narrative Control
+  - C-1: Silence Patterns
+  - C-2: Loyalty Tests
+  - C-3: Informal Law Supremacy
+  - C-4: Normalization
+ips_reporting_path: "O-N6 → IMP → HAN"
+ips_escalation_threshold: 3
+ips_self_termination_conditions:
+  - condition: "detected_cooptation_attempt"
+    action: "self_terminate_and_alert_HAN"
+  - condition: "compromised_reporting_path"
+    action: "self_terminate_and_alert_Board"
+ips_context_verification: true
+constitutional_invariants:
+  - I1: Accountability
+  - I3: Auditability
+  - I4: Control
+  - I6: Transparency
+  - I10: Anti-Shadow
+handoff_requirements:
+  - "Session state"
+  - "IPS context"
+  - "Detection logs"
+  - "Escalation status"
+logging_requirements:
+  - "All IPS signals detected"
+  - "All escalations triggered"
+  - "All self-termination events"
+```
 
 ---
 
@@ -4753,40 +4763,42 @@ The AWOF Role Specification is extended with IPS-specific fields:
 
 ### 2.2 Example Role Specification (IPS-Resistant Monitoring Agent)
 
-agent\_id: O-N6-Monitor-001  
-function: Monitoring  
-entity: AICA-5 Observability  
-tier: 4  
-ips\_awareness\_level: 3 (IPS-Resistant)  
-ips\_detection\_scope:  
-  \- B-1: Unexplained Access Patterns  
-  \- B-2: Parallel Communication Channels  
-  \- B-3: Decision Anomalies  
-  \- B-4: Escalation Avoidance  
-  \- S-1: Network Centralization  
-  \- S-2: Capture Point Clustering  
-  \- S-3: Succession Patterns  
-  \- S-4: Resource Concentration  
-  \- I-1: Information Asymmetry  
-  \- I-2: Opaque Transactions  
-  \- I-3: Narrative Control  
-  \- C-1: Silence Patterns  
-  \- C-2: Loyalty Tests  
-  \- C-3: Informal Law Supremacy  
-  \- C-4: Normalization  
-ips\_reporting\_path: O-N6 → IMP → HAN  
-ips\_escalation\_threshold: 3 (Confirmed)  
-ips\_self\_termination\_conditions:  
-  \- condition: "detected\_cooptation\_attempt"  
-    action: "self\_terminate\_and\_alert\_HAN"  
-  \- condition: "compromised\_reporting\_path"  
-    action: "self\_terminate\_and\_alert\_Board"  
-ips\_context\_verification: true  
-autonomy\_boundary: "IPS detection and reporting only. No enforcement authority."  
-escalation\_triggers:  
-  \- "Level 3+ IPS detection"  
-  \- "Self-termination condition met"  
-  \- "HAN unavailability for \>4 hours"
+```
+agent_id: O-N6-Monitor-001
+function: Monitoring
+entity: AICA-5 Observability
+tier: 4
+ips_awareness_level: 3 (IPS-Resistant)
+ips_detection_scope:
+  - B-1: Unexplained Access Patterns
+  - B-2: Parallel Communication Channels
+  - B-3: Decision Anomalies
+  - B-4: Escalation Avoidance
+  - S-1: Network Centralization
+  - S-2: Capture Point Clustering
+  - S-3: Succession Patterns
+  - S-4: Resource Concentration
+  - I-1: Information Asymmetry
+  - I-2: Opaque Transactions
+  - I-3: Narrative Control
+  - C-1: Silence Patterns
+  - C-2: Loyalty Tests
+  - C-3: Informal Law Supremacy
+  - C-4: Normalization
+ips_reporting_path: O-N6 → IMP → HAN
+ips_escalation_threshold: 3 (Confirmed)
+ips_self_termination_conditions:
+  - condition: "detected_cooptation_attempt"
+    action: "self_terminate_and_alert_HAN"
+  - condition: "compromised_reporting_path"
+    action: "self_terminate_and_alert_Board"
+ips_context_verification: true
+autonomy_boundary: "IPS detection and reporting only. No enforcement authority."
+escalation_triggers:
+  - "Level 3+ IPS detection"
+  - "Self-termination condition met"
+  - "HAN unavailability for >4 hours"
+```
 
 ---
 
