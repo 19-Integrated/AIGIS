@@ -1,4 +1,4 @@
-# AIGIS Alpha — Complete Table of Contents
+# AIGIS Alpha
 
 # AIGIS:  AI Governance Infrastructure Stack
 
@@ -84,8 +84,6 @@
 ---
 
 # CONSTITUTIONAL LAYER
-
-# ICC-10 — Intelligence Constitutional Charter
 
 # ICC-10 — INTELLIGENCE CONSTITUTIONAL CHARTER
 
@@ -479,7 +477,6 @@ From institutions as human organizations using AI tools — to institutions as A
 
 ---
 
-# IPS Framework — Informal Power Structure Framework
 
 # IPS FRAMEWORK — INFORMAL POWER STRUCTURE FRAMEWORK
 
@@ -861,7 +858,7 @@ and **O-N6 — Shadow Network Detection** operational
 
 ---
 
-# HOF — Human Operating Framework
+
 
 # HOF — HUMAN OPERATING FRAMEWORK
 
@@ -1094,7 +1091,7 @@ HOF integrates with the IPS Framework through the following mechanisms:
 
 ---
 
-# HAN — Human Authority Node
+
 
 # HAN — HUMAN AUTHORITY NODE
 
@@ -1385,9 +1382,10 @@ HAN integrates with the IPS Framework through the following mechanisms:
 
 ---
 
+
+
 # CONTROL ARCHITECTURE LAYER
 
-# AICA-5 — AI Control Architecture
 
 # AICA-5 — AI CONTROL ARCHITECTURE
 
@@ -1776,7 +1774,7 @@ AICA-5 Measurement Framework defines 39 Governance Health Indicators across 5 la
 
 ---
 
-# AICA-5 Maturity Grid
+
 
 # AICA-5 MATURITY GRID
 
@@ -2000,7 +1998,7 @@ An AICA-5 Maturity Grid deployment is compliant if and only if:
 
 ---
 
-# AICA-5 Operating Model
+
 
 # AICA-5 OPERATING MODEL
 
@@ -2396,7 +2394,7 @@ An AICA-5 Operating Model deployment is compliant if and only if:
 
 ---
 
-# AICA-5 Implementation Pathway
+
 
 # AICA-5 IMPLEMENTATION PATHWAY
 
@@ -2635,7 +2633,7 @@ An AICA-5 Implementation Pathway deployment is compliant if and only if:
 
 ---
 
-# AICA-5 Measurement Framework
+
 
 # AICA-5 MEASUREMENT FRAMEWORK
 
@@ -2890,9 +2888,10 @@ An AICA-5 Measurement Framework deployment is compliant if and only if:
 
 ---
 
+
+
 # TECHNICAL ENFORCEMENT LAYER
 
-# ADTEP — Agent Deployment & Technical Enforcement..
 
 # ADTEP — AGENT DEPLOYMENT & TECHNICAL ENFORCEMENT PROTOCOL
 
@@ -3251,7 +3250,7 @@ An agent that receives full constitutional context can still produce outputs out
 
 ---
 
-# Session Initialization Checklist
+
 
 # SESSION INITIALIZATION CHECKLIST
 
@@ -3409,7 +3408,7 @@ A Session Initialization Checklist deployment is compliant if and only if:
 
 ---
 
-# Pre-Delivery Log Entry
+
 
 # PRE-DELIVERY LOG ENTRY
 
@@ -3605,7 +3604,7 @@ A Pre-Delivery Log Entry deployment is compliant if and only if:
 
 ---
 
-# Escalation Flag
+
 
 # ESCALATION FLAG
 
@@ -3815,7 +3814,7 @@ An Escalation Flag deployment is compliant if and only if:
 
 ---
 
-# Constitutional Suspension
+
 
 # CONSTITUTIONAL SUSPENSION
 
@@ -3996,7 +3995,7 @@ A Constitutional Suspension deployment is compliant if and only if:
 
 ---
 
-# Constitutional Refresh
+
 
 # CONSTITUTIONAL REFRESH
 
@@ -4155,7 +4154,7 @@ A Constitutional Refresh deployment is compliant if and only if:
 
 ---
 
-# Role Specification Schema
+
 
 # ROLE SPECIFICATION SCHEMA
 
@@ -4354,9 +4353,9 @@ A Role Specification Schema deployment is compliant if and only if:
 
 ---
 
-# WORKFORCE LAYER
 
-# AWOF
+
+# WORKFORCE LAYER
 
 # AWOF — AI WORKFORCE OPERATING FRAMEWORK
 
@@ -4671,7 +4670,7 @@ The Handoff Package is a mandatory structured context document produced at sessi
 
 ---
 
-# AWOF-IPS
+
 
 # AWOF-IPS — SHADOW-AWARE AI WORKFORCE OPERATING FRAMEWORK
 
@@ -4986,7 +4985,7 @@ The AWOF trigger classes are extended with IPS-specific triggers:
 
 ---
 
-# HAWI
+
 
 # HAWI — HUMAN-AI WORKFORCE INTEGRATION FRAMEWORK
 
@@ -5191,7 +5190,7 @@ The IPS Readiness Diagnostic assesses human authority IPS awareness and response
 
 ---
 
-# Agent Classification System
+
 
 # AGENT CLASSIFICATION SYSTEM
 
@@ -5378,7 +5377,7 @@ An Agent Classification System deployment is compliant if and only if:
 
 ---
 
-# MVOS
+
 
 # MVOS — MINIMUM VIABLE OPERATIONS STATE
 
@@ -5578,7 +5577,7 @@ An MVOS deployment is compliant if and only if:
 
 ---
 
-# Handoff Package
+
 
 # HANDOFF PACKAGE
 
@@ -5814,7 +5813,7 @@ A Handoff Package deployment is compliant if and only if:
 
 ---
 
-# Trigger System
+
 
 # TRIGGER SYSTEM
 
@@ -6019,9 +6018,10 @@ A Trigger System deployment is compliant if and only if:
 
 ---
 
+
+
 # CAPABILITY & AUTHORIZATION LAYER
 
-# CDT-7 — Capability Domains Taxonomy
 
 # CDT-7 — CAPABILITY DOMAINS TAXONOMY
 
@@ -6197,7 +6197,7 @@ A CDT-7 deployment is compliant if and only if:
 
 ---
 
-# CTAM — Capability-Tier Authorization Matrix
+
 
 # CTAM — CAPABILITY-TIER AUTHORIZATION MATRIX
 
@@ -6439,7 +6439,6 @@ A CTAM deployment is compliant if and only if:
 
 ---
 
-# CAM-5 — 5-Tier Capability Authorization Model
 
 # CAM-5 — 5-TIER CAPABILITY AUTHORIZATION MODEL
 
@@ -6680,9 +6679,9 @@ A CAM-5 deployment is compliant if and only if:
 
 ---
 
-# OPERATIONAL INTERPRETATION LAYER
 
-# RGI-8 — Runtime Governance Interpretation
+
+# OPERATIONAL INTERPRETATION LAYER
 
 # RGI-8 — RUNTIME GOVERNANCE INTERPRETATION
 
@@ -6876,7 +6875,7 @@ An RGI-8 deployment is compliant if and only if:
 
 ---
 
-# CAD-7 — Coalition Accountability Declaration
+
 
 # CAD-7 — COALITION ACCOUNTABILITY DECLARATION
 
@@ -7073,9 +7072,9 @@ A CAD-7 deployment is compliant if and only if:
 
 ---
 
-# ENGAGEMENT & TRUST LAYER
 
-# CEF — Client Engagement Framework
+
+# ENGAGEMENT & TRUST LAYER
 
 # CEF — CLIENT ENGAGEMENT FRAMEWORK
 
@@ -7287,7 +7286,7 @@ A CEF deployment is compliant if and only if:
 
 ---
 
-# CEF-IPS — Shadow-Aware Client Engagement Framework
+
 
 # CEF-IPS — SHADOW-AWARE CLIENT ENGAGEMENT FRAMEWORK
 
@@ -7649,7 +7648,7 @@ and IPS screening, due diligence, monitoring, and review protocols are operation
 
 ---
 
-# EAF — Engagement Authority Framework
+
 
 # EAF — ENGAGEMENT AUTHORITY FRAMEWORK
 
@@ -7890,9 +7889,10 @@ An EAF deployment is compliant if and only if:
 
 ---
 
+
+
 # INSTITUTIONAL MEMORY & CAPITAL LAYER
 
-# IMP — Institutional Memory Protocol
 
 # IMP — INSTITUTIONAL MEMORY PROTOCOL
 
@@ -8140,7 +8140,7 @@ An AIGIS deployment is IMP-compliant if and only if:
 
 ---
 
-# CDF — Capital Deployment Framework
+
 
 # CDF — CAPITAL DEPLOYMENT FRAMEWORK
 
@@ -8530,7 +8530,7 @@ and contestation interface is operational
 
 ---
 
-# COF — Capital Orchestration Framework
+
 
 # COF — CAPITAL ORCHESTRATION FRAMEWORK
 
@@ -8847,7 +8847,7 @@ and feedback loop is operational
 
 ---
 
-# ILTP — IP Licensing & Transfer Protocol
+
 
 # ILTP — IP LICENSING & TRANSFER PROTOCOL
 
@@ -9075,7 +9075,7 @@ An ILTP deployment is compliant if and only if:
 
 ---
 
-# CGF — Certification Governance Framework
+
 
 # CGF — CERTIFICATION GOVERNANCE FRAMEWORK
 
@@ -9353,9 +9353,11 @@ A CGF deployment is compliant if and only if:
 
 ---
 
+
+
+
 # BIAS AUDITING LAYER
 
-# AOBA — AI Output Bias Audit
 
 # AOBA — AI OUTPUT BIAS AUDIT
 
@@ -9643,7 +9645,7 @@ AOBA's operational implementation depends on:
 
 ---
 
-# ABA — Authority Bias Audit
+
 
 # ABA — AUTHORITY BIAS AUDIT
 
@@ -9937,9 +9939,10 @@ ABA's operational implementation depends on:
 
 ---
 
+
+
 # EXTERNAL LEGIBILITY & DISCLOSURE LAYER
 
-# ERDP — External Reporting & Disclosure Protocol
 
 # ERDP — EXTERNAL REPORTING & DISCLOSURE PROTOCOL
 
@@ -10207,7 +10210,7 @@ An AIGIS deployment is ERDP-compliant if and only if:
 
 ---
 
-# CIS — Contestation Interface Standard
+
 
 # CIS — CONTESTATION INTERFACE STANDARD
 
@@ -10452,9 +10455,10 @@ A CIS deployment is compliant if and only if:
 
 ---
 
+
+
 # SECURITY & SUPPLY CHAIN LAYER
 
-# AEGIS — Agentic Security & Identity
 
 # AEGIS — AGENTIC SECURITY & IDENTITY
 
@@ -10683,7 +10687,7 @@ An AEGIS deployment is compliant if and only if:
 
 ---
 
-# Zero Trust & AI Runtime Security
+
 
 # ZERO TRUST & AI RUNTIME SECURITY
 
@@ -10933,7 +10937,7 @@ A Zero Trust deployment is compliant if and only if:
 
 ---
 
-# Supply Chain Governance
+
 
 # SUPPLY CHAIN GOVERNANCE
 
@@ -11177,7 +11181,7 @@ A Supply Chain Governance deployment is compliant if and only if:
 
 ---
 
-# Skills & Plugins Governance
+
 
 # SKILLS & PLUGINS GOVERNANCE
 
@@ -11417,7 +11421,7 @@ A Skills & Plugins Governance deployment is compliant if and only if:
 
 ---
 
-# MCP Server Governance
+
 
 # MCP SERVER GOVERNANCE
 
@@ -11689,9 +11693,10 @@ An MCP Server Governance deployment is compliant if and only if:
 
 ---
 
+
+
 # RISK & COMPLIANCE LAYER
 
-# Systemic Risk Framework
 
 # SYSTEMIC RISK FRAMEWORK
 
@@ -11921,7 +11926,7 @@ A Systemic Risk Framework deployment is compliant if and only if:
 
 ---
 
-# MCR — Master Control Registry
+
 
 # MCR — MASTER CONTROL REGISTRY
 
@@ -12184,7 +12189,7 @@ An MCR deployment is compliant if and only if:
 
 ---
 
-# Compliance Crosswalk Engine
+
 
 # COMPLIANCE CROSSWALK ENGINE
 
@@ -12457,7 +12462,7 @@ A Compliance Crosswalk Engine deployment is compliant if and only if:
 
 ---
 
-# Regulatory Overlays
+
 
 # REGULATORY OVERLAYS
 
@@ -13052,7 +13057,7 @@ A Regulatory Overlay deployment is compliant if and only if:
 
 ---
 
-# Audit Evidence Engine
+
 
 # AUDIT EVIDENCE ENGINE
 
@@ -13281,7 +13286,7 @@ An Audit Evidence Engine deployment is compliant if and only if:
 
 ---
 
-# Compliance Dashboard
+
 
 # COMPLIANCE DASHBOARD
 
@@ -13558,7 +13563,7 @@ A Compliance Dashboard deployment is compliant if and only if:
 
 ---
 
-# Automated Compliance Remediation
+
 
 # AUTOMATED COMPLIANCE REMEDIATION
 
@@ -13787,7 +13792,7 @@ An Automated Compliance Remediation deployment is compliant if and only if:
 
 ---
 
-# Real-Time Evidence Streaming
+
 
 # REAL-TIME EVIDENCE STREAMING
 
@@ -14011,9 +14016,10 @@ A Real-Time Evidence Streaming deployment is compliant if and only if:
 
 ---
 
+
+
 # GOVERNANCE & OVERSIGHT LAYER
 
-# Board-Level AI Governance Framework
 
 # BOARD-LEVEL AI GOVERNANCE FRAMEWORK
 
@@ -14254,9 +14260,10 @@ A Board-Level AI Governance Framework deployment is compliant if and only if:
 
 ---
 
+
+
 # EVOLUTIONARY LAYER
 
-# DEP — Doctrine Extension Protocol
 
 # DEP — DOCTRINE EXTENSION PROTOCOL
 
@@ -14481,7 +14488,7 @@ A DEP deployment is compliant if and only if:
 
 ---
 
-# Stack Version Map
+
 
 # STACK VERSION MAP
 
